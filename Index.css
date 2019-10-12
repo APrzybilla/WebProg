@@ -51,6 +51,41 @@
     }
     
     .outerTable tbody {
-        width: 100px;
+        width: 1150px;
         overflow-x: scroll;
     }
+
+    .outerTable{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 1150px;
+        border-radius:  5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .top{
+        background-color: blue;
+        color: white;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .outerTable th,
+    .outerTable td{
+        padding: 12px 15px;
+        border-right: 1px solid #dddddd;
+        border-left: 1px solid #dddddd;
+    }
+
+    .outerTable tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .outerTable tbody tr:nth-of-type(even), .outerTable thead tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    .outerTable tbody tr:last-of-type, .outerTable thead tr:last-of-type{
+        border-bottom: 2px solid blue;
