@@ -18,53 +18,17 @@
 
 /* Maddin */
 
-    .tabelleUebersicht{
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        min-width: 400px;
-        border-radius:  5px 5px 0 0;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        
-    }
-
-    .tabelleUebersicht thead tr{
-        background-color: blue;
-        color: white;
-        text-align: left;
-        font-weight: bold;
-    }
-
-    .tabelleUebersicht th,
-    .tabelleUebersicht td{
-        padding: 12px 15px;
-        border-right: 1px solid #dddddd;
-        border-left: 1px solid #dddddd;
-    }
-
-    .tabelleUebersicht tbody tr{
-        border-bottom: 1px solid #dddddd;
-    }
-
-    .tabelleUebersicht tbody tr:nth-of-type(even){
-        background-color: #f3f3f3;
-    }
-
-    .tabelleUebersicht tbody tr:last-of-type{
-        border-bottom: 2px solid blue;
-    }
-    
-    .outerTable thead, .outerTable tbody {
+    .tabelleUebersicht thead,
+    .tabelleUebersicht tbody {
         display:inline-block;
     }
     
-    .outerTable tbody {
+    .tabelleUebersicht tbody {
         width: 1150px;
         overflow-x: scroll;
     }
 
-    .outerTable{
+    .tabelleUebersicht{
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.9em;
@@ -81,20 +45,22 @@
         font-weight: bold;
     }
 
-    .outerTable th,
-    .outerTable td{
+    .tabelleUebersicht th,
+    .tabelleUebersicht td{
         padding: 12px 15px;
         border-right: 1px solid #dddddd;
         border-left: 1px solid #dddddd;
     }
 
-    .outerTable tr{
+    .tabelleUebersicht tr{
         border-bottom: 1px solid #dddddd;
     }
 
-    .outerTable tbody tr:nth-of-type(even), .outerTable thead tr:nth-of-type(even){
+    .tabelleUebersicht tbody tr:nth-of-type(even),
+    .tabelleUebersicht thead tr:nth-of-type(even){
         background-color: #f3f3f3;
     }
 
-    .outerTable tbody tr:last-of-type, .outerTable thead tr:last-of-type{
+    .tabelleUebersicht tbody tr:last-of-type,
+    .tabelleUebersicht thead tr:last-of-type{
         border-bottom: 2px solid blue;
