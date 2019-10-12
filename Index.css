@@ -1,13 +1,22 @@
 /* Adrian */
+    html, body {
+        padding: 0;
+        margin: 0;
+    }
+
+    html{
+        font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    }
+
     header{
-        background-color: lightblue;
+        background-color: blue;
+        color: white;
+        padding: 0.1em;
+        
     }
 /* Anika */
 
 /* Maddin */
-    html{
-        font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
-    }
 
     .tabelleUebersicht{
         border-collapse: collapse;
