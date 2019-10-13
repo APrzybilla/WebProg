@@ -31,7 +31,8 @@
     .tabelleUebersicht tbody {
         display:inline-block;
     }
-    
+
+    /*Scrollbar*/
     .tabelleUebersicht tbody {
         width: 1195px;
         overflow-x: scroll;
@@ -45,12 +46,13 @@
         border-radius:  5px 5px 0 0;
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
     }
 
+    /*Oberste Zeile der Tabelle*/
     .top{
         background-color: blue;
         color: white;
-        text-align: left;
         font-weight: bold;
     }
 
@@ -65,6 +67,7 @@
         border-bottom: 1px solid #dddddd;
     }
 
+    /*Für die Unterschiedliche Färbung der Zeilen*/
     .tabelleUebersicht tbody tr:nth-of-type(even),
     .tabelleUebersicht thead tr:nth-of-type(even){
         background-color: #f3f3f3;
@@ -75,10 +78,15 @@
         background-color: lightgray;
     }
 
+    /*Damit die letzte Zeile einen blauen Strich unten hat*/
     .tabelleUebersicht tbody tr:last-of-type,
     .tabelleUebersicht thead tr:last-of-type{
         border-bottom: 2px solid blue;
     }
+
+    /*.kalenderwochen th{
+        transform: rotate(270deg);
+    }*/
 
     input[type="text"]{
         width: 15%;
@@ -89,6 +97,11 @@
         box-sizing: border-box;
         transition: .3s;
         margin-right: 10px;
+        color: darkblue;
+    }
+
+    input::placeholder{
+        color: darkblue;
     }
 
     input[type="text"]:focus{
@@ -123,8 +136,8 @@
     }
 
     .radio-group input:checked + label{
-        background: darkblue;
-        color: white;
+        background: white;
+        color: darkblue;
         box-shadow: none;
     }
 
