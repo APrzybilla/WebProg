@@ -64,3 +64,24 @@
     .tabelleUebersicht tbody tr:last-of-type,
     .tabelleUebersicht thead tr:last-of-type{
         border-bottom: 2px solid blue;
+    }
+
+    input[type=text]{
+        width: 15%;
+        border: 2px solid #aaa;
+        border-radius: 5px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+    }
+
+    input[type=text]:focus{
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px dodgerblue;
+    }
+
+    main{
+        margin: 10px;
+    }
