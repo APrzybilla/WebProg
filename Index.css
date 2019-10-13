@@ -23,6 +23,10 @@
         margin: 10px;
     }
 
+    h1,h2{
+        color: white;
+    }
+
     .tabelleUebersicht thead,
     .tabelleUebersicht tbody {
         display:inline-block;
