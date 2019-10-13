@@ -27,6 +27,7 @@
         color: white;
     }
 
+
     .tabelleUebersicht thead,
     .tabelleUebersicht tbody {
         display:inline-block;
@@ -100,10 +101,6 @@
         color: darkblue;
     }
 
-    input::placeholder{
-        color: darkblue;
-    }
-
     input[type="text"]:focus{
         border-color: dodgerblue;
         box-shadow: 0 0 8px dodgerblue;
@@ -141,24 +138,26 @@
         box-shadow: none;
     }
 
-    .buttonSuchen{
+    .buttonFilter{
         width: 10%;
         border: 1px solid #aaa;
         border-radius: 5px;
         outline: none;
-        padding: 8px;
+        padding: 4px;
         box-sizing: border-box;
         transition: .3s;
         background: blue;
         color: white;
+        font-weight: bold;
+        font-size: 20px;
     }
 
-    .buttonSuchen:hover{
+    .buttonFilter:hover{
         border-color: dodgerblue;
         box-shadow: 0 0 8px dodgerblue;
     }
 
-    .buttonSuchen:active{
+    .buttonFilter:active{
         background-color: darkblue;
     }
     
