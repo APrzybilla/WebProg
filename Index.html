@@ -22,14 +22,17 @@
             <div id="Filter">
                 <h1>Studentenübersicht</h1>
                 <h2>Filter</h2>
-                <input type="text" placeholder="Vorname" />
-                <input type="text" placeholder="Nachname"/>
+                <input type="text" placeholder="Nachname" />
+                <input type="text" placeholder="Vorname"/>
                 <input type="text" placeholder="Semester"/>
                 <input type="text" placeholder="Jahrgang"/>
-                <input type="radio" id="hochschuleDHBW" value="DHBW">
-                <label for="hochschuleDHBW"> DHBW</label> 
-                <input type="radio" id="hochschuleTHM" value="THM">
-                <label for="hochschuleTHM"> THM</label>    
+                <div class="radio-group">
+                <input type="radio" id="dhbw" name="hochschule" value="hochschule-dhbw">
+                <label for="dhbw">DHBW</label>
+                <input type="radio" id="thm" name="hochschule" value="hochschule-thm">
+                <label for="thm">THM</label>
+                </div>
+                <button type="button" class="buttonSuchen">Suchen</button>
             </div>
             <div>
             <table class="tabelleUebersicht">
@@ -193,7 +196,6 @@
             </div>
         </main>
         <footer>
-
         </footer>
     </body>
 </html>
