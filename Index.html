@@ -19,25 +19,32 @@
             </nav>
         </header>
         <main>
+            <!--Filterleiste-->
             <div id="Filter">
                 <h1>Studentenübersicht</h1>
                 <h2>Filter</h2>
+                <!--Textfelder -> Filter-->
                 <input type="text" placeholder="Nachname" />
                 <input type="text" placeholder="Vorname"/>
                 <input type="text" placeholder="Semester"/>
                 <input type="text" placeholder="Jahrgang"/>
 
+                <!--Radiobutton für die Hochschulen -> Filter-->
                 <div class="radio-group">
                     <input type="radio" id="dhbw" name="hochschule" value="hochschule-dhbw">
                     <label for="dhbw">DHBW</label>
                         <input type="radio" id="thm" name="hochschule" value="hochschule-thm">
                 <label for="thm">THM</label>
                 </div>
-                
+
+                <!--Such-Button -> Filter-->
                 <button type="button" class="buttonSuchen">Suchen</button>
             </div>
+
+            <!--Tabelle für die Studentenübersicht-->
             <div>
             <table class="tabelleUebersicht">
+                <!--Dieser Part ist fix auf der linken Seite-->
                 <thead valign="top">
                     <tr>
                         <th class="top">Name</th>
@@ -64,6 +71,7 @@
                         <td>2018</td>
                     </tr>
                 </thead>
+                <!--Dieser Part ist variable und kann gescrolled werden-->
                 <tbody valign="top">
                     <tr>
                         <th class="top">K1</th>
