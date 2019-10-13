@@ -2,6 +2,7 @@
     html, body {
         padding: 0;
         margin: 0;
+        background-image: url(Blau.png);
     }
 
     html{
@@ -63,6 +64,11 @@
     .tabelleUebersicht tbody tr:nth-of-type(even),
     .tabelleUebersicht thead tr:nth-of-type(even){
         background-color: #f3f3f3;
+    }
+
+    .tabelleUebersicht tbody tr:nth-of-type(odd),
+    .tabelleUebersicht thead tr:nth-of-type(odd){
+        background-color: lightgray;
     }
 
     .tabelleUebersicht tbody tr:last-of-type,
