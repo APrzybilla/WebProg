@@ -18,13 +18,17 @@
 
 /* Maddin */
 
+    main{
+        margin: 10px;
+    }
+
     .tabelleUebersicht thead,
     .tabelleUebersicht tbody {
         display:inline-block;
     }
     
     .tabelleUebersicht tbody {
-        width: 1150px;
+        width: 1195px;
         overflow-x: scroll;
     }
 
@@ -32,7 +36,7 @@
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.9em;
-        min-width: 1150px;
+        min-width: 1195px;
         border-radius:  5px 5px 0 0;
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -66,22 +70,73 @@
         border-bottom: 2px solid blue;
     }
 
-    input[type=text]{
+    input[type="text"]{
         width: 15%;
-        border: 2px solid #aaa;
+        border: 1px solid #aaa;
         border-radius: 5px;
-        margin: 8px 0;
         outline: none;
         padding: 8px;
         box-sizing: border-box;
         transition: .3s;
+        margin-right: 10px;
     }
 
-    input[type=text]:focus{
+    input[type="text"]:focus{
         border-color: dodgerblue;
         box-shadow: 0 0 8px dodgerblue;
     }
 
-    main{
-        margin: 10px;
+    .radio-group{
+        display: inline-block;
+        margin-right: 10px; 
     }
+
+    .radio-group input[type="radio"]{
+        display: none;
+    }
+
+    .radio-group label{
+        border: 1px solid #333;
+        color: white;
+        background-color: blue;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        outline: none;
+        padding: 7px;
+        box-sizing: border-box;
+        transition: .3s;
+    }
+
+    .radio-group label:hover{
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px dodgerblue;
+    }
+
+    .radio-group input:checked + label{
+        background: darkblue;
+        color: white;
+        box-shadow: none;
+    }
+
+    .buttonSuchen{
+        width: 10%;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        background: blue;
+        color: white;
+    }
+
+    .buttonSuchen:hover{
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px dodgerblue;
+    }
+
+    .buttonSuchen:active{
+        background-color: darkblue;
+    }
+    
+
