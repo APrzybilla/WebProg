@@ -106,16 +106,16 @@
         box-shadow: 0 0 8px dodgerblue;
     }
 
-    .radio-group{
+    .checkbox-group{
         display: inline-block;
         margin-right: 10px; 
     }
 
-    .radio-group input[type="radio"]{
+    .checkbox-group input[type="checkbox"]{
         display: none;
     }
 
-    .radio-group label{
+    .checkbox-group label{
         border: 1px solid #333;
         color: white;
         background-color: blue;
@@ -127,12 +127,12 @@
         transition: .3s;
     }
 
-    .radio-group label:hover{
+    .checkbox-group label:hover{
         border-color: dodgerblue;
         box-shadow: 0 0 8px dodgerblue;
     }
 
-    .radio-group input:checked + label{
+    .checkbox-group input:checked + label{
         background: white;
         color: darkblue;
         box-shadow: none;
