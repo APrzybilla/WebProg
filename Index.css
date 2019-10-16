@@ -99,6 +99,7 @@
         transition: .3s;
         margin-right: 10px;
         color: darkblue;
+        vertical-align: middle;
     }
 
     input[type="text"]:focus{
@@ -109,6 +110,7 @@
     .checkbox-group{
         display: inline-block;
         margin-right: 10px; 
+        vertical-align: middle;
     }
 
     .checkbox-group input[type="checkbox"]{
@@ -150,6 +152,7 @@
         color: white;
         font-weight: bold;
         font-size: 20px;
+        vertical-align: middle;
     }
 
     .buttonFilter:hover{
