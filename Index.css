@@ -31,11 +31,13 @@
     .tabelleUebersicht thead,
     .tabelleUebersicht tbody {
         display:inline-block;
+        width: 25vw;
+        height: auto;
     }
 
     /*Scrollbar*/
     .tabelleUebersicht tbody {
-        width: 1195px;
+        width: 70vw;
         overflow-x: scroll;
     }
 
