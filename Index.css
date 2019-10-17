@@ -1,205 +1,206 @@
-/* Adrian */
-    html, body {
-        padding: 0;
-        margin: 0;
-    }
+/* Standard für alle Seiten */
+html, body {
+    padding: 0;
+    margin: 0;
+}
 
-    html{
-        font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
-        font-size: 1vw;
-    }
+html{
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 1vw;
+}
 
-    header{
-        color: white;
-        padding: 0;
-        padding-bottom: 0;
-        display: inline;
-    }
+main{
+    margin: 1vw;
+}
+
+/* Kopfzeile (auch für alle Seiten) */
+header{
+    color: white;
+    padding: 0;
+    padding-bottom: 0;
+    display: inline;
+}
     
-    nav{
-        padding-top: 1vw;
-        padding-bottom: 1vw;
-        background-color: #007bff;
-        font-size: 1.2em;
-    }
+nav{
+padding-top: 1vw;
+padding-bottom: 1vw;
+background-color: #007bff;
+font-size: 1.2em;
+}
 
-    nav span{
-        font-size: 1.5em;
-        float:left;
-        padding-left: 1vw;
-    }
+nav span{
+font-size: 1.5em;
+float:left;
+padding-left: 1vw;
+}
     
-    nav table{
-        padding-top: 0.2em;
-        padding-left: 3vw;
-    }
+nav table{
+padding-top: 0.2em;
+padding-left: 3vw;
+}
     
-    nav table td{
-        padding-left: 2vw;
-    }
+nav table td{
+    padding-left: 2vw;
+}
 
-    a:link{
-        text-decoration: none;
-        color:white;
-    }
-    td a:hover{
-        color: black;
-    }
-    a:visited{
-        color:white;
-    }
-/* Anika */
+h1,h2{
+    color: black;
+}
 
-/* Maddin */
-
-    main{
-        margin: 10px;
-    }
-
-    h1,h2{
-        color: black;
-    }
-
-
-    .tabelleUebersicht thead,
-    .tabelleUebersicht tbody {
-        display:inline-block;
-        width: 25vw;
-        height: auto;
-    }
-
-    /*Scrollbar*/
-    .tabelleUebersicht tbody {
-        width: 70vw;
-        overflow-x: scroll;
-    }
-
-    .tabelleUebersicht{
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        min-width: 1195px;
-        border-radius:  5px 5px 0 0;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        text-align: center;
-    }
-
-    /*Oberste Zeile der Tabelle*/
-    .top{
-        background-color: blue;
-        color: white;
-        font-weight: bold;
-    }
-
-    .tabelleUebersicht th,
-    .tabelleUebersicht td{
-        padding: 12px 15px;
-        border-right: 1px solid #dddddd;
-        border-left: 1px solid #dddddd;
-    }
-
-    .tabelleUebersicht tr{
-        border-bottom: 1px solid #dddddd;
-    }
-
-    /*Für die Unterschiedliche Färbung der Zeilen*/
-    .tabelleUebersicht tbody tr:nth-of-type(even),
-    .tabelleUebersicht thead tr:nth-of-type(even){
-        background-color: #f3f3f3;
-    }
-
-    .tabelleUebersicht tbody tr:nth-of-type(odd),
-    .tabelleUebersicht thead tr:nth-of-type(odd){
-        background-color: lightgray;
-    }
-
-    /*Damit die letzte Zeile einen blauen Strich unten hat*/
-    .tabelleUebersicht tbody tr:last-of-type,
-    .tabelleUebersicht thead tr:last-of-type{
-        border-bottom: 2px solid blue;
-    }
-
-    /*.kalenderwochen th{
-        transform: rotate(270deg);
-    }*/
-
-    input[type="text"]{
-        width: 15%;
-        border: 1px solid #aaa;
-        border-radius: 5px;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        margin-right: 10px;
-        color: darkblue;
-        vertical-align: middle;
-    }
-
-    input[type="text"]:focus{
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    .checkbox-group{
-        display: inline-block;
-        margin-right: 10px; 
-        vertical-align: middle;
-    }
-
-    .checkbox-group input[type="checkbox"]{
-        display: none;
-    }
-
-    .checkbox-group label{
-        border: 1px solid #333;
-        color: white;
-        background-color: blue;
-        border: 1px solid #aaa;
-        border-radius: 5px;
-        outline: none;
-        padding: 7px;
-        box-sizing: border-box;
-        transition: .3s;
-    }
-
-    .checkbox-group label:hover{
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    .checkbox-group input:checked + label{
-        background: white;
-        color: darkblue;
-        box-shadow: none;
-    }
-
-    .buttonFilter{
-        width: 10%;
-        border: 1px solid #aaa;
-        border-radius: 5px;
-        outline: none;
-        padding: 4px;
-        box-sizing: border-box;
-        transition: .3s;
-        background: blue;
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        vertical-align: middle;
-    }
-
-    .buttonFilter:hover{
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    .buttonFilter:active{
-        background-color: darkblue;
-    }
+a:link{
+    text-decoration: none;
+    color:white;
+}
     
-    nav a{
-        text-decoration: none;
-    }
+td a:hover{
+    color: black;
+}
 
+a:visited{
+    color:white;
+}
+
+a{
+    text-decoration: none;
+}
+/* Standards zu Ende */
+
+/* Filter */
+input[type="text"]{
+    width: 15%;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    margin-right: 10px;
+    color: darkblue;
+    vertical-align: middle;
+}
+
+input[type="text"]:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+.checkbox-group{
+    display: inline-block;
+    margin-right: 10px; 
+    vertical-align: middle;
+}
+
+.checkbox-group input[type="checkbox"]{
+    display: none;
+}
+
+.checkbox-group label{
+    border: 1px solid #333;
+    color: white;
+    background-color: blue;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+    padding: 7px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.checkbox-group label:hover{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+.checkbox-group input:checked + label{
+    background: white;
+    color: darkblue;
+    box-shadow: none;
+}
+
+.buttonFilter{
+    width: 10%;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+    padding: 4px;
+    box-sizing: border-box;
+    transition: .3s;
+    background: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.buttonFilter:hover{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+.buttonFilter:active{
+    background-color: darkblue;
+}
+
+/* Übersichttabelle */
+.tabelleUebersicht thead,
+.tabelleUebersicht tbody {
+    display:inline-block;
+    width: 25vw;
+    height: auto;
+}
+
+/*Scrollbar*/
+.tabelleUebersicht tbody {
+    width: 70vw;
+    overflow-x: scroll;
+}
+
+.tabelleUebersicht{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 1195px;
+    border-radius:  5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/*Oberste Zeile der Tabelle*/
+.top{
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.tabelleUebersicht th,
+.tabelleUebersicht td{
+    padding: 12px 15px;
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+}
+
+.tabelleUebersicht tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+/*Für die Unterschiedliche Färbung der Zeilen*/
+.tabelleUebersicht tbody tr:nth-of-type(even),
+.tabelleUebersicht thead tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.tabelleUebersicht tbody tr:nth-of-type(odd),
+.tabelleUebersicht thead tr:nth-of-type(odd){
+    background-color: lightgray;
+}
+
+/*Damit die letzte Zeile einen blauen Strich unten hat*/
+.tabelleUebersicht tbody tr:last-of-type,
+.tabelleUebersicht thead tr:last-of-type{
+    border-bottom: 2px solid blue;
+}
+
+/*.kalenderwochen th{
+    transform: rotate(270deg);
+}*/
