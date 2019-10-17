@@ -67,7 +67,7 @@ a{
 
 /* Filter */
 input[type="text"]{
-    width: 15%;
+    width: 15vw;
     border: 1px solid #aaa;
     border-radius: 5px;
     outline: none;
@@ -81,13 +81,14 @@ input[type="text"]{
 
 input[type="text"]:focus{
     border-color: dodgerblue;
-    box-shadow: 0 0 8px dodgerblue;
+    box-shadow: 0 0 0.5em dodgerblue;
 }
 
 .checkbox-group{
     display: inline-block;
-    margin-right: 10px; 
+    margin-right: 1vw; 
     vertical-align: middle;
+    
 }
 
 .checkbox-group input[type="checkbox"]{
@@ -101,7 +102,7 @@ input[type="text"]:focus{
     border: 1px solid #aaa;
     border-radius: 5px;
     outline: none;
-    padding: 7px;
+    padding: 0.7em;
     box-sizing: border-box;
     transition: .3s;
 }
@@ -115,6 +116,11 @@ input[type="text"]:focus{
     background: white;
     color: darkblue;
     box-shadow: none;
+}
+
+#label_checkbox_thm{
+    padding-left: 1.3vw;
+    padding-right: 1.3vw;
 }
 
 .buttonFilter{
