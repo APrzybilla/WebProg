@@ -6,6 +6,7 @@
 
     html{
         font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+        font-size: 1vw;
     }
 
     header{
@@ -19,11 +20,11 @@
         padding-top: 1vw;
         padding-bottom: 1vw;
         background-color: #007bff;
-        font-size: 120%;
+        font-size: 1.2em;
     }
 
     nav span{
-        font-size: 150%;
+        font-size: 1.5em;
         float:left;
         padding-left: 1vw;
     }
