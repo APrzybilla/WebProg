@@ -1,0 +1,17 @@
+input[type="text"]{
+    width: 15%;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    margin-right: 10px;
+    color: darkblue;
+    vertical-align: middle;
+}
+
+input[type="text"]:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
