@@ -56,7 +56,7 @@
     }
 
     h1,h2{
-        color: white;
+        color: black;
     }
 
 
@@ -198,4 +198,7 @@
         background-color: darkblue;
     }
     
+    nav a{
+        text-decoration: none;
+    }
 
