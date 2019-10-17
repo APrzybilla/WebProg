@@ -19,21 +19,33 @@
         padding-top: 1vw;
         padding-bottom: 1vw;
         background-color: #007bff;
-        font-size: 150%;
+        font-size: 120%;
     }
 
     nav span{
-        padding-top: 0.1em;
+        font-size: 150%;
         float:left;
         padding-left: 1vw;
     }
     
     nav table{
+        padding-top: 0.2em;
         padding-left: 3vw;
     }
     
     nav table td{
         padding-left: 2vw;
+    }
+
+    a:link{
+        text-decoration: none;
+        color:white;
+    }
+    td a:hover{
+        color: black;
+    }
+    a:visited{
+        color:white;
     }
 /* Anika */
 
