@@ -23,15 +23,54 @@
                 <br>
                 Bitte geben Sie die Daten der neuen Studienjahrgänge ein!
                 <br>
-                <input type="text" placeholder="Studiengang" id="EingabeStudiengang">
-                <input type="text" placeholder="Jahrgang" id="EingabeJahrgang">
+
+                <!--Studiengänge mit Vorschlag-->
+                <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required>
+                    <datalist id="Studiengang">
+                        <option value="Wirtschaftsinformatik"></option>
+                        <option value="BWL"></option>
+                    </datalist>
+                </input>
+
+                <!--Jahrgang mit Vorschlag-->
+                <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required>
+                <datalist id="Jahrgang">
+                    <option value="2019"></option>
+                    <option value="2020"></option>
+                    <option value="2021"></option>
+                </datalist>
+
+                <!--Auswahl Hochschule-->
+                <input type="radio" id="DH" name="Uni">
+                <label for="DH">DH</label>
+                <input type="radio" id="THM" name="Uni">
                 <br>
                 Geben Sie die Phasen ein, mit entsprechenden Zeiträumen!
                 <br>
-                <select name="Phasenwahl" id="DropDownPhase">
-                    <option>Theorie</option>
-                    <option>Praxis</option>
-                </select>
+
+                <!--Eingabe der Phasen-->
+                <table id="NeuePhase">
+                    <tr>
+                        <td rowspan="4">
+                            <select name="Phasenwahl" id="DropDownPhase">
+                                <option>Theorie</option>
+                                <option>Praxis</option>
+                            </select>
+                        </td>
+                        <td>Start</td>
+                    </tr>
+                    <tr>
+                        <!--Datumsauswahl-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Beginn"required></td>
+                    </tr>
+                    <tr>
+                        <td>Ende</td>
+                    </tr>
+                    <tr>
+                        <!--Datumsauswahl-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Ende"></td>
+                    </tr>
+                </table>
             </div>
          </main>
     </body>
