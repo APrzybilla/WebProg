@@ -22,3 +22,10 @@ function ad_row(){
     trhtml.appendChild( tdhtml2 );
     trhtml.appendChild( tdhtml3 );
 }
+
+function reset (){
+    $("#EingabeJahrgang").val("");
+    $("#EingabeStudiengang").val("");
+    $("input[name='Uni']:checked").prop("checked", false);
+    $("#NeuePhase").html("");
+}
