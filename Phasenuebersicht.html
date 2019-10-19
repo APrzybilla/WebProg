@@ -4,6 +4,7 @@
         <title>Phasenübersicht</title>
         <meta charset="utf-8" />
         <link href="Phasenuebersicht.css" rel="stylesheet"/>
+        <script src="Phasenuebersicht.js"></script>
     </head>
     <body>
         <header>
@@ -19,22 +20,44 @@
             </nav>
         </header>
          <main>
-            <div> <h1>Tabelle der Daten für Praxisphasen und Theoriephasen</h1>
-                <table id="Phasenuebersicht">
-
+             
+             <!--Auflistung der vorhandenen Studiengänge-->
+             <div id="Auflistung">
+                <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
+                <table id="TabellePhasen">
+                    <tr>
+                        <th>Hochschule</th>
+                        <th>Studiengang</th>
+                        <th>Jahrgang</th>
+                        <th class="Phasen">1. Phase</th>
+                        <th class="Phasen">2. Phase</th>
+                        <th class="Phasen">3. Phase</th>
+                        <th class="Phasen">4. Phase</th>
+                        <th class="Phasen">5. Phase</th>
+                        <th class="Phasen">6. Phase</th>
+                    </tr>
                 </table>
-                <h1>Bitte geben Sie die Daten der neuen Studienjahrgänge ein!</h1>
+            </div>
+
+            <!--Neuen Studiengang hinzufügen-->
+            <div id="hinzufügen"> 
+                <h2>Bitte geben Sie die Daten der neuen Studienjahrgänge ein!</h2>
                 <br>
 
-                <!--Studiengänge mit Vorschlag-->
+                <!--Studiengänge mit Vorschlägen-->
                 <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required>
                     <datalist id="Studiengang">
                         <option value="Wirtschaftsinformatik"></option>
                         <option value="BWL"></option>
+                        <option value="Elektriotechnik"></option>
+                        <option value="Informatik"></option>
+                        <option value="Mechatronik"></option>
+                        <option value="Sicherheitswesen"></option>
+                        <option value="Wirtschaftsingeneurwesen"></option>
                     </datalist>
                 </input>
 
-                <!--Jahrgang mit Vorschlag-->
+                <!--Jahrgang mit Vorschlägen-->
                 <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required>
                 <datalist id="Jahrgang">
                     <option value="2019"></option>
@@ -44,11 +67,13 @@
 
                 <!--Auswahl der Hochschule-->
                 <input type="radio" id="DH" name="Uni">
-                <label for="DH">DH</label>
+                <label for="DH" class="label">DH</label>
                 <input type="radio" id="THM" name="Uni">
-                <label for="THM">THM</label>
+                <label for="THM" class="label">THM</label>
                 <br>
-                Geben Sie die Phasen ein, mit entsprechenden Zeiträumen!
+                <br>
+                <br>
+                <h2>Geben Sie die Phasen ein, mit entsprechenden Zeiträumen!</h2>
                 <br>
 
                 <!--Eingabe der Phasen-->
@@ -60,22 +85,27 @@
                                 <option>Praxis</option>
                             </select>
                         </td>
-                        <td>Start</td>
+                        <td>Von</td>
                     </tr>
                     <tr>
                         <!--Datumsauswahl-->
-                        <td><input type="date" placeholder="tt.mm.jjjj" id="Beginn"required></td>
+                        <td><input type="date" placeholder="tt.mm.jjjj" class="Datum"required></td>
                     </tr>
                     <tr>
-                        <td>Ende</td>
+                        <td>Bis</td>
                     </tr>
                     <tr>
                         <!--Datumsauswahl-->
-                        <td><input type="date" placeholder="tt.mm.jjjj" id="Ende"></td>
+                        <td><input type="date" placeholder="tt.mm.jjjj" class="Datum"></td>
                     </tr>
                 </table>
                 <button type="button" id="PhaseHinzufuegen">Phase hinzufügen</button>
                 <button type="button" id="JahrgangHinzufuegen">Jahrgang hinzufügen</button>
+            </div>
+            <div id="JahrgangErstellen">
+                <table>
+                    
+                </table>
             </div>
          </main>
     </body>
