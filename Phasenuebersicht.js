@@ -34,11 +34,11 @@ window.addEventListener("load", () => {
         let bearb = document.createElement("input");
         bearb.type = "button"
         bearb.classList.add("Buttons");
-        bearb.innerHTML = "Bearbeiten";
+        bearb.value = "Bearbeiten";
         let loe = document.createElement("input");
         loe.type = "button";
         loe.classList.add("Buttons");
-        loe.innerHTML = "Löschen";
+        loe.value = "Löschen";
 
         /*befüllen der Spalten*/
         tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
@@ -61,7 +61,22 @@ window.addEventListener("load", () => {
 });
 
 function berechneWoche(date){
-    let  datum = new Date(date);
+
+    let j = date.getFullYear();
+    let m = date.getMonth()+1;
+    let t = date.getDate();
+    let datum = new Date(j, m, t);
+    console.log(date);
+
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))*86400000));
+    let YearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
+
+    /*let  datum = new Date(date);
 
     let  jh = datum.getFullYear() + 1;
     let  kalwo = kaldiff(datum, jh);
