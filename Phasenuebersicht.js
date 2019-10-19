@@ -1,9 +1,13 @@
 "use strict"
 
-/*Jahrgang hinzufügen*/
-document.querySelector('#JahrgangHinzufuegen').addEventListener('click', ad_row);
+/*EventListener für Button Jahrgang hinzufügen */
+document.getElementById("JahrgangHinzufuegen").addEventListener("click", () => {
+    console.log("ad_row");
+});
 
-function ad_row(){
+/*Jahrgang hinzufügen*/
+
+/*function ad_row(){
     let nummer = 1;
     let tabellen_id = "TabellePhasen";
     let trhtml = document.getElementById( tabellen_id ).insertRow( nummer );
@@ -29,3 +33,4 @@ function reset (){
     $("input[name='Uni']:checked").prop("checked", false);
     $("#NeuePhase").html("");
 }
+*/
