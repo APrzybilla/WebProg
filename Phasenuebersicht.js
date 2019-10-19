@@ -44,8 +44,9 @@ window.addEventListener("load", () => {
         tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
         tdVon.innerHTML = document.getElementById("Startdatum").value;
         tdBis.innerHTML = document.getElementById("Enddatum").value;
-        tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum"));        
-        tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum"));
+        console.log(document.getElementById("Startdatum").value);
+        tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
+        tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
         tdBearb.appendChild(bearb);
         tdLoe.appendChild(loe);
 
@@ -60,8 +61,10 @@ window.addEventListener("load", () => {
     });
 });
 
-function berechneWoche(date){
+let berechneWoche =(date) =>{
 
+    console.log("berechneWoche")
+    date = new Date(date);
     let j = date.getFullYear();
     let m = date.getMonth()+1;
     let t = date.getDate();
@@ -69,31 +72,13 @@ function berechneWoche(date){
     console.log(date);
 
     let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))*86400000));
-    let YearOfThursday = currentThursday.getFullYear();
+    let yearOfThursday = currentThursday.getFullYear();
     let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
 
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
 
     return weekNumber;
-
-    /*let  datum = new Date(date);
-
-    let  jh = datum.getFullYear() + 1;
-    let  kalwo = kaldiff(datum, jh);
-    while (kalwo < 1) {  
-        jh--;  kalwo = kaldiff(datum, jh); 
-    }
-    return  kalwo;
 }
-
-function kaldiff(datum, jahr) {
-    let  d4j = new  Date(jahr, 0, 4);
-    let  wt4j = (d4j.getDay() + 6) % 7;
-    let  m1wjT = Math.floor(0.01 + d4j.getTime() / 864e5 - wt4j);
-    let  datumT = Math.floor(0.01 + datum.getTime() / 864e5);
-    return  Math.floor(1 + (datumT - m1wjT) / 7);
-}
-
 
 
 
