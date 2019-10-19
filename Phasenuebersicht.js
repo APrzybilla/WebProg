@@ -31,9 +31,13 @@ window.addEventListener("load", () => {
         let tdLoe = document.createElement("td");
 
         /*Buttons bearbeiten und löschen erstellen*/
-        let bearb = document.createElement("button");
+        let bearb = document.createElement("input");
+        bearb.type = "button"
+        bearb.classList.add("Buttons");
         bearb.innerHTML = "Bearbeiten";
-        let loe = document.createElement("button");
+        let loe = document.createElement("input");
+        loe.type = "button";
+        loe.classList.add("Buttons");
         loe.innerHTML = "Löschen";
 
         /*befüllen der Spalten*/
@@ -42,8 +46,8 @@ window.addEventListener("load", () => {
         tdBis.innerHTML = document.getElementById("Enddatum").value;
         tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum"));        
         tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum"));
-        tdBearb.innerHTML= bearb;
-        tdLoe.innerHTML = loe;
+        tdBearb.appendChild(bearb);
+        tdLoe.appendChild(loe);
 
         /*hinzufügen der Spalten */
         neueTr.appendChild(tdPhase);
