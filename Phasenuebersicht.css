@@ -101,16 +101,6 @@ input[type="text"]:focus{
     margin-right: 20px;
 }
 
-/*Formatierung der Auflistungs-Tabelle */
-#TabellePhasen{
-    padding-top:8px;
-}
-
-.Phasen{
-    width: 5em;
-    transform: rotate(-60deg);
-}
-
 /*Checkbox*/
 input[type="radio"]{
     display: inline-block;
@@ -131,4 +121,26 @@ select{
     padding: 0;
     box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
     border-radius: 5px;
+}
+
+/*Formatierung der Auflistung */
+li {
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+
+/*sichtbar machen*/
+.visible{
+    visibility: visible;
+}
+
+/*unsichtbar machen*/
+.hidden{
+    visibility: hidden;
+}
+
+/*Phasentabelle*/
+#Phasentabelle th{
+    font-weight: normal;
 }
