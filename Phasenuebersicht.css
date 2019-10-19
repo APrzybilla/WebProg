@@ -84,6 +84,34 @@ input[type="text"]:focus{
     box-shadow: 0 0 8px dodgerblue;
 }
 
+/*Aufteilung des Bildschirms*/
+#Auflistung{
+    width: 48vw;
+    left: 10px;
+    position: absolute;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+#hinzufügen{
+    width: 48vw;
+    right: 10px;
+    position: absolute;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+/*Formatierung der Auflistungs-Tabelle */
+#TabellePhasen{
+
+}
+
+.Phasen{
+    width: 3em;
+    writing-mode: vertical-rl;
+    transform: rotate(200deg);
+}
+
 /*Checkbox*/
 input[type="radio"]{
     display: inline-block;
