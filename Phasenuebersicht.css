@@ -103,13 +103,12 @@ input[type="text"]:focus{
 
 /*Formatierung der Auflistungs-Tabelle */
 #TabellePhasen{
-
+    padding-top:8px;
 }
 
 .Phasen{
-    width: 3em;
-    writing-mode: vertical-rl;
-    transform: rotate(200deg);
+    width: 5em;
+    transform: rotate(-60deg);
 }
 
 /*Checkbox*/
@@ -126,9 +125,6 @@ input[type="radio"]{
 
 /*DropDown*/
 select{
-    -moz-animation: none;
-    -webkit-appearance: none;
-    appearance: none;
     border: none;
     width: 5vw;
     height: auto;
