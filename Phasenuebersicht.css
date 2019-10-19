@@ -144,3 +144,10 @@ li {
 #Phasentabelle th{
     font-weight: normal;
 }
+
+.Buttons{
+    width: 10vw;
+    height: 2em;
+    border-radius: 5px;
+    background-color: #2196F3;
+}
