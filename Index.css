@@ -89,11 +89,6 @@ input[type="text"]:focus{
     margin-right: 1vw; 
     vertical-align: middle;
 }
-/*
-.filter_auswahl{
-    border: 1px solid blue;
-    width: 10vw;
-}
 
 .checkbox-group input[type="checkbox"]{
     display: none;
@@ -108,6 +103,7 @@ input[type="text"]:focus{
     outline: none;
     box-sizing: border-box;
     transition: .3s;
+    padding:0.7em;
 }
 
 .checkbox-group label:hover{
@@ -120,8 +116,8 @@ input[type="text"]:focus{
     color: darkblue;
     box-shadow: none;
 }
-*/
-.buttonFilter{
+
+button{
     width: 10%;
     border: 1px solid #aaa;
     border-radius: 5px;
@@ -136,30 +132,30 @@ input[type="text"]:focus{
     vertical-align: middle;
 }
 
-.buttonFilter:hover{
+button:hover{
     border-color: dodgerblue;
     box-shadow: 0 0 8px dodgerblue;
 }
 
-.buttonFilter:active{
+button:active{
     background-color: darkblue;
 }
 
 /* Übersichttabelle */
-.tabelleUebersicht thead,
-.tabelleUebersicht tbody {
+#tabelleUebersicht thead,
+#tabelleUebersicht tbody {
     display:inline-block;
     width: 25vw;
     height: auto;
 }
 
 /*Scrollbar*/
-.tabelleUebersicht tbody {
+#tabelleUebersicht tbody {
     width: 70vw;
     overflow-x: scroll;
 }
 
-.tabelleUebersicht{
+#tabelleUebersicht{
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -177,90 +173,34 @@ input[type="text"]:focus{
     font-weight: bold;
 }
 
-.tabelleUebersicht th,
-.tabelleUebersicht td{
+#tabelleUebersicht th,
+#tabelleUebersicht td{
     padding: 12px 15px;
     border-right: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
 }
 
-.tabelleUebersicht tr{
+#tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
 }
 
 /*Für die Unterschiedliche Färbung der Zeilen*/
-.tabelleUebersicht tbody tr:nth-of-type(even),
-.tabelleUebersicht thead tr:nth-of-type(even){
+#tabelleUebersicht tbody tr:nth-of-type(even),
+#tabelleUebersicht thead tr:nth-of-type(even){
     background-color: #f3f3f3;
 }
 
-.tabelleUebersicht tbody tr:nth-of-type(odd),
-.tabelleUebersicht thead tr:nth-of-type(odd){
+#tabelleUebersicht tbody tr:nth-of-type(odd),
+#tabelleUebersicht thead tr:nth-of-type(odd){
     background-color: lightgray;
 }
 
 /*Damit die letzte Zeile einen blauen Strich unten hat*/
-.tabelleUebersicht tbody tr:last-of-type,
-.tabelleUebersicht thead tr:last-of-type{
+#tabelleUebersicht tbody tr:last-of-type,
+#tabelleUebersicht thead tr:last-of-type{
     border-bottom: 2px solid blue;
 }
 
 /*.kalenderwochen th{
     transform: rotate(270deg);
 }*/
-
- /* The switch - the box around the slider */
- .switch {
-     position: relative;
-     display: inline-block;
-    width: 7.25vw;
-    height: 2.75vw;
-    padding-top: 0.5vw;
-    font-size: 1.2em;
- }
-  
-  /* Hide default HTML checkbox */
- .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
- }
-  
-/* The slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: lightgreen;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-  
-.slider:before {
-    position: absolute;
-    content: "DHBW";
-    height: 3.05vw;
-    width: 3.5vw;
-    left: 0.1em;
-    bottom: 0.1em;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-  
-input:checked + .slider {
-    background-color: #2196F3;
-}
-  
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-  
-input:checked + .slider:before {
-    -webkit-transform: translateX(3.5vw);
-    -ms-transform: translateX(3.5vw);
-    transform: translateX(3.5vw);
-}
