@@ -24,19 +24,13 @@
              <!--Auflistung der vorhandenen Studiengänge-->
              <div id="Auflistung">
                 <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
-                <table id="TabellePhasen">
-                    <tr>
-                        <th>Hochschule</th>
-                        <th>Studiengang</th>
-                        <th>Jahrgang</th>
-                        <th class="Phasen">1. Phase</th>
-                        <th class="Phasen">2. Phase</th>
-                        <th class="Phasen">3. Phase</th>
-                        <th class="Phasen">4. Phase</th>
-                        <th class="Phasen">5. Phase</th>
-                        <th class="Phasen">6. Phase</th>
-                    </tr>
-                </table>
+                <ul>
+                    <li>Jahrgang
+                        <ul>
+                            <li>Studiengang</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             <!--Neuen Studiengang hinzufügen-->
@@ -88,23 +82,31 @@
                         <td>Von</td>
                     </tr>
                     <tr>
-                        <!--Datumsauswahl-->
-                        <td><input type="date" placeholder="tt.mm.jjjj" class="Datum"required></td>
+                        <!--Datumsauswahl Beginn der Phase-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Startdatum" class="Datum"required></td>
                     </tr>
                     <tr>
                         <td>Bis</td>
                     </tr>
                     <tr>
-                        <!--Datumsauswahl-->
-                        <td><input type="date" placeholder="tt.mm.jjjj" class="Datum"></td>
+                        <!--Datumsauswahl Ende der Phase-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Enddatum" class="Datum"></td>
                     </tr>
                 </table>
                 <button type="button" id="PhaseHinzufuegen">Phase hinzufügen</button>
                 <button type="button" id="JahrgangHinzufuegen">Jahrgang hinzufügen</button>
-            </div>
-            <div id="JahrgangErstellen">
-                <table>
-                    
+
+                <!--Tabelle der hinzugefügten Phasen-->
+                <table id="Phasentabelle"> 
+                    <tr class="hidden">
+                        <th>Phase</th>
+                        <th>Von</th>
+                        <th>Bis</th>
+                        <th>Start-KW</th>
+                        <th>End-KW</th>
+                        <th>Bearbeiten</th>
+                        <th>Löschen</th>
+                    </tr>
                 </table>
             </div>
          </main>
