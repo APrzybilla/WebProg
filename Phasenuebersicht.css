@@ -126,7 +126,6 @@ select{
 /*Formatierung der Auflistung */
 li {
     list-style-type: none;
-    border: 1px solid black;
 }
 
 
@@ -149,5 +148,4 @@ li {
     width: 10vw;
     height: 2em;
     border-radius: 5px;
-    background-color: #2196F3;
 }
