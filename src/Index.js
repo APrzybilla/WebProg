@@ -31,6 +31,8 @@ function suchen(){
         /*erzeugen der Tabellenspalten*/ 
         let tdKW = document.createElement("td");
 
+        tdKW.innerHTML = " ";
+
         /*hinzufügen der Spalten */
         neueTr.appendChild(tdKW);
 
