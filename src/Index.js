@@ -1,6 +1,6 @@
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+/*import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';                 //api
-
+*/
 function suchen(){
     console.log("test");
     /*Einfügen des Studenten*/
@@ -44,6 +44,7 @@ function suchen(){
     }
 }
 
+/*Funktionen, um zwischen den Seiten zu wechseln */
 function home(){
     document.getElementById("section_Studenten").classList.add("hidden");
     document.getElementById("section_Studenten").classList.remove("visible");
@@ -86,6 +87,26 @@ window.addEventListener("load", () => {
         /*Sichtbar machen der Tabelle, wenn das erste Mal ausgeführt wird*/
         document.getElementById("Phasenliste").classList.add("visible");
         document.getElementById("Phasenliste").classList.remove("hidden");
+
+        /*Erzeugen des Punktes für Studiengänge, falls der Studiengang noch nicht vorhanden ist*/
+        /*if(document.getElementById(document.getElementById("EingabeStudiengang").value).value===null){
+            */let ul = document.getElementById("Phasenliste");
+            let li = document.createElement("li");                              /*neues Listenelement erzeugen*/
+            /*li.id=document.getElementById("EingabeStudiengang").value;          /*li die ID vergeben. ID ist der Name des Studiengangs*/
+            ul.appendChild(li);                                                 /*der ul das neue Listenelement hinzufügen*/
+            /*let ulJahrgang = document.createElement("ul");                      /*neue ul erzeugen, damit die Jahrgänge hinzugefügt werden können*/
+            /*li.appendChild(ulJahrgang);                                         /*die neuerzeugte ul wird dem eben erstellten li hinzugefügt*/
+            /*ulJahrgang.id="Jahrgang" + document.getElementById("EingabeStudiengang").value;
+        }
+
+        /*Erzeugen des Jahrgangs, falls er noch nicht vorhanden ist*/
+        /*if(document.getElementById(document.getElementById("EingabeJahrgang").value).value===null){
+            let li = document.createElement("li");
+            li.id=document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang");
+
+            let ul = document.getElementById("Jahrgang " + document.getElementById("EingabeStudiengang").value);
+            ul.appendChild(li);
+        }*/
 
     });
 
