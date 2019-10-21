@@ -39,35 +39,12 @@ function suchen(){
         /*hinzufügen der Spalten */
         neueTr.appendChild(tdKW);
     }
-        
-    /*
-    let auswahl;
-    if(document.getElementById("checkbox_dhbw").checked && document.getElementById("checkbox_thm").checked){
-        auswahl = 2;
-    }
-    elseif(document.getElementById("checkbox_dhbw").checked){
-        auswahl = "dhbw";
-    }
-    elseif(document.getElementById("checkbox_thm").checked){
-        auswahl = "thm";
-    }
-    else{
-        auswahl = 0;
-    }
-    */
 }
+
+/* Navigo; erstmal ignorieren */
 /*
-function neueZeile(){
-    var nummer = 1;
-    var tabellen_id = "t1";
-    var trhtml = document.getElementById("tabelleUebersicht").insertRow(nummer);
-    var tdhtml1 = document.createElement("td");
-    var tdhtml2 = document.createElement("td");
-    var tdhtml3 = document.createElement("td");
-    tdhtml1.innerHTML = 'test';
-    tdhtml2.innerHTML = 'test';
-    tdhtml3.innerHTML = 'test';
-    trhtml.appendChild( tdhtml1 );
-    trhtml.appendChild( tdhtml2 );
-    trhtml.appendChild( tdhtml3 );
-}*/
+var root = null;
+var useHash = true; // Defaults to: false
+var hash = '#!'; // Defaults to: '#'
+var router = new Navigo(root, useHash, hash);
+*/
