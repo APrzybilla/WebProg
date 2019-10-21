@@ -87,7 +87,6 @@ window.addEventListener("load", () => {
         document.getElementById("Phasenliste").classList.add("visible");
         document.getElementById("Phasenliste").classList.remove("hidden");
 
-        let neueUl = document.getElementById("Phasenliste").insert
     });
 
     /*EventListener vom Button "Phase hinufügen"*/
