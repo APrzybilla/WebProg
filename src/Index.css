@@ -20,50 +20,41 @@ header{
     padding-bottom: 0;
     display: inline;
 }
-    
+   
 nav{
-padding-top: 1vw;
-padding-bottom: 1vw;
-background-color: #007bff;
-font-size: 1.2em;
+    padding-top: 1em;
+    padding-bottom: 1vw;
+    padding-left: 12em;
+    background-color: #007bff;
+    font-size: 1.2em;
 }
 
-nav span{
-font-size: 1.5em;
-float:left;
-padding-left: 1vw;
-}
-    
-nav table{
-padding-top: 0.2em;
-padding-left: 3vw;
-}
-    
-nav table td{
-    padding-left: 2vw;
-}
-
-h1,h2{
-    color: black;
+header span{
+    padding-top: 0.7em;
+    font-size: 1.5em;
+    float:left;
+    padding-left: 1vw;
 }
 
 a:link{
     text-decoration: none;
     color:white;
-}
-    
+}   
 td a:hover{
     color: black;
 }
-
 a:visited{
     color:white;
 }
-
 a{
+    padding-left: 1em;
     text-decoration: none;
 }
 /* Standards zu Ende */
+
+h1,h2{
+    color: black;
+}
 
 /* Filter */
 input[type="text"]{
