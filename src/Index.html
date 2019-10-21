@@ -10,13 +10,18 @@
         <header>
                 <span>Studenten&uuml;bersicht</span>
             <nav>
-                <a href="/Studentenuebersicht/">Home</a>
-                <a href="/Phasenuebersicht/">Phasen&uuml;bersicht</a>
-                <a href="/Studenten/">Studenten</a>
+                <button type="button" onclick="home()">Home</button>
+                <button type="button" onclick="phasen()">Phasenübersicht</button>
+                <button typr="button" onclick="studenten()">Studenten</button>
+                <!--
+                <a href="/Studentenuebersicht">Home</a>
+                <a href="/Phasenuebersicht">Phasen&uuml;bersicht</a>
+                <a href="/Studenten">Studenten</a>
+                -->
             </nav>
         </header>
         <main>
-            <section id="section_SUebersicht">
+            <section id="section_SUebersicht" class="visible">
                 <!--Filterleiste-->
                 <div id="Filter">
                     <h1>Studentenübersicht</h1>
@@ -115,7 +120,7 @@
                 </table>
                 </div>
             </section>
-            <section id="section_PUebersicht">
+            <section id="section_PUebersicht" class="hidden">
                 <!--Auflistung der vorhandenen Studiengänge-->
                 <div id="Auflistung">
                     <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
@@ -262,7 +267,7 @@
                     </table>
                 </div>
             </section>
-            <section id="section_Studenten">
+            <section id="section_Studenten" class="hidden">
                 <div class="left">
                     <h2>Übersicht der Studierenden</h2>
                     
