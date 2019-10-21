@@ -1,19 +1,19 @@
 function suchen(){
     console.log("test");
-    var tabellen_id = "ueberschrift_Tabelle";
-    var trhtml = document.getElementById(tabellen_id).insertRow(3);
-    var tdhtml1 = document.createElement("ul");
-    var tdhtml2 = document.createElement("li");
-    var tdhtml3 = document.createElement("li");
-    var tdhtml4 = document.createElement("li");
-    tdhtml1.innerHTML = 'test';
-    tdhtml2.innerHTML = 'test';
-    tdhtml3.innerHTML = 'test';
-    tdhtml4.innerHTML = 'test';
-    trhtml.appendChild(tdhtml1);
-    trhtml.appendChild(tdhtml2);
-    trhtml.appendChild(tdhtml3);
-    trhtml.appendChild(tdhtml4);
+    /*Einfügen von neue Zeile an erster Stelle in der Tabelle*/
+    let neueTr = document.getElementById("Phasentabelle").insertRow(1);
+        
+    for(let i = 1; i<53; i++){
+        /*erzeugen der Tabellenspalten*/ 
+        let tdKW = document.createElement("td");
+
+        /*hinzufügen der Spalten */
+        neueTr.appendChild(tdKW);
+
+        /*Hinzufügen von Klasse "KWs"*/
+        tdKW.classList.add("KWs");
+    }
+        
     /*
     let auswahl;
     if(document.getElementById("checkbox_dhbw").checked && document.getElementById("checkbox_thm").checked){

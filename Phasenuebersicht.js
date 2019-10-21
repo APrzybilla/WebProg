@@ -58,6 +58,19 @@ window.addEventListener("load", () => {
         neueTr.appendChild(tdEnd);
         neueTr.appendChild(tdBearb);
         neueTr.appendChild(tdLoe);
+        
+        /*Hinzufügen von Listeners zu Bearbeiten und Löschen Buttons */
+        bearb.addEventListener(() =>{
+            if(tdPhase=="Theorie"){
+                document.getElementById("DropDownPhase").value = "Theorie";
+            }
+            else{
+                document.getElementById("DropDownPhase").value = "Praxis";
+            }
+        });
+        loe.addEventListener(() =>{
+
+        });
     });
 });
 
