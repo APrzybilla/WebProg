@@ -4,136 +4,119 @@
         <title>Student&uuml;bersicht</title>
         <meta charset="utf-8" />
         <link href="Index.css" rel="stylesheet"/>
+        <script src="Index.js"></script>
     </head>
     <body>
         <header>
-            <nav>
                 <span>Studenten&uuml;bersicht</span>
-                <table>
-                    <tr>
-                        <td><a href="Index.html">Home</a></td>
-                        <td><a href="Phasenuebersicht.html">Phasen&uuml;bersicht</a></td>
-                        <td><a href="Studenten.html">Studenten</a></td>
-                    </tr>
-                </table>
+            <nav>
+                <a href="/Studentenuebersicht/">Home</a>
+                <a href="/Phasenuebersicht/">Phasen&uuml;bersicht</a>
+                <a href="/Studenten/">Studenten</a>
             </nav>
         </header>
         <main>
-            <!--Filterleiste-->
-            <div id="Filter">
-                <h1>Studentenübersicht</h1>
-                <h2>Filter</h2>
-                <!--Textfelder -> Filter-->
-                <input type="text" placeholder="Nachname" id="text_nachname" />
-                <input type="text" placeholder="Vorname" id="text_vorname"/>
-                <input type="text" placeholder="Semester" id="text_semester"/>
-                <input type="text" placeholder="Jahrgang" id="text_jahrgang"/>
+            <section id="section_SUebersicht">
+                <!--Filterleiste-->
+                <div id="Filter">
+                    <h1>Studentenübersicht</h1>
+                    <h2>Filter</h2>
+                    <!--Textfelder -> Filter-->
+                    <input type="text" placeholder="Nachname" id="text_nachname" />
+                    <input type="text" placeholder="Vorname" id="text_vorname"/>
+                    <input type="text" placeholder="Semester" id="text_semester"/>
+                    <input type="text" placeholder="Jahrgang" id="text_jahrgang"/>
 
-                <!--Radiobutton für die Hochschulen -> Filter-->
-                <div class="checkbox-group">
-                    <span class="filter_auswahl">
-                        <input type="checkbox" id="checkbox_dhbw" name="hochschule" value="hochschule-dhbw">
-                        <label for="checkbox_dhbw">DHBW</label>
-                    </span>
-                    <span class="filter_auswahl">
-                        <input type="checkbox" id="checkbox_thm" name="hochschule" value="hochschule-thm">
-                        <label for="checkbox_thm" id="label_checkbox_thm">THM</label>
-                    </span>
+                    <!--Radiobutton für die Hochschulen -> Filter-->
+                    <div class="checkbox-group">
+                        <span class="filter_auswahl">
+                            <input type="checkbox" id="checkbox_dhbw" name="hochschule" value="hochschule-dhbw">
+                            <label for="checkbox_dhbw">DHBW</label>
+                        </span>
+                        <span class="filter_auswahl">
+                            <input type="checkbox" id="checkbox_thm" name="hochschule" value="hochschule-thm">
+                            <label for="checkbox_thm" id="label_checkbox_thm">THM</label>
+                        </span>
+                    </div>
+
+                    <!--Such-Button -> Filter-->
+                    <button type="button" class="buttonFilter" id="button_filter" onclick="suchen()">Suchen</button>
                 </div>
 
-                <!--Such-Button -> Filter-->
-                <button type="button" class="buttonFilter" id="button_filter" onclick="suchen()">Suchen</button>
-            </div>
-
-            <!--Tabelle für die Studentenübersicht-->
-            <div>
-            <table id="tabelleUebersicht">
-                <!--Dieser Part ist fix auf der linken Seite-->
-                <thead valign="top">
-                    <tr>
-                        <th class="top">Name</th>
-                        <th class="top">HS</th>
-                        <th class="top">S</th>
-                        <th class="top">JG</th>
-                    </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
-                </thead>
-                <!--Dieser Part ist variable und kann gescrolled werden-->
-                <tbody valign="top">
-                    <tr>
-                        <th class="top">K1</th>
-                        <th class="top">K2</th>
-                        <th class="top">K3</th>
-                        <th class="top">K4</th>
-                        <th class="top">K5</th>
-                        <th class="top">K6</th>
-                        <th class="top">K7</th>
-                        <th class="top">K8</th>
-                        <th class="top">K9</th>
-                        <th class="top">K10</th>
-                        <th class="top">K11</th>
-                        <th class="top">K12</th>
-                        <th class="top">K13</th>
-                        <th class="top">K14</th>
-                        <th class="top">K15</th>
-                        <th class="top">K16</th>
-                        <th class="top">K17</th>
-                        <th class="top">K18</th>
-                        <th class="top">K19</th>
-                        <th class="top">K20</th>
-                        <th class="top">K21</th>
-                        <th class="top">K22</th>
-                        <th class="top">K23</th>
-                        <th class="top">K24</th>
-                        <th class="top">K25</th>
-                        <th class="top">K26</th>
-                        <th class="top">K27</th>
-                        <th class="top">K28</th>
-                        <th class="top">K29</th>
-                        <th class="top">K30</th>
-                        <th class="top">K31</th>
-                        <th class="top">K32</th>
-                        <th class="top">K33</th>
-                        <th class="top">K34</th>
-                        <th class="top">K35</th>
-                        <th class="top">K36</th>
-                        <th class="top">K37</th>
-                        <th class="top">K38</th>
-                        <th class="top">K39</th>
-                        <th class="top">K40</th>
-                        <th class="top">K41</th>
-                        <th class="top">K42</th>
-                        <th class="top">K43</th>
-                        <th class="top">K44</th>
-                        <th class="top">K45</th>
-                        <th class="top">K46</th>
-                        <th class="top">K47</th>
-                        <th class="top">K48</th>
-                        <th class="top">K49</th>
-                        <th class="top">K50</th>
-                        <th class="top">K51</th>
-                        <th class="top">K52</th>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
+                <!--Tabelle für die Studentenübersicht-->
+                <div>
+                <table id="tabelleUebersicht">
+                    <!--Dieser Part ist fix auf der linken Seite-->
+                    <thead valign="top" id="Tabellenhead">
+                        <tr>
+                            <th class="top">Name</th>
+                            <th class="top">HS</th>
+                            <th class="top">S</th>
+                            <th class="top">JG</th>
+                        </tr>
+                    </thead>
+                    <!--Dieser Part ist variable und kann gescrolled werden-->
+                    <tbody valign="top" id="Tabellenbody">
+                        <tr>
+                            <th class="top">K1</th>
+                            <th class="top">K2</th>
+                            <th class="top">K3</th>
+                            <th class="top">K4</th>
+                            <th class="top">K5</th>
+                            <th class="top">K6</th>
+                            <th class="top">K7</th>
+                            <th class="top">K8</th>
+                            <th class="top">K9</th>
+                            <th class="top">K10</th>
+                            <th class="top">K11</th>
+                            <th class="top">K12</th>
+                            <th class="top">K13</th>
+                            <th class="top">K14</th>
+                            <th class="top">K15</th>
+                            <th class="top">K16</th>
+                            <th class="top">K17</th>
+                            <th class="top">K18</th>
+                            <th class="top">K19</th>
+                            <th class="top">K20</th>
+                            <th class="top">K21</th>
+                            <th class="top">K22</th>
+                            <th class="top">K23</th>
+                            <th class="top">K24</th>
+                            <th class="top">K25</th>
+                            <th class="top">K26</th>
+                            <th class="top">K27</th>
+                            <th class="top">K28</th>
+                            <th class="top">K29</th>
+                            <th class="top">K30</th>
+                            <th class="top">K31</th>
+                            <th class="top">K32</th>
+                            <th class="top">K33</th>
+                            <th class="top">K34</th>
+                            <th class="top">K35</th>
+                            <th class="top">K36</th>
+                            <th class="top">K37</th>
+                            <th class="top">K38</th>
+                            <th class="top">K39</th>
+                            <th class="top">K40</th>
+                            <th class="top">K41</th>
+                            <th class="top">K42</th>
+                            <th class="top">K43</th>
+                            <th class="top">K44</th>
+                            <th class="top">K45</th>
+                            <th class="top">K46</th>
+                            <th class="top">K47</th>
+                            <th class="top">K48</th>
+                            <th class="top">K49</th>
+                            <th class="top">K50</th>
+                            <th class="top">K51</th>
+                            <th class="top">K52</th>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+            <section id="section_PUebersicht"></section>
+            <section id="section_Studenten"></section>
         </main>
         <footer>
         </footer>
