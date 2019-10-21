@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Phasenübersicht</title>
+        <meta charset="utf-8" />
+        <link href="Phasenuebersicht.css" rel="stylesheet"/>
+        <script src="Phasenuebersicht.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span>Studenten&uuml;bersicht</span>
+                <table>
+                    <tr>
+                        <td><a href="Index.html">Home</a></td>
+                        <td><a href="Phasenuebersicht.html">Phasen&uuml;bersicht</a></td>
+                        <td><a href="Studenten.html">Studenten</a></td>
+                    </tr>
+                </table>
+            </nav>
+        </header>
+         <main>
+             
+             <!--Auflistung der vorhandenen Studiengänge-->
+             <div id="Auflistung">
+                <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
+                <ul>
+                    <li>Wirtschaftsinformatik
+                        <ul>
+                            <li>2018
+                                <ul>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>1. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>2. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>3. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>4. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>5. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td>6. Phase</td>
+                                                <td>von</td>
+                                                <td>bis</td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Neuen Studiengang hinzufügen-->
+            <div id="hinzufügen"> 
+                <h2>Bitte geben Sie die Daten der neuen Studienjahrgänge ein!</h2>
+                <br>
+
+                <!--Studiengänge mit Vorschlägen-->
+                <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required>
+                    <datalist id="Studiengang">
+                        <option value="Wirtschaftsinformatik"></option>
+                        <option value="BWL"></option>
+                        <option value="Elektriotechnik"></option>
+                        <option value="Informatik"></option>
+                        <option value="Mechatronik"></option>
+                        <option value="Sicherheitswesen"></option>
+                        <option value="Wirtschaftsingeneurwesen"></option>
+                    </datalist>
+                </input>
+
+                <!--Jahrgang mit Vorschlägen-->
+                <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required>
+                <datalist id="Jahrgang">
+                    <option value="2019"></option>
+                    <option value="2020"></option>
+                    <option value="2021"></option>
+                </datalist>
+
+                <!--Auswahl der Hochschule-->
+                <input type="radio" id="DH" name="Uni">
+                <label for="DH" class="label">DH</label>
+                <input type="radio" id="THM" name="Uni">
+                <label for="THM" class="label">THM</label>
+                <br>
+                <br>
+                <br>
+                <h2>Geben Sie die Phasen ein, mit entsprechenden Zeiträumen!</h2>
+                <br>
+
+                <!--Eingabe der Phasen-->
+                <table id="NeuePhase">
+                    <tr>
+                        <td rowspan="4">
+                            <select name="Phasenwahl" id="DropDownPhase">
+                                <option id="Theorie">Theorie</option>
+                                <option id="Praxis">Praxis</option>
+                            </select>
+                        </td>
+                        <td>Von</td>
+                    </tr>
+                    <tr>
+                        <!--Datumsauswahl Beginn der Phase-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Startdatum" class="Datum"required></td>
+                    </tr>
+                    <tr>
+                        <td>Bis</td>
+                    </tr>
+                    <tr>
+                        <!--Datumsauswahl Ende der Phase-->
+                        <td><input type="date" placeholder="tt.mm.jjjj" id="Enddatum" class="Datum"></td>
+                    </tr>
+                </table>
+                <button type="button" id="PhaseHinzufuegen">Phase hinzufügen</button>
+                <button type="button" id="JahrgangHinzufuegen">Jahrgang hinzufügen</button>
+
+                <!--Tabelle der hinzugefügten Phasen-->
+                <table id="Phasentabelle"> 
+                    <tr class="hidden">
+                        <th>Phase</th>
+                        <th>Von</th>
+                        <th>Bis</th>
+                        <th>Start-KW</th>
+                        <th>End-KW</th>
+                        <th>Bearbeiten</th>
+                        <th>Löschen</th>
+                    </tr>
+                </table>
+            </div>
+         </main>
+    </body>
+</html>
