@@ -1,3 +1,6 @@
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';                 //api
+
 function suchen(){
     console.log("test");
     /*Einfügen des Studenten*/
@@ -75,12 +78,16 @@ function phasen(){
 }
 
 window.addEventListener("load", () => {
-
     console.log("Load");
 
     /*EventListener vom Button "Jahrgang hinzufügen" */
     document.getElementById("JahrgangHinzufuegen").addEventListener("click", () =>{
         console.log("Jahrgang Listener");
+        /*Sichtbar machen der Tabelle, wenn das erste Mal ausgeführt wird*/
+        document.getElementById("Phasenliste").classList.add("visible");
+        document.getElementById("Phasenliste").classList.remove("hidden");
+
+        let neueUl = document.getElementById("Phasenliste").insert
     });
 
     /*EventListener vom Button "Phase hinufügen"*/
