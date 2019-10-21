@@ -64,3 +64,21 @@ a{
     text-decoration: none;
 }
 /* Standards zu Ende */
+
+/* Linke Seite */
+.left{
+    width: 48vw;
+    left: 10px;
+    position: absolute;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+/* Rechte Seite */
+.right{
+    width: 48vw;
+    right: 10px;
+    position: absolute;
+    padding: 10px;
+    margin-right: 20px;
+}
