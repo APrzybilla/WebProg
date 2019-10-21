@@ -4,6 +4,7 @@
         <title>Student&uuml;bersicht</title>
         <meta charset="utf-8" />
         <link href="Index.css" rel="stylesheet"/>
+        <script src="Index.js"></script>
     </head>
     <body>
         <header>
@@ -49,34 +50,16 @@
             <div>
             <table id="tabelleUebersicht">
                 <!--Dieser Part ist fix auf der linken Seite-->
-                <thead valign="top">
+                <thead valign="top" id="Tabellenhead">
                     <tr>
                         <th class="top">Name</th>
                         <th class="top">HS</th>
                         <th class="top">S</th>
                         <th class="top">JG</th>
                     </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
-                    <tr>
-                        <td>Sütterlin, Martin</td>
-                        <td>DHBW</td>
-                        <td>1</td>
-                        <td>2018</td>
-                    </tr>
                 </thead>
                 <!--Dieser Part ist variable und kann gescrolled werden-->
-                <tbody valign="top">
+                <tbody valign="top" id="Tabellenbody">
                     <tr>
                         <th class="top">K1</th>
                         <th class="top">K2</th>
