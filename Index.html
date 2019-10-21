@@ -31,8 +31,7 @@
 
                 <!--Radiobutton für die Hochschulen -> Filter-->
                 <div class="checkbox-group">
-                    <!--
-                        <span class="filter_auswahl">
+                    <span class="filter_auswahl">
                         <input type="checkbox" id="checkbox_dhbw" name="hochschule" value="hochschule-dhbw">
                         <label for="checkbox_dhbw">DHBW</label>
                     </span>
@@ -40,21 +39,15 @@
                         <input type="checkbox" id="checkbox_thm" name="hochschule" value="hochschule-thm">
                         <label for="checkbox_thm" id="label_checkbox_thm">THM</label>
                     </span>
-                    -->
-                     <!-- Rectangular switch -->
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider">DHBW THM</span>
-                    </label>
                 </div>
 
                 <!--Such-Button -> Filter-->
-                <button type="button" class="buttonFilter" id="button_filter">Suchen</button>
+                <button type="button" class="buttonFilter" id="button_filter" onclick="suchen()">Suchen</button>
             </div>
 
             <!--Tabelle für die Studentenübersicht-->
             <div>
-            <table class="tabelleUebersicht">
+            <table id="tabelleUebersicht">
                 <!--Dieser Part ist fix auf der linken Seite-->
                 <thead valign="top">
                     <tr>
