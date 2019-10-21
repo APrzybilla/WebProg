@@ -175,9 +175,12 @@ button:active{
 
 #tabelleUebersicht th,
 #tabelleUebersicht td{
-    padding: 12px 15px;
     border-right: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
+    height: 2em;
+    vertical-align: middle;
+    width: 5vw;
+    table-layout: fixed;
 }
 
 #tabelleUebersicht tr{
