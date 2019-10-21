@@ -33,11 +33,11 @@ function suchen(){
 
         tdKW.innerHTML = " ";
 
-        /*hinzufügen der Spalten */
-        neueTr.appendChild(tdKW);
-
         /*Hinzufügen von Klasse "KWs"*/
         tdKW.classList.add("KWs");
+
+        /*hinzufügen der Spalten */
+        neueTr.appendChild(tdKW);
     }
         
     /*
