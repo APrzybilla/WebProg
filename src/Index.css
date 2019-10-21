@@ -22,9 +22,9 @@ header{
 }
    
 nav{
-    padding-top: 1.5vw;
+    padding-top: 1em;
     padding-bottom: 1vw;
-    padding-left: 3em;
+    padding-left: 12em;
     background-color: #007bff;
     font-size: 1.2em;
 }
@@ -39,17 +39,15 @@ header span{
 a:link{
     text-decoration: none;
     color:white;
-}
-    
+}   
 td a:hover{
     color: black;
 }
-
 a:visited{
     color:white;
 }
-
 a{
+    padding-left: 1em;
     text-decoration: none;
 }
 /* Standards zu Ende */
