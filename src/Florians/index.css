@@ -1,0 +1,149 @@
+/*
+ * Dieses Stylesheet enthält nur allgemeine Anweisungen, die sich auf die
+ * gesamte App auswirken. Hier dürfen keine Änderungen vorgenommen werden,
+ * die sich nur auf bestimmte Bereiche der Anwendung auswirken sollen.
+ *
+ * Damit @import funktioniert, muss die Anweisung vor allen anderen
+ * CSS-Anweisungen stehen. Dieses Stylesheet muss daher auch vor allen
+ * anderen importiert werden.
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--font-color);
+    background-color: white;
+}
+
+
+/*
+ * Häufig benötigte Hilfsklassen
+ */
+.hidden {
+    display: none !important;
+}
+
+.padding {
+    padding: 0.5rem;
+}
+
+#logo {
+  max-height: 4em;
+  margin: 0.5em auto 0.5em 2em;
+}
+
+h1 {
+  font-size: 36px;
+  color: var(--secondary-dark-color);
+  text-shadow: none;
+  margin-bottom: 0;
+}
+
+author {
+  font-size: 24px;
+  color: var(--primary-light-color);
+  text-shadow: none;
+  display: block;
+  margin-top: 0;
+}
+
+form {
+  width: 60%;
+  margin: auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: auto;
+  padding-left: 1em;
+  font-family: sans-serif;
+  font-size: 40px;
+  height: 4.5ex;
+  color: var(--font-color);
+}
+
+input-label {
+  display: block;
+  margin: auto;
+  margin-top: 2ex;
+  font-family: sans-serif;
+  font-size: 30px;
+  text-align: left;
+  color: var(--font-color);
+  text-shadow: none;
+}
+
+input.button {
+  margin-top: 1ex;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+input.ingredient, input.amount {
+  border: none;
+  border-bottom: 1px var(--primary-light-color) solid;
+  display: inline-block;
+}
+
+input.ingredient {
+  width: 100%;
+}
+
+input.amount {
+  display: none;
+}
+
+tr {
+}
+
+table.ingredient-table {
+  border: none;
+  width: 100%;
+}
+
+
+@media screen and (max-width: 992px) {
+  .desktop {
+    display: none !important;
+  }
+}
+
+/*
+ * Größere Schrift auf größeren Bildschirmen
+ * Vgl. https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints
+ */
+@media screen and (min-width: 768px) {
+    main,
+    input,
+    input-label {
+        font-size: 16pt !important;
+    }
+    table {
+      width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main,
+    input,
+    input-label {
+        font-size: 18pt !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main,
+    input,
+    input-label {
+        font-size: 20pt !important;
+    }
+}
