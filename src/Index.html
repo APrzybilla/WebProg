@@ -22,7 +22,8 @@
             </nav>
         </header>
         <main>
-            <section id="section_SUebersicht" class="visible">
+                <button type="button" onclick="phasen()">phasen</button>
+            <section id="section_SUebersicht">
                 <!--Filterleiste-->
                 <div id="Filter">
                     <h1>Studentenübersicht</h1>
@@ -121,10 +122,50 @@
                 </table>
                 </div>
             </section>
-            <section id="section_PUebersicht" class="hidden">
+            <section id="section_PUebersicht">
                 <!--Auflistung der vorhandenen Studiengänge-->
                 <div id="Auflistung">
                     <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
+                    <div id="phasen_tabelle">
+                        <!-- Ueberschrift; muss doppelt sein-->
+                        <a class="show" href="#phasen_tabelle">
+                            <img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm">
+                            <span>
+                                Wirtschaftsinformatik
+                            </span>
+                        </a>
+                        <a class="hide" href="#">
+                            <img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm">
+                            <span>
+                                Wirtschaftsinformatik
+                            </span>
+                        </a>
+                        <div>
+                            <div id="phasen_tabelle1">
+                                <!-- Ueberschrift; muss doppelt sein-->
+                                <a class="show" href="#phasen_tabelle1">
+                                    <img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm">
+                                    <span>
+                                        2018
+                                    </span>
+                                </a>
+                                <a class="hide" href="#">
+                                    <img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm">
+                                    <span>
+                                        2018
+                                    </span>
+                                </a>
+                                <div class="tabellen_inhalt">
+                                    <ul>
+                                        <li>Student1</li>
+                                        <li>Student2</li>
+                                        <li>Student3</li>                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
                     <ul id="Phasenliste" class="hidden">
                         <li>Wirtschaftsinformatik
                             <ul>
@@ -268,13 +309,13 @@
                     </table>
                 </div>
             </section>
-            <section id="section_Studenten" class="hidden">
+            <section id="section_Studenten">
                 <div class="left">
                     <h2>Übersicht der Studierenden</h2>
-                    <div id="akkordeon">
-                        <a class="show" href="#akkordeon"><img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm"><span>2018</span></a>
+                    <div id="studenten_tabelle">
+                        <a class="show" href="#studenten_tabelle"><img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm"><span>2018</span></a>
                         <a class="hide" href="#"><img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm"><span>2018</span></a>
-                        <div class="inhalt">
+                        <div class="tabellen_inhalt">
                             <ul>
                                 <li>Student1</li>
                                 <li>Student2</li>
