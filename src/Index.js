@@ -1,8 +1,24 @@
-/*import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';                 //api
+"use strict";
+/*//JS File for the Main Window
+
+import App from "./app.js";
+import stylesheet from "./index.css";
+
+
+//When DOM ready
+window.addEventListener("load", ()=>{
+    //start Application
+    let app = new App();
+    app.start();
+});
+
+router.on({"/Studentenuebersicht/Home": home(),
+"/Studentenuebersicht/Phasen": phasen(),
+"/Studentenuebersicht/Studenten": studenten()});
+router.resolve();
 */
 
-/*Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb*/
+//Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb//
 function klappen(id){
     if(document.getElementById(id).classList.contains("hidden")){
         document.getElementById(id).classList.remove("hidden");
@@ -14,48 +30,48 @@ function klappen(id){
 
 function suchen(){
     console.log("test");
-    /*Einfügen des Studenten*/
-    /*Einfügen von neuer Zeile an erster Stelle in der Tabelle */
+    //Einfügen des Studenten//
+    //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
 
-    /*erzeugen der Tabellenspalten*/
+    //erzeugen der Tabellenspalten//
     let tdName = document.createElement("td");
     let tdHS = document.createElement("td");
     let tdS = document.createElement("td");
     let tdJG = document.createElement("td");
 
-    /*befüllen der Spalten*/
+    //befüllen der Spalten//
     tdName.innerHTML = "Platzhalter";
     tdHS.innerHTML = "Platzhalter";
     tdS.innerHTML = "pLatzhalter";
     tdJG.innerHTML  = "Platzhalter";
 
-    /*hinzufügen der Spalten*/
+    //hinzufügen der Spalten//
     neueTr.appendChild(tdName);
     neueTr.appendChild(tdHS);
     neueTr.appendChild(tdS);
     neueTr.appendChild(tdJG);
 
 
-    /*Einfügen der Kalenderwochen*/
-    /*Einfügen von neuer Zeile an erster Stelle in der Tabelle*/
+    //Einfügen der Kalenderwochen//
+    //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
     neueTr = document.getElementById("Tabellenbody").insertRow(1);
         
     for(let i = 1; i<53; i++){
-        /*erzeugen der Tabellenspalten*/ 
+        //erzeugen der Tabellenspalten// 
         let tdKW = document.createElement("td");
 
         tdKW.innerHTML = " ";
 
-        /*Hinzufügen von Klasse "KWs"*/
+        //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
 
-        /*hinzufügen der Spalten */
+        //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
     }
 }
 
-/*Funktionen, um zwischen den Seiten zu wechseln */
+//Funktionen, um zwischen den Seiten zu wechseln //
 function home(){
     document.getElementById("section_Studenten").classList.add("hidden");
     document.getElementById("section_Studenten").classList.remove("visible");
@@ -92,25 +108,25 @@ function phasen(){
 window.addEventListener("load", () => {
     console.log("Load");
 
-    /*EventListener vom Button "Jahrgang hinzufügen" */
+    //EventListener vom Button "Jahrgang hinzufügen" //
     document.getElementById("JahrgangHinzufuegen").addEventListener("click", () =>{
         console.log("Jahrgang Listener");
-        /*Sichtbar machen der Tabelle, wenn das erste Mal ausgeführt wird*/
+        //Sichtbar machen der Tabelle, wenn das erste Mal ausgeführt wird//
         document.getElementById("Phasenliste").classList.add("visible");
         document.getElementById("Phasenliste").classList.remove("hidden");
 
-        /*Erzeugen des Punktes für Studiengänge, falls der Studiengang noch nicht vorhanden ist*/
+        //Erzeugen des Punktes für Studiengänge, falls der Studiengang noch nicht vorhanden ist//
         if(document.getElementById(document.getElementById("EingabeStudiengang").value).value===null){
             let ul = document.getElementById("Phasenliste");
-            let li = document.createElement("li");                              /*neues Listenelement erzeugen*/
-            li.id=document.getElementById("EingabeStudiengang").value;          /*li die ID vergeben. ID ist der Name des Studiengangs*/
-            ul.appendChild(li);                                                 /*der ul das neue Listenelement hinzufügen*/
-            let ulJahrgang = document.createElement("ul");                      /*neue ul erzeugen, damit die Jahrgänge hinzugefügt werden können*/
-            li.appendChild(ulJahrgang);                                         /*die neuerzeugte ul wird dem eben erstellten li hinzugefügt*/
+            let li = document.createElement("li");                              //neues Listenelement erzeugen//
+            li.id=document.getElementById("EingabeStudiengang").value;          //li die ID vergeben. ID ist der Name des Studiengangs//
+            ul.appendChild(li);                                                 //der ul das neue Listenelement hinzufügen//
+            let ulJahrgang = document.createElement("ul");                      //neue ul erzeugen, damit die Jahrgänge hinzugefügt werden können//
+            li.appendChild(ulJahrgang);                                         //die neuerzeugte ul wird dem eben erstellten li hinzugefügt//
             ulJahrgang.id="Jahrgang" + document.getElementById("EingabeStudiengang").value;
         }
 
-        /*Erzeugen des Jahrgangs, falls er noch nicht vorhanden ist*/
+        //Erzeugen des Jahrgangs, falls er noch nicht vorhanden ist//
         if(document.getElementById(document.getElementById("EingabeJahrgang").value).value===null){
             let li = document.createElement("li");
             li.id=document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang");
@@ -121,19 +137,19 @@ window.addEventListener("load", () => {
 
     });
 
-    /*EventListener vom Button "Phase hinufügen"*/
+    //EventListener vom Button "Phase hinufügen"//
     document.getElementById("PhaseHinzufuegen").addEventListener("click", () => {
         console.log("Phasen Listener");
         
-        /*sichtbar machen der Tabelle*/
+        //sichtbar machen der Tabelle//
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
         buttonPhase.classList.remove("hidden");
         buttonPhase.classList.add("visible");
 
-        /*Einfügen von neue Zeile an erster Stelle in der Tabelle*/
+        //Einfügen von neue Zeile an erster Stelle in der Tabelle//
         let neueTr = document.getElementById("Phasentabelle").insertRow(1);
         
-        /*erzeugen der Tabellenspalten*/ 
+        //erzeugen der Tabellenspalten// 
         let tdPhase = document.createElement("td");
         let tdVon = document.createElement("td");
         let tdBis = document.createElement("td");
@@ -142,7 +158,7 @@ window.addEventListener("load", () => {
         let tdBearb = document.createElement("td");
         let tdLoe = document.createElement("td");
 
-        /*Buttons bearbeiten und löschen erstellen*/
+        //Buttons bearbeiten und löschen erstellen//
         let bearb = document.createElement("input");
         bearb.type = "button"
         bearb.classList.add("Buttons");
@@ -152,7 +168,7 @@ window.addEventListener("load", () => {
         loe.classList.add("Buttons");
         loe.value = "Löschen";
 
-        /*befüllen der Spalten*/
+        //befüllen der Spalten//
         tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
         tdVon.innerHTML = document.getElementById("Startdatum").value;
         tdBis.innerHTML = document.getElementById("Enddatum").value;
@@ -162,7 +178,7 @@ window.addEventListener("load", () => {
         tdBearb.appendChild(bearb);
         tdLoe.appendChild(loe);
 
-        /*hinzufügen der Spalten */
+        //hinzufügen der Spalten //
         neueTr.appendChild(tdPhase);
         neueTr.appendChild(tdVon);
         neueTr.appendChild(tdBis);
@@ -171,7 +187,7 @@ window.addEventListener("load", () => {
         neueTr.appendChild(tdBearb);
         neueTr.appendChild(tdLoe);
         
-        /*Hinzufügen von Listeners zu Bearbeiten und Löschen Buttons */
+        //Hinzufügen von Listeners zu Bearbeiten und Löschen Buttons //
         bearb.addEventListener(() =>{
             if(tdPhase=="Theorie"){
                 document.getElementById("DropDownPhase").value = "Theorie";
@@ -196,9 +212,9 @@ let berechneWoche =(date) =>{
     let datum = new Date(j, m, t);
     console.log(date);
 
-    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))*86400000));
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
     let yearOfThursday = currentThursday.getFullYear();
-    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
 
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
 
