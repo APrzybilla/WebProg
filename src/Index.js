@@ -2,6 +2,7 @@
 import {MenuItem} from 'primeng/api';                 //api
 */
 
+/*Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb*/
 function klappen(id){
     if(document.getElementById(id).classList.contains("hidden")){
         document.getElementById(id).classList.remove("hidden");
