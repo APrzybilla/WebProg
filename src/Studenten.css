@@ -8,8 +8,12 @@
     margin-left: 20px;
 }
 
-#studentenliste{
-    
+/* Auf- und zuklappen der Tabelle */
+#studenten_tabelle:not(:target) .tabellen_inhalt, #studenten_tabelle:not(:target) .hide, #studenten_tabelle:target .show {
+    display: none;
+}
+#studenten_tabelle:target .tabellen_inhalt {
+    display: inline;
 }
 
 /* Rechte Seite */
