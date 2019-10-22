@@ -1,6 +1,16 @@
 /*import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';                 //api
 */
+
+function klappen(id){
+    if(document.getElementById(id).classList.contains("hidden")){
+        document.getElementById(id).classList.remove("hidden");
+    }
+    else{
+        document.getElementById(id).classList.add("hidden");
+    }
+}
+
 function suchen(){
     console.log("test");
     /*Einfügen des Studenten*/
