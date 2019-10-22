@@ -60,5 +60,12 @@ li {
     display: none;
 }
 #phasen_tabelle:target .tabellen_inhalt {
-    display: inline;
+    display: inline-block;
+}
+
+#phasen_tabelle1:not(:target) .tabellen_inhalt, #phasen_tabelle1:not(:target) .hide, #phasen_tabelle1:target .show {
+    display: none;
+}
+#phasen_tabelle1:target .tabellen_inhalt {
+    display: inline-block;
 }
