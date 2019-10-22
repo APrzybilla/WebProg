@@ -20,3 +20,25 @@
     padding: 10px;
     margin-right: 20px;
 }
+
+.container{
+	position:relative;
+	margin-top: 2vw;
+	display:block;
+	margin-bottom:80px;
+	width:700px;
+	height:500px;
+	background-color: rgb(231, 242, 255);
+	border-radius:5px;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.studierendenProfil{
+	margin: 2vw;
+	border-collapse: separate;
+}
+ 
+.studierendenProfil td{
+	  border: 1px solid black;
+}
