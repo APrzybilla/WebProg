@@ -44,17 +44,6 @@ li {
     list-style-type: none;
 }
 
-
-/*sichtbar machen*/
-.visible{
-    visibility: visible;
-}
-
-/*unsichtbar machen*/
-.hidden{
-    display: none;
-}
-
 /*Phasentabelle*/
 #Phasentabelle th{
     font-weight: normal;
@@ -64,4 +53,12 @@ li {
     width: 10vw;
     height: 2em;
     border-radius: 5px;
+}
+
+/* Auf- und zuklappen der Tabelle */
+#phasen_tabelle:not(:target) .tabellen_inhalt, #phasen_tabelle:not(:target) .hide, #phasen_tabelle:target .show {
+    display: none;
+}
+#phasen_tabelle:target .tabellen_inhalt {
+    display: inline;
 }
