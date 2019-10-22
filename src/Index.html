@@ -16,18 +16,13 @@
         <header>
                 <span>Studenten&uuml;bersicht</span>
             <nav>
-                <button type="button" onclick="home()">Home</button>
-                <button type="button" onclick="phasen()">Phasenübersicht</button>
-                <button typr="button" onclick="studenten()">Studenten</button>
-                <!--
-                <a href="/Studentenuebersicht">Home</a>
-                <a href="/Phasenuebersicht">Phasen&uuml;bersicht</a>
-                <a href="/Studenten">Studenten</a>
-                -->
+                <a href="https://Studentenuebersicht/Home" navigo>Home</a>
+                <a href="https://Studentenuebersicht/Phasen" navigo>Phasen&uuml;bersicht</a>
+                <a href="https://Studentenuebersicht/Studenten" navigo>Studenten</a>
             </nav>
         </header>
         <main>
-            <section id="section_SUebersicht" class="visible">
+            <section id="section_SUebersicht">
                 <!--Filterleiste-->
                 <div id="Filter">
                     <h1>Studentenübersicht</h1>
@@ -126,10 +121,42 @@
                 </table>
                 </div>
             </section>
-            <section id="section_PUebersicht" class="hidden">
+            <section id="section_PUebersicht">
                 <!--Auflistung der vorhandenen Studiengänge-->
                 <div id="Auflistung">
                     <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
+                    <div id="phasen_tabelle">
+                        <!-- Ueberschrift; muss doppelt sein-->
+                        <a class="show" href="#phasen_tabelle">
+                            <img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm">
+                            <span>Wirtschaftsinformatik</span>
+                        </a>
+                        <a class="hide" href="#">
+                            <img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm">
+                            <span>Wirtschaftsinformatik</span>
+                        </a>
+                        <div>
+                            <div id="phasen_tabelle1">
+                                <!-- Ueberschrift; muss doppelt sein-->
+                                <a class="show" href="#phasen_tabelle1">
+                                    <img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm">
+                                    <span>2018</span>
+                                </a>
+                                <a class="hide" href="#">
+                                    <img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm">
+                                    <span>2018</span>
+                                </a>
+                                <div class="tabellen_inhalt">
+                                    <ul>
+                                        <li>Student1</li>
+                                        <li>Student2</li>
+                                        <li>Student3</li>                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
                     <ul id="Phasenliste" class="hidden">
                         <li>Wirtschaftsinformatik
                             <ul>
@@ -273,29 +300,35 @@
                     </table>
                 </div>
             </section>
-            <section id="section_Studenten" class="hidden">
+            <section id="section_Studenten">
                 <div class="left">
                     <h2>Übersicht der Studierenden</h2>
-                    <!-- klappen() -->
-                    <ul id="studentenliste">
-                        <li><a><img src="">Wirtschaftsinformatik</a>
+                    <div id="studenten_tabelle">
+                        <a class="show" href="#studenten_tabelle">
+                            <img src="../images/Pfeil-rechts.png" alt="Pfeil" class="piktogramm">
+                            <span>2018</span>
+                        </a>
+                        <a class="hide" href="#">
+                            <img src="../images/Pfeil-unten.png" alt="Pfeil" class="piktogramm">
+                            <span>2018</span>
+                        </a>
+                        <div class="tabellen_inhalt">
                             <ul>
-                                <li>2018
-                                    <ul>
-                                        <li>
-                                            <span>Student1</span>
-                                        </li>
-                                        <li>
-                                            <span>Student2</span>
-                                        </li>
-                                        <li>
-                                            <span>Student3</span>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="#" onclick="">
+                                    <img src="../images/edit32.png" alt="Editieren" class="piktogramm">
+                                    <span>Student1</span>
+                                </a></li>
+                                <li><a href="#" onclick="">
+                                    <img src="../images/edit32.png" alt="Editieren" class="piktogramm">
+                                    <span>Student2</span>
+                                </a></li>
+                                <li><a href="#" onclick="">
+                                    <img src="../images/edit32.png" alt="Editieren" class="piktogramm">
+                                    <span>Student3</span>
+                                </a></li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>    
+                    </div>
                 </div>
                 <div class="right">
                     <h2>Kurzprofile des Studierenden</h2>
