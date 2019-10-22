@@ -17,7 +17,6 @@ router.on({"/Studentenuebersicht/Home": home(),
 "/Studentenuebersicht/Studenten": studenten()});
 router.resolve();
 */
-
 //Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb//
 function klappen(id){
     if(document.getElementById(id).classList.contains("hidden")){
