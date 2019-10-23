@@ -26,8 +26,8 @@
 	margin-top: 2vw;
 	display:block;
 	margin-bottom:80px;
-	width:700px;
-	height:500px;
+	width: 55vw;
+	height:30vw;
 	background-color: rgb(231, 242, 255);
 	border-radius:5px;
 	overflow: hidden;
@@ -44,8 +44,7 @@
  
 .studierendenProfil td{
 	  border: 1px solid black;
-	  margin: 1vw;
-	  padding: 1vw;
+	  padding: 2vw;
 }
 
 .Profilbild{
