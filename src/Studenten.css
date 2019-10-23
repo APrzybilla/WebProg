@@ -39,20 +39,23 @@
 /*Tabelle für das Profil*/
 .studierendenProfil{
 	border-collapse: separate;
-	float: right;
+	
 	border-spacing: 0.5vw;
 	/*border: 1px solid black;*/
 }
 
 .Profilbild{
 	height: 15vw;
-	width: 10vw;
+	width: 11vw;
+	text-align: right;
+	float: right;
 }
 
 .studierendenProfil td{ 
 	position: relative;
 	/*border: 1px solid black;*/
 	width: 20vw;
+	
 }
 
 .studierendenProfil td input{
@@ -65,7 +68,7 @@
     border: none;
     border-bottom: 1px solid blue;
     outline: none;
-    background: transparent;
+	background: transparent;
 }
 
 .studierendenProfil td label{
@@ -86,3 +89,9 @@
     color: blue;
     font-size: 12px;
 }
+
+#neuerStudent, #speichern{
+	width: 49%;
+	display: inline;
+}
+
