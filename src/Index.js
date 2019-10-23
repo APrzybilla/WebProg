@@ -1,5 +1,5 @@
 "use strict";
-/*//JS File for the Main Window
+//JS File for the Main Window
 
 import App from "./app.js";
 import stylesheet from "./index.css";
@@ -11,12 +11,12 @@ window.addEventListener("load", ()=>{
     let app = new App();
     app.start();
 });
-
+/*
 router.on({"/Studentenuebersicht/Home": home(),
 "/Studentenuebersicht/Phasen": phasen(),
 "/Studentenuebersicht/Studenten": studenten()});
 router.resolve();
-*/
+
 //Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb//
 function klappen(id){
     if(document.getElementById(id).classList.contains("hidden")){
@@ -218,4 +218,4 @@ let berechneWoche =(date) =>{
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
 
     return weekNumber;
-}
+}*/
