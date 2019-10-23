@@ -19,7 +19,7 @@
             </nav>
         </header>
         <main>
-            <section id="section_SUebersicht" class="visible">
+            <section id="section_SUebersicht" class="hidden">
                 <!--Filterleiste-->
                 <div id="Filter">
                     <h1>Studentenübersicht</h1>
@@ -265,7 +265,7 @@
                     </table>
                 </div>
             </section>
-            <section id="section_Studenten" class="hidden">
+            <section id="section_Studenten" class="visible">
                 <div class="left">
                     <h2>Übersicht der Studierenden</h2>
                     <div id="akkordeon">
@@ -282,6 +282,7 @@
                 <div class="right">
                     <h2>Kurzprofile des Studierenden</h2>
                     <div class="container">
+                        <img class="Profilbild" src="../images/Profilbild.jpg"/>
                         <table class="studierendenProfil">
                             <tr>
                                 <td><input type="text" placeholder="Nachname" id="profil_nachname" /></td>
@@ -300,8 +301,8 @@
                                 <td><input type="text" placeholder="Mitarbeiter-ID" id="profil_mitarbeiter_id" /></td>
                             </tr>
                         </table>
-                        <button type="button">+ Neuer Student</button>
-                        <button type="button">Speichern</button>
+                        <!--<button type="button">+ Neuer Student</button>
+                        <button type="button">Speichern</button>-->
                     </div>
                     
                 </div>
