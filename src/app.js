@@ -16,9 +16,9 @@ class App {
         this._navAborted = false;
 
         this._router.on({
-            "/Home":        () => this.showPage("Home"),
-            "/Phasen":      () => this.showPage("Phasen"),
-            "/Studenten":   () => this.showPage("Studenten")
+            "/Home":        () => this.showMainPage(),
+            "/Phasen":      () => this.showPhasenPage(),
+            "/Studenten":   () => this.showStudentenPage()
         });
 
         this._router.hooks({
@@ -40,19 +40,21 @@ class App {
         this._router.resolve();
     }
 
-    showPage(id){
-        let view;
-        if(id =="Home"){
-            view = new StartPage(this);
-        } else if (id == "Phasen"){
-            view = new Phasenuebersicht(this);
-        } else if(id =="Studenten"){
-            view = new Studenten(this);
-        }
-        if(view!==null){
-            this._switchVisibleView(view);
-        }
+    showMainPage(){
+        let view = new StartPage(this);
+        this._switchVisibleView(view);
     }
+
+    showPhasenPage(){
+        let view = new Phasenuebersicht(this);
+        this._switchVisibleView(view);
+    }
+
+    showStudentenPage(){
+        let view = new Studenten(this);
+        this._switchVisibleView(view);
+    }
+
     _switchVisibleView(view) {
         let newUrl = this._router.lastRouteResolved().url;
         console.log(newUrl);
@@ -100,7 +102,7 @@ class App {
         // Neue Inhalte des Hauptbereichs einfügen
         if (content && content.main) {
             content.main.forEach(element => {
-                app.appendChild(element);
+                main.appendChild(element);
             });
         }
         // Navigo an die Links in der View binden
