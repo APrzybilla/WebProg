@@ -65,3 +65,17 @@ li {
     height: 2em;
     border-radius: 5px;
 }
+
+#phasen_tabelle:not(:target) .tabellen_inhalt, #phasen_tabelle:not(:target) .hide, #phasen_tabelle:target .show {
+    display: none;
+}
+#phasen_tabelle:target .tabellen_inhalt {
+    display: block;
+}
+
+#phasen_tabelle1:not(:target) .tabellen_inhalt, #phasen_tabelle1:not(:target) .hide, #phasen_tabelle1:target .show {
+    display: none;
+}
+#phasen_tabelle1:target .tabellen_inhalt {
+    display: block;
+}
