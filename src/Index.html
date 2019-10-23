@@ -272,24 +272,48 @@
                         <img class="Profilbild" src="../images/Profilbild.jpg"/>
                         <table class="studierendenProfil">
                             <tr>
-                                <td><input type="text" placeholder="Nachname" id="profil_nachname" /></td>
-                                <td><input type="text" placeholder="Vorname" id="profil_vorname" /></td>
+                                <td>
+                                    <input type="text" id="profil_nachname" required=""/>
+                                    <label>Nachname</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="profil_vorname" required="" />
+                                    <label>Vorname</label>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="text" placeholder="Jahrgang" id="profil_jahrgang" /></td>
-                                <td><input type="text" placeholder="Semester" id="profil_semester" /></td>
+                                <td>
+                                    <input type="text" id="profil_jahrgang" required="" />
+                                    <label>Jahrgang</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="profil_semester" required=""/>
+                                    <label>Semester</label>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="text" placeholder="Hochschule" id="profil_hochschule" /></td>
-                                <td><input type="text" placeholder="Studiengang" id="text_studiengang" /></td>
+                                <td>
+                                    <input type="text" id="profil_hochschule" required="" />
+                                    <label>Hochschule</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="text_studiengang" required="" />
+                                    <label>Studiengang</label>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="text" placeholder="Geburtstag" id="profil_geburtstag" /></td>
-                                <td><input type="text" placeholder="Mitarbeiter-ID" id="profil_mitarbeiter_id" /></td>
+                                <td>
+                                    <input type="text" id="profil_geburtstag" required=""/>
+                                    <label>Geburtstag</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="profil_mitarbeiter_id" required=""/>
+                                    <label>Mitarbeiter-ID</label>
+                                </td>
                             </tr>
                         </table>
                         <div>
-                            <input type="text" placeholder="Notizen" id="profil_notizen" />
+                            <input type="text" id="profil_notizen" />
                         </div>
                         <!--<button type="button">+ Neuer Student</button>
                         <button type="button">Speichern</button>-->
