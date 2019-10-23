@@ -32,13 +32,23 @@
 	border-radius:5px;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	padding: 2vw;
 }
 
+/*Tabelle für das Profil*/
 .studierendenProfil{
-	margin: 2vw;
 	border-collapse: separate;
+	float: right;
+
 }
  
 .studierendenProfil td{
 	  border: 1px solid black;
+	  margin: 1vw;
+	  padding: 1vw;
+}
+
+.Profilbild{
+	height: 10vw;
+	weight: 8vw;
 }
