@@ -9,6 +9,12 @@ class Phasenuebersicht{
     }
 
     onShow(){
+        let section = document.querySelector("#section_PUebersicht").cloneNode(true);
+
+        return {
+            className: "section_PUebersicht",
+            main: section.querySelectorAll("section > *"),
+        };
 
     };
 
