@@ -136,3 +136,11 @@ button:active{
 #tabelleUebersicht thead tr:last-of-type{
     border-bottom: 2px solid blue;
 }
+
+/* Auf- und zuklappen */
+#studenten_tabelle:not(:target) .tabellen_inhalt, #studenten_tabelle:not(:target) .hide, #studenten_tabelle:target .show {
+    display: none;
+}
+#studenten_tabelle:target .tabellen_inhalt {
+    display: block;
+}
