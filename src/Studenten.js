@@ -9,7 +9,12 @@ class Studenten{
     }
 
     onShow(){
+        let section = document.querySelector("#section_Studenten").cloneNode(true);
 
+        return {
+            className: "section_Studenten",
+            main: section.querySelectorAll("section > *"),
+        };
     };
 
     onLoad(){
