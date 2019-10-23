@@ -12,11 +12,6 @@ window.addEventListener("load", ()=>{
     app.start();
 });
 /*
-router.on({"/Studentenuebersicht/Home": home(),
-"/Studentenuebersicht/Phasen": phasen(),
-"/Studentenuebersicht/Studenten": studenten()});
-router.resolve();
-
 //Auf- und Zuklappen von Listen. Die Funktion erwartet eine Id von dem Objekt unterhalb//
 function klappen(id){
     if(document.getElementById(id).classList.contains("hidden")){
