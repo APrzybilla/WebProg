@@ -9,7 +9,12 @@ class StartPage{
     }
 
     onShow(){
+        let section = document.querySelector("#section_SUebersicht").cloneNode(true);
 
+        return {
+            className: "section_SUebersicht",
+            main: section.querySelectorAll("section > *"),
+        };
     };
 
     onLoad(){
