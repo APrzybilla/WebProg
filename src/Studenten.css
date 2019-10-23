@@ -1,7 +1,7 @@
 /*section Studenten*/
 /* Linke Seite */
 .left{
-    width: 48vw;
+    width: 38vw;
     left: 10px;
     position: absolute;
     padding: 10px;
@@ -14,7 +14,7 @@
 
 /* Rechte Seite */
 .right{
-    width: 48vw;
+    width: 58vw;
     right: 10px;
     position: absolute;
     padding: 10px;
