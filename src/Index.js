@@ -22,82 +22,9 @@ function klappen(id){
     }
 }
 
-function suchen(){
-    console.log("test");
-    //Einfügen des Studenten//
-    //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
-    let neueTr = document.getElementById("Tabellenhead").insertRow(1);
-
-    //erzeugen der Tabellenspalten//
-    let tdName = document.createElement("td");
-    let tdHS = document.createElement("td");
-    let tdS = document.createElement("td");
-    let tdJG = document.createElement("td");
-
-    //befüllen der Spalten//
-    tdName.innerHTML = "Platzhalter";
-    tdHS.innerHTML = "Platzhalter";
-    tdS.innerHTML = "pLatzhalter";
-    tdJG.innerHTML  = "Platzhalter";
-
-    //hinzufügen der Spalten//
-    neueTr.appendChild(tdName);
-    neueTr.appendChild(tdHS);
-    neueTr.appendChild(tdS);
-    neueTr.appendChild(tdJG);
 
 
-    //Einfügen der Kalenderwochen//
-    //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
-    neueTr = document.getElementById("Tabellenbody").insertRow(1);
-        
-    for(let i = 1; i<53; i++){
-        //erzeugen der Tabellenspalten// 
-        let tdKW = document.createElement("td");
 
-        tdKW.innerHTML = " ";
-
-        //Hinzufügen von Klasse "KWs"//
-        tdKW.classList.add("KWs");
-
-        //hinzufügen der Spalten //
-        neueTr.appendChild(tdKW);
-    }
-}
-
-//Funktionen, um zwischen den Seiten zu wechseln //
-function home(){
-    document.getElementById("section_Studenten").classList.add("hidden");
-    document.getElementById("section_Studenten").classList.remove("visible");
-
-    document.getElementById("section_PUebersicht").classList.add("hidden");
-    document.getElementById("section_PUebersicht").classList.remove("visible");
-
-    document.getElementById("section_SUebersicht").classList.remove("hidden");
-    document.getElementById("section_SUebersicht").classList.add("visible");
-}
-
-function studenten(){
-    document.getElementById("section_SUebersicht").classList.add("hidden");
-    document.getElementById("section_SUebersicht").classList.remove("visible");
-    
-    document.getElementById("section_PUebersicht").classList.add("hidden");
-    document.getElementById("section_PUebersicht").classList.remove("visible");
-    
-    document.getElementById("section_Studenten").classList.remove("hidden");
-    document.getElementById("section_Studenten").classList.add("visible");
-}
-
-function phasen(){
-    document.getElementById("section_SUebersicht").classList.add("hidden");
-    document.getElementById("section_SUebersicht").classList.remove("visible");
-
-    document.getElementById("section_Studenten").classList.add("hidden");
-    document.getElementById("section_Studenten").classList.remove("visible");
-
-    document.getElementById("section_PUebersicht").classList.remove("hidden");
-    document.getElementById("section_PUebersicht").classList.add("visible");
-}
 
 window.addEventListener("load", () => {
     console.log("Load");
