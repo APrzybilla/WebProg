@@ -31,6 +31,7 @@
 	background-color: rgb(231, 242, 255);
 	border-radius:5px;
 	overflow: hidden;
+	/*box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
 	box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
 	padding: 2vw;
 }
@@ -39,15 +40,49 @@
 .studierendenProfil{
 	border-collapse: separate;
 	float: right;
-
-}
- 
-.studierendenProfil td{
-	  border: 1px solid black;
-	  padding: 2vw;
+	border-spacing: 0.5vw;
+	/*border: 1px solid black;*/
 }
 
 .Profilbild{
-	height: 10vw;
-	weight: 8vw;
+	height: 15vw;
+	weight: 10vw;
+}
+
+.studierendenProfil td{ 
+	position: relative;
+	/*border: 1px solid black;*/
+	width: 20vw;
+}
+
+.studierendenProfil td input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: black;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid blue;
+    outline: none;
+    background: transparent;
+}
+
+.studierendenProfil td label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: blue;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.studierendenProfil td input:focus ~ label,
+.studierendenProfil td input:valid ~ label{
+    top: -18px;
+    left: 0;
+    color: blue;
+    font-size: 12px;
 }
