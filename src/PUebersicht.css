@@ -66,6 +66,7 @@ li {
     border-radius: 5px;
 }
 
+/* Auf- und zuklappen */
 #phasen_tabelle:not(:target) .tabellen_inhalt, #phasen_tabelle:not(:target) .hide, #phasen_tabelle:target .show {
     display: none;
 }
