@@ -165,7 +165,7 @@
                     <br>
 
                     <!--Studiengänge mit Vorschlägen-->
-                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required>
+                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required="">
                         <datalist id="Studiengang">
                             <option value="Wirtschaftsinformatik"></option>
                             <option value="BWL"></option>
@@ -178,7 +178,7 @@
                     </input>
 
                     <!--Jahrgang mit Vorschlägen-->
-                    <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required>
+                    <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required="">
                     <datalist id="Jahrgang">
                         <option value="2019"></option>
                         <option value="2020"></option>
@@ -293,11 +293,25 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" id="profil_hochschule" required="" />
+                                    <input type="text" id="profil_hochschule" list="Hochschule" required="">
+                                        <datalist id="Hochschule">
+                                            <option value="DHBW"></option>
+                                            <option value="THM"></option>
+                                        </datalist>
                                     <label>Hochschule</label>
                                 </td>
                                 <td>
-                                    <input type="text" id="text_studiengang" required="" />
+                                        <input type="text" id="EingabeStudiengang" list="Studiengang" required="">
+                                        <datalist id="Studiengang">
+                                            <option value="Wirtschaftsinformatik"></option>
+                                            <option value="BWL"></option>
+                                            <option value="Elektriotechnik"></option>
+                                            <option value="Informatik"></option>
+                                            <option value="Mechatronik"></option>
+                                            <option value="Sicherheitswesen"></option>
+                                            <option value="Wirtschaftsingeneurwesen"></option>
+                                        </datalist>
+                                    </input>
                                     <label>Studiengang</label>
                                 </td>
                             </tr>
@@ -311,12 +325,15 @@
                                     <label>Mitarbeiter-ID</label>
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="text" id="profil_notizen" required=""/>
+                                    <label>Notizen</label>
+                                </td>
+                            </tr>
                         </table>
-                        <div>
-                            <input type="text" id="profil_notizen" />
-                        </div>
-                        <!--<button type="button">+ Neuer Student</button>
-                        <button type="button">Speichern</button>-->
+                        <button type="button" id="neuerStudent">+ Neuer Student</button>
+                        <button type="button" id="speichern">Speichern</button>
                     </div>
                     
                 </div>
