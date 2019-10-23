@@ -51,6 +51,30 @@ a{
     text-decoration: none;
 }
 
+.piktogramm{
+    height: 0.8em;
+}
+
 h1,h2{
     color: black;
+}
+
+.tabellen_inhalt { 
+    padding: 10px 10px 1px;
+    margin: 0px 0px 10px;
+}
+
+.show span, .hide span{
+    color: black;
+    padding-left: 0.5em;
+}
+
+/*sichtbar machen*/
+.visible{
+    visibility: visible;
+}
+
+/*unsichtbar machen*/
+.hidden{
+    display: none;
 }
