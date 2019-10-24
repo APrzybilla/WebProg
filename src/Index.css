@@ -60,6 +60,7 @@ h1,h2{
     color: black;
 }
 
+/* inhalt der aufklappbaren Tabellen*/
 .tabellen_inhalt { 
     padding: 10px 10px 1px;
     margin: 0px 0px 10px;
