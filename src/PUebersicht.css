@@ -74,9 +74,9 @@ li {
     display: block;
 }
 
-#phasen_tabelle1:not(:target) .tabellen_inhalt, #phasen_tabelle1:not(:target) .hide, #phasen_tabelle1:target .show {
+#phasen_tabelle1:not(:target) .tabellen_inhalt1, #phasen_tabelle1:not(:target) .hide, #phasen_tabelle1:target .show {
     display: none;
 }
-#phasen_tabelle1:target .tabellen_inhalt {
+#phasen_tabelle1:target .tabellen_inhalt1 {
     display: block;
 }
