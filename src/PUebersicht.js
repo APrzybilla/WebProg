@@ -1,11 +1,13 @@
 import stylesheet from "./PUebersicht.css";
 
 let _app="";
+let _db = "";
 
 class Phasenuebersicht{
     constructor(app){
         this._app = _app;
         _app = this._app;
+        _db = app._db;
     }
 
     onShow(){
