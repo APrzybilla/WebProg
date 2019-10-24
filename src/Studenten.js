@@ -1,11 +1,13 @@
 import stylesheet from "./Studenten.css";
 
 let _app="";
+let _db ="";
 
 class Studenten{
     constructor(app){
         this._app = _app;
         _app = this._app;
+        _db = app._db;
     }
 
     onShow(){
