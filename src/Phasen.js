@@ -4,7 +4,7 @@ let _app="";
 
 class Phasenuebersicht{
     constructor(app){
-        this._app = app;
+        this._app = _app;
         _app = this._app;
     }
 
