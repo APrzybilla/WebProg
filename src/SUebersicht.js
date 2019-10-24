@@ -1,11 +1,14 @@
 import stylesheet from "./SUebersicht.css";
 
 let _app="";
+let _db = "";
 
 class StartPage{
     constructor(app){
         this._app = _app;
         _app = this._app;
+        _db = app._db;
+
     }
 
     onShow(){
