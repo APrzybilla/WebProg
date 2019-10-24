@@ -1,6 +1,7 @@
 "use strict";
 
 import Navigo from "../node_modules/navigo/lib/navigo.js";
+import DB from "./database.js";
 
 import Studenten from "./Studenten.js";
 import Phasenuebersicht from "./PUebersicht.js";
@@ -14,6 +15,7 @@ class App {
         this._router = new Navigo();
         this._currentUrl = "";
         this._navAborted = false;
+        this._db = new DB();
 
         this._router.on({
             "/Home":        () => this.showMainPage(),
