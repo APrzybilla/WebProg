@@ -267,31 +267,37 @@
                     </div>
                 </div>
                 <div class="right">
+                    <!--Rechte Seite / Kurzprofil eines Studierenden-->
                     <h2>Kurzprofile des Studierenden</h2>
                     <div class="container">
                         <img class="Profilbild" src="../images/Profilbild.jpg"/>
                         <table class="studierendenProfil">
                             <tr>
+                                <!--Profil-Nachname-->
                                 <td>
                                     <input type="text" id="profil_nachname" required=""/>
                                     <label>Nachname</label>
                                 </td>
+                                <!--Profil-Vorname-->
                                 <td>
                                     <input type="text" id="profil_vorname" required="" />
                                     <label>Vorname</label>
                                 </td>
                             </tr>
                             <tr>
+                                <!--Profil-Jahrgang-->
                                 <td>
                                     <input type="text" id="profil_jahrgang" required="" />
                                     <label>Jahrgang</label>
                                 </td>
+                                <!--Profil-Semester-->
                                 <td>
                                     <input type="text" id="profil_semester" required=""/>
                                     <label>Semester</label>
                                 </td>
                             </tr>
                             <tr>
+                                <!--Profil-Hochschule-->
                                 <td>
                                     <input type="text" id="profil_hochschule" list="Hochschule" required="">
                                         <datalist id="Hochschule">
@@ -300,8 +306,9 @@
                                         </datalist>
                                     <label>Hochschule</label>
                                 </td>
+                                <!--Profil-Studiengang-->
                                 <td>
-                                        <input type="text" id="EingabeStudiengang" list="Studiengang" required="">
+                                    <input type="text" id="EingabeStudiengang" list="Studiengang" required="">
                                         <datalist id="Studiengang">
                                             <option value="Wirtschaftsinformatik"></option>
                                             <option value="BWL"></option>
@@ -316,16 +323,19 @@
                                 </td>
                             </tr>
                             <tr>
+                                <!--Profil-Geburtstag-->
                                 <td>
                                     <input type="text" id="profil_geburtstag" required=""/>
                                     <label>Geburtstag</label>
                                 </td>
+                                <!--Profil-Mitarbeiter-ID-->
                                 <td>
                                     <input type="text" id="profil_mitarbeiter_id" required=""/>
                                     <label>Mitarbeiter-ID</label>
                                 </td>
                             </tr>
                             <tr>
+                                <!--Profil-Notizen-->
                                 <td colspan="2">
                                     <input type="text" id="profil_notizen" required=""/>
                                     <label>Notizen</label>
