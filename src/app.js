@@ -3,8 +3,8 @@
 import Navigo from "../node_modules/navigo/lib/navigo.js";
 
 import Studenten from "./Studenten.js";
-import Phasenuebersicht from "./Phasen.js";
-import StartPage from "./Home.js";
+import Phasenuebersicht from "./PUebersicht.js";
+import StartPage from "./SUebersicht.js";
 
 class App {
     constructor(){
