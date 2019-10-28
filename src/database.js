@@ -4,27 +4,26 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-const _firebaseConfig = {
-    apiKey: "AIzaSyBdw7lnsl4RKO55NyYuWk9XKRQA7EfLosk",
-    authDomain: "webprog-e7279.firebaseapp.com",
-    databaseURL: "https://webprog-e7279.firebaseio.com",
-    projectId: "webprog-e7279",
-    storageBucket: "webprog-e7279.appspot.com",
-    messagingSenderId: "782627340501",
-    appId: "1:782627340501:web:aceab92777db6fa94ae25c",
-    measurementId: "G-XJD9Z3CN1S"
-}; 
-
 
 class DB {
     constructor(){
-        firebase.initializeApp(_firebaseConfig);
+        firebase.initializeApp({
+            apiKey: "AIzaSyBdw7lnsl4RKO55NyYuWk9XKRQA7EfLosk",
+            authDomain: "webprog-e7279.firebaseapp.com",
+            databaseURL: "https://webprog-e7279.firebaseio.com",
+            projectId: "webprog-e7279",
+            storageBucket: "webprog-e7279.appspot.com",
+            messagingSenderId: "782627340501",
+            appId: "1:782627340501:web:aceab92777db6fa94ae25c",
+            measurementId: "G-XJD9Z3CN1S"
+        });
         this._db = firebase.firestore();
         this._students=this._db.collection("students");
     }
 
-    async createDemoData(){
-        let students = await this.selectAllStudents();
+     createDemoData(){
+         console.log("createDemoData");
+        let students =  this.selectAllStudents();
 
         //Festlegen von einigen Demodaten, wenn noch keine vorhanden sind
         if(students.length < 1){
@@ -61,24 +60,17 @@ class DB {
             }]);
         }
     }
-    
+
     //Aufrufen aller vorhandenen Studenten
-    async selectAllStudents(){
-        let result = await this._students.orderBy("Name").get();
-        let students = [];
-
-        result.forEach(entry => {
-            let student = entry.data();
-            students.push(student);
-        });
-
-        return students;
+    selectAllStudents(){
+        console.log("SelectAllStudents");
+        return this._db.collection("receipes").get();
     }
 
     //Gibt einen Student anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
-    async selectStudentById(id){
-        let result = await this._students.doc(id).get();
+    selectStudentById(id){
+        let result =  this._students.doc(id).get();
         return result.data();
     }
 
@@ -98,12 +90,12 @@ class DB {
     }
 
     //Student löschen, anhand der Mitarbeiter-Id
-    async deleteStudentById(id){
+    deleteStudentById(id){
         return this._students.doc(id).delete();
     }
 
     //Speichern mehrerer Studenten
-    async saveBooks(students) {
+     saveBooks(students) {
         let batch = this._db.batch();
 
         students.forEach(student => {
@@ -115,7 +107,7 @@ class DB {
     }
 
     //löschen mehrerer Studenten anhand der Mitarbeiter-Id
-    async deleteStudentsById(ids){
+     deleteStudentsById(ids){
         let batch = this._db.batch();
 
         ids.forEach(id => {
