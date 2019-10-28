@@ -15,7 +15,6 @@ const _firebaseConfig = {
     measurementId: "G-XJD9Z3CN1S"
 }; 
 
-let _db = "";
 
 class DB {
     constructor(){
