@@ -16,7 +16,7 @@ class App {
         this._currentUrl = "";
         this._navAborted = false;
         this._db = new DB();
-        this._db.createDemoData();
+        await _db.createDemoData();
 
         this._router.on({
             "/Home":        () => this.showMainPage(),
