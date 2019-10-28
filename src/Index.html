@@ -22,7 +22,7 @@
             </nav>
         </header>
         <main>
-            <section id="section_SUebersicht" class="hidden">
+            <section id="section_SUebersicht">
                 <!--Filterleiste-->
                 <div id="Filter">
                     <h1>Studentenübersicht</h1>
@@ -121,7 +121,7 @@
                 </table>
                 </div>
             </section>
-            <section id="section_PUebersicht" class="hidden">
+            <section id="section_PUebersicht">
                 <!--Auflistung der vorhandenen Studiengänge-->
                 <div id="Auflistung">
                     <h2>Tabelle der Daten für Praxisphasen und Theoriephasen</h2>
@@ -136,7 +136,7 @@
                     <br>
 
                     <!--Studiengänge mit Vorschlägen-->
-                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required="">
+                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required="" class="textfeld_phase">
                         <datalist id="Studiengang">
                             <option value="Wirtschaftsinformatik"></option>
                             <option value="BWL"></option>
@@ -149,7 +149,7 @@
                     </input>
 
                     <!--Jahrgang mit Vorschlägen-->
-                    <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required="">
+                    <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required="" class="textfeld_phase">
                     <datalist id="Jahrgang">
                         <option value="2019"></option>
                         <option value="2020"></option>
@@ -180,14 +180,14 @@
                         </tr>
                         <tr>
                             <!--Datumsauswahl Beginn der Phase-->
-                            <td><input type="date" placeholder="tt.mm.jjjj" id="Startdatum" class="Datum"required></td>
+                            <td><input type="date" placeholder="tt.mm.jjjj" id="Startdatum" class="textfeld_phase" required=""></td>
                         </tr>
                         <tr>
                             <td>Bis</td>
                         </tr>
                         <tr>
                             <!--Datumsauswahl Ende der Phase-->
-                            <td><input type="date" placeholder="tt.mm.jjjj" id="Enddatum" class="Datum"></td>
+                            <td><input type="date" placeholder="tt.mm.jjjj" id="Enddatum" class="textfeld_phase" required=""></td>
                         </tr>
                     </table>
                     <button type="button" id="PhaseHinzufuegen">Phase hinzufügen</button>
@@ -207,7 +207,7 @@
                     </table>
                 </div>
             </section>
-            <section id="section_Studenten" class="visible">
+            <section id="section_Studenten">
                 <div class="left">
                     <h2>Übersicht der Studierenden</h2>
                     <div id="studenten_tabelle">
