@@ -24,11 +24,11 @@ class DB {
     }
 
     addStudent(student){
-        return _db.collection("students").add(student);
+        return _db.collection("Student").add(student);
     }
 
     getAllStudents(){
-        return _db.collection("students").get();
+        return _db.collection("Student").get();
     }
 }
 
