@@ -21,8 +21,8 @@ class DB {
         this._students=this._db.collection("students");
     }
 
-     createDemoData(){
-         console.log("createDemoData");
+    createDemoData(){
+        console.log("createDemoData");
         let students =  this.selectAllStudents();
         console.log(this._db.collection("students").get());
 
