@@ -21,7 +21,6 @@ class Studenten{
 
     onLoad(){
         klapptabelle_erstellung();
-        document.getElementById("button_2018").addEventListener("click", klapptabelle(this));
     }
 
     onLeave(goon){
@@ -30,6 +29,7 @@ class Studenten{
 }
 
 function klapptabelle(aufrufender){
+    console.log("klapptabelle");
     // Variable wird von mehreren Seiten aufgerufen
     // Variablen mit parent und child werden deklariert
     let parent = document.getElementById(aufrufender.id).parentElement;
@@ -83,6 +83,9 @@ function klapptabelle_erstellung(){
         li.innerHTML = "Adrian" + " " + "Przybilla";
     ul.appendChild(li);
     parent.appendChild(ul);
+
+    // florian fragen warum es nicht geht
+    document.getElementById("button_2018").addEventListener("click", klapptabelle(this));
 }
 
 export default Studenten;
