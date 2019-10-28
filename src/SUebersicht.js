@@ -31,7 +31,6 @@ class StartPage{
 }
 
 let suchen = () => {
-    console.log("test");
     //Einfügen des Studenten//
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
