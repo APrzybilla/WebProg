@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; 
 
 import Navigo from "../node_modules/navigo/lib/navigo.js";
 import DB from "./database.js";
@@ -39,7 +39,6 @@ class App {
     }
 
     start() {
-        console.log("App started successfully :)");
         this._router.resolve();
     }
 
@@ -60,13 +59,11 @@ class App {
 
     _switchVisibleView(view) {
         let newUrl = this._router.lastRouteResolved().url;
-        console.log(newUrl);
         let goon = () => {
             this._router.navigate(newUrl + "?goon");
         }
 
         if(this._currentView && !this._currentView.onLeave(goon)) {
-            console.log("Navigation aborted");
             this._navAborted = true;
             return false;
         }
@@ -110,7 +107,6 @@ class App {
         }
         // Navigo an die Links in der View binden
         this._router.updatePageLinks();
-        console.log("Page Links Updated");
         //end of _switchVisibleContent
     }
 }
