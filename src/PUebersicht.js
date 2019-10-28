@@ -30,9 +30,7 @@ class Phasenuebersicht{
     }
 }
 
-let neuePhase = () =>{
-    console.log("Phasen Listener");
-        
+let neuePhase = () =>{       
     //sichtbar machen der Tabelle//
     let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
     buttonPhase.classList.remove("hidden");
@@ -64,7 +62,6 @@ let neuePhase = () =>{
     tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
     tdVon.innerHTML = document.getElementById("Startdatum").value;
     tdBis.innerHTML = document.getElementById("Enddatum").value;
-    console.log(document.getElementById("Startdatum").value);
     tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
     tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
     tdBearb.appendChild(bearb);
@@ -81,14 +78,11 @@ let neuePhase = () =>{
 }
 
 let berechneWoche =(date) =>{
-
-    console.log("berechneWoche")
     date = new Date(date);
     let j = date.getFullYear();
     let m = date.getMonth()+1;
     let t = date.getDate();
     let datum = new Date(j, m, t);
-    console.log(date);
 
     let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
     let yearOfThursday = currentThursday.getFullYear();
