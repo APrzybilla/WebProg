@@ -31,44 +31,80 @@ class Studenten{
     }
 }
 
-function klapptabelle(aufrufender){
-    console.log("klapptabelle");
-    // Variable wird von mehreren Seiten aufgerufen
-    // Variablen mit parent und child werden deklariert
-    let parent = document.getElementById(aufrufender.id).parentElement;
-    let children = parent.getElementsByClassName("inhalt");
+function klapptabelle(event){
+    // Variablen mit oberstesElement und child werden deklariert
+    let oberstesElement = document.getElementById(event.target.id).oberstesElementElement;
+    let children = oberstesElement.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(children[0].style.display == "none"){
         // alle aufklappen
-        for(let i = 0; i < children.length; i++){
+        for(let i = 1; i < children.length; i++){
             children[i].style.display = "block";
         }
     }
     else{
         // alle zuklappen
-        for(let i = 0; i < children.length; i++){
+        for(let i = 1; i < children.length; i++){
             children[i].style.display = "none";
         }
     }
 }
 
 function klapptabelle_erstellung(){
-    // parent festlegen
-    let parent = document.getElementById("studenten_tabelle");
+    // oberstesElement festlegen
+    let oberstesElement = document.getElementById("studenten_tabelle");
+    let buttoninhalt;
+    let button;
+    let i;
+    let laenge;
+    let ul;
+    let li;
+    let students = _db.selectAllStudents().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            //console.log(doc.id, "=>", doc.data().Name);
+            i=0;
+            laenge = oberstesElement.children.length;
+            ul = 'undefined';
+            buttoninhalt = doc.data().Jahrgang;
+            do{
+                if(typeof oberstesElement.children[0] === 'undefined' || oberstesElement.children[i].id !== "button"+buttoninhalt && oberstesElement.children[i].type === 'button'){
+                    // button erstellen
+                    button = document.createElement("button");
+                    button.type = "button";
+                    button.id = "button"+buttoninhalt;
+                    button.addEventListener('click', klapptabelle);
+                    button.innerHTML = buttoninhalt;
+                    oberstesElement.appendChild(button);
+                    // liste erstellen
+                    ul = document.createElement("ul");
+                    ul.classList.add("inhalt");
+                    ul.id = "ul"+buttoninhalt;
+                    oberstesElement.appendChild(ul);
+                    break;
+                }
+                i++;
+            }while(i<laenge);
 
-    // in zukunft mit schleifen arbeiten damit die daten variabel hinzugefügt werden können
-    // button erstellen
-    parent.innerHTML += '<button type="button_2018" id="button" onclick="klapptabelle(this)">2018</button>"';
-    /* Button lässt sich, wie hier geschrieben, leider kein onclick mitgeben --> Saß fragen
-    let buttoninhalt = tabelle.querySelector("ul").querySelector("span").innerHTML
+            if(typeof ul === 'undefined'){
+                ul = oberstesElement.getElementById("ul" + buttoninhalt);
+            }
+
+            li = document.createElement("li");
+            li.classList.add("inhalt");
+            li.innerHTML = doc.data().vorname + " " + doc.data().name;
+            ul.appendChild(li);
+        });
+    });
+    //alt
+    /*
+    buttoninhalt = "2018";
     let button = document.createElement("button");
-    button.classList.add("inhalt");
     button.type = "button";
     button.id = "button"+buttoninhalt;
-    button.onclick = "klapptabelle(this)";
+    button.addEventListener('click', klapptabelle);
     button.innerHTML = buttoninhalt;
-    parent.appendChild(button);
-    */
+    oberstesElement.appendChild(button);
+   
 
     // inhalt erstellen
     let ul = document.createElement("ul");
@@ -85,10 +121,7 @@ function klapptabelle_erstellung(){
         li.classList.add("inhalt");
         li.innerHTML = "Adrian" + " " + "Przybilla";
     ul.appendChild(li);
-    parent.appendChild(ul);
-
-    // florian fragen warum es nicht geht
-    document.getElementById("button_2018").addEventListener("click", klapptabelle(this));
+    oberstesElement.appendChild(ul);*/
 }
 
 function studentHinzufuegen(){

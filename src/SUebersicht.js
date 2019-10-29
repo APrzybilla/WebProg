@@ -24,7 +24,7 @@ class StartPage{
 
     onLoad(){
         //EventListener von Suchen-Button
-        document.getElementById("button_filter").addEventListener("click", suchen());
+        document.getElementById("button_filter").addEventListener("click", suchen);
         window.addEventListener("load", anzeigen());
         
     }
@@ -34,12 +34,91 @@ class StartPage{
     }
 }
 
-function suchen() {
+function suchen (){
+    //Tabelle leeren
+    //dient dazu, dass nur die gefundenen Elemente angezeigt werden
+    deleteTable();
 
+    //Auslesen der Filtertextfelder
+    let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
+    let VN = document.getElementById("filter_vorname").value.toLowerCase();
+    let Sem = document.getElementById("filter_semester").value.toLowerCase();
+    let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
+
+    //Aufrufen aller Studenten
+    _db.selectAllStudents().then(function (querySnapshot) {
+        //jeden Studenten überprüfen
+        querySnapshot.forEach(function(doc){
+            //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+            
+            let boolean= false;
+
+            //Überprüfen, ob etwas in den Feldern steht
+            if(Nachname!==""){
+                //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
+                //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
+                if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(VN!==""){
+                if(doc.data().Vorname.toLowerCase().indexOf(VN)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(Sem!==""){
+                if(doc.data().Semester.toLowerCase().indexOf(Sem)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(JG!==""){
+                if(doc.data().Jahrgang.toLowerCase().indexOf(JG)>=0){
+                    boolean = true;
+                }
+            }
+
+            //Überprüfen der Checkboxen DHBW und THM
+            if(document.getElementById("checkbox_dhbw").checked){
+                if(doc.data().Hochschule.toLowerCase()=="dhbw"){
+                    boolean = true;
+                }
+            }
+
+            if(document.getElementById("checkbox_thm").checked){
+                if(doc.data().Hochschule.toLowerCase()=="thm"){
+                    boolean = true;
+                }
+            }
+
+            //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
+            if(boolean){
+                let Name = doc.data().Name;
+                let Vorname = doc.data().Vorname;
+                let HS = doc.data().Hochschule;
+                let Sem = doc.data().Semester;
+                let Jahrgang = doc.data().Jahrgang;
+
+                einfügen(Name, Vorname, HS, Sem, Jahrgang);
+            }
+        });
+    });
+}
+
+//die Tabelle wird geleert
+function deleteTable(){
+    while(document.getElementById("Tabellenhead").rows.length>1){
+        document.getElementById("Tabellenhead").deleteRow(1);
+    }
+    while(document.getElementById("Tabellenbody").rows.length>1){
+        document.getElementById("Tabellenbody").deleteRow(1);
+    }
 }
 
 function einfügen (Name, Vorname, HS, Sem, JG){
-    //Einfügen des Studenten//
+    //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
 
@@ -67,6 +146,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     neueTr = document.getElementById("Tabellenbody").insertRow(1);
         
     for(let i = 1; i<53; i++){
+        
         //erzeugen der Tabellenspalten// 
         let tdKW = document.createElement("td");
 
@@ -81,10 +161,11 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 }
 
 function anzeigen(){
-    console.log("anzeigen");
+    //Tabelle leeren
+    //dient dazu, dass die Daten nicht doppelt drinnen stehen
+    deleteTable();
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            console.log(doc.id, "=>", doc.data().Name);
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
             let HS = doc.data().Hochschule;
