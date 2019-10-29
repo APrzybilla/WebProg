@@ -32,7 +32,11 @@ class StartPage{
     }
 }
 
-function suchen (){
+function suchen() {
+
+}
+
+function einfügen (){
     //Einfügen des Studenten//
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -78,7 +82,7 @@ function anzeigen(){
     let students = this._db.selectAllStudents();
 
     for(let i = 0; i<students.length; i++){
-        
+        suchen();
     }
 }
 
