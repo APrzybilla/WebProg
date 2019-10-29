@@ -80,6 +80,19 @@ function suchen (){
                 }
             }
 
+            //Überprüfen der Checkboxen DHBW und THM
+            if(document.getElementById("label_checkbox_dhbw").checked){
+                if(doc.data().Hochschule.toLowerCase=="dhbw"){
+                    boolean = true;
+                }
+            }
+
+            if(document.getElementById("checkbox_thm").checked){
+                if(doc.data().Hochschule.toLowerCase=="thm"){
+                    boolean = true;
+                }
+            }
+
             //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
             if(boolean){
                 let Name = doc.data().Name;
