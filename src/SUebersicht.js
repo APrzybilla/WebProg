@@ -22,7 +22,9 @@ class StartPage{
 
     onLoad(){
         //EventListener von Suchen-Button
-        document.getElementById("button_filter").addEventListener("click", suchen);
+        document.getElementById("button_filter").addEventListener("click", suchen());
+        window.addEventListener("load", anzeigen());
+        
     }
 
     onLeave(goon){
@@ -30,7 +32,11 @@ class StartPage{
     }
 }
 
-let suchen = () => {
+function suchen() {
+
+}
+
+function einfügen (){
     //Einfügen des Studenten//
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -69,6 +75,14 @@ let suchen = () => {
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
+    }
+}
+
+function anzeigen(){
+    let students = this._db.selectAllStudents();
+
+    for(let i = 0; i<students.length; i++){
+        suchen();
     }
 }
 

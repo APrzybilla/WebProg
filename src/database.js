@@ -68,7 +68,15 @@ class DB {
     //Aufrufen aller vorhandenen Studenten
     selectAllStudents(){
         console.log("SelectAllStudents");
-        return this._db.collection("students").get();
+        let result = this._students.orderBy("Name").get();
+        let students = [];
+
+        result.forEach(entry => {
+            let student = entry.data();
+            students.push(student);
+        });
+
+        return students;
     }
 
     //Gibt einen Student anhand seiner ID zurück
