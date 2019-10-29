@@ -40,7 +40,7 @@ class DB {
                 "id": "375925",
                 "Notizen":"Arbeitet ungern und unsauber"
             }, {
-                "Name" : "Przasdbilla",
+                "Name" : "Pshszsjvdjdjfjrbilla",
                 "Vorname": "Adrian",
                 "Jahrgang": "2018",
                 "Semester": "3.",
@@ -56,7 +56,7 @@ class DB {
                 "Semester": "3.",
                 "Hochschule": "DHBW",
                 "Studiengang": "Wirtschaftsinformatik",
-                "Geburtstag": "27.07.1997",
+                "Geburtstag": "27.07.1999",
                 "id": "09234983",
                 "Notizen":"Arbeitet prima und verdient eine Gehaltserhöhung"
             }]);
@@ -68,15 +68,15 @@ class DB {
     //Aufrufen aller vorhandenen Studenten
     selectAllStudents(){
         console.log("SelectAllStudents");
-        let result = this._students.orderBy("Name").get();
-        let students = [];
+        return this._db.collection("students").get();
+        /*let students = [];
 
-        /*result.forEach(entry => {
+        students.forEach(entry => {
             let student = entry.data();
             students.push(student);
-        });*/
+        });
 
-        return students;
+        return students;*/
     }
 
     //Gibt einen Student anhand seiner ID zurück
