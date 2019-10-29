@@ -81,14 +81,14 @@ function suchen (){
             }
 
             //Überprüfen der Checkboxen DHBW und THM
-            if(document.getElementById("label_checkbox_dhbw").checked){
-                if(doc.data().Hochschule.toLowerCase=="dhbw"){
+            if(document.getElementById("checkbox_dhbw").checked){
+                if(doc.data().Hochschule.toLowerCase()=="dhbw"){
                     boolean = true;
                 }
             }
 
             if(document.getElementById("checkbox_thm").checked){
-                if(doc.data().Hochschule.toLowerCase=="thm"){
+                if(doc.data().Hochschule.toLowerCase()=="thm"){
                     boolean = true;
                 }
             }
