@@ -31,27 +31,28 @@ class Studenten{
 }
 
 function klapptabelle(event){
-    // Variablen mit oberstesElement und child werden deklariert
-    let oberstesElement = document.getElementById(event.target.id).oberstesElementElement;
-    let children = oberstesElement.children;
+    // Variablen mit eltern und child werden deklariert
+    let eltern = document.getElementById(event.target.id).parentElement;
+    let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
-    if(children[0].style.display == "none"){
+    if(kinder[1].style.display == "none"){
         // alle aufklappen
-        for(let i = 1; i < children.length; i++){
-            children[i].style.display = "block";
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "block";
         }
     }
     else{
+        console.log("zu");
         // alle zuklappen
-        for(let i = 1; i < children.length; i++){
-            children[i].style.display = "none";
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "none";
         }
     }
 }
 
 function klapptabelle_erstellung(){
-    // oberstesElement festlegen
-    let oberstesElement = document.getElementById("studenten_tabelle");
+    // eltern festlegen
+    let eltern = document.getElementById("studenten_tabelle");
     let buttoninhalt;
     let button;
     let i;
@@ -62,35 +63,31 @@ function klapptabelle_erstellung(){
         querySnapshot.forEach(function (doc){
             //console.log(doc.id, "=>", doc.data().Name);
             i=0;
-            laenge = oberstesElement.children.length;
-            ul = 'undefined';
+            laenge = eltern.children.length;
             buttoninhalt = doc.data().Jahrgang;
             do{
-                if(typeof oberstesElement.children[0] === 'undefined' || oberstesElement.children[i].id !== "button"+buttoninhalt && oberstesElement.children[i].type === 'button'){
+                if(typeof eltern.children[0] === 'undefined' || eltern.children[i].id !== "button"+buttoninhalt && eltern.children[i].type === 'button'){
                     // button erstellen
                     button = document.createElement("button");
                     button.type = "button";
                     button.id = "button"+buttoninhalt;
                     button.addEventListener('click', klapptabelle);
                     button.innerHTML = buttoninhalt;
-                    oberstesElement.appendChild(button);
+                    eltern.appendChild(button);
                     // liste erstellen
                     ul = document.createElement("ul");
                     ul.classList.add("inhalt");
                     ul.id = "ul"+buttoninhalt;
-                    oberstesElement.appendChild(ul);
+                    eltern.appendChild(ul);
                     break;
                 }
                 i++;
             }while(i<laenge);
 
-            if(typeof ul === 'undefined'){
-                ul = oberstesElement.getElementById("ul" + buttoninhalt);
-            }
-
+            ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
             li.classList.add("inhalt");
-            li.innerHTML = doc.data().vorname + " " + doc.data().name;
+            li.innerHTML = doc.data().Vorname + " " + doc.data().Name;
             ul.appendChild(li);
         });
     });
@@ -102,7 +99,7 @@ function klapptabelle_erstellung(){
     button.id = "button"+buttoninhalt;
     button.addEventListener('click', klapptabelle);
     button.innerHTML = buttoninhalt;
-    oberstesElement.appendChild(button);
+    eltern.appendChild(button);
    
 
     // inhalt erstellen
@@ -120,7 +117,7 @@ function klapptabelle_erstellung(){
         li.classList.add("inhalt");
         li.innerHTML = "Adrian" + " " + "Przybilla";
     ul.appendChild(li);
-    oberstesElement.appendChild(ul);*/
+    eltern.appendChild(ul);*/
 }
 
 export default Studenten;
