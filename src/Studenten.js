@@ -42,7 +42,6 @@ function klapptabelle(event){
         }
     }
     else{
-        console.log("zu");
         // alle zuklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "none";
@@ -59,6 +58,7 @@ function klapptabelle_erstellung(){
     let laenge;
     let ul;
     let li;
+    let a;
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             //console.log(doc.id, "=>", doc.data().Name);
@@ -87,37 +87,15 @@ function klapptabelle_erstellung(){
             ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
             li.classList.add("inhalt");
-            li.innerHTML = doc.data().Vorname + " " + doc.data().Name;
+            a = document.createElement("a");
+            a.addEventListener('click', kurzprofilBefuellen);
+            a.classList.add("inhalt");
+            a.id = doc.data().id;
+            a.innerHTML = doc.data().Vorname + " " + doc.data().Name;
+            li.appendChild(a);
             ul.appendChild(li);
         });
     });
-    //alt
-    /*
-    buttoninhalt = "2018";
-    let button = document.createElement("button");
-    button.type = "button";
-    button.id = "button"+buttoninhalt;
-    button.addEventListener('click', klapptabelle);
-    button.innerHTML = buttoninhalt;
-    eltern.appendChild(button);
-   
-
-    // inhalt erstellen
-    let ul = document.createElement("ul");
-    ul.classList.add("inhalt");
-        let li = document.createElement("li");
-        li.classList.add("inhalt");
-        li.innerHTML = "Anika" + " " + "Haushälter";
-    ul.appendChild(li);
-        li = document.createElement("li");
-        li.classList.add("inhalt");
-        li.innerHTML = "Martin" + " " + "Sütterlin";
-    ul.appendChild(li);
-        li = document.createElement("li");
-        li.classList.add("inhalt");
-        li.innerHTML = "Adrian" + " " + "Przybilla";
-    ul.appendChild(li);
-    eltern.appendChild(ul);*/
 }
 
 export default Studenten;
