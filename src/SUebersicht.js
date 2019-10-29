@@ -34,9 +34,72 @@ class StartPage{
     }
 }
 
-let suchen = _db.selectAllStudents().then(function (querySnapshot) {
+function suchen (){
+    //Tabelle leeren
+    //dient dazu, dass nur die gefundenen Elemente angezeigt werden
+    deleteTable();
 
-});
+    console.log("suchen");
+
+    //Auslesen der Filtertextfelder
+    let Nachname = document.getElementById("filter_nachname").value;
+    let VN = document.getElementById("filter_vorname").value;
+    let Sem = document.getElementById("filter_semester").value;
+    let JG = document.getElementById("filter_jahrgang").value;
+
+    //Aufrufen aller Studenten
+    _db.selectAllStudents().then(function (querySnapshot) {
+        //jeden Studenten überprüfen
+        querySnapshot.forEach(function(doc){
+            //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+            let boolean= false;
+            if(Nachname!==""){
+                if(doc.data().Name.indexOf(Nachname)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(VN!==""){
+                if(doc.data().Vorname.indexOf(VN)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(Sem!==""){
+                if(doc.data().Semester.indexOf(Sem)>=0){
+                    boolean = true;
+                }
+            }
+
+            if(JG!==""){
+                if(doc.data().Jahrgang.indexOf(JG)>=0){
+                    boolean = true;
+                }
+            }
+            console.log(boolean);
+
+            if(boolean){
+                console.log(boolean);
+                let Name = doc.data().Name;
+                let Vorname = doc.data().Vorname;
+                let HS = doc.data().Hochschule;
+                let Sem = doc.data().Semester;
+                let Jahrgang = doc.data().Jahrgang;
+
+                einfügen(Name, Vorname, HS, Sem, Jahrgang);
+            }
+        });
+    });
+}
+
+function deleteTable(){
+    while(document.getElementById("Tabellenhead").rows.length>1){
+        document.getElementById("Tabellenhead").deleteRow(1);
+    }
+    while(document.getElementById("Tabellenbody").rows.length>1){
+        document.getElementById("Tabellenbody").deleteRow(1);
+    }
+}
 
 function einfügen (Name, Vorname, HS, Sem, JG){
     //Einfügen des Studenten//
@@ -67,6 +130,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     neueTr = document.getElementById("Tabellenbody").insertRow(1);
         
     for(let i = 1; i<53; i++){
+        
         //erzeugen der Tabellenspalten// 
         let tdKW = document.createElement("td");
 
@@ -82,6 +146,9 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 
 function anzeigen(){
     console.log("anzeigen");
+    //Tabelle leeren
+    //dient dazu, dass die Daten nicht doppelt drinnen stehen
+    deleteTable();
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             console.log(doc.id, "=>", doc.data().Name);
