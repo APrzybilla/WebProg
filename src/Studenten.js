@@ -90,4 +90,30 @@ function klapptabelle_erstellung(){
     document.getElementById("button_2018").addEventListener("click", klapptabelle(this));
 }
 
+function studentHinzufuegen(){
+    let profil_nachname = document.getElementById("profil_nachname").value;
+    let profil_vorname = document.getElementById("profil_vorname").value;
+    let profil_jahrgang = document.getElementById("profil_jahrgang").value;
+    let profil_semester = document.getElementById("profil_semester").value;
+    let profil_hochschule = document.getElementById("profil_hochschule").value;
+    let profil_studiengang = document.getElementById("profil_studiengang").value;
+    let profil_geburtstag = document.getElementById("profil_geburtstag").value;
+    let profil_mitarbeiter_id = document.getElementById("profil_mitarbeiter_id").value;
+    let profil_notizen = document.getElementById("profil_notizen").value;
+
+    saveStudent(
+        {
+            "Name" : profil_nachname,
+            "Vorname": profil_vorname,
+            "Jahrgang": profil_jahrgang,
+            "Semester": profil_semester,
+            "Hochschule": profil_hochschule,
+            "Studiengang": profil_studiengang,
+            "Geburtstag": profil_geburtstag,
+            "id": profil_mitarbeiter_id,
+            "Notizen": profil_notizen
+        }
+    );
+}
+
 export default Studenten;
