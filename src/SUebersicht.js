@@ -39,8 +39,6 @@ function suchen (){
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
     deleteTable();
 
-    console.log("suchen");
-
     //Auslesen der Filtertextfelder
     let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
     let VN = document.getElementById("filter_vorname").value.toLowerCase();
@@ -52,8 +50,13 @@ function suchen (){
         //jeden Studenten überprüfen
         querySnapshot.forEach(function(doc){
             //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+            
             let boolean= false;
+
+            //Überprüfen, ob etwas in den Feldern steht
             if(Nachname!==""){
+                //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
+                //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                 if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
                     boolean = true;
                 }
@@ -76,10 +79,9 @@ function suchen (){
                     boolean = true;
                 }
             }
-            console.log(boolean);
 
+            //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
             if(boolean){
-                console.log(boolean);
                 let Name = doc.data().Name;
                 let Vorname = doc.data().Vorname;
                 let HS = doc.data().Hochschule;
@@ -92,6 +94,7 @@ function suchen (){
     });
 }
 
+//die Tabelle wird geleert
 function deleteTable(){
     while(document.getElementById("Tabellenhead").rows.length>1){
         document.getElementById("Tabellenhead").deleteRow(1);
@@ -102,7 +105,7 @@ function deleteTable(){
 }
 
 function einfügen (Name, Vorname, HS, Sem, JG){
-    //Einfügen des Studenten//
+    //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
 
@@ -145,13 +148,11 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 }
 
 function anzeigen(){
-    console.log("anzeigen");
     //Tabelle leeren
     //dient dazu, dass die Daten nicht doppelt drinnen stehen
     deleteTable();
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            console.log(doc.id, "=>", doc.data().Name);
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
             let HS = doc.data().Hochschule;
