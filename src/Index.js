@@ -3,6 +3,7 @@
 
 import App from "./app.js";
 import stylesheet from "./index.css";
+import DB from "./database.js";
 
 
 //When DOM ready

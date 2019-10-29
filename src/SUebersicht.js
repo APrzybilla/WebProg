@@ -1,4 +1,6 @@
 import stylesheet from "./SUebersicht.css";
+import DB from "./database.js";
+import App from "./app.js";
 
 let _app="";
 let _db = "";

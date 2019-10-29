@@ -1,4 +1,6 @@
 import stylesheet from "./Studenten.css";
+import App from "./app.js";
+import DB from "./database.js";
 
 let _app="";
 let _db ="";
