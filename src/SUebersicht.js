@@ -81,11 +81,12 @@ function einfügen (){
 }
 
 function anzeigen(){
-    let students = this._db.selectAllStudents();
-
-    for(let i = 0; i<students.length; i++){
-        suchen();
-    }
+    console.log("anzeigen");
+    let students = _db.selectAllStudents().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            console.log(doc.id, "=>", doc.data().Name);
+        });
+    });
 }
 
 export default StartPage;
