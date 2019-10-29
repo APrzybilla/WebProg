@@ -37,14 +37,14 @@ header span{
     padding-left: 1vw;
 }
 
-a:link{
+.headera:link{
     text-decoration: none;
     color:white;
 }   
 td a:hover{
     color: black;
 }
-a:visited{
+.headera:visited{
     color:white;
 }
 a{
