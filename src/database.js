@@ -71,10 +71,10 @@ class DB {
         let result = this._students.orderBy("Name").get();
         let students = [];
 
-        result.forEach(entry => {
+        /*result.forEach(entry => {
             let student = entry.data();
             students.push(student);
-        });
+        });*/
 
         return students;
     }
@@ -107,7 +107,7 @@ class DB {
     }
 
     //Speichern mehrerer Studenten
-     saveBooks(students) {
+     saveStudents(students) {
         let batch = this._db.batch();
 
         students.forEach(student => {
