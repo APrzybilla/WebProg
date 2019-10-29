@@ -82,8 +82,7 @@ class DB {
     //Gibt einen Student anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
     selectStudentById(id){
-        let result =  this._students.doc(id).get();
-        return result.data();
+        return this._students.doc(id).get();
     }
 
     /*Speichern eines Studenten
