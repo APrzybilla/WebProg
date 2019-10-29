@@ -23,6 +23,7 @@ class Studenten{
 
     onLoad(){
         klapptabelle_erstellung();
+        document.getElementById("neuerStudent").addEventListener("click", studentHinzufuegen);
     }
 
     onLeave(goon){
@@ -96,6 +97,40 @@ function klapptabelle_erstellung(){
             ul.appendChild(li);
         });
     });
+}
+
+function studentHinzufuegen(){
+
+    _db.saveStudent(
+        {
+            "Name" : document.getElementById("profil_nachname").value,
+            "Vorname": document.getElementById("profil_vorname").value,
+            "Jahrgang": document.getElementById("profil_jahrgang").value,
+            "Semester": document.getElementById("profil_semester").value,
+            "Hochschule": document.getElementById("profil_hochschule").value,
+            "Studiengang": document.getElementById("profil_studiengang").value,
+            "Geburtstag": document.getElementById("profil_geburtstag").value,
+            "id": document.getElementById("profil_mitarbeiter_id").value,
+            "Notizen": document.getElementById("profil_notizen").value
+        }
+    );
+
+    resetProfilfelder();
+
+    //onClick="studentHinzufuegen();">
+}
+
+function resetProfilfelder(){
+
+    document.getElementById("profil_nachname").value="";
+    document.getElementById("profil_vorname").value="";
+    document.getElementById("profil_jahrgang").value="";
+    document.getElementById("profil_semester").value="";
+    document.getElementById("profil_hochschule").value="";
+    document.getElementById("profil_studiengang").value="";
+    document.getElementById("profil_geburtstag").value="";
+    document.getElementById("profil_mitarbeiter_id").value="";
+    document.getElementById("profil_notizen").value="";
 }
 
 export default Studenten;
