@@ -38,7 +38,7 @@ function suchen() {
 
 }
 
-function einfügen (){
+function einfügen (Name, Vorname, HS, Sem, JG){
     //Einfügen des Studenten//
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -50,10 +50,10 @@ function einfügen (){
     let tdJG = document.createElement("td");
 
     //befüllen der Spalten//
-    tdName.innerHTML = "Platzhalter";
-    tdHS.innerHTML = "Platzhalter";
-    tdS.innerHTML = "pLatzhalter";
-    tdJG.innerHTML  = "Platzhalter";
+    tdName.innerHTML = Vorname +" " + Name;
+    tdHS.innerHTML = HS;
+    tdS.innerHTML = Sem;
+    tdJG.innerHTML  = JG;
 
     //hinzufügen der Spalten//
     neueTr.appendChild(tdName);
@@ -85,6 +85,13 @@ function anzeigen(){
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             console.log(doc.id, "=>", doc.data().Name);
+            let Name = doc.data().Name;
+            let Vorname = doc.data().Vorname;
+            let HS = doc.data().Hochschule;
+            let Sem = doc.data().Semester;
+            let JG = doc.data().Jahrgang;
+
+            einfügen(Name, Vorname, HS, Sem, JG);
         });
     });
 }
