@@ -42,10 +42,10 @@ function suchen (){
     console.log("suchen");
 
     //Auslesen der Filtertextfelder
-    let Nachname = document.getElementById("filter_nachname").value;
-    let VN = document.getElementById("filter_vorname").value;
-    let Sem = document.getElementById("filter_semester").value;
-    let JG = document.getElementById("filter_jahrgang").value;
+    let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
+    let VN = document.getElementById("filter_vorname").value.toLowerCase();
+    let Sem = document.getElementById("filter_semester").value.toLowerCase();
+    let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
 
     //Aufrufen aller Studenten
     _db.selectAllStudents().then(function (querySnapshot) {
@@ -54,25 +54,25 @@ function suchen (){
             //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
             let boolean= false;
             if(Nachname!==""){
-                if(doc.data().Name.indexOf(Nachname)>=0){
+                if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
                     boolean = true;
                 }
             }
 
             if(VN!==""){
-                if(doc.data().Vorname.indexOf(VN)>=0){
+                if(doc.data().Vorname.toLowerCase().indexOf(VN)>=0){
                     boolean = true;
                 }
             }
 
             if(Sem!==""){
-                if(doc.data().Semester.indexOf(Sem)>=0){
+                if(doc.data().Semester.toLowerCase().indexOf(Sem)>=0){
                     boolean = true;
                 }
             }
 
             if(JG!==""){
-                if(doc.data().Jahrgang.indexOf(JG)>=0){
+                if(doc.data().Jahrgang.toLowerCase().indexOf(JG)>=0){
                     boolean = true;
                 }
             }
