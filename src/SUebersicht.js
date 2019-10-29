@@ -24,7 +24,7 @@ class StartPage{
 
     onLoad(){
         //EventListener von Suchen-Button
-        document.getElementById("button_filter").addEventListener("click", suchen());
+        document.getElementById("button_filter").addEventListener("click", suchen);
         window.addEventListener("load", anzeigen());
         
     }
@@ -34,9 +34,9 @@ class StartPage{
     }
 }
 
-function suchen() {
+let suchen = _db.selectAllStudents().then(function (querySnapshot) {
 
-}
+});
 
 function einfügen (Name, Vorname, HS, Sem, JG){
     //Einfügen des Studenten//
