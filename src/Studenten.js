@@ -89,6 +89,7 @@ function klapptabelle_erstellung(){
             li = document.createElement("li");
             li.classList.add("inhalt");
             a = document.createElement("a");
+            a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
             a.classList.add("inhalt");
             a.id = doc.data().id;
@@ -96,6 +97,25 @@ function klapptabelle_erstellung(){
             li.appendChild(a);
             ul.appendChild(li);
         });
+    });
+}
+
+function kurzprofilBefuellen(event){
+    let student = _db.selectStudentById(event.target.id);
+    console.log(student);
+    student.then(function(doc){
+        console.log(doc.data().Nachname);
+        document.querySelector("#profil_nachname label").innerHTML = doc.data().Nachname;
+        document.querySelector("#profil_vorname label").innerHTML = doc.data().Vorname;
+        document.querySelector("#profil_jahrgang label").innerHTML = doc.data().Jahrgang;
+        document.querySelector("#profil_semester label").innerHTML = doc.data().Semester;
+        document.querySelector("#profil_hochschule label").innerHTML = doc.data().Hochschule;
+        document.querySelector("#profil_studiengang label").innerHTML = doc.data().Studiengang;
+        document.querySelector("#profil_geburtstag label").innerHTML = doc.data().Geburtstag;
+        document.querySelector("#profil_mitarbeiter_id label").innerHTML = doc.data().id;
+        document.querySelector("#profil_notizen label").innerHTML = doc.data().Notizen;
+    }).catch(function(error){
+        console.log("Student nicht gefunden");
     });
 }
 
