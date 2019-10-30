@@ -53,24 +53,31 @@ function klapptabelle(event){
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
-    let buttoninhalt, button, i, laenge, ul, li, a;
-    let students = _db.selectAllStudents()
+    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0, img;
+    let students = _db.selectAllStudentsOrderBy("Jahrgang");
+
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             buttoninhalt = doc.data().Jahrgang;
             if(document.getElementById("button"+buttoninhalt) === null){
-                // button erstelle                    
-                button = document.createElement("button");
-                button.type = "button";
-                button.id = "button"+buttoninhalt;
-                button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt;
-                eltern.appendChild(button);
                 // liste erstellen
                 ul = document.createElement("ul");
                 ul.classList.add("inhalt");
                 ul.id = "ul"+buttoninhalt;
                 eltern.appendChild(ul);
+                // button erstellen
+                button = document.createElement("button");
+                button.type = "button";
+                button.id = "button"+buttoninhalt;
+                button.classList.add("klapptabelle_button");
+                button.addEventListener('click', klapptabelle);
+                img = document.createElement("img");
+                img.src = "../images/pfeil-rechts.png";
+                img.alt = "Pfeil";
+                img.classList.add("pfeil");
+                button.innerHTML = "<img src='../images/pfeil-unten.png' alt='Pfeil' class='pfeil'>";
+                button.innerHTML += buttoninhalt;
+                ul.appendChild(button);
             }
         });
     });
