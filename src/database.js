@@ -145,6 +145,10 @@ class DB {
     savePhase(phase){
         this._phasen.doc(phasen.id).set(phase);
     }
+
+    selectAllPhases(){
+        return this._db.collection("phasen").get();
+    }
 }
 
 
