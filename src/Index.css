@@ -89,3 +89,8 @@ h1,h2{
     border: none;
     box-shadow: 0 0 0.5em dodgerblue;
 }
+
+.oberstesElement_tabelle{
+    padding: 0;
+    margin: 0;
+}
