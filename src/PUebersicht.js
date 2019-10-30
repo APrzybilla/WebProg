@@ -32,14 +32,33 @@ class Phasenuebersicht{
 }
 
 let neuerStudiengang = () =>{
-    //ids in der Phasentabelle vergeben
-
-
     //Phasentabelle löschen und wieder unsichtbar machen
+    deleteTable("Phasentabelle");
     let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
     buttonPhase.classList.remove("visible");
     buttonPhase.classList.add("hidden");
-    deleteTable("Phasentabelle");
+
+    //zurücksetzen der Hilfsvariablen hilfeTheorie und hilfePraxis
+    hilfeTheorie = 1;
+    hilfePraxis = 1;
+
+    //Phasen in die Datenbank speichern
+    _db.savePhase({
+        "Theorie1" : document.getElementById("Theorie1").value,
+        "Theorie2": document.getElementById("Theorie2").value,
+        "Theorie3": document.getElementById("Theorie3").value,
+        "Theorie4": document.getElementById("Theorie4").value,
+        "Theorie5": document.getElementById("Theorie5").value,
+        "Theorie6": document.getElementById("Theorie6").value,
+        "Praxis1": document.getElementById("Praxis1").value,
+        "Praxis2": document.getElementById("Praxis2").value,
+        "Praxis3": document.getElementById("Praxis3").value,
+        "Praxis4": document.getElementById("Praxis4").value,
+        "Praxis5": document.getElementById("Praxis5").value,
+        "Praxis6": document.getElementById("Praxis6").value,
+        "EndeLetztePhase": document.getElementById("PraxisEnde6").value,
+        "id": document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value
+    });    
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
@@ -48,6 +67,10 @@ function deleteTable(id){
         document.getElementById(id).deleteRow(1);
     }
 }
+
+//Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
+let hilfeTheorie = 1;
+let hilfePraxis = 1;
 
 let neuePhase = () =>{       
     //sichtbar machen der Tabelle//
@@ -85,6 +108,18 @@ let neuePhase = () =>{
     tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
     tdBearb.appendChild(bearb);
     tdLoe.appendChild(loe);
+    
+    //ids vergeben
+    if(tdPhase.value=="Theorie"){
+        tdVon.id = tdPhase.value + hilfeTheorie;
+        tdBis.id = tdPhase.value + "Ende" + hilfeTheorie;
+        hilfeTheorie++;
+    } else if(tdPhase.value=="Praxis"){
+        tdVon.id = tdPhase.value + hilfePraxis;
+        tdBis.id = tdPhase.value + "Ende" + hilfePraxis;
+        hilfePraxis++;
+    }
+    
 
     //hinzufügen der Spalten //
     neueTr.appendChild(tdPhase);
