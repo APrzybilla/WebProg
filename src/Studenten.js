@@ -53,38 +53,30 @@ function klapptabelle(event){
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
-    let buttoninhalt;
-    let button;
-    let i;
-    let laenge;
-    let ul;
-    let li;
-    let a;
-    let students = _db.selectAllStudents().then(function (querySnapshot) {
+    let buttoninhalt, button, i, laenge, ul, li, a;
+    let students = _db.selectAllStudents()
+    students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            //console.log(doc.id, "=>", doc.data().Name);
-            i=0;
-            laenge = eltern.children.length;
             buttoninhalt = doc.data().Jahrgang;
-            do{
-                console.log("eltern.children[i].id");
-                if(typeof eltern.children[0] === 'undefined' || eltern.children[i].id !== "button"+buttoninhalt && eltern.children[i].type === 'button'){
-                    // button erstellen
-                    button = document.createElement("button");
-                    button.type = "button";
-                    button.id = "button"+buttoninhalt;
-                    button.addEventListener('click', klapptabelle);
-                    button.innerHTML = buttoninhalt;
-                    eltern.appendChild(button);
-                    // liste erstellen
-                    ul = document.createElement("ul");
-                    ul.classList.add("inhalt");
-                    ul.id = "ul"+buttoninhalt;
-                    eltern.appendChild(ul);
-                    break;
-                }
-                i++;
-            }while(i<laenge);
+            if(document.getElementById("button"+buttoninhalt) === null){
+                // button erstelle                    
+                button = document.createElement("button");
+                button.type = "button";
+                button.id = "button"+buttoninhalt;
+                button.addEventListener('click', klapptabelle);
+                button.innerHTML = buttoninhalt;
+                eltern.appendChild(button);
+                // liste erstellen
+                ul = document.createElement("ul");
+                ul.classList.add("inhalt");
+                ul.id = "ul"+buttoninhalt;
+                eltern.appendChild(ul);
+            }
+        });
+    });
+    students.then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            buttoninhalt = doc.data().Jahrgang;
 
             ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
