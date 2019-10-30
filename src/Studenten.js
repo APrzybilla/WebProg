@@ -32,25 +32,6 @@ class Studenten{
     }
 }
 
-function klapptabelle(event){
-    // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement;
-    let kinder = eltern.children;
-    // prüfen, ob auf- oder zugeklappt werden soll
-    if(kinder[1].style.display == "none"){
-        // alle aufklappen
-        for(let i = 1; i < kinder.length; i++){
-            kinder[i].style.display = "block";
-        }
-    }
-    else{
-        // alle zuklappen
-        for(let i = 1; i < kinder.length; i++){
-            kinder[i].style.display = "none";
-        }
-    }
-}
-
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
@@ -95,6 +76,25 @@ function klapptabelle_erstellung(){
             ul.appendChild(li);
         });
     });
+}
+
+function klapptabelle(event){
+    // Variablen mit eltern und child werden deklariert
+    let eltern = document.getElementById(event.target.id).parentElement;
+    let kinder = eltern.children;
+    // prüfen, ob auf- oder zugeklappt werden soll
+    if(kinder[1].style.display == "none"){
+        // alle aufklappen
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "block";
+        }
+    }
+    else{
+        // alle zuklappen
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "none";
+        }
+    }
 }
 
 function kurzprofilBefuellen(event){
