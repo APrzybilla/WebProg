@@ -41,12 +41,22 @@ function klapptabelle_erstellung(){
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             buttoninhalt = doc.data().Jahrgang;
+            
+            // Es wird ein Button erstellt, wenn noch keiner für den Jahrgang vorhanden ist
             if(document.getElementById("button"+buttoninhalt) === null){
-                // liste erstellen
+                // Listeneintrag für die Unterteilung in einen Jahrgang
+                li = document.createElement("li");
+                li.id = "li"+buttoninhalt;
+                eltern.appendChild(li);
+
+                // Unterteilung des Jahrgangs in Button und Inhalt
                 ul = document.createElement("ul");
-                ul.classList.add("inhalt");
-                ul.id = "ul"+buttoninhalt;
-                eltern.appendChild(ul);
+                ul.id = "ul" + buttoninhalt;
+                ul.classList.add = "oberstesElement_tabelle";
+                li.appendChild(ul);
+                li = document.createElement("li");
+                ul.appendChild(li);
+
                 // button erstellen
                 button = document.createElement("button");
                 button.type = "button";
@@ -54,7 +64,7 @@ function klapptabelle_erstellung(){
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
                 button.innerHTML = buttoninhalt;
-                ul.appendChild(button);
+                li.appendChild(button);
             }
         });
     });
@@ -65,7 +75,7 @@ function klapptabelle_erstellung(){
             ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
             li.classList.add("inhalt");
-            li.style.display = "none";
+            //li.style.display = "none";
             a = document.createElement("a");
             a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
@@ -79,8 +89,9 @@ function klapptabelle_erstellung(){
 }
 
 function klapptabelle(event){
+    console.log("hallo");
     // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement;
+    let eltern = document.getElementById(event.target.id).parentElement.parentElement;
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
