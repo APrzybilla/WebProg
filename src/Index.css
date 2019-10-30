@@ -80,3 +80,15 @@ h1,h2{
 .hidden{
     display: none;
 }
+
+.klapptabelle_button{
+    background-color: white;
+    color: black;
+    width: auto !important;
+    font-weight: normal;
+    border: none;
+}
+
+.pfeil{
+    width: 0.5em;
+}
