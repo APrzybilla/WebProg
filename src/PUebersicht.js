@@ -23,10 +23,29 @@ class Phasenuebersicht{
     onLoad(){
         //EventListener von Button "Phase Hinzufügen"
         document.getElementById("PhaseHinzufuegen").addEventListener("click", neuePhase);
+        document.getElementById("JahrgangHinzufuegen").addEventListener("click", neuerStudiengang);
     }
 
     onLeave(goon){
         return true;
+    }
+}
+
+let neuerStudiengang = () =>{
+    //ids in der Phasentabelle vergeben
+
+
+    //Phasentabelle löschen und wieder unsichtbar machen
+    let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+    buttonPhase.classList.remove("visible");
+    buttonPhase.classList.add("hidden");
+    deleteTable("Phasentabelle");
+}
+
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
     }
 }
 

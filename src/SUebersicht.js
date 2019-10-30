@@ -37,7 +37,8 @@ class StartPage{
 function suchen (){
     //Tabelle leeren
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
-    deleteTable();
+    deleteTable("Tabllenhead");
+    deleteTable("Tabllenbody");
 
     //Auslesen der Filtertextfelder
     let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
@@ -107,13 +108,10 @@ function suchen (){
     });
 }
 
-//die Tabelle wird geleert
-function deleteTable(){
-    while(document.getElementById("Tabellenhead").rows.length>1){
-        document.getElementById("Tabellenhead").deleteRow(1);
-    }
-    while(document.getElementById("Tabellenbody").rows.length>1){
-        document.getElementById("Tabellenbody").deleteRow(1);
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
     }
 }
 
@@ -163,7 +161,9 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 function anzeigen(){
     //Tabelle leeren
     //dient dazu, dass die Daten nicht doppelt drinnen stehen
-    deleteTable();
+    deleteTable("Tabllenhead");
+    deleteTable("Tabllenbody");
+
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             let Name = doc.data().Name;
