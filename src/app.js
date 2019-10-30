@@ -13,7 +13,7 @@ class App {
         this._currentView = null;
 
         this._router = new Navigo();
-        this._currentUrl = "";
+        this._currentUrl = "/Home";
         this._navAborted = false;
         this._db = new DB();
         this._db.createDemoData();
