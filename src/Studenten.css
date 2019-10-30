@@ -51,6 +51,19 @@
 	float: right;
 }
 
+#delete64{
+    width: 2vw;
+    position: absolute; 
+    bottom: 2.5em;
+    right: 4em;
+}
+#speichern{
+    width: 2vw !important;
+    position: absolute; 
+    bottom: 2.5em;
+    right: 6em;
+}
+
 .studierendenProfil td{ 
 	position: relative;
 	/*border: 1px solid black;*/
