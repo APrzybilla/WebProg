@@ -81,7 +81,7 @@ function klapptabelle_erstellung(){
             a.addEventListener('click', kurzprofilBefuellen);
             a.classList.add("inhalt");
             a.id = doc.data().id;
-            a.innerHTML = doc.data().Vorname + " " + doc.data().Name;
+            a.innerHTML = "<span class='fas fa-pen'></span> " + doc.data().Vorname + " " + doc.data().Name;
             li.appendChild(a);
             ul.appendChild(li);
         });
