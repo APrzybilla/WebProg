@@ -1,6 +1,7 @@
 import stylesheet from "./Studenten.css";
 import App from "./app.js";
 import DB from "./database.js";
+import { DH_UNABLE_TO_CHECK_GENERATOR } from "constants";
 
 let _app="";
 let _db ="";
@@ -53,8 +54,8 @@ function klapptabelle(event){
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
-    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0, img;
-    let students = _db.selectAllStudentsOrderBy("Jahrgang");
+    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
+    let students = _db.selectAllStudentsByOrder("Jahrgang");
 
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
@@ -71,12 +72,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                img = document.createElement("img");
-                img.src = "../images/pfeil-rechts.png";
-                img.alt = "Pfeil";
-                img.classList.add("pfeil");
-                button.innerHTML = "<img src='../images/pfeil-unten.png' alt='Pfeil' class='pfeil'>";
-                button.innerHTML += buttoninhalt;
+                button.innerHTML = buttoninhalt;
                 ul.appendChild(button);
             }
         });
@@ -88,6 +84,7 @@ function klapptabelle_erstellung(){
             ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
             li.classList.add("inhalt");
+            li.style.display = "none";
             a = document.createElement("a");
             a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
