@@ -68,16 +68,7 @@ class DB {
 
     //Aufrufen aller vorhandenen Studenten
     selectAllStudents(){
-        console.log("SelectAllStudents");
         return this._db.collection("students").get();
-        /*let students = [];
-
-        students.forEach(entry => {
-            let student = entry.data();
-            students.push(student);
-        });
-
-        return students;*/
     }
 
     //Gibt einen Student anhand seiner ID zurück
@@ -130,6 +121,22 @@ class DB {
         return batch.commit();
     }
 
+    /*Anlegen eines neuen Jahrgangs
+    Der Aufbau sollte wie folgt aussehen:
+    "Theorie1" : "Startdatum",
+    "Theorie2": "Startdatum",
+    "Theorie3": "Startdatum",
+    "Theorie4": "Startdatum.",
+    "Theorie5": "Startdatum",
+    "Theorie6": "Startdatum",
+    "Praxis1": "Startdatum",
+    "Praxis2": "Startdatum",
+    "Praxis3": "Startdatum",
+    "Praxis4": "Startdatum",
+    "Praxis5": "Startdatum",
+    "Praxis6": "Startdatum",
+    "EndeLetztePhase": "Enddatum",
+    "id": "StudiengangJahrgang"*/
     savePhase(phase){
         this._phasen.doc(phasen.id).set(phase);
     }
