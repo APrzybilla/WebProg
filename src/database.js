@@ -71,6 +71,10 @@ class DB {
         return this._db.collection("students").get();
     }
 
+    selectAllStudentsByOrder(order){
+        return this._db.collection("students").orderBy(order).get();
+    }
+
     //Gibt einen Student anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
     selectStudentById(id){
