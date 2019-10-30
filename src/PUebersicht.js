@@ -21,6 +21,8 @@ class Phasenuebersicht{
     };
 
     onLoad(){
+        //Tabellen erstellen
+        klapptabelle_erstellung();
         //EventListener von Button "Phase Hinzufügen"
         document.getElementById("PhaseHinzufuegen").addEventListener("click", neuePhase);
         document.getElementById("JahrgangHinzufuegen").addEventListener("click", neuerStudiengang);
@@ -146,4 +148,96 @@ let berechneWoche =(date) =>{
 
     return weekNumber;
 }
+
+function klapptabelle_erstellung(){
+    // eltern festlegen
+    let eltern = document.getElementById("phasen_tabelle");
+    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
+    let studentsS = _db.selectAllStudentsByOrder("Studiengang");
+    let studentsJ = _db.selectAllStudentsByOrder("Jahrgang");
+
+    studentsS.then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            buttoninhalt = doc.data().Studiengang;
+            
+            if(document.getElementById("button"+buttoninhalt) === null){
+                // liste erstellen
+                ul = document.createElement("ul");
+                ul.classList.add("inhalt");
+                ul.id = "ul"+buttoninhalt;
+                eltern.appendChild(ul);
+                // button erstellen
+                button = document.createElement("button");
+                button.type = "button";
+                button.id = "button"+buttoninhalt;
+                button.classList.add("klapptabelle_button");
+                button.addEventListener('click', klapptabelle);
+                button.innerHTML = buttoninhalt;
+                ul.appendChild(button);
+            }
+        });
+    });
+
+    studentsJ.then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            buttoninhalt = doc.data().Studiengang + doc.data().Jahrgang;
+            eltern = document.getElementById("ul" + doc.data().Studiengang);
+
+            if(document.getElementById("button"+buttoninhalt) === null){
+                // liste erstellen
+                ul = document.createElement("ul");
+                ul.classList.add("inhalt");
+                ul.id = "ul"+buttoninhalt;
+                eltern.appendChild(ul);
+                // button erstellen
+                button = document.createElement("button");
+                button.type = "button";
+                button.id = "button"+buttoninhalt;
+                button.classList.add("klapptabelle_button");
+                button.addEventListener('click', klapptabelle);
+                button.innerHTML = buttoninhalt;
+                ul.appendChild(button);
+            }
+        });
+    });
+
+    studentsJ.then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            buttoninhalt = doc.data().Studiengang + doc.data().Jahrgang;
+
+            ul = document.getElementById("ul" + buttoninhalt);
+            li = document.createElement("li");
+            li.classList.add("inhalt");
+            //li.style.display = "none";
+            a = document.createElement("a");
+            a.href = "#";
+            a.addEventListener('click', kurzprofilBefuellen);
+            a.classList.add("inhalt");
+            a.id = doc.data().id;
+            a.innerHTML = doc.data().Vorname + " " + doc.data().Name;
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+    });
+}
+
+function klapptabelle(event){
+    // Variablen mit eltern und child werden deklariert
+    let eltern = document.getElementById(event.target.id).parentElement;
+    let kinder = eltern.children;
+    // prüfen, ob auf- oder zugeklappt werden soll
+    if(kinder[1].style.display == "none"){
+        // alle aufklappen
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "block";
+        }
+    }
+    else{
+        // alle zuklappen
+        for(let i = 1; i < kinder.length; i++){
+            kinder[i].style.display = "none";
+        }
+    }
+}
+
 export default Phasenuebersicht;
