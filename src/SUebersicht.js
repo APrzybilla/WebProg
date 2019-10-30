@@ -161,8 +161,8 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 function anzeigen(){
     //Tabelle leeren
     //dient dazu, dass die Daten nicht doppelt drinnen stehen
-    deleteTable("Tabllenhead");
-    deleteTable("Tabllenbody");
+    deleteTable("Tabellenhead");
+    deleteTable("Tabellenbody");
 
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
