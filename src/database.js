@@ -19,6 +19,7 @@ class DB {
         });
         this._db = firebase.firestore();
         this._students=this._db.collection("students");
+        this._phasen = this._db.collection("phasen");
     }
 
      createDemoData(){
@@ -127,6 +128,10 @@ class DB {
         });
 
         return batch.commit();
+    }
+
+    savePhase(phase){
+        this._phasen.doc(phasen.id).set(phase);
     }
 }
 
