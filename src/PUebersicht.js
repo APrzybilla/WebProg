@@ -180,7 +180,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt;
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt;
                 li.appendChild(button);
             }
         });
@@ -214,7 +214,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt.slice(-4);
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4);
                 li.appendChild(button);
                 
                 //li für Button
@@ -328,12 +328,18 @@ function klapptabelle(event){
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
+        // class ändern, damit der Pfeil in eine andere Richtung zeigt
+        kinder[0].querySelector("span").className = "";
+        kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-down");
         // alle aufklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "block";
         }
     }
     else{
+        // class ändern, damit der Pfeil in eine andere Richtung zeigt
+        kinder[0].querySelector("span").className = "";
+        kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-right");
         // alle zuklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "none";
