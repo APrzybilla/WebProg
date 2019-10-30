@@ -152,71 +152,172 @@ let berechneWoche =(date) =>{
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("phasen_tabelle");
-    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
-    let studentsS = _db.selectAllStudentsByOrder("Studiengang");
-    let studentsJ = _db.selectAllStudentsByOrder("Jahrgang");
+    let buttoninhalt, button, ul, li, table, tr, td1, td2;
 
-    studentsS.then(function (querySnapshot) {
+    let phasen = _db.selectAllPhases();
+    // Erste Aufteilung für die Studiengänge
+    phasen.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().Studiengang;
-            
+            buttoninhalt = doc.data().id;
+            buttoninhalt = buttoninhalt.slice(0,-4); // letzte 4 chars werden weggeschnitten
+
             if(document.getElementById("button"+buttoninhalt) === null){
-                // liste erstellen
+                // Liste erstellen
+                li = document.createElement("li");
+                li.id = "li" + buttoninhalt; // Beispielinhalt: liWirtschaftsinformatik
+                eltern.appendChild(li);
+
+                // Liste, als Aufteilung für Button und inhalt
                 ul = document.createElement("ul");
-                ul.classList.add("inhalt");
-                ul.id = "ul"+buttoninhalt;
-                eltern.appendChild(ul);
+                ul.id = "ul" + buttoninhalt;
+                li.appendChild(ul);
+                li = document.createElement("li");
+                ul.appendChild(li);
+
+                // li für button
+                button = document.createElement("button");
+                button.type = "button";
+                button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
+                button.classList.add("klapptabelle_button");
+                button.addEventListener('click', klapptabelle);
+                button.innerHTML = buttoninhalt;
+                li.appendChild(button);
+            }
+        });
+    });
+
+    // Zweite Aufteilung für Jahrgänge
+    phasen.then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            buttoninhalt = doc.data().id;
+            eltern = document.getElementById("ul" + buttoninhalt.slice(0,-4)); // entfernt die letzten 4 chars von buttoninhalt
+
+            if(document.getElementById("button"+buttoninhalt) === null){
+                // Listeneintrag für Wirtschaftsinformatik 2018
+                li = document.createElement("li");
+                li.id = "li" + doc.data().id;
+                eltern.appendChild(li);
+
+                // Aufteilung für Button und inhalt
+                ul = document.createElement("ul");
+                ul.id = "";
+                li.appendChild(ul);
+
+                //li für Button
+                li = document.createElement("li");
+                li.id = "";
+                ul.appendChild(li);
+
                 // button erstellen
                 button = document.createElement("button");
                 button.type = "button";
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt;
-                ul.appendChild(button);
+                button.innerHTML = buttoninhalt.slice(-4);
+                li.appendChild(button);
+                
+                //li für Button
+                li = document.createElement("li");
+                li.id = "";
+                ul.appendChild(li);
+
+                // Tabelle erstellen
+                table = document.createElement("table");
+                table.classList.add("inhalt");
+                table.id = "table"+buttoninhalt;
+                li.appendChild(table);
             }
         });
     });
-
-    studentsJ.then(function (querySnapshot) {
+    phasen.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().Studiengang + doc.data().Jahrgang;
-            eltern = document.getElementById("ul" + doc.data().Studiengang);
+            for(let u=0;u<12;u++){
+                tr = document.createElement("tr");
+                tr.classList.add("inhalt");
+                td1 = document.createElement("td");
+                td1.classList.add("inhalt");
+                td2 = document.createElement("td");
+                td2.classList.add("inhalt");
 
-            if(document.getElementById("button"+buttoninhalt) === null){
-                // liste erstellen
-                ul = document.createElement("ul");
-                ul.classList.add("inhalt");
-                ul.id = "ul"+buttoninhalt;
-                eltern.appendChild(ul);
-                // button erstellen
-                button = document.createElement("button");
-                button.type = "button";
-                button.id = "button"+buttoninhalt;
-                button.classList.add("klapptabelle_button");
-                button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt;
-                ul.appendChild(button);
+                switch (u){
+                    case 0: 
+                        tr.id = "tr" + doc.data().id + "Theorie1";
+                        td2.id = "td" + doc.data().id + "Theorie1";
+                        td1.innerHTML = "Theorie1";
+                        td2.innerHTML = doc.data().Theorie1;
+                        break;
+                    case 1: 
+                        tr.id = "tr" + doc.data().id + "Praxis1";
+                        td2.id = "td" + doc.data().id + "Praxis1";
+                        td1.innerHTML = "Praxis1";
+                        td2.innerHTML = doc.data().Praxis1;
+                        break;
+                    case 2:
+                        tr.id = "tr" + doc.data().id + "Theorie2";
+                        td2.id = "td" + doc.data().id + "Theorie2";
+                        td1.innerHTML = "Theorie2";
+                        td2.innerHTML = doc.data().Theorie2;
+                        break;
+                    case 3:
+                        tr.id = "tr" + doc.data().id + "Praxis2";
+                        td2.id = "td" + doc.data().id + "Praxis2";
+                        td1.innerHTML = "Praxis1";
+                        td2.innerHTML = doc.data().Praxis1;
+                        break;
+                    case 4:
+                        tr.id = "tr" + doc.data().id + "Theorie3";
+                        td2.id = "td" + doc.data().id + "Theorie3";
+                        td1.innerHTML = "Theorie3";
+                        td2.innerHTML = doc.data().Theorie3;
+                        break;
+                    case 5:
+                        tr.id = "tr" + doc.data().id + "Praxis3";
+                        td2.id = "td" + doc.data().id + "Praxis3";
+                        td1.innerHTML = "Praxis3";
+                        td2.innerHTML = doc.data().Praxis3;
+                        break;
+                    case 6:
+                        tr.id = "tr" + doc.data().id + "Theorie4";
+                        td2.id = "td" + doc.data().id + "Theorie4";
+                        td1.innerHTML = "Theorie4";
+                        td2.innerHTML = doc.data().Theorie4;
+                        break;
+                    case 7:
+                        tr.id = "tr" + doc.data().id + "Praxis4";
+                        td2.id = "td" + doc.data().id + "Praxis4";
+                        td1.innerHTML = "Praxis4";
+                        td2.innerHTML = doc.data().Praxis4;
+                        break;
+                    case 8:
+                        tr.id = "tr" + doc.data().id + "Theorie5";
+                        td2.id = "td" + doc.data().id + "Theorie5";
+                        td1.innerHTML = "Theorie5";
+                        td2.innerHTML = doc.data().Theorie5;
+                        break;
+                    case 9:
+                        tr.id = "tr" + doc.data().id + "Praxis5";
+                        td2.id = "td" + doc.data().id + "Praxis5";
+                        td1.innerHTML = "Praxis5";
+                        td2.innerHTML = doc.data().Praxis5;
+                        break;
+                    case 10:
+                        tr.id = "tr" + doc.data().id + "Theorie6";
+                        td2.id = "td" + doc.data().id + "Theorie6";
+                        td1.innerHTML = "Theorie6";
+                        td2.innerHTML = doc.data().Theorie6;
+                        break;
+                    case 11:
+                        tr.id = "tr" + doc.data().id + "Praxis6";
+                        td2.id = "td" + doc.data().id + "Praxis6";
+                        td1.innerHTML = "Praxis6";
+                        td2.innerHTML = doc.data().Praxis6;
+                        break;
+                }
+                table.appendChild(tr);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
             }
-        });
-    });
-
-    studentsJ.then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().Studiengang + doc.data().Jahrgang;
-
-            ul = document.getElementById("ul" + buttoninhalt);
-            li = document.createElement("li");
-            li.classList.add("inhalt");
-            //li.style.display = "none";
-            a = document.createElement("a");
-            a.href = "#";
-            a.addEventListener('click', kurzprofilBefuellen);
-            a.classList.add("inhalt");
-            a.id = doc.data().id;
-            a.innerHTML = doc.data().Vorname + " " + doc.data().Name;
-            li.appendChild(a);
-            ul.appendChild(li);
         });
     });
 }
