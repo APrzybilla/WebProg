@@ -71,6 +71,7 @@ class DB {
         return this._db.collection("students").get();
     }
 
+    //Aufrufen aller Studenten, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc)
     selectAllStudentsByOrder(order){
         return this._db.collection("students").orderBy(order).get();
     }
