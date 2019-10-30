@@ -87,8 +87,5 @@ h1,h2{
     width: auto !important;
     font-weight: normal;
     border: none;
-}
-
-.pfeil{
-    width: 0.5em;
+    box-shadow: 0 0 0.5em dodgerblue;
 }
