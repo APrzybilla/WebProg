@@ -63,7 +63,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = buttoninhalt;
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt;
                 li.appendChild(button);
             }
         });
@@ -89,18 +89,21 @@ function klapptabelle_erstellung(){
 }
 
 function klapptabelle(event){
-    console.log("hallo");
     // Variablen mit eltern und child werden deklariert
     let eltern = document.getElementById(event.target.id).parentElement.parentElement;
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
+        kinder[0].querySelector("span").className = "";
+        kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-down");
         // alle aufklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "block";
         }
     }
     else{
+        kinder[0].querySelector("span").className = "";
+        kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-right")
         // alle zuklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "none";
