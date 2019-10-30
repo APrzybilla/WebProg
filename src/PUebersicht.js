@@ -158,8 +158,7 @@ function klapptabelle_erstellung(){
     // Erste Aufteilung für die Studiengänge
     phasen.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().id;
-            buttoninhalt = buttoninhalt.slice(0,-4); // letzte 4 chars werden weggeschnitten
+            buttoninhalt = doc.data().id.slice(0,-4); // letzte 4 chars werden weggeschnitten
 
             if(document.getElementById("button"+buttoninhalt) === null){
                 // Liste erstellen
@@ -169,7 +168,8 @@ function klapptabelle_erstellung(){
 
                 // Liste, als Aufteilung für Button und inhalt
                 ul = document.createElement("ul");
-                ul.id = "ul" + buttoninhalt;
+                ul.id = "ul" + buttoninhalt; // Beispielinhalt: ulWirtschaftsinformatik
+                ul.classList.add("oberstesElement_tabelle");
                 li.appendChild(ul);
                 li = document.createElement("li");
                 ul.appendChild(li);
@@ -324,7 +324,7 @@ function klapptabelle_erstellung(){
 
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement;
+    let eltern = document.getElementById(event.target.id).parentElement.parentElement;
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
