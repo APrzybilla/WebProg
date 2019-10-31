@@ -42,8 +42,6 @@ let neuerStudiengang = () =>{
     let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
     console.log(document.getElementById("EingabeStudiengang").value);
 
-    //Problem liegt bei der id. Die zwei Felder werden leer zurückgegeben.
-
     try{
         _db.savePhase(
             {
