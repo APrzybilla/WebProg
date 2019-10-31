@@ -23,13 +23,10 @@ class DB {
     }
 
      createDemoData(){
-         console.log("createDemoData");
         let students =  this.selectAllStudents();
-        console.log(this._db.collection("students").get());
 
         //Festlegen von einigen Demodaten, wenn noch keine vorhanden sind
         if(students.length < 1){
-            console.log("ifDemoDaten");
             this.saveStudents([{
                 "Name" : "Sütterlin",
                 "Vorname": "Martin",
@@ -62,8 +59,6 @@ class DB {
                 "Notizen":"Arbeitet prima und verdient eine Gehaltserhöhung"
             }]);
         }
-        console.log("Daten erstellt");
-        console.log(this._db.collection("students").get());
     }
 
     //Aufrufen aller vorhandenen Studenten
