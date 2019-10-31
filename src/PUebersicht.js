@@ -34,33 +34,40 @@ class Phasenuebersicht{
 }
 
 let neuerStudiengang = () =>{
-    //Phasentabelle löschen und wieder unsichtbar machen
-    deleteTable("Phasentabelle");
-    let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
-    buttonPhase.classList.remove("visible");
-    buttonPhase.classList.add("hidden");
-
     //zurücksetzen der Hilfsvariablen hilfeTheorie und hilfePraxis
     hilfeTheorie = 1;
     hilfePraxis = 1;
 
     //Phasen in die Datenbank speichern
-    _db.savePhase({
-        "Theorie1" : document.getElementById("Theorie1").value,
-        "Theorie2": document.getElementById("Theorie2").value,
-        "Theorie3": document.getElementById("Theorie3").value,
-        "Theorie4": document.getElementById("Theorie4").value,
-        "Theorie5": document.getElementById("Theorie5").value,
-        "Theorie6": document.getElementById("Theorie6").value,
-        "Praxis1": document.getElementById("Praxis1").value,
-        "Praxis2": document.getElementById("Praxis2").value,
-        "Praxis3": document.getElementById("Praxis3").value,
-        "Praxis4": document.getElementById("Praxis4").value,
-        "Praxis5": document.getElementById("Praxis5").value,
-        "Praxis6": document.getElementById("Praxis6").value,
-        "EndeLetztePhase": document.getElementById("PraxisEnde6").value,
-        "id": document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value
-    });    
+    console.log(document.getElementById("Theorie1").innerHTML);
+    try{
+        _db.savePhase({
+        "Theorie1" : document.getElementById("Theorie1").innerHTML,
+        "Theorie2": document.getElementById("Theorie2").innerHTML,
+        "Theorie3": document.getElementById("Theorie3").innerHTML,
+        "Theorie4": document.getElementById("Theorie4").innerHTML,
+        "Theorie5": document.getElementById("Theorie5").innerHTML,
+        "Theorie6": document.getElementById("Theorie6").innerHTML,
+        "Praxis1": document.getElementById("Praxis1").innerHTML,
+        "Praxis2": document.getElementById("Praxis2").innerHTML,
+        "Praxis3": document.getElementById("Praxis3").innerHTML,
+        "Praxis4": document.getElementById("Praxis4").innerHTML,
+        "Praxis5": document.getElementById("Praxis5").innerHTML,
+        "Praxis6": document.getElementById("Praxis6").innerHTML,
+        "EndeLetztePhase": document.getElementById("PraxisEnde6").innerHTML,
+        "id": document.getElementById("EingabeStudiengang").innerHTML + document.getElementById("EingabeJahrgang").innerHTML
+        });
+        //Phasentabelle löschen und wieder unsichtbar machen
+        deleteTable("Phasentabelle");
+        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+        buttonPhase.classList.remove("visible");
+        buttonPhase.classList.add("hidden");
+    }catch(error){
+        alert("Fehlerhafte Eingabe");
+        console.log(error);
+    };
+
+    
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
@@ -112,15 +119,19 @@ let neuePhase = () =>{
     tdLoe.appendChild(loe);
     
     //ids vergeben
-    if(tdPhase.value=="Theorie"){
-        tdVon.id = tdPhase.value + hilfeTheorie;
-        tdBis.id = tdPhase.value + "Ende" + hilfeTheorie;
+    console.log((tdPhase.innerHTML + hilfeTheorie));
+    if(tdPhase.innerHTML=="Theorie"){
+        tdVon.id = tdPhase.innerHTML + hilfeTheorie;
+        tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
         hilfeTheorie++;
-    } else if(tdPhase.value=="Praxis"){
-        tdVon.id = tdPhase.value + hilfePraxis;
-        tdBis.id = tdPhase.value + "Ende" + hilfePraxis;
+        console.log("ifTheorie " + hilfeTheorie );
+    } else if(tdPhase.innerHTML=="Praxis"){
+        tdVon.id = tdPhase.innerHTML + hilfePraxis;
+        tdBis.id = tdPhase.innerHTML + "Ende" + hilfePraxis;
         hilfePraxis++;
+        console.log("ifPraxis " + hilfePraxis);
     }
+    console.log("id: " + tdVon.id);
     
 
     //hinzufügen der Spalten //
