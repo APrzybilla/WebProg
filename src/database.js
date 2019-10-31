@@ -143,7 +143,7 @@ class DB {
     "EndeLetztePhase": "Enddatum",
     "id": "StudiengangJahrgang"*/
     savePhase(phase){
-        this._phasen.doc(phasen.id).set(phase);
+        this._phasen.doc(phase.id).set(phase);
     }
 
     selectAllPhases(){
