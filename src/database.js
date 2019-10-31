@@ -149,10 +149,6 @@ class DB {
     selectAllPhases(){
         return this._db.collection("phasen").get();
     }
-
-    selectAllPhasen(){
-        return this._db.collection("phasen").get();
-    }
 }
 
 
