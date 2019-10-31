@@ -37,8 +37,8 @@ class StartPage{
 function suchen (){
     //Tabelle leeren
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
-    deleteTable("Tabllenhead");
-    deleteTable("Tabllenbody");
+    deleteTable("Tabellenhead");
+    deleteTable("Tabellenbody");
 
     //Auslesen der Filtertextfelder
     let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
@@ -47,65 +47,69 @@ function suchen (){
     let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
 
     //Aufrufen aller Studenten
-    _db.selectAllStudentsByOrder("Name", "desc").then(function (querySnapshot) {
-        //jeden Studenten überprüfen
-        querySnapshot.forEach(function(doc){
-            //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
-            
-            let boolean= false;
+    if(Nachname=="" && VN=="" && Sem=="" && JG=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
+        anzeigen();
+    } else {
+        _db.selectAllStudentsByOrder("Name", "desc").then(function (querySnapshot) {
+            //jeden Studenten überprüfen
+            querySnapshot.forEach(function(doc){
 
-            //Überprüfen, ob etwas in den Feldern steht
-            if(Nachname!==""){
-                //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
-                //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
-                if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
-                    boolean = true;
+                //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+                let boolean= false;
+
+                //Überprüfen, ob etwas in den Feldern steht
+                if(Nachname!==""){
+                    //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
+                    //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
+                    if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
+                        boolean = true;
+                    }
                 }
-            }
 
-            if(VN!==""){
-                if(doc.data().Vorname.toLowerCase().indexOf(VN)>=0){
-                    boolean = true;
+                if(VN!==""){
+                    if(doc.data().Vorname.toLowerCase().indexOf(VN)>=0){
+                        boolean = true;
+                    }
                 }
-            }
 
-            if(Sem!==""){
-                if(doc.data().Semester.toLowerCase().indexOf(Sem)>=0){
-                    boolean = true;
+                if(Sem!==""){
+                    if(doc.data().Semester.toLowerCase().indexOf(Sem)>=0){
+                        boolean = true;
+                    }
                 }
-            }
 
-            if(JG!==""){
-                if(doc.data().Jahrgang.toLowerCase().indexOf(JG)>=0){
-                    boolean = true;
+                if(JG!==""){
+                    if(doc.data().Jahrgang.toLowerCase().indexOf(JG)>=0){
+                        boolean = true;
+                    }
                 }
-            }
 
-            //Überprüfen der Checkboxen DHBW und THM
-            if(document.getElementById("checkbox_dhbw").checked){
-                if(doc.data().Hochschule.toLowerCase()=="dhbw"){
-                    boolean = true;
+                //Überprüfen der Checkboxen DHBW und THM
+                if(document.getElementById("checkbox_dhbw").checked){
+                    if(doc.data().Hochschule.toLowerCase()=="dhbw"){
+                        boolean = true;
+                    }
                 }
-            }
 
-            if(document.getElementById("checkbox_thm").checked){
-                if(doc.data().Hochschule.toLowerCase()=="thm"){
-                    boolean = true;
+                if(document.getElementById("checkbox_thm").checked){
+                    if(doc.data().Hochschule.toLowerCase()=="thm"){
+                        boolean = true;
+                    }
                 }
-            }
 
-            //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
-            if(boolean){
-                let Name = doc.data().Name;
-                let Vorname = doc.data().Vorname;
-                let HS = doc.data().Hochschule;
-                let Sem = doc.data().Semester;
-                let Jahrgang = doc.data().Jahrgang;
+                //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
+                if(boolean){
+                    let Name = doc.data().Name;
+                    let Vorname = doc.data().Vorname;
+                    let HS = doc.data().Hochschule;
+                    let Sem = doc.data().Semester;
+                    let Jahrgang = doc.data().Jahrgang;
 
-                einfügen(Name, Vorname, HS, Sem, Jahrgang);
-            }
+                    einfügen(Name, Vorname, HS, Sem, Jahrgang);
+                }
+            });
         });
-    });
+    }
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
@@ -164,7 +168,7 @@ function anzeigen(){
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
-    let students = _db.selectAllStudentsByOrder("Name", "desc").then(function (querySnapshot) {
+    let students = _db.selectAllStudentsByOrder("Name").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
