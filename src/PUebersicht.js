@@ -39,24 +39,30 @@ let neuerStudiengang = () =>{
     hilfePraxis = 1;
 
     //Phasen in die Datenbank speichern
-    console.log(document.getElementById("Theorie1").innerHTML);
+    let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
+    console.log(document.getElementById("EingabeStudiengang").value);
+
+    //Problem liegt bei der id. Die zwei Felder werden leer zurückgegeben.
+
     try{
-        _db.savePhase({
-        "Theorie1" : document.getElementById("Theorie1").innerHTML,
-        "Theorie2": document.getElementById("Theorie2").innerHTML,
-        "Theorie3": document.getElementById("Theorie3").innerHTML,
-        "Theorie4": document.getElementById("Theorie4").innerHTML,
-        "Theorie5": document.getElementById("Theorie5").innerHTML,
-        "Theorie6": document.getElementById("Theorie6").innerHTML,
-        "Praxis1": document.getElementById("Praxis1").innerHTML,
-        "Praxis2": document.getElementById("Praxis2").innerHTML,
-        "Praxis3": document.getElementById("Praxis3").innerHTML,
-        "Praxis4": document.getElementById("Praxis4").innerHTML,
-        "Praxis5": document.getElementById("Praxis5").innerHTML,
-        "Praxis6": document.getElementById("Praxis6").innerHTML,
-        "EndeLetztePhase": document.getElementById("PraxisEnde6").innerHTML,
-        "id": document.getElementById("EingabeStudiengang").innerHTML + document.getElementById("EingabeJahrgang").innerHTML
-        });
+        _db.savePhase(
+            {
+            "Theorie1": document.getElementById("Theorie1").innerHTML,
+            "Theorie2": document.getElementById("Theorie2").innerHTML,
+            "Theorie3": document.getElementById("Theorie3").innerHTML,
+            "Theorie4": document.getElementById("Theorie4").innerHTML,
+            "Theorie5": document.getElementById("Theorie5").innerHTML,
+            "Theorie6": document.getElementById("Theorie6").innerHTML,
+            "Praxis1": document.getElementById("Praxis1").innerHTML,
+            "Praxis2": document.getElementById("Praxis2").innerHTML,
+            "Praxis3": document.getElementById("Praxis3").innerHTML,
+            "Praxis4": document.getElementById("Praxis4").innerHTML,
+            "Praxis5": document.getElementById("Praxis5").innerHTML,
+            "Praxis6": document.getElementById("Praxis6").innerHTML,
+            "EndeLetztePhase": document.getElementById("PraxisEnde6").innerHTML,
+            "id": id
+            }
+        );
         //Phasentabelle löschen und wieder unsichtbar machen
         deleteTable("Phasentabelle");
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
