@@ -47,7 +47,7 @@ function suchen (){
     let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
 
     //Aufrufen aller Studenten
-    _db.selectAllStudents().then(function (querySnapshot) {
+    _db.selectAllStudentsByOrder("Name").then(function (querySnapshot) {
         //jeden Studenten überprüfen
         querySnapshot.forEach(function(doc){
             //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
@@ -164,7 +164,7 @@ function anzeigen(){
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
-    let students = _db.selectAllStudents().then(function (querySnapshot) {
+    let students = _db.selectAllStudentsByOrder("Name", "Vorname").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
