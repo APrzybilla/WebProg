@@ -6,19 +6,17 @@
 
 #app main{
     margin: 1vw;
-    font-size: 1.1em;
 }
 
 #app nav{
-    padding-top: 1em;
+    padding-top: 1vw;
     padding-bottom: 1vw;
-    padding-left: 12em;
     background-color:#007bff;
-    font-size: 1.2em;
+    font-size: 4vw;
 }
+
 #app header span{
-    padding-top: 0.7em;
-    font-size: 1.5em;
+    font-size: 4vw;
     float:left;
     padding-left: 1vw;
 }
@@ -82,5 +80,15 @@
 @media(min-width:1300px){
     #app header{
         display: inline;
+    }
+    #app nav{
+        padding-top: 1em;
+        padding-left: 12em;
+        font-size: 1.2em;
+    }
+
+    #app header span{
+        padding-top: 0.7em;
+        font-size: 1.5em;
     }
 }
