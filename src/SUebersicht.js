@@ -50,7 +50,7 @@ function suchen (){
     if(Nachname=="" && VN=="" && Sem=="" && JG=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
         anzeigen();
     } else {
-        _db.selectAllStudentsByOrder("Name", "desc").then(function (querySnapshot) {
+        _db.selectAllStudentsByOrderBackwards("Name", "desc").then(function (querySnapshot) {
             //jeden Studenten überprüfen
             querySnapshot.forEach(function(doc){
 
@@ -168,7 +168,7 @@ function anzeigen(){
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
-    let students = _db.selectAllStudentsByOrder("Name").then(function (querySnapshot) {
+    let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
