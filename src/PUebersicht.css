@@ -1,5 +1,4 @@
-/*section Phasenübersicht*/
-
+/*Handy*/
 /*Aufteilung des Bildschirms*/
 #Auflistung{
     width: 48vw;
@@ -101,4 +100,14 @@ li {
 
 #tableWirtschaftsinformatik2018{
     padding-left: 20px;
+}
+
+/*Tablets*/
+@media(min-width:700px){
+
+}
+
+/*Laptop*/
+@media(min-width:1300px){
+    
 }
