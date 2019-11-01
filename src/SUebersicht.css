@@ -79,7 +79,51 @@ button:active{
     background-color: darkblue;
 }
 
+/* Übersichttabelle */
+#tabelleUebersicht thead,
+#tabelleUebersicht tbody {
+    display:inline-block;
+    width: 25vw;
+    height: auto;
+}
 
+/*Scrollbar*/
+#tabelleUebersicht tbody {
+    width: 70vw;
+    overflow-x: scroll;
+}
+
+#tabelleUebersicht{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 1195px;
+    border-radius:  5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/*Oberste Zeile der Tabelle*/
+.top{
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+#tabelleUebersicht th,
+#tabelleUebersicht td{
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    height: 2em;
+    vertical-align: middle;
+    width: 5vw;
+    table-layout: fixed;
+}
+
+#tabelleUebersicht tr{
+    border-bottom: 1px solid #dddddd;
+}
 
 /*Für die Unterschiedliche Färbung der Zeilen*/
 #tabelleUebersicht tbody tr:nth-of-type(even),
@@ -109,49 +153,5 @@ button:active{
         visibility: visible;
     }
 
-    /* Übersichttabelle */
-    #tabelleUebersicht thead,
-    #tabelleUebersicht tbody {
-        display:inline-block;
-        width: 25vw;
-        height: auto;
-    }
-
-    /*Scrollbar*/
-    #tabelleUebersicht tbody {
-        width: 70vw;
-        overflow-x: scroll;
-    }
-
-    #tabelleUebersicht{
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        min-width: 1195px;
-        border-radius:  5px;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        text-align: center;
-    }
-
-    /*Oberste Zeile der Tabelle*/
-    .top{
-        background-color: blue;
-        color: white;
-        font-weight: bold;
-    }
-
-    #tabelleUebersicht th,
-    #tabelleUebersicht td{
-        border-right: 1px solid #dddddd;
-        border-left: 1px solid #dddddd;
-        height: 2em;
-        vertical-align: middle;
-        width: 5vw;
-        table-layout: fixed;
-    }
-
-    #tabelleUebersicht tr{
-        border-bottom: 1px solid #dddddd;
-    }
+    
 }
