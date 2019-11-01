@@ -1,5 +1,7 @@
 "use strict"; 
 
+import stylesheet from "./app.css";
+
 import Navigo from "../node_modules/navigo/lib/navigo.js";
 import DB from "./database.js";
 
