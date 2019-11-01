@@ -5,11 +5,11 @@
 
 /* Filter */
 .textfeld_filter{
-    width: 15vw;
+    font-size: 3vw;
+    width: 20vw;
     border: 1px solid #aaa;
     border-radius: 5px;
-    outline: none;
-    padding: 8px;
+    padding: 1vw;
     box-sizing: border-box;
     transition: .3s;
     margin-right: 10px;
@@ -24,7 +24,7 @@
 
 .checkbox-group{
     display: inline-block;
-    margin-right: 1vw; 
+    margin: 1vw; 
     vertical-align: middle;
 }
 
@@ -38,10 +38,9 @@
     background-color: blue;
     border: 1px solid #aaa;
     border-radius: 5px;
-    outline: none;
     box-sizing: border-box;
     transition: .3s;
-    padding:0.7em;
+    padding: 1vw;
 }
 
 .checkbox-group label:hover{
@@ -154,15 +153,12 @@ button:active{
     }
 
     .textfeld_filter{
+        font-size: 1vw;
         width: 15vw;
-        border: 1px solid #aaa;
-        border-radius: 5px;
-        outline: none;
         padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        margin-right: 10px;
-        color: darkblue;
-        vertical-align: middle;
+    }
+
+    .checkbox-group label{
+        padding:0.7em;
     }
 }
