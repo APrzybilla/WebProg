@@ -1,3 +1,16 @@
+/*Laptop*/
+@media(min-width:1300px){
+
+}
+
+/*Tablets*/
+@media(min-width:700px){
+
+}
+
+/*Handy*/
+
+
 /* Standard für alle Seiten */
 html, body {
     padding: 0;
