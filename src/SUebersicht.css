@@ -1,3 +1,4 @@
+/*Handy*/
 /* Filter */
 .textfeld_filter{
     width: 15vw;
@@ -143,4 +144,14 @@ button:active{
 }
 #studenten_tabelle:target .tabellen_inhalt {
     display: block;
+}
+
+/*Tablets*/
+@media(min-width:700px){
+
+}
+
+/*Laptop*/
+@media(min-width:1300px){
+    
 }
