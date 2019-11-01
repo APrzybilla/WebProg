@@ -1,4 +1,8 @@
 /*Handy*/
+.handyUnsichtbar{
+    visibility: collapse;
+}
+
 /* Filter */
 .textfeld_filter{
     width: 15vw;
@@ -101,6 +105,10 @@ button:active{
 
 /*Laptop*/
 @media(min-width:1200px){
+    .handyUnsichtbar{
+        visibility: visible;
+    }
+
     /* Übersichttabelle */
     #tabelleUebersicht thead,
     #tabelleUebersicht tbody {
