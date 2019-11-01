@@ -130,6 +130,11 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     let tdS = document.createElement("td");
     let tdJG = document.createElement("td");
 
+    //Vergeben von Klassen, damit auf der Handyversion nur der Name angezeigt wird
+    tdHS.classList.add("handyUnsichtbar");
+    tdS.classList.add("handyUnsichtbar");
+    tdJG.classList.add("handyUnsichtbar");
+
     //befüllen der Spalten//
     tdName.innerHTML = Vorname +" " + Name;
     tdHS.innerHTML = HS;
