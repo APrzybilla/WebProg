@@ -33,27 +33,9 @@
     display: none;
 }
 
-button{
-    width: 20vw;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    padding: 3px;
-    box-sizing: border-box;
-    transition: .3s;
-    background: blue;
-    color: white;
-    font-weight: bold;
-    vertical-align: middle;
-    float: right;
-}
-
 button:hover{
     border-color: dodgerblue;
     box-shadow: 0 0 8px dodgerblue;
-}
-
-button:active{
-    background-color: darkblue;
 }
 
 /* Übersichttabelle */
@@ -96,18 +78,20 @@ button:active{
 
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
-    color:rgb(124, 124, 124);
+    color: white;
 }
 
 /*Für die Unterschiedliche Färbung der Zeilen*/
-#tabelleUebersicht tbody tr:nth-of-type(even),
-#tabelleUebersicht thead tr:nth-of-type(even){
+#tabelleUebersicht tbody tr:nth-of-type(even){
     background-color: rgb(255, 255, 255);
 }
 
-#tabelleUebersicht tbody tr:nth-of-type(odd),
-#tabelleUebersicht thead tr:nth-of-type(odd){
+#tabelleUebersicht tbody tr:nth-of-type(odd){
     background-color: rgba(255, 255, 255, 0.945);
+}
+
+#tabelleUebersicht thead td{
+    background: #6777da;
 }
 
 /*Damit die letzte Zeile einen blauen Strich unten hat*/
