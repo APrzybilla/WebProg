@@ -15,6 +15,7 @@
     margin-right: 10px;
     color: darkblue;
     vertical-align: middle;
+    margin-bottom: 2vw;
 }
 
 .textfeld_filter:focus{
@@ -55,18 +56,17 @@
 }
 
 button{
-    width: 10%;
+    width: 20vw;
     border: 1px solid #aaa;
     border-radius: 5px;
-    outline: none;
-    padding: 4px;
+    padding: 3px;
     box-sizing: border-box;
     transition: .3s;
     background: blue;
     color: white;
     font-weight: bold;
-    font-size: 20px;
     vertical-align: middle;
+    float: right;
 }
 
 button:hover{
@@ -95,8 +95,6 @@ button:active{
 #tabelleUebersicht{
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 1195px;
     border-radius:  5px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -114,7 +112,7 @@ button:active{
 #tabelleUebersicht td{
     border-right: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
-    height: 2em;
+    height: 2.4em;
     vertical-align: middle;
     width: 5vw;
     table-layout: fixed;
@@ -156,9 +154,27 @@ button:active{
         font-size: 1vw;
         width: 15vw;
         padding: 8px;
+        margin-bottom: 0vw;
     }
 
     .checkbox-group label{
         padding:0.7em;
+    }
+
+    button{
+        width: 10%;
+        padding: 4px;
+        box-sizing: border-box;
+        font-size: 20px;
+        float: none;
+    }
+    
+    #tabelleUebersicht{
+        min-width: 1195px;
+    }
+
+    #tabelleUebersicht th,
+    #tabelleUebersicht td{
+        height: 2em;
     }
 }
