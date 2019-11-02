@@ -16,7 +16,9 @@
     display: block;
 }
 
-
+#app #header{
+    font-size: 2vw;
+}
 
 #app a{
     padding-left: 1em;
@@ -94,7 +96,7 @@
         font-size: 4vw;
         float:left;
         padding-left: 1vw;
-        color: #f64c72
+        color: #f64c72;
     }
     
     #app .headera:link{
