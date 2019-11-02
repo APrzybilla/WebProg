@@ -8,29 +8,15 @@
     margin: 1vw;
 }
 
-#app nav{
-    padding-top: 1vw;
-    padding-bottom: 1vw;
-    background-color:#007bff;
-    font-size: 4vw;
+#app #laptop{
+    display: none;
 }
 
-#app header span{
-    font-size: 4vw;
-    float:left;
-    padding-left: 1vw;
+#app #handy{
+    display: block;
 }
 
-#app .headera:link{
-    text-decoration: none;
-    color:white;
-} 
-#app td a:hover{
-    color: black;
-}
-#app .headera:visited{
-    color:white;
-}
+
 #app a{
     padding-left: 1em;
     text-decoration: none;
@@ -77,18 +63,42 @@
 }
 
 /*Laptop*/
-@media(min-width:1300px){
+@media(min-width:1200px){
+    #app #laptop{
+        display: block;
+    }
+
+    #app #handy{
+        display: none;
+    }
+
     #app header{
         display: inline;
     }
+
     #app nav{
         padding-top: 1em;
         padding-left: 12em;
         font-size: 1.2em;
+        padding-bottom: 1vw;
+        background-color:#007bff;
     }
-
+    
     #app header span{
         padding-top: 0.7em;
         font-size: 1.5em;
+        float:left;
+        padding-left: 1vw;
+    }
+    
+    #app .headera:link{
+        text-decoration: none;
+        color:white;
+    } 
+    #app td a:hover{
+        color: black;
+    }
+    #app .headera:visited{
+        color:white;
     }
 }
