@@ -11,14 +11,18 @@
 #app nav{
     padding-top: 1vw;
     padding-bottom: 1vw;
-    background-color:#007bff;
+    background-color:#2f2fa2;
     font-size: 4vw;
+    
+    text-align: end;
+    padding-right: 10vw;
 }
 
 #app header span{
     font-size: 4vw;
     float:left;
     padding-left: 1vw;
+    color: #f64c72;
 }
 
 #app .headera:link{
@@ -40,23 +44,6 @@
     height: 0.8em;
 }
 
-#app h1,h2{
-    color: black;
-}
-
-/* inhalt der aufklappbaren Tabellen*/
-#app .tabellen_inhalt { 
-    padding: 10px 10px 1px;
-    margin: 0px 0px 10px;
-}
-
-#app .show span, .hide span{
-    color: black;
-    padding-left: 0.5em;
-}
-
-
-
 #app .klapptabelle_button{
     background-color: white;
     color: black;
@@ -66,9 +53,29 @@
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
-#app .oberstesElement_tabelle{
-    padding: 0;
-    margin: 0;
+/*Standard für Buttons festlegen */
+#app button{
+    color: white;
+    background-image: url("../images/button_hintergrund.png");
+    background-size: contain;
+    border: none;
+}
+
+/*Standard für Inputs festlegen */
+#app input[type="checkbox"]+label{
+    color: #f64c72;
+    border: 2px solid #f63c72;
+    background: #2f2fa2;
+}
+
+#app input:checked + label{
+    color: white;
+    border-color: white;
+    box-shadow: none;
+}
+
+#app input[type="checkbox"]:hover+label:hover{
+    box-shadow: 0 0 8px dodgerblue;
 }
 
 /*Tablets*/
@@ -77,18 +84,17 @@
 }
 
 /*Laptop*/
-@media(min-width:1300px){
+@media(min-width:1200px){
     #app header{
         display: inline;
     }
     #app nav{
-        padding-top: 1em;
         padding-left: 12em;
         font-size: 1.2em;
     }
 
     #app header span{
-        padding-top: 0.7em;
-        font-size: 1.5em;
+        padding-top: 0.2em;
+        font-size: 2em;
     }
 }
