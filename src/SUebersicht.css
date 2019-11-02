@@ -74,13 +74,12 @@ button:active{
     margin: 2vw 0;
     border-radius:  0.3em;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
 /*Oberste Zeile der Tabelle*/
-.top{
-    background-color: blue;
+#tabelleUebersicht th{
+    background-color: #99738E;
     color: white;
     font-weight: bold;
 }
@@ -97,17 +96,18 @@ button:active{
 
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
+    color:rgb(124, 124, 124);
 }
 
 /*Für die Unterschiedliche Färbung der Zeilen*/
 #tabelleUebersicht tbody tr:nth-of-type(even),
 #tabelleUebersicht thead tr:nth-of-type(even){
-    background-color: #f3f3f3;
+    background-color: rgb(255, 255, 255);
 }
 
 #tabelleUebersicht tbody tr:nth-of-type(odd),
 #tabelleUebersicht thead tr:nth-of-type(odd){
-    background-color: lightgray;
+    background-color: rgba(255, 255, 255, 0.945);
 }
 
 /*Damit die letzte Zeile einen blauen Strich unten hat*/
