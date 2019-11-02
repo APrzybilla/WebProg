@@ -84,17 +84,18 @@
         padding-top: 1vw;
         padding-bottom: 1vw;
         background-color:#2f2fa2;
-        font-size: 4vw;
+        font-size: 1.2em;
 
         text-align: end;
         padding-right: 10vw;
     }
     
     #app header span{
-        font-size: 4vw;
+        font-size: 2em;
         float:left;
         padding-left: 1vw;
-        color: #f64c72
+        color: #f64c72;
+        padding-top: 0.2em;
     }
     
     #app .headera:link{
@@ -106,7 +107,5 @@
     }
     #app .headera:visited{
         color:white;
-        padding-top: 0.2em;
-        font-size: 2em;
     }
 }
