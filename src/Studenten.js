@@ -75,7 +75,7 @@ function klapptabelle_erstellung(){
             ul = document.getElementById("ul" + buttoninhalt);
             li = document.createElement("li");
             li.classList.add("inhalt");
-            //li.style.display = "none";
+            li.style.display = "none";
             a = document.createElement("a");
             a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
