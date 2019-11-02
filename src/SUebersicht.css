@@ -33,28 +33,6 @@
     display: none;
 }
 
-.checkbox-group label{
-    border: 1px solid #333;
-    color: white;
-    background-color: blue;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: .3s;
-    padding: 1vw;
-}
-
-.checkbox-group label:hover{
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px dodgerblue;
-}
-
-.checkbox-group input:checked + label{
-    background: white;
-    color: darkblue;
-    box-shadow: none;
-}
-
 button{
     width: 20vw;
     border: 1px solid #aaa;
@@ -79,8 +57,7 @@ button:active{
 }
 
 /* Übersichttabelle */
-#tabelleUebersicht thead,
-#tabelleUebersicht tbody {
+#tabelleUebersicht thead, #tabelleUebersicht tbody{
     display:inline-block;
     width: 25vw;
     height: auto;
@@ -94,8 +71,8 @@ button:active{
 
 #tabelleUebersicht{
     border-collapse: collapse;
-    margin: 25px 0;
-    border-radius:  5px;
+    margin: 2vw 0;
+    border-radius:  0.3em;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     text-align: center;
