@@ -250,7 +250,7 @@ function klapptabelle_erstellung(){
                 
                 //li für Button
                 li = document.createElement("li");
-                li.id = "";
+                li.style.display = "none";
                 ul.appendChild(li);
 
                 // Tabelle erstellen
@@ -345,7 +345,6 @@ function klapptabelle_erstellung(){
                         td2.innerHTML = doc.data().Praxis6;
                         break;
                 }
-
                 document.getElementById("table"+doc.data().id).appendChild(tr);
                 tr.appendChild(td1);
                 tr.appendChild(td2);
