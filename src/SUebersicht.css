@@ -149,9 +149,4 @@ button:active{
     #tabelleUebersicht{
         min-width: 1195px;
     }
-
-    #tabelleUebersicht th,
-    #tabelleUebersicht td{
-        height: 2em;
-    }
 }
