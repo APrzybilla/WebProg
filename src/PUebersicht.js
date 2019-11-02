@@ -117,8 +117,8 @@ let neuePhase = () =>{
 
     //befüllen der Spalten//
     tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
-    tdVon.innerHTML = document.getElementById("Startdatum").value;
-    tdBis.innerHTML = document.getElementById("Enddatum").value;
+    tdVon.innerHTML = datumsausgabe(document.getElementById("Startdatum").value);
+    tdBis.innerHTML = datumsausgabe(document.getElementById("Enddatum").value);
     tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
     tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
     tdBearb.appendChild(bearb);
@@ -150,6 +150,20 @@ let neuePhase = () =>{
     neueTr.appendChild(tdLoe);
 }
 
+let datumsausgabe = (date) =>{
+    date = new Date(date);
+    let tag = String(date.getDate());
+    console.log(tag.length);
+    if(tag.length==1){
+        tag = "0"+tag;
+    }
+    
+    console.log(tag);
+    
+    return tag + "." + (date.getMonth()+1) + "." + date.getFullYear();
+}
+
+//Kalenderwoche berechnen
 let berechneWoche =(date) =>{
     date = new Date(date);
     let j = date.getFullYear();
