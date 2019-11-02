@@ -148,19 +148,37 @@ let neuePhase = () =>{
     neueTr.appendChild(tdEnd);
     neueTr.appendChild(tdBearb);
     neueTr.appendChild(tdLoe);
+
+    //Hinzufügen von EventListener der Buttons
+    //bearb.addEventListener("click", bearbeiten(neueTr.rowIndex));
+    //loe.addEventListener("click", loeschen(neueTr.rowIndex));
 }
 
+//EventListener von bearbeiten-Button
+let bearbeiten = (zeile) =>{
+
+}
+
+//EventListener von löschen-Button
+let loeschen = (zeile) =>{
+    document.getElementById("Phasentabelle").deleteRow(zeile);
+}
+
+//Formatieren des Datums in 01.01.2019
 let datumsausgabe = (date) =>{
     date = new Date(date);
     let tag = String(date.getDate());
-    console.log(tag.length);
+    let month = String(date.getMonth());
+    if(month.length==1){
+        month = "0"+month;
+    }
     if(tag.length==1){
         tag = "0"+tag;
     }
     
     console.log(tag);
     
-    return tag + "." + (date.getMonth()+1) + "." + date.getFullYear();
+    return tag + "." + month + "." + date.getFullYear();
 }
 
 //Kalenderwoche berechnen
