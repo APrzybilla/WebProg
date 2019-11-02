@@ -16,7 +16,47 @@
     display: block;
 }
 
+#app nav{
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    background-color:#2f2fa2;
+    font-size: 1.2em;
 
+    text-align: end;
+    padding-right: 5vw;
+    vertical-align: middle;
+}
+
+#app #handy .submenu { 
+    display: none;
+    z-index: 1000;
+}
+
+#app #handy i:hover .submenu, 
+#app #handy i:focus .submenu{
+    display: inline;
+    height: auto;
+}
+
+#app header span{
+    font-size: 2em;
+    float:left;
+    padding-left: 1vw;
+    color: #f64c72;
+    padding-top: 0.2em;
+    vertical-align: middle;
+}
+
+#app .headera:link{
+    text-decoration: none;
+    color:white;
+} 
+#app td a:hover{
+    color: black;
+}
+#app .headera:visited{
+    color:white;
+}
 
 #app a{
     padding-left: 1em;
