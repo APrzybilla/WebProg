@@ -261,77 +261,78 @@ function klapptabelle_erstellung(){
                     case 0: 
                         tr.id = "tr" + doc.data().id + "Theorie1";
                         td2.id = "td" + doc.data().id + "Theorie1";
-                        td1.innerHTML = "Theorie1";
+                        td1.innerHTML = "Theorie 1:";
                         td2.innerHTML = doc.data().Theorie1;
                         break;
                     case 1: 
                         tr.id = "tr" + doc.data().id + "Praxis1";
                         td2.id = "td" + doc.data().id + "Praxis1";
-                        td1.innerHTML = "Praxis1";
+                        td1.innerHTML = "Praxis 1:";
                         td2.innerHTML = doc.data().Praxis1;
                         break;
                     case 2:
                         tr.id = "tr" + doc.data().id + "Theorie2";
                         td2.id = "td" + doc.data().id + "Theorie2";
-                        td1.innerHTML = "Theorie2";
+                        td1.innerHTML = "Theorie 2:";
                         td2.innerHTML = doc.data().Theorie2;
                         break;
                     case 3:
                         tr.id = "tr" + doc.data().id + "Praxis2";
                         td2.id = "td" + doc.data().id + "Praxis2";
-                        td1.innerHTML = "Praxis1";
+                        td1.innerHTML = "Praxis 2:";
                         td2.innerHTML = doc.data().Praxis1;
                         break;
                     case 4:
                         tr.id = "tr" + doc.data().id + "Theorie3";
                         td2.id = "td" + doc.data().id + "Theorie3";
-                        td1.innerHTML = "Theorie3";
+                        td1.innerHTML = "Theorie 3:";
                         td2.innerHTML = doc.data().Theorie3;
                         break;
                     case 5:
                         tr.id = "tr" + doc.data().id + "Praxis3";
                         td2.id = "td" + doc.data().id + "Praxis3";
-                        td1.innerHTML = "Praxis3";
+                        td1.innerHTML = "Praxis 3:";
                         td2.innerHTML = doc.data().Praxis3;
                         break;
                     case 6:
                         tr.id = "tr" + doc.data().id + "Theorie4";
                         td2.id = "td" + doc.data().id + "Theorie4";
-                        td1.innerHTML = "Theorie4";
+                        td1.innerHTML = "Theorie 4:";
                         td2.innerHTML = doc.data().Theorie4;
                         break;
                     case 7:
                         tr.id = "tr" + doc.data().id + "Praxis4";
                         td2.id = "td" + doc.data().id + "Praxis4";
-                        td1.innerHTML = "Praxis4";
+                        td1.innerHTML = "Praxis 4:";
                         td2.innerHTML = doc.data().Praxis4;
                         break;
                     case 8:
                         tr.id = "tr" + doc.data().id + "Theorie5";
                         td2.id = "td" + doc.data().id + "Theorie5";
-                        td1.innerHTML = "Theorie5";
+                        td1.innerHTML = "Theorie 5:";
                         td2.innerHTML = doc.data().Theorie5;
                         break;
                     case 9:
                         tr.id = "tr" + doc.data().id + "Praxis5";
                         td2.id = "td" + doc.data().id + "Praxis5";
-                        td1.innerHTML = "Praxis5";
+                        td1.innerHTML = "Praxis 5:";
                         td2.innerHTML = doc.data().Praxis5;
                         break;
                     case 10:
                         tr.id = "tr" + doc.data().id + "Theorie6";
                         td2.id = "td" + doc.data().id + "Theorie6";
-                        td1.innerHTML = "Theorie6";
+                        td1.innerHTML = "Theorie 6:";
                         td2.innerHTML = doc.data().Theorie6;
                         break;
                     case 11:
                         tr.id = "tr" + doc.data().id + "Praxis6";
                         td2.id = "td" + doc.data().id + "Praxis6";
-                        td1.innerHTML = "Praxis6";
+                        td1.innerHTML = "Praxis 6:";
                         td2.innerHTML = doc.data().Praxis6;
                         break;
                 }
-                table.appendChild(tr);
+
+                document.getElementById("table"+doc.data().id).appendChild(tr);
                 tr.appendChild(td1);
                 tr.appendChild(td2);
             }
