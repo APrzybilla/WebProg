@@ -83,11 +83,11 @@
     #app nav{
         padding-top: 1vw;
         padding-bottom: 1vw;
-        background-color:#2f2fa2;
+        background: none;
         font-size: 1.2em;
 
         text-align: end;
-        padding-right: 10vw;
+        padding-right: 14vw;
     }
     
     #app header span{
