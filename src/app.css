@@ -19,7 +19,6 @@
 #app nav{
     padding-top: 1vw;
     padding-bottom: 1vw;
-    background-color:#2f2fa2;
     font-size: 1.2em;
 
     text-align: end;
@@ -88,7 +87,7 @@
 #app input[type="checkbox"]+label{
     color: #f64c72;
     border: 2px solid #f63c72;
-    background: #2f2fa2;
+    background: #474eba;
 }
 
 #app input:checked + label{
