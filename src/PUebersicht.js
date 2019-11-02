@@ -115,10 +115,6 @@ let neuePhase = () =>{
     loe.classList.add("Buttons");
     loe.value = "Löschen";
 
-    //EventListener den Buttons hinzufügen
-    bearb.addEventListener(bearbeiten(this.rowIndex));
-    loe.addEventListener(loeschen(this.rowIndex));
-
     //befüllen der Spalten//
     tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
     tdVon.innerHTML = datumsausgabe(document.getElementById("Startdatum").value);
@@ -154,18 +150,7 @@ let neuePhase = () =>{
     neueTr.appendChild(tdLoe);
 }
 
-//EventListener für den Button bearbeiten
-let bearbeiten = (zeile) => {
-
-}
-
-//EventListener für den Button löschen
-let loeschen = (zeile) => {
-    document.getElementById("Phasentabelle").delete(zeile);
-}
-
-//Formatierung des Datums in 01.01.2018
-let datumsausgabe = (date) => {
+let datumsausgabe = (date) =>{
     date = new Date(date);
     let tag = String(date.getDate());
     console.log(tag.length);
@@ -179,7 +164,7 @@ let datumsausgabe = (date) => {
 }
 
 //Kalenderwoche berechnen
-let berechneWoche =(date) => {
+let berechneWoche =(date) =>{
     date = new Date(date);
     let j = date.getFullYear();
     let m = date.getMonth()+1;
@@ -195,7 +180,7 @@ let berechneWoche =(date) => {
     return weekNumber;
 }
 
-function klapptabelle_erstellung() {
+function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("phasen_tabelle");
     let buttoninhalt, button, ul, li, table, tr, td1, td2;
@@ -369,7 +354,7 @@ function klapptabelle_erstellung() {
     });
 }
 
-function klapptabelle(event) {
+function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
     let eltern = document.getElementById(event.target.id).parentElement.parentElement;
     let kinder = eltern.children;
