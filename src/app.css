@@ -8,14 +8,6 @@
     margin: 1vw;
 }
 
-#app #laptop{
-    display: none;
-}
-
-#app #handy{
-    display: block;
-}
-
 #app nav{
     padding-top: 1vw;
     padding-bottom: 1vw;
@@ -24,17 +16,6 @@
     text-align: end;
     padding-right: 5vw;
     vertical-align: middle;
-}
-
-#app #handy .submenu { 
-    display: none;
-    z-index: 1000;
-}
-
-#app #handy i:hover .submenu, 
-#app #handy i:focus .submenu{
-    display: inline;
-    height: auto;
 }
 
 #app header span{
@@ -81,6 +62,7 @@
     background-image: url("../images/button_hintergrund.png");
     background-size: contain;
     border: none;
+    width: 20vw;
 }
 
 /*Standard für Inputs festlegen */
@@ -146,5 +128,10 @@
     }
     #app .headera:visited{
         color:white;
+    }
+
+    #app button{
+        background-image: url("../images/button_hintergrund.png");
+        width: 15vw;
     }
 }
