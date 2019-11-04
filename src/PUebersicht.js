@@ -150,18 +150,32 @@ let neuePhase = () =>{
     neueTr.appendChild(tdLoe);
 
     //Hinzufügen von EventListener der Buttons
-    //bearb.addEventListener("click", bearbeiten(neueTr.rowIndex));
-    //loe.addEventListener("click", loeschen(neueTr.rowIndex));
+    bearb.addEventListener("click", bearbeiten(neueTr.rowIndex));
+    loe.addEventListener("click", loeschen(neueTr.rowIndex));
 }
 
 //EventListener von bearbeiten-Button
 let bearbeiten = (zeile) =>{
-
+    console.log(zeile);
+    let tr = document.getElementById("Phasentabelle");
+    tr = tr.children[zeile-1];
+    
+    console.log("befüllen");
+    //füllen der Spalten in das Dokument
+    document.getElementById("DropDownPhase").value = tr.children[0];
+    document.getElementById("Startdatum").value = tr.children[1];
+    document.getElementById("Enddatum").value = tr.children[2];
 }
 
 //EventListener von löschen-Button
 let loeschen = (zeile) =>{
     document.getElementById("Phasentabelle").deleteRow(zeile);
+    if(document.getElementById("Phasentabelle").children[1]===undefined){
+        //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
+        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+        buttonPhase.classList.remove("visible");
+        buttonPhase.classList.add("hidden");
+    }
 }
 
 //Formatieren des Datums in 01.01.2019
