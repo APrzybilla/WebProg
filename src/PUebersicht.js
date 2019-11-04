@@ -150,26 +150,37 @@ let neuePhase = () =>{
     neueTr.appendChild(tdLoe);
 
     //Hinzufügen von EventListener der Buttons
-    bearb.addEventListener("click", bearbeiten(neueTr.rowIndex));
-    loe.addEventListener("click", loeschen(neueTr.rowIndex));
+    bearb.addEventListener('click', bearbeiten);
+    loe.addEventListener("click", loeschen);
 }
 
 //EventListener von bearbeiten-Button
-let bearbeiten = (zeile) =>{
-    console.log(zeile);
-    let tr = document.getElementById("Phasentabelle");
-    tr = tr.children[zeile-1];
+let bearbeiten = (event) =>{
+    let el = event.target;
+    while(el.nodeName !== "TR"){
+        el = el.parentElement; // el enthält als Wert die Zeile (tr) des aufrufenden Elements
+    }
     
     console.log("befüllen");
     //füllen der Spalten in das Dokument
-    document.getElementById("DropDownPhase").value = tr.children[0];
-    document.getElementById("Startdatum").value = tr.children[1];
-    document.getElementById("Enddatum").value = tr.children[2];
+    document.getElementById("DropDownPhase").value = el.children[0].innerHTML;
+    if(!el.children[1].innerHTML.includes("NaN")){
+        let date = el.children[1].innerHTML;
+        document.getElementById("Startdatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
+        date = el.children[2].innerHTML;
+        document.getElementById("Enddatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
+    }
 }
 
 //EventListener von löschen-Button
-let loeschen = (zeile) =>{
-    document.getElementById("Phasentabelle").deleteRow(zeile);
+let loeschen = (event) =>{
+    let el = event.target;
+    while(el.nodeName !== "TR"){
+        el = el.parentElement;
+    }
+    el = el.rowIndex;
+    console.log("zu loeschende Zeile: " + el);
+    document.getElementById("Phasentabelle").deleteRow(el);
     if(document.getElementById("Phasentabelle").children[1]===undefined){
         //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
