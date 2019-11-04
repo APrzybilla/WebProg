@@ -161,7 +161,6 @@ let bearbeiten = (event) =>{
         el = el.parentElement; // el enthält als Wert die Zeile (tr) des aufrufenden Elements
     }
     
-    console.log("befüllen");
     //füllen der Spalten in das Dokument
     document.getElementById("DropDownPhase").value = el.children[0].innerHTML;
     if(!el.children[1].innerHTML.includes("NaN")){
@@ -179,7 +178,7 @@ let loeschen = (event) =>{
         el = el.parentElement;
     }
     el = el.rowIndex;
-    console.log("zu loeschende Zeile: " + el);
+    
     document.getElementById("Phasentabelle").deleteRow(el);
     if(document.getElementById("Phasentabelle").children[1]===undefined){
         //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
