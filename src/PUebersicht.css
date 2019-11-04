@@ -1,21 +1,4 @@
 /*Handy*/
-/*Aufteilung des Bildschirms*/
-#Auflistung{
-    width: 48vw;
-    left: 10px;
-    position: absolute;
-    padding: 10px;
-    margin-left: 20px;
-}
-
-#hinzufügen{
-    width: 48vw;
-    right: 10px;
-    position: absolute;
-    padding: 10px;
-    margin-right: 20px;
-}
-
 /*Checkbox*/
 input[type="radio"]{
     display: inline-block;
@@ -24,14 +7,13 @@ input[type="radio"]{
 
 .label{
     display: inline-block;
-    margin-right: 1vw;
     vertical-align: middle;
 }
 
 /*DropDown*/
 select{
     border: none;
-    width: 5vw;
+    width: 20vw;
     height: auto;
     padding: 0;
     box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
@@ -43,26 +25,9 @@ li {
     list-style-type: none;
 }
 
-
-/*sichtbar machen*/
-.visible{
-    visibility: visible;
-}
-
-/*unsichtbar machen*/
-.hidden{
-    display: none;
-}
-
 /*Phasentabelle*/
 #Phasentabelle th{
     font-weight: normal;
-}
-
-.Buttons{
-    width: 10vw;
-    height: 2em;
-    border-radius: 5px;
 }
 
 /* Auf- und zuklappen */
@@ -81,14 +46,14 @@ li {
 }
 
 .textfeld_phase{
-    width: 15vw;
+    width: 35vw;
     border: 1px solid #aaa;
     border-radius: 5px;
     outline: none;
-    padding: 8px;
+    padding: 1vw;
     box-sizing: border-box;
     transition: .3s;
-    margin-right: 10px;
+    margin-right: 1vw;
     color: darkblue;
     vertical-align: middle;
 }
@@ -98,9 +63,7 @@ li {
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
-#tableWirtschaftsinformatik2018{
-    padding-left: 20px;
-}
+
 
 /*Tablets*/
 @media(min-width:700px){
@@ -109,5 +72,34 @@ li {
 
 /*Laptop*/
 @media(min-width:1200px){
+    /*Aufteilung des Bildschirms*/
+    #Auflistung{
+        width: 48vw;
+        left: 10px;
+        position: absolute;
+        padding: 10px;
+        margin-left: 20px;
+    }
 
+    #hinzufügen{
+        width: 48vw;
+        right: 10px;
+        position: absolute;
+        padding: 10px;
+        margin-right: 20px;
+    }
+    
+    .label{
+        margin-right: 1vw;
+    }
+    
+    select{
+        width: 5vw;
+    }
+    
+    .textfeld_phase{
+        width: 10vw;
+        padding: 8px;
+        margin-right: 10px;
+    }
 }
