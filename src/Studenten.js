@@ -91,7 +91,13 @@ function klapptabelle_erstellung(){
 
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    let eltern;
+    if(event.target.tagName === "SPAN"){
+        eltern = document.getElementById(event.target.parentElement.id).parentElement.parentElement;
+    }
+    else{
+        eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    }
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
