@@ -148,6 +148,14 @@ class DB {
     selectAllPhases(){
         return this._db.collection("phasen").get();
     }
+
+    deletePhaseById(id){
+        return this._phasen.doc(id).delete();
+    }
+
+    deleteStudentById(id){
+        return this._students.doc(id).delete();
+    }
 }
 
 
