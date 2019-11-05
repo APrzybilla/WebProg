@@ -24,7 +24,7 @@ class Studenten{
 
     onLoad(){
         klapptabelle_erstellung();
-        document.getElementById("neuerStudent").addEventListener("click", studentHinzufuegen);
+        //document.getElementById("neuerStudent").addEventListener("click", studentHinzufuegen);
     }
 
     onLeave(goon){
@@ -119,8 +119,8 @@ function kurzprofilBefuellen(event){
                 document.querySelector("#profil_vorname").parentElement.children[1].innerHTML = doc.data().Vorname;
                 document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML = doc.data().Jahrgang;
                 document.querySelector("#profil_semester").parentElement.children[1].innerHTML = doc.data().Semester;
-                document.querySelector("#profil_hochschule").parentElement.children[1].innerHTML = doc.data().Hochschule;
-                document.querySelector("#profil_studiengang").parentElement.children[1].innerHTML = doc.data().Studiengang;
+                document.querySelector("#profil_hochschule").parentElement.querySelector("label").innerHTML = doc.data().Hochschule;
+                document.querySelector("#profil_studiengang").parentElement.querySelector("label").innerHTML = doc.data().Studiengang;
                 document.querySelector("#profil_geburtstag").parentElement.children[1].innerHTML = doc.data().Geburtstag;
                 document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML = doc.id;
                 document.querySelector("#profil_notizen").parentElement.children[1].innerHTML = doc.data().Notizen;
@@ -130,7 +130,6 @@ function kurzprofilBefuellen(event){
 }
 
 function studentHinzufuegen(){
-
     _db.saveStudent(
         {
             "Name" : document.getElementById("profil_nachname").value,
