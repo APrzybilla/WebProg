@@ -41,7 +41,7 @@ function klapptabelle_erstellung(){
     let inhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
     let students = _db.selectAllStudentsByOrder("Jahrgang");
 
-    // Für jeden Jahrgang wird eine Liste und ein Button erstellt
+    // Aufteilung in Jahrgänge
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             inhalt = doc.data().Jahrgang;
@@ -50,12 +50,11 @@ function klapptabelle_erstellung(){
             if(document.getElementById("button"+inhalt) === null){
                 // Listeneintrag für die Unterteilung in einen Jahrgang
                 li = document.createElement("li");
-                li.id = "li"+inhalt;
                 eltern.appendChild(li);
 
                 // Unterteilung des Jahrgangs in Button und Inhalt
                 ul = document.createElement("ul");
-                ul.id = "ul" + inhalt;
+                ul.id = "ul" + inhalt; // Beispielinhalt: ul2018
                 ul.classList.add = "oberstesElement_tabelle";
                 li.appendChild(ul);
                 li = document.createElement("li");
@@ -64,7 +63,7 @@ function klapptabelle_erstellung(){
                 // button erstellen
                 button = document.createElement("button");
                 button.type = "button";
-                button.id = "button"+inhalt;
+                button.id = "button"+inhalt; // Beispielinhalt: button2018
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
                 button.innerHTML = "<span class='fas fa-angle-right'></span> " + inhalt;
@@ -79,13 +78,11 @@ function klapptabelle_erstellung(){
             ul = document.getElementById("ul" + doc.data().Jahrgang);
             //Listenelement wird erstellt
             li = document.createElement("li");
-            li.classList.add("inhalt");
             li.style.display = "none";
             // Anker wird dem Listeneintrag hinzugefügt, damit später die Daten darüber aufgerufen werden können
             a = document.createElement("a");
             a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
-            a.classList.add("inhalt");
             a.id = doc.data().id;
             // Inhalte werden eingefügt und die zwei erstellten Elemente dem Document hinzugefügt
             a.innerHTML = "<span class='fas fa-pen'></span> " + doc.data().Vorname + " " + doc.data().Name;
