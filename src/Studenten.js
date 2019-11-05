@@ -23,7 +23,9 @@ class Studenten{
     };
 
     onLoad(){
+        // Tabellen werden erstellt
         klapptabelle_erstellung();
+        // Den Images des Kurzprofils werden eventlistener hinzugefügt
         document.querySelector("#aSpeichern").addEventListener("click", studentHinzufuegen);
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
     }
