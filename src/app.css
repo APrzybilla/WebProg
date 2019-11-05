@@ -27,14 +27,14 @@
     vertical-align: middle;
 }
 
-#app .headera:link{
+#app a:link{
     text-decoration: none;
     color:white;
 } 
-#app td a:hover{
+#app a:hover{
     color: black;
 }
-#app .headera:visited{
+#app a:visited{
     color:white;
 }
 
@@ -60,9 +60,12 @@
 #app button{
     color: white;
     background-image: url("../images/button_hintergrund.png");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
     border: none;
-    width: 20vw;
+    width: auto;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 /*Standard für Inputs festlegen */
@@ -70,6 +73,7 @@
     color: #f64c72;
     border: 2px solid #f63c72;
     background: #474eba;
+    cursor: pointer;
 }
 
 #app input:checked + label{
@@ -131,7 +135,7 @@
     }
 
     #app button{
-        background-image: url("../images/button_hintergrund.png");
-        width: 15vw;
+        padding-left: 1em;
+        padding-right: 1em;
     }
 }
