@@ -22,20 +22,17 @@
     font-size: 2em;
     float:left;
     padding-left: 1vw;
-    color: #f64c72;
     padding-top: 0.2em;
     vertical-align: middle;
+    /*setzt Hintergrund als Fontcolor mit Übergang*/
+    background-image:linear-gradient(90deg,#f64c72, #fcb956);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-#app a:link{
+#app a{
     text-decoration: none;
-    color:white;
-} 
-#app a:hover{
-    color: black;
-}
-#app a:visited{
-    color:white;
+    color: white;
 }
 
 #app a{
@@ -54,6 +51,11 @@
     font-weight: normal;
     border: none;
     box-shadow: 0 0 0.5em dodgerblue;
+}
+
+#app .bold{
+    font-weight: 900;
+    color: #f64c72;
 }
 
 /*Standard für Buttons festlegen */
@@ -125,14 +127,7 @@
     
     #app .headera:link{
         text-decoration: none;
-        color:white;
     } 
-    #app td a:hover{
-        color: black;
-    }
-    #app .headera:visited{
-        color:white;
-    }
 
     #app button{
         padding-left: 1em;
