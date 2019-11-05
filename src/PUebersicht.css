@@ -63,7 +63,17 @@ li {
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
+#PhaseHinzufuegen, #JahrgangHinzufuegen{
+    margin: 0.5vw;
+}
 
+#phasen_tabelle button{
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin: 0.05em;
+}
 
 /*Tablets*/
 @media(min-width:700px){
