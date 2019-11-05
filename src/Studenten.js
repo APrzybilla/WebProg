@@ -24,7 +24,8 @@ class Studenten{
 
     onLoad(){
         klapptabelle_erstellung();
-        //document.getElementById("neuerStudent").addEventListener("click", studentHinzufuegen);
+        document.querySelector("#aSpeichern").addEventListener("click", studentHinzufuegen);
+        document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
     }
 
     onLeave(goon){
@@ -145,12 +146,9 @@ function studentHinzufuegen(){
     );
 
     resetProfilfelder();
-
-    //onClick="studentHinzufuegen();">
 }
 
 function resetProfilfelder(){
-
     document.getElementById("profil_nachname").value="";
     document.getElementById("profil_vorname").value="";
     document.getElementById("profil_jahrgang").value="";
@@ -160,6 +158,14 @@ function resetProfilfelder(){
     document.getElementById("profil_geburtstag").value="";
     document.getElementById("profil_mitarbeiter_id").value="";
     document.getElementById("profil_notizen").value="";
+}
+
+function deleteStudent(){
+    let id = document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML;
+    let name = document.querySelector("#profil_vorname").parentElement.children[1].innerHTML;
+    console.log(id);
+    _db.deleteStudentById(id);
+    window.alert(name + " wurde gelöscht.");
 }
 
 export default Studenten;
