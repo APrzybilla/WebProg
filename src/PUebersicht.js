@@ -25,8 +25,11 @@ class Phasenuebersicht{
     onLoad(){
         //Tabellen erstellen
         klapptabelle_erstellung();
+        
         //EventListener von Button "Phase Hinzufügen"
         document.getElementById("PhaseHinzufuegen").addEventListener("click", neuePhase);
+        
+        //EventListener von Button "Jahrgang Hinzufügen"
         document.getElementById("JahrgangHinzufuegen").addEventListener("click", neuerStudiengang);
     }
 
@@ -163,12 +166,11 @@ let bearbeiten = (event) =>{
     
     //füllen der Spalten in das Dokument
     document.getElementById("DropDownPhase").value = el.children[0].innerHTML;
-    if(!el.children[1].innerHTML.includes("NaN")){
         let date = el.children[1].innerHTML;
         document.getElementById("Startdatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
         date = el.children[2].innerHTML;
         document.getElementById("Enddatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
-    }
+
 }
 
 //EventListener von löschen-Button
@@ -225,7 +227,7 @@ let berechneWoche =(date) =>{
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("phasen_tabelle");
-    let buttoninhalt, button, ul, li, table, tr, td1, td2;
+    let buttoninhalt, button, ul, li, table, tr, td1, td2, img;
 
     let phasen = _db.selectAllPhases();
     // Erste Aufteilung für die Studiengänge
@@ -287,8 +289,15 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4);
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + " <a class='fas fa-trash muell'></a> ";
                 li.appendChild(button);
+
+                //EventListener von Löschen Icon zum Löschen des Jahrgangs
+                console.log(document.getElementsByClassName("muell"));
+                for(let i = 0; i<document.getElementsByClassName("muell").length; i++){
+                    document.getElementsByClassName("muell")[i].addEventListener("click", deletePhase);
+                }
+                //img.addEventListener("click", deletePhase());
                 
                 //li für Button
                 li = document.createElement("li");
@@ -418,6 +427,12 @@ function klapptabelle(event){
             kinder[i].style.display = "none";
         }
     }
+}
+
+function deletePhase(event){
+    let id = event.target.parentElement.id.substring(6);
+    _db.deletePhaseById(id);
+    window.alert("Die Phase wurde gelöscht.");
 }
 
 export default Phasenuebersicht;
