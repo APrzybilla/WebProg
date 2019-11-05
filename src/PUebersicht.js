@@ -255,7 +255,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<i class='fas fa-angle-right'></i> " + buttoninhalt;
+                button.innerHTML = "<i class='fas fa-angle-down'></i> " + buttoninhalt;
                 li.appendChild(button);
             }
         });
@@ -414,7 +414,7 @@ function klapptabelle(event){
         eltern = document.getElementById(event.target.id).parentElement.parentElement;
     }
     let kinder = eltern.children;
-    
+
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
         // class ändern, damit der Pfeil in eine andere Richtung zeigt
