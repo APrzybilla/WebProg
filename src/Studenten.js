@@ -81,7 +81,6 @@ function klapptabelle_erstellung(){
             li.style.display = "none";
             // Anker wird dem Listeneintrag hinzugefügt, damit später die Daten darüber aufgerufen werden können
             a = document.createElement("a");
-            a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
             a.id = doc.data().id;
             // Inhalte werden eingefügt und die zwei erstellten Elemente dem Document hinzugefügt
