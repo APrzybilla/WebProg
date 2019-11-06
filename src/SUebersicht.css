@@ -90,9 +90,6 @@ button:hover{
 
 /*Tablets*/
 @media(min-width:700px){
-    .handyUnsichtbar{
-        visibility: visible;
-    }
 
     .textfeld_filter{
         font-size: 2vw;
