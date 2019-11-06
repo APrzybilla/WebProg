@@ -159,6 +159,7 @@ let neuePhase = () =>{
 
 //EventListener von bearbeiten-Button
 let bearbeiten = (event) =>{
+    // Das aufrufende Element wird in el gespeichert
     let el = event.target;
     while(el.nodeName !== "TR"){
         el = el.parentElement; // el enthält als Wert die Zeile (tr) des aufrufenden Elements
@@ -166,21 +167,23 @@ let bearbeiten = (event) =>{
     
     //füllen der Spalten in das Dokument
     document.getElementById("DropDownPhase").value = el.children[0].innerHTML;
-        let date = el.children[1].innerHTML;
-        document.getElementById("Startdatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
-        date = el.children[2].innerHTML;
-        document.getElementById("Enddatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
+    let date = el.children[1].innerHTML;
+    document.getElementById("Startdatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
+    date = el.children[2].innerHTML;
+    document.getElementById("Enddatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
 
 }
 
 //EventListener von löschen-Button
 let loeschen = (event) =>{
+    // Das aufrufende Element wird in el gespeichert
     let el = event.target;
     while(el.nodeName !== "TR"){
         el = el.parentElement;
     }
     el = el.rowIndex;
     
+    // Zeile löschen
     document.getElementById("Phasentabelle").deleteRow(el);
     if(document.getElementById("Phasentabelle").children[1]===undefined){
         //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
@@ -255,7 +258,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt;
+                button.innerHTML = "<i class='fas fa-angle-down'></i> " + buttoninhalt;
                 li.appendChild(button);
             }
         });
@@ -406,8 +409,15 @@ function klapptabelle_erstellung(){
 
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    let eltern;
+    if(event.target.tagName === "SPAN"){
+        eltern = document.getElementById(event.target.parentElement.id).parentElement.parentElement;
+    }
+    else{
+        eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    }
     let kinder = eltern.children;
+
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
         // class ändern, damit der Pfeil in eine andere Richtung zeigt

@@ -23,7 +23,9 @@ class Studenten{
     };
 
     onLoad(){
+        // Tabellen werden erstellt
         klapptabelle_erstellung();
+        // Den Images des Kurzprofils werden eventlistener hinzugefügt
         document.querySelector("#aSpeichern").addEventListener("click", studentHinzufuegen);
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
     }
@@ -36,23 +38,23 @@ class Studenten{
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
-    let buttoninhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
+    let inhalt, button, i, laenge, ul, li, a, hoechsterJahrgang = 0;
     let students = _db.selectAllStudentsByOrder("Jahrgang");
 
+    // Aufteilung in Jahrgänge
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().Jahrgang;
+            inhalt = doc.data().Jahrgang;
             
             // Es wird ein Button erstellt, wenn noch keiner für den Jahrgang vorhanden ist
-            if(document.getElementById("button"+buttoninhalt) === null){
+            if(document.getElementById("button"+inhalt) === null){
                 // Listeneintrag für die Unterteilung in einen Jahrgang
                 li = document.createElement("li");
-                li.id = "li"+buttoninhalt;
                 eltern.appendChild(li);
 
                 // Unterteilung des Jahrgangs in Button und Inhalt
                 ul = document.createElement("ul");
-                ul.id = "ul" + buttoninhalt;
+                ul.id = "ul" + inhalt; // Beispielinhalt: ul2018
                 ul.classList.add = "oberstesElement_tabelle";
                 li.appendChild(ul);
                 li = document.createElement("li");
@@ -61,27 +63,28 @@ function klapptabelle_erstellung(){
                 // button erstellen
                 button = document.createElement("button");
                 button.type = "button";
-                button.id = "button"+buttoninhalt;
+                button.id = "button"+inhalt; // Beispielinhalt: button2018
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt;
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + inhalt;
                 li.appendChild(button);
             }
         });
     });
+    // Jede Liste erhält die Daten als Listeneintrag
     students.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
-            buttoninhalt = doc.data().Jahrgang;
-
-            ul = document.getElementById("ul" + buttoninhalt);
+            // Parent des aktuellen Datenbankeintrags wird gesucht
+            ul = document.getElementById("ul" + doc.data().Jahrgang);
+            //Listenelement wird erstellt
             li = document.createElement("li");
-            li.classList.add("inhalt");
             li.style.display = "none";
+            // Anker wird dem Listeneintrag hinzugefügt, damit später die Daten darüber aufgerufen werden können
             a = document.createElement("a");
             a.href = "#";
             a.addEventListener('click', kurzprofilBefuellen);
-            a.classList.add("inhalt");
             a.id = doc.data().id;
+            // Inhalte werden eingefügt und die zwei erstellten Elemente dem Document hinzugefügt
             a.innerHTML = "<span class='fas fa-pen'></span> " + doc.data().Vorname + " " + doc.data().Name;
             li.appendChild(a);
             ul.appendChild(li);
@@ -91,21 +94,27 @@ function klapptabelle_erstellung(){
 
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
-    let eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    let eltern;
+    if(event.target.tagName === "SPAN"){
+        eltern = document.getElementById(event.target.parentElement.id).parentElement.parentElement;
+    }
+    else{
+        eltern = document.getElementById(event.target.id).parentElement.parentElement;
+    }
     let kinder = eltern.children;
     // prüfen, ob auf- oder zugeklappt werden soll
     if(kinder[1].style.display == "none"){
+        // alle aufklappen
         kinder[0].querySelector("span").className = "";
         kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-down");
-        // alle aufklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "block";
         }
     }
     else{
+        // alle zuklappen
         kinder[0].querySelector("span").className = "";
         kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-right")
-        // alle zuklappen
         for(let i = 1; i < kinder.length; i++){
             kinder[i].style.display = "none";
         }
@@ -214,11 +223,9 @@ function resetProfilfelder(){
 }
 
 function deleteStudent(){
-    let id = document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML;
-    let name = document.querySelector("#profil_vorname").parentElement.children[1].innerHTML;
-    console.log(id);
-    _db.deleteStudentById(id);
-    window.alert(name + " wurde gelöscht.");
+    window.alert(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML + " wurde gelöscht.");
+    // ruft Methode aus database.js auf
+    _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML);
 }
 
 export default Studenten;
