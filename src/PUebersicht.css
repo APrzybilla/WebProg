@@ -6,6 +6,7 @@ input[type="radio"]{
 }
 
 .label{
+    margin-right: 0;
     display: inline-block;
     vertical-align: middle;
 }
@@ -46,7 +47,7 @@ li {
 }
 
 .textfeld_phase{
-    width: 35vw;
+    width: 33vw;
     border: 1px solid #aaa;
     border-radius: 5px;
     outline: none;
@@ -78,7 +79,20 @@ li {
 
 /*Tablets*/
 @media(min-width:700px){
-
+    .label{
+        margin-right: 1vw;
+    }
+    
+    select{
+        width: 10vw;
+        margin-right: 2vw;
+    }
+    
+    .textfeld_phase{
+        width: 20vw;
+        padding: 8px;
+        margin-right: 2vw;
+    }
 }
 
 /*Laptop*/
@@ -100,17 +114,13 @@ li {
         margin-right: 20px;
     }
     
-    .label{
-        margin-right: 1vw;
-    }
-    
     select{
         width: 5vw;
+        margin-right: 10px;
     }
     
     .textfeld_phase{
         width: 10vw;
-        padding: 8px;
         margin-right: 10px;
     }
 }
