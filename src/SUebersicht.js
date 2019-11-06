@@ -106,9 +106,10 @@ function suchen (){
                     let HS = doc.data().Hochschule;
                     let Sem = doc.data().Semester;
                     let Jahrgang = doc.data().Jahrgang;
+                    let id = doc.data().id;
 
                     //Hinzufügen des Studenten mit den Variablen
-                    einfügen(Name, Vorname, HS, Sem, Jahrgang);
+                    einfügen(Name, Vorname, HS, Sem, Jahrgang, id);
                 }
             });
         });
@@ -124,7 +125,7 @@ function deleteTable(id){
 
 
 //Übergebenen Student der Tabelle an erster Stelle hinzufügen
-function einfügen (Name, Vorname, HS, Sem, JG){
+function einfügen (Name, Vorname, HS, Sem, JG, id){
     //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -140,8 +141,10 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     tdS.classList.add("handyUnsichtbar");
     tdJG.classList.add("handyUnsichtbar");
 
+    let ank = '<a href = "/Studentenuebersicht/Studenten/' + id + '" navigo>';
+
     //befüllen der Spalten//
-    tdName.innerHTML = Vorname +" " + Name;
+    tdName.innerHTML = ank + Vorname + " " + Name + '</a>';
     tdHS.innerHTML = HS;
     tdS.innerHTML = Sem;
     tdJG.innerHTML  = JG;
@@ -166,6 +169,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 
         //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
+        tdKW.id = "KW" + i + Vorname + Nachname;
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
@@ -188,9 +192,10 @@ function anzeigen(){
             let HS = doc.data().Hochschule;
             let Sem = doc.data().Semester;
             let JG = doc.data().Jahrgang;
+            let id = doc.data().id;
 
             //Student mit gespeicherten Variablen der Tabelle hinzufügen
-            einfügen(Name, Vorname, HS, Sem, JG);
+            einfügen(Name, Vorname, HS, Sem, JG, id);
         });
     });
 }
