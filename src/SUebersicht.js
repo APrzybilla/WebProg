@@ -203,7 +203,6 @@ function zusammenführenStudenten(){
 
         querySnapshot.forEach(function(doc){
             let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
-            console.log(row);
             let studiengang = doc.data().Studiengang;
             let jahrgang = doc.data().Jahrgang;
 
@@ -211,8 +210,26 @@ function zusammenführenStudenten(){
 
             _db.selectPhaseById(zusammengefuegt);
 
+            
         });    
     });
+}
+
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+    date = new Date(date);
+    let j = date.getFullYear();
+    let m = date.getMonth()+1;
+    let t = date.getDate();
+    let datum = new Date(j, m, t);
+
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
 }
 
 export default StartPage;
