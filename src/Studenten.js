@@ -28,10 +28,27 @@ class Studenten{
         // Den Images des Kurzprofils werden eventlistener hinzugefügt
         document.querySelector("#aSpeichern").addEventListener("click", studentHinzufuegen);
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
+        idfiltern();
     }
 
     onLeave(goon){
         return true;
+    }
+}
+
+function idfiltern (){
+    console.log("Filter");
+    let url = " " + window.location;
+    console.log(url);
+    let h = 0;
+    console.log(url.search("/"));
+    while(url.search("/")>-1){
+        console.log("while");
+        url = url.substring(url.indexOf("/"), url.length);
+        h++;
+    }
+    if(h>4){
+        kurzprofilBefuellenMitId(url);
     }
 }
 
@@ -124,6 +141,24 @@ function kurzprofilBefuellen(event){
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             if(doc.data().id == event.target.id){
+                document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;
+                document.querySelector("#profil_vorname").parentElement.children[0].value = doc.data().Vorname;
+                document.querySelector("#profil_jahrgang").parentElement.children[0].value = doc.data().Jahrgang;
+                document.querySelector("#profil_semester").parentElement.children[0].value = doc.data().Semester;
+                document.querySelector("#profil_hochschule").parentElement.querySelector("input").value = doc.data().Hochschule;
+                document.querySelector("#profil_studiengang").parentElement.querySelector("input").value = doc.data().Studiengang;
+                document.querySelector("#profil_geburtstag").parentElement.children[0].value = doc.data().Geburtstag;
+                document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value = doc.id;
+                document.querySelector("#profil_notizen").parentElement.children[0].value = doc.data().Notizen;
+            }
+        });
+    });
+}
+
+function kurzprofilBefuellenMitId(id){
+    let students = _db.selectAllStudents().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            if(doc.data().id == id){
                 document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;
                 document.querySelector("#profil_vorname").parentElement.children[0].value = doc.data().Vorname;
                 document.querySelector("#profil_jahrgang").parentElement.children[0].value = doc.data().Jahrgang;
