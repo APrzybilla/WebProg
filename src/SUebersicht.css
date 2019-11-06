@@ -59,6 +59,10 @@ button:hover{
     text-align: center;
 }
 
+#tabelleUebersicht a{
+    color: darkblue !important;
+}
+
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
     background-color: #99738E;
@@ -151,6 +155,6 @@ button:hover{
     }
     
     #tabelleUebersicht tbody {
-        width: 77vw;
+        width: 76vw;
     }
 }
