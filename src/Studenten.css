@@ -90,7 +90,28 @@
 
 /*Tablets*/
 @media(min-width:700px){
-
+    .container{
+        width: 85vw;
+        height:auto;
+    }
+    
+    .Profilbild{
+        width: 15vw;
+    }
+    
+    #delete64{
+        width: 4vw;
+        right: 2em;
+    }
+    
+    #speichern{
+        width: 4vw !important;
+        right: 5em;
+    }
+    
+    .studierendenProfil td{ 
+        width: 33vw;
+    }
 }
 
 /*Laptop*/
@@ -117,7 +138,6 @@
     }
     
     .Profilbild{
-        height: 15vw;
         width: 11vw;
     }
     
