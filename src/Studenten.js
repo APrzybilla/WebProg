@@ -151,42 +151,51 @@ function studentHinzufuegen(){
                     Name:document.querySelector("#profil_nachname").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML!==null){
+            if(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML!==doc.data().Vorname){
+                console.log("Vorname");
                 doc.data().set({
                     Name:document.querySelector("#profil_vorname").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML!==null){
+            if(document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML!==doc.data().Jahrgang){
                 doc.data().set({
                     Name:document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_semester").parentElement.children[1].innerHTML!==null){
+            if(document.querySelector("#profil_semester").parentElement.children[1].innerHTML!==doc.data().Semester){
+                console.log("Semester");
                 doc.data().set({
                     Name:document.querySelector("#profil_semester").parentElement.children[1].innerHTML
                 });
-            } 
-            if(document.querySelector("#profil_hochschule").parentElement.children[1].innerHTML!==null){
+            }
+            if(document.querySelector("#profil_hochschule").parentElement.querySelector("label").innerHTML!==doc.data().Hochschule){
+                console.log("Hochschule");
                 doc.data().set({
                     Name:document.querySelector("#profil_hochschule").parentElement.children[1].innerHTML
                 });
-            } 
-            if(document.querySelector("#profil_studiengang").parentElement.children[1].innerHTML!==null){
+            }
+            if(document.querySelector("#profil_studiengang").parentElement.querySelector("label").innerHTML!==doc.data().Studiengang){
+                console.log("Studiengang");
                 doc.data().set({
                     Name:document.querySelector("#profil_studiengang").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_geburtstat").parentElement.children[1].innerHTML!==null){
+            if(document.querySelector("#profil_geburtstag").parentElement.children[1].innerHTML!==doc.data().Geburtstag){
+                console.log("Geburtstag");
                 doc.data().set({
                     Name:document.querySelector("#profil_geburtstag").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_notizen").parentElement.children[1].innerHTML!==null){
+            if(document.querySelector("#profil_notizen").parentElement.children[1].innerHTML!==doc.data().Notizen){
+                console.log("Notizen");
                 doc.data().set({
                     Name:document.querySelector("#profil_nachname").parentElement.children[1].innerHTML
                 });
             } 
-            if(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML!==null){
+            console.log("1"+document.querySelector("#profil_mitarbeiter_id").value+"test");
+            console.log("2"+doc.data().id+"test");
+            if(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML!==doc.data().id){
+                console.log("ID");
                 alert("Die ID kann nicht verändert werden");
             } 
 
