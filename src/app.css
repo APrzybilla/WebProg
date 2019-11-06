@@ -12,7 +12,6 @@
     padding-top: 1vw;
     padding-bottom: 1vw;
     font-size: 1.2em;
-
     text-align: end;
     padding-right: 5vw;
     vertical-align: middle;
@@ -33,9 +32,6 @@
 #app a{
     text-decoration: none;
     color: white;
-}
-
-#app a{
     padding-left: 1em;
     text-decoration: none;
 }
@@ -90,47 +86,21 @@
 
 /*Tablets*/
 @media(min-width:700px){
-
-}
-
-/*Laptop*/
-@media(min-width:1200px){
-    #app #laptop{
-        display: block;
-    }
-
-    #app #handy{
-        display: none;
-    }
-
     #app header{
         display: inline;
     }
 
     #app nav{
-        padding-top: 1vw;
-        padding-bottom: 1vw;
         background: none;
-        font-size: 1.2em;
-
-        text-align: end;
         padding-right: 14vw;
     }
-    
-    #app header span{
-        font-size: 2em;
-        float:left;
-        padding-left: 1vw;
-        color: #f64c72;
-        padding-top: 0.2em;
-    }
-    
-    #app .headera:link{
-        text-decoration: none;
-    } 
 
     #app button{
         padding-left: 1em;
         padding-right: 1em;
     }
+}
+
+/*Laptop*/
+@media(min-width:1200px){
 }
