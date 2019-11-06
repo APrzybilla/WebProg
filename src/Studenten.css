@@ -21,6 +21,7 @@
 	box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
     padding: 2vw;
     margin: 3vw;
+    margin-bottom: 0;
 }
 
 /*Tabelle für das Profil*/
