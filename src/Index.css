@@ -1,8 +1,4 @@
 /*Handy*/
-html{
-    
-}
-
 body{
     padding: 0;
     margin: 1.5vw;
@@ -30,11 +26,11 @@ html{
 /*Tablets*/
 @media(min-width:700px){
     html{
-
+        font-size: 2vw;
     }
 
     body{
-
+        margin: 1vw;
     }
 
 }
