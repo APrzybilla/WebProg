@@ -214,7 +214,27 @@ function zusammenführenStudenten(){
 
             _db.selectPhaseById(zusammengefuegt);
 
-            
+    _db.selectAllPhases().then(function(doc){
+
+        querySnapshot.forEach(function(doc){
+            let theorie1 = doc.data().Theorie1;
+            let theorie2 = doc.data().Theorie2;
+            let theorie3 = doc.data().Theorie3;
+            let theorie4 = doc.data().Theorie4;
+            let theorie5 = doc.data().Theorie5;
+            let theorie6 = doc.data().Theorie6;
+
+            let praxis1 = doc.data().Praxis1;
+            let praxis2 = doc.data().Praxis2;
+            let praxis3 = doc.data().Praxis3;
+            let praxis4 = doc.data().Praxis4;
+            let praxis5 = doc.data().Praxis5;
+            let praxis6 = doc.data().Praxis6;
+
+            let endeLetztePhase = doc.data().EndeLetztePhase;
+
+        });
+    });
         });    
     });
 }
