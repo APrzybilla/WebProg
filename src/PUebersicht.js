@@ -76,7 +76,8 @@ let neuerStudiengang = () =>{
         console.log(error);
     };
 
-    
+    //Tabelle löschen und neu erstellen
+    resetAll();
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
@@ -84,6 +85,15 @@ function deleteTable(id){
     while(document.getElementById(id).rows.length>1){
         document.getElementById(id).deleteRow(1);
     }
+}
+
+//Tabelle löschen und neu erstellen
+function resetAll(){
+    let parent = document.getElementById("phasen_tabelle");
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
+    }
+    klapptabelle_erstellung();
 }
 
 //Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
@@ -443,6 +453,9 @@ function deletePhase(event){
     let id = event.target.parentElement.id.substring(6);
     _db.deletePhaseById(id);
     window.alert("Die Phase wurde gelöscht.");
+
+    //Tabelle löschen und neu erstellen
+    resetAll();
 }
 
 export default Phasenuebersicht;
