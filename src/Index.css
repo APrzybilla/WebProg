@@ -13,16 +13,6 @@ html{
     background-image: url("../images/Hintergrund.png");
 }
 
-/*sichtbar machen*/
-.visible{
-    visibility: visible;
-}
-
-/*unsichtbar machen*/
-.hidden{
-    display: none;
-}
-
 /*Tablets*/
 @media(min-width:700px){
     html{
