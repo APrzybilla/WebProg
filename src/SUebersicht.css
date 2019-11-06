@@ -90,7 +90,32 @@ button:hover{
 
 /*Tablets*/
 @media(min-width:700px){
+    .handyUnsichtbar{
+        visibility: visible;
+    }
 
+    .textfeld_filter{
+        font-size: 2vw;
+        width: 12vw;
+        padding: 5px;
+        margin-bottom: 0vw;
+    }
+
+    .checkbox-group label{
+        padding: 5px;
+    }
+
+    button{
+        width: 10%;
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 20px;
+        float: none;
+    }
+    
+    #tabelleUebersicht{
+        min-width: 700px;
+    }
 }
 
 /*Laptop*/
@@ -103,19 +128,14 @@ button:hover{
         font-size: 1vw;
         width: 15vw;
         padding: 8px;
-        margin-bottom: 0vw;
     }
 
     .checkbox-group label{
-        padding:0.7em;
+        padding: 8px;
     }
 
     button{
-        width: 10%;
-        padding: 4px;
-        box-sizing: border-box;
-        font-size: 20px;
-        float: none;
+        padding: 8px;
     }
     
     #tabelleUebersicht{
