@@ -26,7 +26,11 @@ class StartPage{
     onLoad(){
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
+
+        //Aufrufen der Tabelle mit allen Studenten
         anzeigen();
+
+
         setTimeout(zusammenführenStudenten, 1000);
     }
 
@@ -55,8 +59,9 @@ function suchen (){
         _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
             //jeden Studenten überprüfen
             querySnapshot.forEach(function(doc){
-
                 //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+
+                //Flag, der anzeigt, ob ein Filter auf den Studenten zutrifft
                 let boolean= false;
 
                 //Überprüfen, ob etwas in den Feldern steht
@@ -99,7 +104,7 @@ function suchen (){
                     }
                 }
 
-                //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
+                //Wenn mindestens eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
                 if(boolean){
                     //Speichern der Daten in Variablen
                     let Name = doc.data().Name;
