@@ -22,7 +22,7 @@ class DB {
         this._phasen = this._db.collection("phasen");
     }
 
-     createDemoData(){
+    createDemoData(){
         let students =  this.selectAllStudents();
 
         //Festlegen von einigen Demodaten, wenn noch keine vorhanden sind
@@ -59,6 +59,11 @@ class DB {
                 "Notizen":"Arbeitet prima und verdient eine Gehaltserhöhung"
             }]);
         }
+    }
+
+    //Datenbank neu laden
+    update(){
+        this._db = firebase.firestore();
     }
 
     //Aufrufen aller vorhandenen Studenten
@@ -102,7 +107,7 @@ class DB {
     }
 
     //Speichern mehrerer Studenten
-     saveStudents(students) {
+    saveStudents(students) {
         let batch = this._db.batch();
 
         students.forEach(student => {
