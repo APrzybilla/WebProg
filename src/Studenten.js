@@ -41,13 +41,11 @@ function idfiltern (){
     let url = " " + window.location;
     console.log(url);
     let h = 0;
-    console.log(url.search("/"));
-    while(url.search("/")>-1){
-        console.log("while");
-        url = url.substring(url.indexOf("/"), url.length);
-        h++;
-    }
-    if(h>4){
+    url = url.substring(url.lastIndexOf("/")+1, url.length);
+    console.log(url);
+        
+    if(url !== "/Studenten"){
+        console.log(url);
         kurzprofilBefuellenMitId(url);
     }
 }
