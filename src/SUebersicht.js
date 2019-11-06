@@ -1,6 +1,7 @@
 import stylesheet from "./SUebersicht.css";
 import DB from "./database.js";
 import App from "./app.js";
+import { timeout } from "q";
 
 let _app="";
 let _db = "";
@@ -25,8 +26,8 @@ class StartPage{
     onLoad(){
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
-        window.addEventListener("load", anzeigen());
-        
+        anzeigen();
+        setTimeout(zusammenführenStudenten, 1000);
     }
 
     onLeave(goon){
@@ -142,6 +143,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 
     //befüllen der Spalten//
     tdName.innerHTML = Vorname +" " + Name;
+    tdName.id = Vorname + Name;
     tdHS.innerHTML = HS;
     tdS.innerHTML = Sem;
     tdJG.innerHTML  = JG;
@@ -196,10 +198,12 @@ function anzeigen(){
 }
 
 function zusammenführenStudenten(){
+    
     _db.selectAllStudents().then(function (querySnapshot) {
 
         querySnapshot.forEach(function(doc){
-
+            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
+            console.log(row);
             let studiengang = doc.data().Studiengang;
             let jahrgang = doc.data().Jahrgang;
 
