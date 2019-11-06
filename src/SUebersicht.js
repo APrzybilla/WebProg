@@ -195,4 +195,21 @@ function anzeigen(){
     });
 }
 
+function zusammenführenStudenten(){
+    _db.selectAllStudents().then(function (querySnapshot) {
+
+        querySnapshot.forEach(function(doc){
+
+            let studiengang = doc.data().Studiengang;
+            let jahrgang = doc.data().Jahrgang;
+
+            let zusammengefuegt = studiengang + jahrgang;
+
+            selectPhaseById(zusammengefuegt);
+
+        }    
+    }
+
+}
+
 export default StartPage;
