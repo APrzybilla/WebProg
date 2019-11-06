@@ -5,6 +5,7 @@
 }
 
 #app main{
+    padding-top: 3vw;
     margin: 1vw;
 }
 
@@ -15,6 +16,14 @@
     text-align: end;
     padding-right: 5vw;
     vertical-align: middle;
+}
+#app #nav{
+    background-color: #5662c9;
+    border-radius: 0.5vw;
+    position: fixed;
+    padding: 0.5vw;
+    right: 15vw;
+    z-index: 1;
 }
 
 #app header span{
