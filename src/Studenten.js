@@ -131,33 +131,86 @@ function kurzprofilBefuellen(event){
 }
 
 function studentHinzufuegen(){
-    _db.saveStudent(
-        {
-            "Name" : document.getElementById("profil_nachname").value,
-            "Vorname": document.getElementById("profil_vorname").value,
-            "Jahrgang": document.getElementById("profil_jahrgang").value,
-            "Semester": document.getElementById("profil_semester").value,
-            "Hochschule": document.getElementById("profil_hochschule").value,
-            "Studiengang": document.getElementById("profil_studiengang").value,
-            "Geburtstag": document.getElementById("profil_geburtstag").value,
-            "id": document.getElementById("profil_mitarbeiter_id").value,
-            "Notizen": document.getElementById("profil_notizen").value
-        }
-    );
 
+    //Überprüfen, ob ID schon vergeben ist
+    _db.selectStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML).then(function(doc){
+        if(doc.exists){
+            //Vergleichen mit Werten, die in der Datenbank stehen
+            if(document.querySelector("#profil_nachname").parentElement.children[1].innerHTML!==doc.data().Name){
+                console.log("Nachname");
+                doc.data().set({
+                    Name:document.querySelector("#profil_nachname").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_vorname").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_semester").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_semester").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_hochschule").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_hochschule").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_studiengang").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_studiengang").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_geburtstat").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_geburtstag").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_notizen").parentElement.children[1].innerHTML!==null){
+                doc.data().set({
+                    Name:document.querySelector("#profil_nachname").parentElement.children[1].innerHTML
+                });
+            } 
+            if(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML!==null){
+                alert("Die ID kann nicht verändert werden");
+            } 
+
+        } else {
+            _db.saveStudent(
+                {
+                    "Name" : document.getElementById("profil_nachname").value,
+                    "Vorname": document.getElementById("profil_vorname").value,
+                    "Jahrgang": document.getElementById("profil_jahrgang").value,
+                    "Semester": document.getElementById("profil_semester").value,
+                    "Hochschule": document.getElementById("profil_hochschule").value,
+                    "Studiengang": document.getElementById("profil_studiengang").value,
+                    "Geburtstag": document.getElementById("profil_geburtstag").value,
+                    "id": document.getElementById("profil_mitarbeiter_id").value,
+                    "Notizen": document.getElementById("profil_notizen").value
+                }
+            );
+        }
+        
+    });
     resetProfilfelder();
 }
 
 function resetProfilfelder(){
-    document.getElementById("profil_nachname").value="";
-    document.getElementById("profil_vorname").value="";
-    document.getElementById("profil_jahrgang").value="";
-    document.getElementById("profil_semester").value="";
-    document.getElementById("profil_hochschule").value="";
-    document.getElementById("profil_studiengang").value="";
-    document.getElementById("profil_geburtstag").value="";
-    document.getElementById("profil_mitarbeiter_id").value="";
-    document.getElementById("profil_notizen").value="";
+    document.getElementById("profil_nachname").value=null;
+    document.getElementById("profil_vorname").value=null;
+    document.getElementById("profil_jahrgang").value=null;
+    document.getElementById("profil_semester").value=null;
+    document.getElementById("profil_hochschule").value=null;
+    document.getElementById("profil_studiengang").value=null;
+    document.getElementById("profil_geburtstag").value=null;
+    document.getElementById("profil_mitarbeiter_id").value=null;
+    document.getElementById("profil_notizen").value=null;
 }
 
 function deleteStudent(){
