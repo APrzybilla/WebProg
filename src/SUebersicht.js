@@ -170,7 +170,7 @@ function einfügen (Name, Vorname, HS, Sem, JG, id){
 
         //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
-        tdKW.id = "KW" + i + Vorname + Nachname;
+        tdKW.id = "KW" + i + Vorname + Name;
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
