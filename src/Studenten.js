@@ -39,13 +39,10 @@ class Studenten{
 function idfiltern (){
     console.log("Filter");
     let url = " " + window.location;
-    console.log(url);
     let h = 0;
     url = url.substring(url.lastIndexOf("/")+1, url.length);
-    console.log(url);
         
     if(url !== "/Studenten"){
-        console.log(url);
         kurzprofilBefuellenMitId(url);
     }
 }
