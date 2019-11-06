@@ -34,6 +34,7 @@
     color: white;
     padding-left: 1em;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #app .piktogramm{
