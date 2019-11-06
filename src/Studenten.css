@@ -30,13 +30,6 @@
 	border-spacing: 0.5vw;
 }
 
-.Profilbild{
-	height: auto;
-	width: 20vw;
-	text-align: right;
-	float: right;
-}
-
 #delete64{
     width: 7vw;
     position: absolute; 
@@ -96,10 +89,6 @@
         height:auto;
     }
     
-    .Profilbild{
-        width: 15vw;
-    }
-    
     #delete64{
         width: 4vw;
         right: 2em;
@@ -136,10 +125,6 @@
     .container{
         width: 50vw;
         height:auto;
-    }
-    
-    .Profilbild{
-        width: 11vw;
     }
     
     #delete64{
