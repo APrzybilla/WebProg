@@ -40,17 +40,18 @@ function suchen (){
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
-    //Auslesen der Filtertextfelder
+    //Auslesen der Filtertextfelder und in Kleinbuchstaben verwandeln
     let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
     let VN = document.getElementById("filter_vorname").value.toLowerCase();
     let Sem = document.getElementById("filter_semester").value.toLowerCase();
     let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
 
-    //Aufrufen aller Studenten
+    //Überprüfen, ob ein Filter aktiviert ist. Wenn nicht wird die komplette Tabelle angezeigt
     if(Nachname=="" && VN=="" && Sem=="" && JG=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
         anzeigen();
     } else {
-        _db.selectAllStudentsByOrderBackwards("Name", "desc").then(function (querySnapshot) {
+        //Aufrufen aller Studenten rückwärts
+        _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
             //jeden Studenten überprüfen
             querySnapshot.forEach(function(doc){
 
@@ -61,6 +62,7 @@ function suchen (){
                 if(Nachname!==""){
                     //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
+                    //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
                     if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
                         boolean = true;
                     }
@@ -90,7 +92,6 @@ function suchen (){
                         boolean = true;
                     }
                 }
-
                 if(document.getElementById("checkbox_thm").checked){
                     if(doc.data().Hochschule.toLowerCase()=="thm"){
                         boolean = true;
@@ -99,12 +100,14 @@ function suchen (){
 
                 //Wenn eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
                 if(boolean){
+                    //Speichern der Daten in Variablen
                     let Name = doc.data().Name;
                     let Vorname = doc.data().Vorname;
                     let HS = doc.data().Hochschule;
                     let Sem = doc.data().Semester;
                     let Jahrgang = doc.data().Jahrgang;
 
+                    //Hinzufügen des Studenten mit den Variablen
                     einfügen(Name, Vorname, HS, Sem, Jahrgang);
                 }
             });
@@ -119,6 +122,8 @@ function deleteTable(id){
     }
 }
 
+
+//Übergebenen Student der Tabelle an erster Stelle hinzufügen
 function einfügen (Name, Vorname, HS, Sem, JG){
     //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
@@ -148,7 +153,6 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     neueTr.appendChild(tdJG);
 
 
-    //Einfügen der Kalenderwochen//
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
     neueTr = document.getElementById("Tabellenbody").insertRow(1);
         
@@ -157,6 +161,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
         //erzeugen der Tabellenspalten// 
         let tdKW = document.createElement("td");
 
+        //Leere Benennung, damit die Spaltengröße leichter einheitlich zu machen ist
         tdKW.innerHTML = " ";
 
         //Hinzufügen von Klasse "KWs"//
@@ -167,20 +172,24 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     }
 }
 
+//Alle Studenten in der Tabelle anzeigen
 function anzeigen(){
     //Tabelle leeren
     //dient dazu, dass die Daten nicht doppelt drinnen stehen
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
+    //Alle Studenten rückwärts aufrufen
     let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
+            //Alle notwendigen Daten in Variablen speichern
             let Name = doc.data().Name;
             let Vorname = doc.data().Vorname;
             let HS = doc.data().Hochschule;
             let Sem = doc.data().Semester;
             let JG = doc.data().Jahrgang;
 
+            //Student mit gespeicherten Variablen der Tabelle hinzufügen
             einfügen(Name, Vorname, HS, Sem, JG);
         });
     });
