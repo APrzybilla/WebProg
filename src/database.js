@@ -157,8 +157,10 @@ class DB {
     deletePhaseById(id){
         return this._phasen.doc(id).delete();
     }
+
+    selectPhaseById(id){
+        return this._phasen.doc(id).get();
+    }
 }
-
-
 
 export default DB;

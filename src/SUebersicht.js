@@ -1,6 +1,7 @@
 import stylesheet from "./SUebersicht.css";
 import DB from "./database.js";
 import App from "./app.js";
+import { timeout } from "q";
 
 let _app="";
 let _db = "";
@@ -25,8 +26,8 @@ class StartPage{
     onLoad(){
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
-        window.addEventListener("load", anzeigen());
-        
+        anzeigen();
+        setTimeout(zusammenführenStudenten, 1000);
     }
 
     onLeave(goon){
@@ -106,9 +107,10 @@ function suchen (){
                     let HS = doc.data().Hochschule;
                     let Sem = doc.data().Semester;
                     let Jahrgang = doc.data().Jahrgang;
+                    let id = doc.data().id;
 
                     //Hinzufügen des Studenten mit den Variablen
-                    einfügen(Name, Vorname, HS, Sem, Jahrgang);
+                    einfügen(Name, Vorname, HS, Sem, Jahrgang, id);
                 }
             });
         });
@@ -124,7 +126,7 @@ function deleteTable(id){
 
 
 //Übergebenen Student der Tabelle an erster Stelle hinzufügen
-function einfügen (Name, Vorname, HS, Sem, JG){
+function einfügen (Name, Vorname, HS, Sem, JG, id){
     //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -140,8 +142,10 @@ function einfügen (Name, Vorname, HS, Sem, JG){
     tdS.classList.add("handyUnsichtbar");
     tdJG.classList.add("handyUnsichtbar");
 
+    let ank = '<a href = "/Studentenuebersicht/Studenten/' + id + '" navigo>';
+
     //befüllen der Spalten//
-    tdName.innerHTML = Vorname +" " + Name;
+    tdName.innerHTML = ank + Vorname + " " + Name + '</a>';
     tdHS.innerHTML = HS;
     tdS.innerHTML = Sem;
     tdJG.innerHTML  = JG;
@@ -166,6 +170,7 @@ function einfügen (Name, Vorname, HS, Sem, JG){
 
         //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
+        tdKW.id = "KW" + i + Vorname + Name;
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
@@ -188,11 +193,67 @@ function anzeigen(){
             let HS = doc.data().Hochschule;
             let Sem = doc.data().Semester;
             let JG = doc.data().Jahrgang;
+            let id = doc.data().id;
 
             //Student mit gespeicherten Variablen der Tabelle hinzufügen
-            einfügen(Name, Vorname, HS, Sem, JG);
+            einfügen(Name, Vorname, HS, Sem, JG, id);
         });
     });
+}
+
+function zusammenführenStudenten(){
+    
+    _db.selectAllStudents().then(function (querySnapshot) {
+
+        querySnapshot.forEach(function(doc){
+            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
+            let studiengang = doc.data().Studiengang;
+            let jahrgang = doc.data().Jahrgang;
+
+            let zusammengefuegt = studiengang + jahrgang;
+
+            _db.selectPhaseById(zusammengefuegt);
+
+    _db.selectAllPhases().then(function(doc){
+
+        querySnapshot.forEach(function(doc){
+            let theorie1 = doc.data().Theorie1;
+            let theorie2 = doc.data().Theorie2;
+            let theorie3 = doc.data().Theorie3;
+            let theorie4 = doc.data().Theorie4;
+            let theorie5 = doc.data().Theorie5;
+            let theorie6 = doc.data().Theorie6;
+
+            let praxis1 = doc.data().Praxis1;
+            let praxis2 = doc.data().Praxis2;
+            let praxis3 = doc.data().Praxis3;
+            let praxis4 = doc.data().Praxis4;
+            let praxis5 = doc.data().Praxis5;
+            let praxis6 = doc.data().Praxis6;
+
+            let endeLetztePhase = doc.data().EndeLetztePhase;
+
+        });
+    });
+        });    
+    });
+}
+
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+    date = new Date(date);
+    let j = date.getFullYear();
+    let m = date.getMonth()+1;
+    let t = date.getDate();
+    let datum = new Date(j, m, t);
+
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
 }
 
 export default StartPage;

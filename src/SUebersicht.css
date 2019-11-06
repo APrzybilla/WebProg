@@ -47,7 +47,7 @@ button:hover{
 
 /*Scrollbar*/
 #tabelleUebersicht tbody {
-    width: 70vw;
+    width: 68vw;
     overflow-x: scroll;
 }
 
@@ -57,6 +57,10 @@ button:hover{
     border-radius:  0.3em;
     overflow: hidden;
     text-align: center;
+}
+
+#tabelleUebersicht a{
+    color: darkblue !important;
 }
 
 /*Oberste Zeile der Tabelle*/
@@ -90,6 +94,13 @@ button:hover{
 
 /*Tablets*/
 @media(min-width:700px){
+    #tabelleUebersicht thead{
+        width: 17vw;
+    }
+    
+    #tabelleUebersicht tbody {
+        width: 78vw;
+    }
 
     .textfeld_filter{
         font-size: 2vw;
@@ -137,5 +148,13 @@ button:hover{
     
     #tabelleUebersicht{
         min-width: 1195px;
+    }
+
+    #tabelleUebersicht thead{
+        width: 20vw;
+    }
+    
+    #tabelleUebersicht tbody {
+        width: 76vw;
     }
 }
