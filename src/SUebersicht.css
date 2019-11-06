@@ -1,9 +1,10 @@
 /*Handy*/
+/*unsichtbar machen bestimmter Teile der Tabelle. Dient dazu, dass die Handy-Version leichter ist*/
 .handyUnsichtbar{
     visibility: collapse;
 }
 
-/* Filter */
+/*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
 .textfeld_filter{
     font-size: 3vw;
     width: 20vw;
@@ -16,41 +17,33 @@
     color: darkblue;
     vertical-align: middle;
     margin-bottom: 2vw;
-}
-
+}/*app.css?*/
 .textfeld_filter:focus{
     border-color: dodgerblue;
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
+/*Checkboxen, zum Filtern von DHBW oder THM*/
 .checkbox-group{
     display: inline-block;
     margin: 1vw; 
     vertical-align: middle;
 }
-
 .checkbox-group input[type="checkbox"]{
     display: none;
 }
+.checkbox-group label{
+    padding: 1vw;
+}
 
+
+/*app.css hervorheben beim überfahren vom Button*/
 button:hover{
     border-color: dodgerblue;
     box-shadow: 0 0 8px dodgerblue;
 }
 
-/* Übersichttabelle */
-#tabelleUebersicht thead, #tabelleUebersicht tbody{
-    display:inline-block;
-    width: 25vw;
-    height: auto;
-}
-
-/*Scrollbar*/
-#tabelleUebersicht tbody {
-    width: 68vw;
-    overflow-x: scroll;
-}
-
+/*Tabelle, in der alle Studenten stehen*/
 #tabelleUebersicht{
     border-collapse: collapse;
     margin: 2vw 0;
@@ -58,18 +51,27 @@ button:hover{
     overflow: hidden;
     text-align: center;
 }
-
-#tabelleUebersicht a{
-    color: darkblue !important;
+#tabelleUebersicht thead, #tabelleUebersicht tbody{
+    display:inline-block;
+    width: 17vw;
+    height: auto;
 }
-
+/*Scrollbar, um die Kalenderwochen zu scrollen*/
+#tabelleUebersicht tbody {
+    width: 75vw;
+    overflow-x: scroll;
+}
+#tabelleUebersicht tr{
+    border-bottom: 1px solid #dddddd;
+    color: darkblue;
+    background-color: rgb(231, 242, 255);
+}
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
     background-color: #99738E;
     color: white;
     font-weight: bold;
 }
-
 #tabelleUebersicht th,
 #tabelleUebersicht td{
     border-right: 1px solid #dddddd;
@@ -79,29 +81,20 @@ button:hover{
     width: 5vw;
     table-layout: fixed;
 }
-
-#tabelleUebersicht tr{
-    border-bottom: 1px solid #dddddd;
-    color: darkblue;
-    background-color: rgb(231, 242, 255);
-}
-
 /*Damit die letzte Zeile einen blauen Strich unten hat*/
 #tabelleUebersicht tbody tr:last-of-type,
 #tabelleUebersicht thead tr:last-of-type{
     border-bottom: 2px solid blue;
 }
+/*Links in der Tabelle (Die Namen der Studenten)*/
+#tabelleUebersicht a{
+    color: darkblue !important;
+}
+
 
 /*Tablets*/
 @media(min-width:700px){
-    #tabelleUebersicht thead{
-        width: 17vw;
-    }
-    
-    #tabelleUebersicht tbody {
-        width: 78vw;
-    }
-
+    /*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
     .textfeld_filter{
         font-size: 2vw;
         width: 12vw;
@@ -113,6 +106,7 @@ button:hover{
         padding: 5px;
     }
 
+    /*app.css*/
     button{
         width: 10%;
         padding: 5px;
@@ -121,17 +115,27 @@ button:hover{
         float: none;
     }
     
+    /*Tabelle, in der alle Studenten stehen*/
     #tabelleUebersicht{
         min-width: 700px;
     }
+    #tabelleUebersicht thead{
+        width: 11vw;
+    }    
+    #tabelleUebersicht tbody {
+        width: 84vw;
+    }
+
 }
 
 /*Laptop*/
 @media(min-width:1200px){
+    /*Tabellenspalten wieder sichtbar machen*/
     .handyUnsichtbar{
         visibility: visible;
     }
 
+    /*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
     .textfeld_filter{
         font-size: 1vw;
         width: 15vw;
@@ -146,14 +150,13 @@ button:hover{
         padding: 8px;
     }
     
+    /*Tabelle, in der alle Studenten stehen*/
     #tabelleUebersicht{
         min-width: 1195px;
     }
-
     #tabelleUebersicht thead{
         width: 20vw;
     }
-    
     #tabelleUebersicht tbody {
         width: 76vw;
     }
