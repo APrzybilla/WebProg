@@ -205,11 +205,10 @@ function zusammenführenStudenten(){
 
             let zusammengefuegt = studiengang + jahrgang;
 
-            selectPhaseById(zusammengefuegt);
+            _db.selectPhaseById(zusammengefuegt);
 
-        }    
-    }
-
+        });    
+    });
 }
 
 export default StartPage;
