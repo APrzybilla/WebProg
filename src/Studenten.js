@@ -210,7 +210,7 @@ function resetAll(){
 function deleteStudent(){
     window.alert(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML + " wurde gelöscht.");
     // ruft Methode aus database.js auf
-    _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML);
+    _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value);
     
     //Tabelle löschen und neu erstellen
     resetAll();
