@@ -1,4 +1,15 @@
 /*Handy*/
+
+/*sichtbar machen*/
+.visible{
+    visibility: visible;
+}
+
+/*unsichtbar machen*/
+.hidden{
+    display: none;
+}
+
 #app header{
     color: white;
     padding: 0;

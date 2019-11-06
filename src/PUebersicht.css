@@ -1,17 +1,36 @@
 /*Handy*/
-/*Checkbox*/
+/*rechter, bzw. oberer Teil. Formular, um neue Jahrgänge anzulegen*/
+/*Radio-Buttons DHBW und THM*/
 input[type="radio"]{
     display: inline-block;
     vertical-align: middle;
 }
-
+/*Label der Radio-Buttons*/
 .label{
     margin-right: 0;
     display: inline-block;
     vertical-align: middle;
 }
 
-/*DropDown*/
+/*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
+.textfeld_phase{
+    width: 33vw;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+    padding: 1vw;
+    box-sizing: border-box;
+    transition: .3s;
+    margin-right: 1vw;
+    color: darkblue;
+    vertical-align: middle;
+}
+.textfeld_phase:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 0.5em dodgerblue;
+}
+
+/*DropDown Theorie oder Praxis*/
 select{
     border: none;
     width: 20vw;
@@ -21,17 +40,22 @@ select{
     border-radius: 5px;
 }
 
-/*Formatierung der Auflistung */
-li {
-    list-style-type: none;
+/*Buttons Phase Hinzufügen und Jahrgang Hinzufügen*/
+#PhaseHinzufuegen, #JahrgangHinzufuegen{
+    margin: 0.5vw;
 }
 
-/*Phasentabelle*/
+/*Tabelle, in der zunächst die hinzugefügten Phasen aufgelistet werden*/
 #Phasentabelle th{
     font-weight: normal;
 }
 
-/* Auf- und zuklappen */
+/*rechter, bzw. unterer Teil. Auflistung aller eingespeicherten Studiengänge*/
+/*Formatierung der Auflistung */
+li {
+    list-style-type: none;
+}
+/*Auf- und zuklappen der Auflistung*/
 #phasen_tabelle:not(:target) .tabellen_inhalt, #phasen_tabelle:not(:target) .hide, #phasen_tabelle:target .show {
     display: none;
 }
@@ -45,29 +69,7 @@ li {
 #phasen_tabelle1:target .tabellen_inhalt1 {
     display: block;
 }
-
-.textfeld_phase{
-    width: 33vw;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    outline: none;
-    padding: 1vw;
-    box-sizing: border-box;
-    transition: .3s;
-    margin-right: 1vw;
-    color: darkblue;
-    vertical-align: middle;
-}
-
-.textfeld_phase:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 0.5em dodgerblue;
-}
-
-#PhaseHinzufuegen, #JahrgangHinzufuegen{
-    margin: 0.5vw;
-}
-
+/*Formatieren der Elemente Studiengang und Jahrgang*/
 #phasen_tabelle button{
     padding-left: 0.2em;
     padding-right: 0.2em;
@@ -77,27 +79,33 @@ li {
     border-radius: 0.25em;
 }
 
+
 /*Tablets*/
 @media(min-width:700px){
+    /*Label der Radio-Buttons*/
     .label{
         margin-right: 1vw;
     }
-    
-    select{
-        width: 10vw;
-        margin-right: 2vw;
-    }
-    
+
+    /*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
     .textfeld_phase{
         width: 20vw;
         padding: 8px;
         margin-right: 2vw;
     }
+    
+    /*DropDown Theorie oder Praxis*/
+    select{
+        width: 10vw;
+        margin-right: 2vw;
+    }
+    
+    
 }
 
 /*Laptop*/
 @media(min-width:1200px){
-    /*Aufteilung des Bildschirms*/
+    /*Aufteilung des Bildschirms in rechten und linken Teil*/
     #Auflistung{
         width: 48vw;
         left: 10px;
@@ -105,7 +113,6 @@ li {
         padding: 10px;
         margin-left: 20px;
     }
-
     #hinzufügen{
         width: 48vw;
         right: 10px;
@@ -113,14 +120,16 @@ li {
         padding: 10px;
         margin-right: 20px;
     }
-    
-    select{
-        width: 5vw;
-        margin-right: 10px;
-    }
-    
+
+    /*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
     .textfeld_phase{
         width: 10vw;
+        margin-right: 10px;
+    }
+
+    /*DropDown Theorie oder Praxis*/
+    select{
+        width: 5vw;
         margin-right: 10px;
     }
 }
