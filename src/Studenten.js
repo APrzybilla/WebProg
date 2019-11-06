@@ -36,6 +36,7 @@ class Studenten{
     }
 }
 
+// Studenten laden, falls die Seite über einen Link in der Studentenübersicht (Home) aufgerufen wird 
 function idfiltern (){
     console.log("Filter");
     let url = " " + window.location;
