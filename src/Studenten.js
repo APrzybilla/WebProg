@@ -125,15 +125,15 @@ function kurzprofilBefuellen(event){
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             if(doc.data().id == event.target.id){
-                document.querySelector("#profil_nachname").parentElement.children[1].innerHTML = doc.data().Name;
-                document.querySelector("#profil_vorname").parentElement.children[1].innerHTML = doc.data().Vorname;
-                document.querySelector("#profil_jahrgang").parentElement.children[1].innerHTML = doc.data().Jahrgang;
-                document.querySelector("#profil_semester").parentElement.children[1].innerHTML = doc.data().Semester;
-                document.querySelector("#profil_hochschule").parentElement.querySelector("label").innerHTML = doc.data().Hochschule;
-                document.querySelector("#profil_studiengang").parentElement.querySelector("label").innerHTML = doc.data().Studiengang;
-                document.querySelector("#profil_geburtstag").parentElement.children[1].innerHTML = doc.data().Geburtstag;
-                document.querySelector("#profil_mitarbeiter_id").parentElement.children[1].innerHTML = doc.id;
-                document.querySelector("#profil_notizen").parentElement.children[1].innerHTML = doc.data().Notizen;
+                document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;
+                document.querySelector("#profil_vorname").parentElement.children[0].value = doc.data().Vorname;
+                document.querySelector("#profil_jahrgang").parentElement.children[0].value = doc.data().Jahrgang;
+                document.querySelector("#profil_semester").parentElement.children[0].value = doc.data().Semester;
+                document.querySelector("#profil_hochschule").parentElement.querySelector("input").value = doc.data().Hochschule;
+                document.querySelector("#profil_studiengang").parentElement.querySelector("input").value = doc.data().Studiengang;
+                document.querySelector("#profil_geburtstag").parentElement.children[0].value = doc.data().Geburtstag;
+                document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value = doc.id;
+                document.querySelector("#profil_notizen").parentElement.children[0].value = doc.data().Notizen;
             }
         });
     });
