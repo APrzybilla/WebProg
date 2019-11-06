@@ -1,6 +1,7 @@
 import stylesheet from "./SUebersicht.css";
 import DB from "./database.js";
 import App from "./app.js";
+import { timeout } from "q";
 
 let _app="";
 let _db = "";
@@ -25,8 +26,8 @@ class StartPage{
     onLoad(){
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
-        window.addEventListener("load", anzeigen());
-        
+        anzeigen();
+        setTimeout(zusammenführenStudenten, 1000);
     }
 
     onLeave(goon){
@@ -198,6 +199,41 @@ function anzeigen(){
             einfügen(Name, Vorname, HS, Sem, JG, id);
         });
     });
+}
+
+function zusammenführenStudenten(){
+    
+    _db.selectAllStudents().then(function (querySnapshot) {
+
+        querySnapshot.forEach(function(doc){
+            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
+            let studiengang = doc.data().Studiengang;
+            let jahrgang = doc.data().Jahrgang;
+
+            let zusammengefuegt = studiengang + jahrgang;
+
+            _db.selectPhaseById(zusammengefuegt);
+
+            
+        });    
+    });
+}
+
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+    date = new Date(date);
+    let j = date.getFullYear();
+    let m = date.getMonth()+1;
+    let t = date.getDate();
+    let datum = new Date(j, m, t);
+
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
 }
 
 export default StartPage;
