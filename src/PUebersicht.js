@@ -181,13 +181,6 @@ let loeschen = (event) =>{
 
     // Zeile löschen
     document.getElementById("Phasentabelle").deleteRow(el);
-
-    /*if(document.getElementById("Phasentabelle").rows<=1){
-        //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
-        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
-        buttonPhase.classList.remove("visible");
-        buttonPhase.classList.add("hidden");
-    }*/
 }
 
 //Formatieren des Datums in 01.01.2019
