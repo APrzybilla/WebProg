@@ -39,10 +39,6 @@ class Phasenuebersicht{
 }
 
 let neuerStudiengang = () =>{
-    //zurücksetzen der Hilfsvariablen hilfeTheorie und hilfePraxis
-    hilfeTheorie = 1;
-    hilfePraxis = 1;
-
     //Phasen in die Datenbank speichern
     let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
     console.log(document.getElementById("EingabeStudiengang").value);
@@ -97,10 +93,10 @@ function resetAll(){
 }
 
 //Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
-let hilfeTheorie = 1;
-let hilfePraxis = 1;
 
 let neuePhase = () =>{       
+    let hilfeTheorie = 1;
+    let hilfePraxis = 1;
     //sichtbar machen der Tabelle//
     let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
     buttonPhase.classList.remove("hidden");
@@ -115,14 +111,9 @@ let neuePhase = () =>{
     let tdBis = document.createElement("td");
     let tdStart = document.createElement("td");
     let tdEnd = document.createElement("td");
-    let tdBearb = document.createElement("td");
     let tdLoe = document.createElement("td");
 
-    //Buttons bearbeiten und löschen erstellen//
-    let bearb = document.createElement("input");
-    bearb.type = "button"
-    bearb.classList.add("Buttons");
-    bearb.value = "Bearbeiten";
+    //Button löschen erstellen//
     let loe = document.createElement("input");
     loe.type = "button";
     loe.classList.add("Buttons");
@@ -134,21 +125,35 @@ let neuePhase = () =>{
     tdBis.innerHTML = datumsausgabe(document.getElementById("Enddatum").value);
     tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
     tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
-    tdBearb.appendChild(bearb);
     tdLoe.appendChild(loe);
     
-    //ids vergeben
-    console.log((tdPhase.innerHTML + hilfeTheorie));
+    //ids vergeben, soll am Ende Theorie1, Theorie2, ... und auch mit Praxis heißen
+    //überprüfen, ob es eine Theorie- oder Praxisphase ist
     if(tdPhase.innerHTML=="Theorie"){
-        tdVon.id = tdPhase.innerHTML + hilfeTheorie;
-        tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
-        hilfeTheorie++;
-        console.log("ifTheorie " + hilfeTheorie );
+        //überprüfen, welche Zahl noch frei ist
+        while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
+            hilfeTheorie++;
+        }
+        if(hilfeTheorie>6){
+            alert("Es wurden bereits genug Theoriephasen eingegeben");
+            return;
+        } else {
+            tdVon.id = tdPhase.innerHTML + hilfeTheorie;
+            tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
+        }
     } else if(tdPhase.innerHTML=="Praxis"){
-        tdVon.id = tdPhase.innerHTML + hilfePraxis;
-        tdBis.id = tdPhase.innerHTML + "Ende" + hilfePraxis;
-        hilfePraxis++;
-        console.log("ifPraxis " + hilfePraxis);
+        console.log(document.getElementById(tdPhase.innerHTML + hilfePraxis));
+        while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
+            hilfePraxis++;
+        }
+        if(hilfePraxis>6){
+            alert("Es wurden bereits genug Praxisphasen eingegeben");
+            return;
+        } else {
+            tdVon.id = tdPhase.innerHTML + hilfePraxis;
+            tdBis.id = tdPhase.innerHTML + "Ende" + hilfePraxis;
+        }
+        
     }
     console.log("id: " + tdVon.id);
     
@@ -159,29 +164,10 @@ let neuePhase = () =>{
     neueTr.appendChild(tdBis);
     neueTr.appendChild(tdStart);
     neueTr.appendChild(tdEnd);
-    neueTr.appendChild(tdBearb);
     neueTr.appendChild(tdLoe);
 
     //Hinzufügen von EventListener der Buttons
-    bearb.addEventListener('click', bearbeiten);
     loe.addEventListener("click", loeschen);
-}
-
-//EventListener von bearbeiten-Button
-let bearbeiten = (event) =>{
-    // Das aufrufende Element wird in el gespeichert
-    let el = event.target;
-    while(el.nodeName !== "TR"){
-        el = el.parentElement; // el enthält als Wert die Zeile (tr) des aufrufenden Elements
-    }
-    
-    //füllen der Spalten in das Dokument
-    document.getElementById("DropDownPhase").value = el.children[0].innerHTML;
-    let date = el.children[1].innerHTML;
-    document.getElementById("Startdatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
-    date = el.children[2].innerHTML;
-    document.getElementById("Enddatum").value = date.split(".")[2] + "-" + date.split(".")[1] + "-" + date.split(".")[0];
-
 }
 
 //EventListener von löschen-Button
@@ -192,15 +178,16 @@ let loeschen = (event) =>{
         el = el.parentElement;
     }
     el = el.rowIndex;
-    
+
     // Zeile löschen
     document.getElementById("Phasentabelle").deleteRow(el);
-    if(document.getElementById("Phasentabelle").children[1]===undefined){
+
+    /*if(document.getElementById("Phasentabelle").rows<=1){
         //Phasentabelle wieder unsichtbar machen, wenn die letzte Zeile gelöscht wurde
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
         buttonPhase.classList.remove("visible");
         buttonPhase.classList.add("hidden");
-    }
+    }*/
 }
 
 //Formatieren des Datums in 01.01.2019
