@@ -97,12 +97,13 @@ function zusammenführenStudenten(){
                 try{
                     let t = berechneWoche(phas.data().Theorie1);
                     let p = berechneWoche(phas.data().Praxis1);
+                    let h = p;
                     if(p<t){
-                        p += t;
+                        h = t + p;
                     }
                     console.log(stud.data().Name + " " + t + " " + p);
-                    for(let i = t; i<p; i++){
-                        document.getElementById("KW" + i + stud.data().id).style.backgroundColor = "lightgreen";
+                    for(let i = t; i<h; i++){
+                        document.getElementById("KW" + i + stud.data().id).style.backgroundColor = "#85cdca";
                     }
                 }
                 catch(exception){}
