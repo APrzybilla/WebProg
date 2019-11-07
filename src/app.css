@@ -73,22 +73,22 @@
     border-radius: 0.25em;
 }
 /*Standard für Inputs festlegen */
-/*Input mit label auf einer Ebene*/
-#app input:checked + label{
+#app input[type="checkbox"]+label{
     color: white;
-    border-color: white;
+    border: 2px solid white;
+    border-radius: 0.25em;
+    background: #474eba;
+    cursor: pointer;
     box-shadow: none;
+}
+/*Wenn die Checkbox checked ist, dann soll sich das Feld Weiß gefärbt werden*/
+#app input[type="checkbox"]:checked + label{
+    color: #f64c72;
+    border-color: #f63c72;
 }
 /*Input als Checkbox mit label auf einer Ebene*/
 #app input[type="checkbox"]:hover+label:hover{
     box-shadow: 0 0 8px dodgerblue;
-}
-#app input[type="checkbox"]+label{
-    color: #f64c72;
-    border: 2px solid #f63c72;
-    border-radius: 0.25em;
-    background: #474eba;
-    cursor: pointer;
 }
 
 /*Tablets*/

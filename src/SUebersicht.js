@@ -31,7 +31,7 @@ class StartPage{
         anzeigen();
 
         //Erzeugen der Tabelle mit Kalenderwochen, etc.
-        tabelleErzeugen();
+        tabelleUebersichtErzeugen();
 
         //Füllt die Tabelle mit den Phasen; setTimeout damit die Seite erst lädt und dann die Function ausgeführt wird
         setTimeout(zusammenführenStudenten, 500);
@@ -46,30 +46,25 @@ class StartPage{
 
 //Alle Studenten in der Tabelle anzeigen
 function anzeigen(){
-    //Tabelle leeren
-    //dient dazu, dass die Daten nicht doppelt drinnen stehen
-    deleteTable("Tabellenhead");
-    deleteTable("Tabellenbody");
-
     //Alle Studenten rückwärts aufrufen
     let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             //Alle notwendigen Daten in Variablen speichern
-            let Name = doc.data().Name;
-            let Vorname = doc.data().Vorname;
-            let HS = doc.data().Hochschule;
-            let Sem = doc.data().Semester;
-            let JG = doc.data().Jahrgang;
+            let name = doc.data().Name;
+            let vorname = doc.data().Vorname;
+            let hs = doc.data().Hochschule;
+            let sem = doc.data().Semester;
+            let jg = doc.data().Jahrgang;
             let id = doc.data().id;
 
             //Student mit gespeicherten Variablen der Tabelle hinzufügen
-            einfügen(Name, Vorname, HS, Sem, JG, id);
+            einfügen(name, vorname, hs, sem, jg, id);
         });
     });
 }
 
 //Anzeigen des Grundgerüsts der Tabelle
-function tabelleErzeugen(){
+function tabelleUebersichtErzeugen(){
     let tr = document.getElementById("Tabellenbody").insertRow(0);
     //erzeugen der Tabellenspalten//
     let i = 1;
@@ -95,7 +90,7 @@ function zusammenführenStudenten(){
     _db.selectAllStudents().then(function (querySnapshot) {
 
         querySnapshot.forEach(function(doc){
-            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
+            let zeile = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
             let studiengang = doc.data().Studiengang;
             let jahrgang = doc.data().Jahrgang;
 
@@ -138,13 +133,13 @@ function suchen (){
     deleteTable("Tabellenbody");
 
     //Auslesen der Filtertextfelder und in Kleinbuchstaben verwandeln
-    let Nachname = document.getElementById("filter_nachname").value.toLowerCase();
-    let VN = document.getElementById("filter_vorname").value.toLowerCase();
-    let Sem = document.getElementById("filter_semester").value.toLowerCase();
-    let JG = document.getElementById("filter_jahrgang").value.toLowerCase();
+    let nachanme = document.getElementById("filter_nachname").value.toLowerCase();
+    let vn = document.getElementById("filter_vorname").value.toLowerCase();
+    let sem = document.getElementById("filter_semester").value.toLowerCase();
+    let jg = document.getElementById("filter_jahrgang").value.toLowerCase();
 
     //Überprüfen, ob ein Filter aktiviert ist. Wenn nicht wird die komplette Tabelle angezeigt
-    if(Nachname=="" && VN=="" && Sem=="" && JG=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
+    if(nachanme=="" && vn=="" && sem=="" && jg=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
         anzeigen();
     } else {
         //Aufrufen aller Studenten rückwärts
@@ -154,60 +149,60 @@ function suchen (){
                 //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
 
                 //Flag, der anzeigt, ob ein Filter auf den Studenten zutrifft
-                let boolean= false;
+                let flag = false;
 
                 //Überprüfen, ob etwas in den Feldern steht
-                if(Nachname!==""){
+                if(nachanme!==""){
                     //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                     //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
-                    if(doc.data().Name.toLowerCase().indexOf(Nachname)>=0){
-                        boolean = true;
+                    if(doc.data().Name.toLowerCase().indexOf(nachanme)>=0){
+                        flag = true;
                     }
                 }
 
-                if(VN!==""){
-                    if(doc.data().Vorname.toLowerCase().indexOf(VN)>=0){
-                        boolean = true;
+                if(vn!==""){
+                    if(doc.data().Vorname.toLowerCase().indexOf(vn)>=0){
+                        flag = true;
                     }
                 }
 
-                if(Sem!==""){
-                    if(doc.data().Semester.toLowerCase().indexOf(Sem)>=0){
-                        boolean = true;
+                if(sem!==""){
+                    if(doc.data().Semester.toLowerCase().indexOf(sem)>=0){
+                        flag = true;
                     }
                 }
 
-                if(JG!==""){
-                    if(doc.data().Jahrgang.toLowerCase().indexOf(JG)>=0){
-                        boolean = true;
+                if(jg!==""){
+                    if(doc.data().Jahrgang.toLowerCase().indexOf(jg)>=0){
+                        flag = true;
                     }
                 }
 
                 //Überprüfen der Checkboxen DHBW und THM
                 if(document.getElementById("checkbox_dhbw").checked){
                     if(doc.data().Hochschule.toLowerCase()=="dhbw"){
-                        boolean = true;
+                        flag = true;
                     }
                 }
                 if(document.getElementById("checkbox_thm").checked){
                     if(doc.data().Hochschule.toLowerCase()=="thm"){
-                        boolean = true;
+                        flag = true;
                     }
                 }
 
                 //Wenn mindestens eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
-                if(boolean){
+                if(flag){
                     //Speichern der Daten in Variablen
-                    let Name = doc.data().Name;
-                    let Vorname = doc.data().Vorname;
-                    let HS = doc.data().Hochschule;
-                    let Sem = doc.data().Semester;
-                    let Jahrgang = doc.data().Jahrgang;
+                    let name = doc.data().Name;
+                    let vorname = doc.data().Vorname;
+                    let hs = doc.data().Hochschule;
+                    let sem = doc.data().Semester;
+                    let jahrgang = doc.data().Jahrgang;
                     let id = doc.data().id;
 
                     //Hinzufügen des Studenten mit den Variablen
-                    einfügen(Name, Vorname, HS, Sem, Jahrgang, id);
+                    einfügen(name, vorname, hs, sem, jahrgang, id);
                 }
             });
         });
@@ -215,7 +210,7 @@ function suchen (){
 }
 
 //Übergebenen Student der Tabelle an erster Stelle hinzufügen
-function einfügen (Name, Vorname, HS, Sem, JG, id){
+function einfügen (name, vorname, hs, sem, jg, id){
     //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(1);
@@ -234,10 +229,10 @@ function einfügen (Name, Vorname, HS, Sem, JG, id){
     let ank = '<a href = "/Studentenuebersicht/Studenten/' + id + '" navigo>';
 
     //befüllen der Spalten//
-    tdName.innerHTML = ank + Vorname + " " + Name + '</a>';
-    tdHS.innerHTML = HS;
-    tdS.innerHTML = Sem;
-    tdJG.innerHTML  = JG;
+    tdName.innerHTML = ank + vorname + " " + name + '</a>';
+    tdHS.innerHTML = hs;
+    tdS.innerHTML = sem;
+    tdJG.innerHTML  = jg;
 
     //hinzufügen der Spalten//
     neueTr.appendChild(tdName);
@@ -259,7 +254,7 @@ function einfügen (Name, Vorname, HS, Sem, JG, id){
 
         //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
-        tdKW.id = "KW" + i + Vorname + Name;
+        tdKW.id = "KW" + i + vorname + name;
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
