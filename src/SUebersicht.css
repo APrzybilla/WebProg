@@ -4,7 +4,7 @@
     visibility: collapse;
 }
 
-/*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
+/*Textfelder vom Filter zum Durchsuchen der Studenten*/
 .textfeld_filter{
     font-size: 3vw;
     width: 20vw;
@@ -17,7 +17,7 @@
     color: darkblue;
     vertical-align: middle;
     margin-bottom: 2vw;
-}/*app.css?*/
+}
 .textfeld_filter:focus{
     border-color: dodgerblue;
     box-shadow: 0 0 0.5em dodgerblue;
@@ -29,6 +29,7 @@
     margin: 1vw; 
     vertical-align: middle;
 }
+/*Unsichtbar machen der Checkbox selber, sodass nur das Label zu sehen ist*/
 .checkbox-group input[type="checkbox"]{
     display: none;
 }
