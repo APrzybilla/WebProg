@@ -25,9 +25,10 @@ class Studenten{
     onLoad(){
         // Tabellen werden erstellt
         klapptabelle_erstellung();
-        // Den Images des Kurzprofils werden eventlistener hinzugefügt
+        // Den Images des Kurzprofils werden EventListener hinzugefügt
         document.querySelector("#aSpeichern").addEventListener("click", studentSpeichern);
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
+        //Überprüfung, ob die eine ID eines Studenten hat
         idfiltern();
     }
 
@@ -38,16 +39,38 @@ class Studenten{
 
 // Studenten laden, falls die Seite über einen Link in der Studentenübersicht (Home) aufgerufen wird 
 function idfiltern (){
-    console.log("Filter");
+    //Aktuelle URL holen
     let url = " " + window.location;
-    let h = 0;
+    
+    //URL zurechtscheiden, dass nur der Teil nach dem letzten "/" übrig bleibt
     url = url.substring(url.lastIndexOf("/")+1, url.length);
-        
+    
+    //Wenn eine ID vorhanden ist, soll das Profil befüllt werden
     if(url !== "/Studenten"){
         kurzprofilBefuellenMitId(url);
     }
 }
 
+//Profil wird mit Hilfe einer ID befüllt, die übergeben wird
+function kurzprofilBefuellenMitId(id){
+    let students = _db.selectAllStudents().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            if(doc.data().id == id){
+                document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;
+                document.querySelector("#profil_vorname").parentElement.children[0].value = doc.data().Vorname;
+                document.querySelector("#profil_jahrgang").parentElement.children[0].value = doc.data().Jahrgang;
+                document.querySelector("#profil_semester").parentElement.children[0].value = doc.data().Semester;
+                document.querySelector("#profil_hochschule").parentElement.querySelector("input").value = doc.data().Hochschule;
+                document.querySelector("#profil_studiengang").parentElement.querySelector("input").value = doc.data().Studiengang;
+                document.querySelector("#profil_geburtstag").parentElement.children[0].value = doc.data().Geburtstag;
+                document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value = doc.id;
+                document.querySelector("#profil_notizen").parentElement.children[0].value = doc.data().Notizen;
+            }
+        });
+    });
+}
+
+//Erstellung der Liste, in der alle Studenten angezeigt werden
 function klapptabelle_erstellung(){
     // eltern festlegen
     let eltern = document.getElementById("studenten_tabelle");
@@ -104,6 +127,7 @@ function klapptabelle_erstellung(){
     });
 }
 
+//EventListener für das Aufklappen der Auflistung mit den Studenten
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
     let eltern;
@@ -133,6 +157,8 @@ function klapptabelle(event){
     }
 }
 
+//EventListener, wenn auf einen Student geklickt wurde, wird das Profil entsprechend befüllt
+//Funktioniert genauso wie kurzprofilBefuellenMitId, nur dass hier der Auslöser untersucht wird
 function kurzprofilBefuellen(event){
     let students = _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
@@ -151,6 +177,7 @@ function kurzprofilBefuellen(event){
     });
 }
 
+//EventListener des Speichern-Bildes. Dient das Profil zu speichern. Bei vorhandenem Student werden die Daten überschrieben
 function studentSpeichern(){
     _db.saveStudent(
         {
@@ -170,26 +197,9 @@ function studentSpeichern(){
     resetAll();
 }
 
-function kurzprofilBefuellenMitId(id){
-    let students = _db.selectAllStudents().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc){
-            if(doc.data().id == id){
-                document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;
-                document.querySelector("#profil_vorname").parentElement.children[0].value = doc.data().Vorname;
-                document.querySelector("#profil_jahrgang").parentElement.children[0].value = doc.data().Jahrgang;
-                document.querySelector("#profil_semester").parentElement.children[0].value = doc.data().Semester;
-                document.querySelector("#profil_hochschule").parentElement.querySelector("input").value = doc.data().Hochschule;
-                document.querySelector("#profil_studiengang").parentElement.querySelector("input").value = doc.data().Studiengang;
-                document.querySelector("#profil_geburtstag").parentElement.children[0].value = doc.data().Geburtstag;
-                document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value = doc.id;
-                document.querySelector("#profil_notizen").parentElement.children[0].value = doc.data().Notizen;
-            }
-        });
-    });
-}
-
+//Dient dazu, die Auflistung der Studenten neu zu laden, um Veränderungen direkt anzuzeigen
 function resetAll(){
-    //Tabelle löschen und neu erstellen
+    //Auflistung löschen und neu erstellen
     let parent = document.getElementById("studenten_tabelle");
     while(parent.firstChild){
         parent.removeChild(parent.firstChild);
@@ -207,8 +217,10 @@ function resetAll(){
     document.getElementById("profil_notizen").value=null;
 }
 
+//EventListener des Löschen-Bildes. Dient dazu, den aktuell ausgewählten Student zu löschen
 function deleteStudent(){
-    window.alert(document.querySelector("#profil_vorname").parentElement.children[1].innerHTML + " wurde gelöscht.");
+    window.alert(document.querySelector("#profil_vorname").parentElement.children[0].value + " " + document.querySelector("#profil_nachname").parentElement.children[0].value + " wurde gelöscht.");
+    
     // ruft Methode aus database.js auf
     _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value);
     
