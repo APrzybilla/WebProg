@@ -38,6 +38,7 @@ class Studenten{
 }
 
 // Functions die im onload ausgeführt werden
+
 // Studenten laden, falls die Seite über einen Link in der Studentenübersicht (Home) aufgerufen wird 
 function idfiltern (){
     //Aktuelle URL holen
@@ -129,6 +130,7 @@ function klapptabelle_erstellung(){
 }
 
 // Functions die nur bei Bedarf ausgeführt werden
+
 // EventListener für das Aufklappen der Auflistung mit den Studenten
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
