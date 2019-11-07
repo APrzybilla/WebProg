@@ -1,4 +1,4 @@
-Beispielanwendung "My-Example-App"
+﻿Beispielanwendung "My-Example-App"
 ===============================
 
 Kurzbeschreibung
@@ -72,7 +72,7 @@ Copyright
 Dieses Projekt ist lizenziert unter
 [_Creative Commons Namensnennung 4.0 International_](http://creativecommons.org/licenses/by/4.0/)
 
-© 2019 Florian Saß <br/>
+© 2019 Adrian Przybilla <br/>
 
-E-Mail: [vorlesung@sass.direct](mailto:vorlesung@sass.direct) <br/>
+E-Mail: [adrian_przybilla@web.de](mailto:adrian_przybilla@web.de) <br/>
 Webseite: TODO
