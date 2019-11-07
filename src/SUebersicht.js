@@ -33,13 +33,39 @@ class StartPage{
         //Erzeugen der Tabelle mit Kalenderwochen, etc.
         tabelleErzeugen();
 
-        //
-        setTimeout(zusammenführenStudenten, 1000);
+        //Füllt die Tabelle mit den Phasen; setTimeout damit die Seite erst lädt und dann die Function ausgeführt wird
+        setTimeout(zusammenführenStudenten, 500);
     }
 
     onLeave(goon){
         return true;
     }
+}
+
+// Functions die im onload ausgeführt werden
+
+//Alle Studenten in der Tabelle anzeigen
+function anzeigen(){
+    //Tabelle leeren
+    //dient dazu, dass die Daten nicht doppelt drinnen stehen
+    deleteTable("Tabellenhead");
+    deleteTable("Tabellenbody");
+
+    //Alle Studenten rückwärts aufrufen
+    let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc){
+            //Alle notwendigen Daten in Variablen speichern
+            let Name = doc.data().Name;
+            let Vorname = doc.data().Vorname;
+            let HS = doc.data().Hochschule;
+            let Sem = doc.data().Semester;
+            let JG = doc.data().Jahrgang;
+            let id = doc.data().id;
+
+            //Student mit gespeicherten Variablen der Tabelle hinzufügen
+            einfügen(Name, Vorname, HS, Sem, JG, id);
+        });
+    });
 }
 
 //Anzeigen des Grundgerüsts der Tabelle
@@ -63,6 +89,46 @@ function tabelleErzeugen(){
         i++;
     }
 }
+
+function zusammenführenStudenten(){
+    
+    _db.selectAllStudents().then(function (querySnapshot) {
+
+        querySnapshot.forEach(function(doc){
+            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
+            let studiengang = doc.data().Studiengang;
+            let jahrgang = doc.data().Jahrgang;
+
+            let zusammengefuegt = studiengang + jahrgang;
+
+            _db.selectPhaseById(zusammengefuegt);
+
+    _db.selectAllPhases().then(function(doc){
+
+        querySnapshot.forEach(function(doc){
+            let theorie1 = doc.data().Theorie1;
+            let theorie2 = doc.data().Theorie2;
+            let theorie3 = doc.data().Theorie3;
+            let theorie4 = doc.data().Theorie4;
+            let theorie5 = doc.data().Theorie5;
+            let theorie6 = doc.data().Theorie6;
+
+            let praxis1 = doc.data().Praxis1;
+            let praxis2 = doc.data().Praxis2;
+            let praxis3 = doc.data().Praxis3;
+            let praxis4 = doc.data().Praxis4;
+            let praxis5 = doc.data().Praxis5;
+            let praxis6 = doc.data().Praxis6;
+
+            let endeLetztePhase = doc.data().EndeLetztePhase;
+
+        });
+    });
+        });    
+    });
+}
+
+// Functions die nur bei Bedarf ausgeführt werden
 
 //Suchen von Studenten. Wird aktiviert, wenn der Suchen-Button geklickt wurde
 function suchen (){
@@ -148,14 +214,6 @@ function suchen (){
     }
 }
 
-//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
-function deleteTable(id){
-    while(document.getElementById(id).rows.length>1){
-        document.getElementById(id).deleteRow(1);
-    }
-}
-
-
 //Übergebenen Student der Tabelle an erster Stelle hinzufügen
 function einfügen (Name, Vorname, HS, Sem, JG, id){
     //Einfügen des Studenten
@@ -208,66 +266,11 @@ function einfügen (Name, Vorname, HS, Sem, JG, id){
     }
 }
 
-//Alle Studenten in der Tabelle anzeigen
-function anzeigen(){
-    //Tabelle leeren
-    //dient dazu, dass die Daten nicht doppelt drinnen stehen
-    deleteTable("Tabellenhead");
-    deleteTable("Tabellenbody");
-
-    //Alle Studenten rückwärts aufrufen
-    let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc){
-            //Alle notwendigen Daten in Variablen speichern
-            let Name = doc.data().Name;
-            let Vorname = doc.data().Vorname;
-            let HS = doc.data().Hochschule;
-            let Sem = doc.data().Semester;
-            let JG = doc.data().Jahrgang;
-            let id = doc.data().id;
-
-            //Student mit gespeicherten Variablen der Tabelle hinzufügen
-            einfügen(Name, Vorname, HS, Sem, JG, id);
-        });
-    });
-}
-
-function zusammenführenStudenten(){
-    
-    _db.selectAllStudents().then(function (querySnapshot) {
-
-        querySnapshot.forEach(function(doc){
-            let row = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
-            let studiengang = doc.data().Studiengang;
-            let jahrgang = doc.data().Jahrgang;
-
-            let zusammengefuegt = studiengang + jahrgang;
-
-            _db.selectPhaseById(zusammengefuegt);
-
-    _db.selectAllPhases().then(function(doc){
-
-        querySnapshot.forEach(function(doc){
-            let theorie1 = doc.data().Theorie1;
-            let theorie2 = doc.data().Theorie2;
-            let theorie3 = doc.data().Theorie3;
-            let theorie4 = doc.data().Theorie4;
-            let theorie5 = doc.data().Theorie5;
-            let theorie6 = doc.data().Theorie6;
-
-            let praxis1 = doc.data().Praxis1;
-            let praxis2 = doc.data().Praxis2;
-            let praxis3 = doc.data().Praxis3;
-            let praxis4 = doc.data().Praxis4;
-            let praxis5 = doc.data().Praxis5;
-            let praxis6 = doc.data().Praxis6;
-
-            let endeLetztePhase = doc.data().EndeLetztePhase;
-
-        });
-    });
-        });    
-    });
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
+    }
 }
 
 //Kalenderwoche berechnen
