@@ -82,14 +82,12 @@ button:hover{
     width: 5vw;
     table-layout: fixed;
 }
-/*Damit die letzte Zeile einen blauen Strich unten hat*/
-#tabelleUebersicht tbody tr:last-of-type,
-#tabelleUebersicht thead tr:last-of-type{
-    border-bottom: 2px solid blue;
-}
 /*Links in der Tabelle (Die Namen der Studenten)*/
 #tabelleUebersicht a{
     color: darkblue !important;
+}
+#tabelleUebersicht a:hover{
+    color: blue !important;
 }
 
 
