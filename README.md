@@ -4,7 +4,7 @@
 Kurzbeschreibung
 ----------------
 
-Die Studentenübersicht soll Unternehmen dabei unterstützen einen Überblick über alle Praxis- und Theoriephasen 
+Die Studierendenübersicht soll Unternehmen dabei unterstützen einen Überblick über alle Praxis- und Theoriephasen 
 ihrer Studierenden zu bekommen. Durch farbliche Hervorhebung in einem dynamischen Kalender können die Phasenwechel 
 schnell erkannt und Praxisphasen effizienter und rechtzeitig geplant werden. 
 Für jeden Studierenden lässt sich ein individuelles Kurzprofil anlegen. Ebenfalls können Jahrgänge eingepflegt werden
@@ -31,7 +31,7 @@ Folgende Entwicklungswerkzeuge kommen zum Einsatz:
  * [git:](https://git-scm.com/") Versionsverwaltung zur gemeinsamen Arbeit am Quellcode
  * [npm:](https://nodejs.org/") Paketverwaltung zum automatischen Download abhängiger Bibliotheken
  * [Parcel:](https://parceljs.org/") Web Application Bundler und Entwicklungsserver
- * [Firebase:] (https://firebase.google.com/) Stellt Programmierschnittstellen für verschiedenen Plattformen bereit
+ * [Firebase:](https://firebase.google.com/) Stellt Programmierschnittstellen für verschiedenen Plattformen bereit
 
 Zusätzlich werden folgende Bibliotheken genutzt:
 
@@ -50,4 +50,3 @@ Dieses Projekt ist lizenziert unter
 © 2019 Adrian Przybilla, Anika Haushälter, Martin Sütterlin <br/>
 
 E-Mail: [adrian_przybilla@web.de](mailto:adrian_przybilla@web.de) <br/>
-Webseite: TODO
