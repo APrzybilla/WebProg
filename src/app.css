@@ -102,6 +102,7 @@
     #app #nav{
         right: 3vw;
         width: auto;
+        margin-top: 1vw;
     }
     
     /*Standard für Buttons festlegen*/
@@ -116,5 +117,6 @@
     /*Navigationsleiste*/
     #app #nav{
         right: 10vw;
+        margin: 0;
     }
 }
