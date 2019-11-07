@@ -70,34 +70,48 @@ function tabelleUebersichtErzeugen(){
     th.colSpan=4;
     th.innerHTML = "Studenten";
     trStudent.appendChild(th);
-    //erzeugen der Tabellenspalten//
-    let i = 1;
+    
+    //aktuelles Datum holen
+    let d = new Date();
+    //aktuelle Kalenderwoche in i speichern
+    let i = berechneWoche(d.getDate() + "." + (d.getMonth() +1) + "."  + d.getFullYear());
+
+    //Hilfsvariable, in der später das höchste Jahr stehen soll
     let h = 0;
     _db.selectAllPhases().then(function (querySnapshot) {
+        //Alle Studiengänge überprüfen und das Ende des spätesten Studiengang in h speichern
         querySnapshot.forEach(function(doc){
             if(h<doc.data().EndeLetztePhase.split(".")[2]){
                 h = doc.data().EndeLetztePhase.split(".")[2];
             }
         });
+
+        //neue Tabellenzeile erstellen, in der die Jahre stehen sollen
         let trJahr = document.getElementById("Tabellenbody").insertRow(0);
+        //neue Tabellenzeile erstellen, in der die KWs stehen sollen
         let trKW = document.getElementById("Tabellenbody").insertRow(1);
         
-        for(let j = 2019; j<=h; j++){
+        for(let j = d.getFullYear(); j<=h; j++){
+            //Erzeugen der th in der Zeile für die Jahre
             th = document.createElement("th");
             th.colSpan = 52;
             th.innerHTML = j;
             trJahr.appendChild(th);
+            //Erzeugen der Kalenderwochen für das Jahr.
+            //Im ersten Jahr beginnen die Kalenderwochen mit der aktuellen Woche (vorher in i festgelegt)
             while(i<53){
                 th = document.createElement("th");
+                //Bei den Zahlen 1-9 wird eine 0 vorher angehängt, sodass die Zahlen 01-09 gehen
                 if(i.toString().length==1){
                     th.innerHTML = "KW0" + i;
-                    th.id = "k"+j+i;
                 } else {
                     th.innerHTML = "KW" + i;
-                    th.id = "k"+j+i;
                 }
-                
+                //id setzt sich zusammen aus "k", Jahr und Wochennummer
+                //Woche 45 in 2019 sieht dann so aus: k201945
+                th.id = "k"+j+i;
                 trKW.appendChild(th);
+                //i wird um eins erhöht, dass alle Wochen hinzugefügt werden.
                 i++;
             }
             
@@ -321,7 +335,6 @@ let berechneWoche =(date) =>{
     let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
 
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-    
     return weekNumber;
 }
 
