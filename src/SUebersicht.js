@@ -30,7 +30,10 @@ class StartPage{
         //Aufrufen der Tabelle mit allen Studenten
         anzeigen();
 
+        //Erzeugen der Tabelle mit Kalenderwochen, etc.
+        tabelleErzeugen();
 
+        //
         setTimeout(zusammenführenStudenten, 1000);
     }
 
@@ -39,6 +42,29 @@ class StartPage{
     }
 }
 
+//Anzeigen des Grundgerüsts der Tabelle
+function tabelleErzeugen(){
+    let tr = document.getElementById("Tabellenbody").insertRow(0);
+    //erzeugen der Tabellenspalten//
+    let i = 1;
+    let th;
+    while(i<53){
+        th = document.createElement("th");
+        th.classList.add("top");
+        if(i.toString().length==1){
+            th.innerHTML = "KW0" + i;
+            th.id = "k0"+i;
+        } else {
+            th.innerHTML = "KW" + i;
+            th.id = "k"+i;
+        }
+        
+        tr.appendChild(th);
+        i++;
+    }
+}
+
+//Suchen von Studenten. Wird aktiviert, wenn der Suchen-Button geklickt wurde
 function suchen (){
     //Tabelle leeren
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
