@@ -65,36 +65,47 @@ function anzeigen(){
 
 //Anzeigen des Grundgerüsts der Tabelle
 function tabelleUebersichtErzeugen(){
-    let tr = document.getElementById("Tabellenhead").insertRow(0);
+    let trStudent = document.getElementById("Tabellenhead").insertRow(0);
     let th = document.createElement("th");
     th.colSpan=4;
     th.innerHTML = "Studenten";
-    tr.appendChild(th);
-    tr = document.getElementById("Tabellenbody").insertRow(0);
-    th = document.createElement("th");
-    th.colSpan = 52;
-    tr.appendChild(th);
-
-    tr = document.getElementById("Tabellenbody").insertRow(1);
+    trStudent.appendChild(th);
     //erzeugen der Tabellenspalten//
     let i = 1;
-    for(let j = 0; j<i; j++){
-        while(i<53){
+    let h = 0;
+    _db.selectAllPhases().then(function (querySnapshot) {
+        querySnapshot.forEach(function(doc){
+            if(h<doc.data().EndeLetztePhase.split(".")[2]){
+                h = doc.data().EndeLetztePhase.split(".")[2];
+            }
+        });
+        let trJahr = document.getElementById("Tabellenbody").insertRow(0);
+        let trKW = document.getElementById("Tabellenbody").insertRow(1);
+        
+        for(let j = 2019; j<=h; j++){
             th = document.createElement("th");
-            th.classList.add("top");
-            if(i.toString().length==1){
-                th.innerHTML = "KW0" + i;
-                th.id = "k0"+j+i;
-            } else {
-                th.innerHTML = "KW" + i;
-                th.id = "k"+i;
+            th.colSpan = 52;
+            th.innerHTML = j;
+            trJahr.appendChild(th);
+            while(i<53){
+                th = document.createElement("th");
+                if(i.toString().length==1){
+                    th.innerHTML = "KW0" + i;
+                    th.id = "k"+j+i;
+                } else {
+                    th.innerHTML = "KW" + i;
+                    th.id = "k"+j+i;
+                }
+                
+                trKW.appendChild(th);
+                i++;
             }
             
-            tr.appendChild(th);
-            i++;
+            
+            i = 1;
         }
-        i = 1;
-    }
+        
+    });    
 }
     
 
@@ -265,23 +276,29 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
 
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
-    neueTr = document.getElementById("Tabellenbody").insertRow(2);
-        
-    for(let i = 1; i<53; i++){
-        
-        //erzeugen der Tabellenspalten// 
-        let tdKW = document.createElement("td");
-
-        //Leere Benennung, damit die Spaltengröße leichter einheitlich zu machen ist
-        tdKW.innerHTML = " ";
-
-        //Hinzufügen von Klasse "KWs"//
-        tdKW.classList.add("KWs");
-        tdKW.id = "KW" + i + id;
-
-        //hinzufügen der Spalten //
-        neueTr.appendChild(tdKW);
-    }
+    neueTr = null;
+    neueTr = document.getElementById("Tabellenbody").insertRow(0);
+    let td = document.createElement("td");
+    let h = 0;
+    let i = 1;
+    _db.selectAllPhases().then(function (querySnapshot) {
+        querySnapshot.forEach(function(doc){
+            if(h<doc.data().EndeLetztePhase.split(".")[2]){
+                h = doc.data().EndeLetztePhase.split(".")[2];
+            }
+        });
+        for(let j = 2019; j<=h; j++){
+            while(i<53){
+                td = document.createElement("td");
+                td.innerHTML = " " ;
+                td.id = "k"+j+i+id;
+                
+                neueTr.appendChild(td);
+                i++;
+            }
+            i = 1;
+        }
+    });
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
