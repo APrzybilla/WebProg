@@ -99,39 +99,47 @@ function tabelleUebersichtErzeugen(){
     
 
 function zusammenführenStudenten(){
-    
+
     _db.selectAllStudents().then(function (querySnapshot) {
 
-        querySnapshot.forEach(function(doc){
-            let zeile = document.getElementById(doc.data().Vorname + doc.data().Name).parentElement.rowIndex;
-            let studiengang = doc.data().Studiengang;
-            let jahrgang = doc.data().Jahrgang;
+        querySnapshot.forEach(function(stud){
+            //let zeile = document.getElementById(stud.data().id).parentElement.rowIndex;
+            //let zusammengefuegt = stud.data().Studiengang + stud.data().Jahrgang;
 
-            let zusammengefuegt = studiengang + jahrgang;
+            _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
+                try{
+                    let t = berechneWoche(phas.data().Theorie1);
+                    let p = berechneWoche(phas.data().Praxis1);
+                    if(p<t){
+                        p += t;
+                    }
+                    console.log(stud.data().Name + " " + t + " " + p);
+                    for(let i = t; i<p; i++){
+                        document.getElementById("KW" + i + stud.data().id).style.backgroundColor = "lightgreen";
+                    }
+                }
+                catch(exception){}
+            });
 
-            _db.selectPhaseById(zusammengefuegt);
+            /*_db.selectAllPhases().then(function(querySnapshot){
+                querySnapshot
+                
+                    let theorie1 = doc.data().Theorie1;
+                    let theorie2 = doc.data().Theorie2;
+                    let theorie3 = doc.data().Theorie3;
+                    let theorie4 = doc.data().Theorie4;
+                    let theorie5 = doc.data().Theorie5;
+                    let theorie6 = doc.data().Theorie6;
 
-    _db.selectAllPhases().then(function(doc){
+                    let praxis1 = doc.data().Praxis1;
+                    let praxis2 = doc.data().Praxis2;
+                    let praxis3 = doc.data().Praxis3;
+                    let praxis4 = doc.data().Praxis4;
+                    let praxis5 = doc.data().Praxis5;
+                    let praxis6 = doc.data().Praxis6;
 
-        querySnapshot.forEach(function(doc){
-            let theorie1 = doc.data().Theorie1;
-            let theorie2 = doc.data().Theorie2;
-            let theorie3 = doc.data().Theorie3;
-            let theorie4 = doc.data().Theorie4;
-            let theorie5 = doc.data().Theorie5;
-            let theorie6 = doc.data().Theorie6;
-
-            let praxis1 = doc.data().Praxis1;
-            let praxis2 = doc.data().Praxis2;
-            let praxis3 = doc.data().Praxis3;
-            let praxis4 = doc.data().Praxis4;
-            let praxis5 = doc.data().Praxis5;
-            let praxis6 = doc.data().Praxis6;
-
-            let endeLetztePhase = doc.data().EndeLetztePhase;
-
-        });
-    });
+                    let endeLetztePhase = doc.data().EndeLetztePhase;
+            });*/
         });    
     });
 }
@@ -243,6 +251,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
     //befüllen der Spalten//
     tdName.innerHTML = ank + vorname + " " + name + '</a>';
+    tdName.id = id;
     tdHS.innerHTML = hs;
     tdS.innerHTML = sem;
     tdJG.innerHTML  = jg;
@@ -267,7 +276,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
         //Hinzufügen von Klasse "KWs"//
         tdKW.classList.add("KWs");
-        tdKW.id = "KW" + i + vorname + name;
+        tdKW.id = "KW" + i + id;
 
         //hinzufügen der Spalten //
         neueTr.appendChild(tdKW);
@@ -283,18 +292,18 @@ function deleteTable(id){
 
 //Kalenderwoche berechnen
 let berechneWoche =(date) =>{
-    date = new Date(date);
-    let j = date.getFullYear();
-    let m = date.getMonth()+1;
-    let t = date.getDate();
+    date = date.split(".");
+    let j = date[2];
+    let m = date[1]-1;
+    let t = date[0];
     let datum = new Date(j, m, t);
-
-    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
+    
+    let currentThursday = new Date(datum.getTime() + (date[0]-((datum.getDay()+6%7))/86400000));
     let yearOfThursday = currentThursday.getFullYear();
     let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
 
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-
+    
     return weekNumber;
 }
 
