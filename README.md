@@ -4,7 +4,7 @@
 Kurzbeschreibung
 ----------------
 
-Die Studentenübersicht soll Unternehmen unterstützen einen Überblick über alle Praxis- und Theoriephasen 
+Die Studentenübersicht soll Unternehmen dabei unterstützen einen Überblick über alle Praxis- und Theoriephasen 
 ihrer Studierenden zu bekommen. Durch farbliche Hervorhebung in einem dynamischen Kalender können die Phasenwechel 
 schnell erkannt werden und Praxisphasen können rechtzeitig geplant werden. 
 Für jeden Studierenden lässt sich ein individuelles Kurzprofil anlegen. Ebenfalls können Jahrgänge eingepflegt werden
