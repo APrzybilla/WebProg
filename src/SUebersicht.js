@@ -132,40 +132,21 @@ function zusammenführenStudenten(){
             //let zusammengefuegt = stud.data().Studiengang + stud.data().Jahrgang;
 
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
-                try{
+                try{ // beispiel-id: k201912 -> k + Jahrgang + KW + id
                     let t = berechneWoche(phas.data().Theorie1);
                     let p = berechneWoche(phas.data().Praxis1);
                     let h = p;
+
                     if(p<t){
                         h = t + p;
                     }
-                    console.log(stud.data().Name + " " + t + " " + p);
+                    console.log(t + " " + p);
                     for(let i = t; i<h; i++){
-                        document.getElementById("KW" + i + stud.data().id).style.backgroundColor = "#85cdca";
+                        document.getElementById("k" + stud.data().Jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
                     }
                 }
                 catch(exception){}
             });
-
-            /*_db.selectAllPhases().then(function(querySnapshot){
-                querySnapshot
-                
-                    let theorie1 = doc.data().Theorie1;
-                    let theorie2 = doc.data().Theorie2;
-                    let theorie3 = doc.data().Theorie3;
-                    let theorie4 = doc.data().Theorie4;
-                    let theorie5 = doc.data().Theorie5;
-                    let theorie6 = doc.data().Theorie6;
-
-                    let praxis1 = doc.data().Praxis1;
-                    let praxis2 = doc.data().Praxis2;
-                    let praxis3 = doc.data().Praxis3;
-                    let praxis4 = doc.data().Praxis4;
-                    let praxis5 = doc.data().Praxis5;
-                    let praxis6 = doc.data().Praxis6;
-
-                    let endeLetztePhase = doc.data().EndeLetztePhase;
-            });*/
         });    
     });
 }
