@@ -1,5 +1,6 @@
 /*Handy*/
 /*Linke Tabelle*/
+/*app.css??? Buttons in der Liste der Tabelle*/
 #studenten_tabelle button{
     padding-left: 0.2em;
     padding-right: 0.2em;
@@ -10,6 +11,7 @@
 }
 
 /*Rechte Seite*/
+/*div, in dem das Profil der Studenten bearbeitet/ angelegt werden kann*/
 .container{
 	position:relative;
 	margin-top: 2vw;
@@ -23,33 +25,17 @@
     margin: 3vw;
     margin-bottom: 0;
 }
-
-/*Tabelle für das Profil*/
+/*Tabelle innerhalb des divs für das Profil*/
 .studierendenProfil{
 	border-collapse: separate;
 	border-spacing: 0.5vw;
 }
-
-#delete64{
-    width: 7vw;
-    position: absolute; 
-    bottom: 5em;
-    right: 2em;
-}
-
-#speichern{
-    width: 7vw !important;
-    position: absolute; 
-    bottom: 5em;
-    right: 5em;
-}
-
 .studierendenProfil td{ 
 	position: relative;
 	width: 30vw;
 	
 }
-
+/*Inputs, in die die Daten der Studenten eingetragen werden sollen*/
 .studierendenProfil td input{
     width: 100%;
     padding: 10px 0;
@@ -62,7 +48,7 @@
     outline: none;
 	background: transparent;
 }
-
+/*Label, dient zur Beschriftung der Inputs*/
 .studierendenProfil td label{
     position: absolute;
     top: 0;
@@ -73,7 +59,7 @@
     pointer-events: none;
     transition: .5s;
 }
-
+/*Hochgehen von label, wenn der input aktiviert ist*/
 .studierendenProfil td input:focus ~ label,
 .studierendenProfil td input:valid ~ label{
     top: -18px;
@@ -81,31 +67,47 @@
     color: blue;
     font-size: 12px;
 }
+/*Mülleimer, zum löschen des Studenten*/
+#delete64{
+    width: 7vw;
+    position: absolute; 
+    bottom: 5em;
+    right: 2em;
+}
+/*Speichernzeichen, zum (über-)speichern des Studenten*/
+#speichern{
+    width: 7vw !important;
+    position: absolute; 
+    bottom: 5em;
+    right: 5em;
+}
+
 
 /*Tablets*/
 @media(min-width:700px){
+    /*div, in dem das Profil der Studenten bearbeitet/ angelegt werden kann*/
     .container{
         width: 85vw;
         height:auto;
     }
-    
+    .studierendenProfil td{ 
+        width: 33vw;
+    }
+    /*Mülleimer, zum löschen des Studenten*/
     #delete64{
         width: 4vw;
         right: 2em;
     }
-    
+    /*Speichernzeichen, zum (über-)speichern des Studenten*/
     #speichern{
         width: 4vw !important;
         right: 5em;
-    }
-    
-    .studierendenProfil td{ 
-        width: 33vw;
     }
 }
 
 /*Laptop*/
 @media(min-width:1200px){
+    /*Aufteilung in links und rechts*/
     .left{
         width: 38vw;
         left: 10px;
@@ -113,7 +115,6 @@
         padding: 10px;
         margin-left: 20px;
     }
-
     .right{
         width: 58vw;
         right: 10px;
@@ -122,23 +123,25 @@
         margin-right: 20px;
     }
 
+    /*div, in dem das Profil der Studenten bearbeitet/ angelegt werden kann*/
     .container{
         width: 50vw;
         height:auto;
     }
-    
+    .studierendenProfil td{ 
+        width: 20vw;
+    }
+    /*Mülleimer, zum löschen des Studenten*/
     #delete64{
         width: 2vw;
         right: 4em;
     }
-    
+    /*Speichernzeichen, zum (über-)speichern des Studenten*/
     #speichern{
         width: 2vw !important;
         right: 7em;
     }
     
-    .studierendenProfil td{ 
-        width: 20vw;
-    }
+    
     
 }
