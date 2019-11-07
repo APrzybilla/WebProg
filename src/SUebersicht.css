@@ -89,6 +89,17 @@ button:hover{
 #tabelleUebersicht a:hover{
     color: blue !important;
 }
+/*Legende unter der Tabelle*/
+#theorieSpan{
+    background-color: #85cdca; 
+    color: black; 
+    padding: 0.1vw;
+}
+#praxisSpan{
+    background-color: #e8a87c; 
+    color: black; 
+    padding: 0.1vw;
+}
 
 
 /*Tablets*/
