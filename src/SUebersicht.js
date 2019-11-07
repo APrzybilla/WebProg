@@ -65,25 +65,38 @@ function anzeigen(){
 
 //Anzeigen des Grundgerüsts der Tabelle
 function tabelleUebersichtErzeugen(){
-    let tr = document.getElementById("Tabellenbody").insertRow(0);
+    let tr = document.getElementById("Tabellenhead").insertRow(0);
+    let th = document.createElement("th");
+    th.colSpan=4;
+    th.innerHTML = "Studenten";
+    tr.appendChild(th);
+    tr = document.getElementById("Tabellenbody").insertRow(0);
+    th = document.createElement("th");
+    th.colSpan = 52;
+    tr.appendChild(th);
+
+    tr = document.getElementById("Tabellenbody").insertRow(1);
     //erzeugen der Tabellenspalten//
     let i = 1;
-    let th;
-    while(i<53){
-        th = document.createElement("th");
-        th.classList.add("top");
-        if(i.toString().length==1){
-            th.innerHTML = "KW0" + i;
-            th.id = "k0"+i;
-        } else {
-            th.innerHTML = "KW" + i;
-            th.id = "k"+i;
+    for(let j = 0; j<i; j++){
+        while(i<53){
+            th = document.createElement("th");
+            th.classList.add("top");
+            if(i.toString().length==1){
+                th.innerHTML = "KW0" + i;
+                th.id = "k0"+j+i;
+            } else {
+                th.innerHTML = "KW" + i;
+                th.id = "k"+i;
+            }
+            
+            tr.appendChild(th);
+            i++;
         }
-        
-        tr.appendChild(th);
-        i++;
+        i = 1;
     }
 }
+    
 
 function zusammenführenStudenten(){
 
@@ -98,11 +111,10 @@ function zusammenführenStudenten(){
                     let t = berechneWoche(phas.data().Theorie1);
                     let p = berechneWoche(phas.data().Praxis1);
                     let h = p;
-
                     if(p<t){
                         h = t + p;
                     }
-                    
+                    console.log(stud.data().Name + " " + t + " " + p);
                     for(let i = t; i<h; i++){
                         document.getElementById("KW" + i + stud.data().id).style.backgroundColor = "#85cdca";
                     }
@@ -223,7 +235,7 @@ function suchen (){
 function einfügen (name, vorname, hs, sem, jg, id){
     //Einfügen des Studenten
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
-    let neueTr = document.getElementById("Tabellenhead").insertRow(1);
+    let neueTr = document.getElementById("Tabellenhead").insertRow(2);
 
     //erzeugen der Tabellenspalten//
     let tdName = document.createElement("td");
@@ -253,7 +265,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
 
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
-    neueTr = document.getElementById("Tabellenbody").insertRow(1);
+    neueTr = document.getElementById("Tabellenbody").insertRow(2);
         
     for(let i = 1; i<53; i++){
         
