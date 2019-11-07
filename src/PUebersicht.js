@@ -248,7 +248,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<i class='fas fa-angle-down'></i> " + buttoninhalt;
+                button.innerHTML = "<span class='fas fa-angle-down'></span> " + buttoninhalt;
                 li.appendChild(button);
             }
         });
@@ -268,12 +268,10 @@ function klapptabelle_erstellung(){
 
                 // Aufteilung für Button und inhalt
                 ul = document.createElement("ul");
-                ul.id = "";
                 li.appendChild(ul);
 
                 //li für Button
                 li = document.createElement("li");
-                li.id = "";
                 ul.appendChild(li);
 
                 // button erstellen
@@ -419,6 +417,8 @@ function klapptabelle(event){
         }
     }
     else{
+        
+        console.log(kinder);
         // class ändern, damit der Pfeil in eine andere Richtung zeigt
         kinder[0].querySelector("span").className = "";
         kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-right");
