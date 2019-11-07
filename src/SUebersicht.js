@@ -92,14 +92,17 @@ function tabelleUebersichtErzeugen(){
         let trKW = document.getElementById("Tabellenbody").insertRow(1);
         
         for(let j = d.getFullYear(); j<=h; j++){
+            //Überprüfen, wie viele Wochen das Jahr hat
+            let k = berechneWoche(("31.12."+j));
+
             //Erzeugen der th in der Zeile für die Jahre
             th = document.createElement("th");
-            th.colSpan = 52;
+            th.colSpan = (k-i+1);
             th.innerHTML = j;
             trJahr.appendChild(th);
             //Erzeugen der Kalenderwochen für das Jahr.
             //Im ersten Jahr beginnen die Kalenderwochen mit der aktuellen Woche (vorher in i festgelegt)
-            while(i<53){
+            while(i<=k){
                 th = document.createElement("th");
                 //Bei den Zahlen 1-9 wird eine 0 vorher angehängt, sodass die Zahlen 01-09 gehen
                 if(i.toString().length==1){
@@ -293,8 +296,12 @@ function einfügen (name, vorname, hs, sem, jg, id){
     neueTr = null;
     neueTr = document.getElementById("Tabellenbody").insertRow(0);
     let td = document.createElement("td");
+    //aktuelles Datum holen
+    let d = new Date();
+    //aktuelle Kalenderwoche in i speichern
+    let i = berechneWoche(d.getDate() + "." + (d.getMonth() +1) + "."  + d.getFullYear());
+    
     let h = 0;
-    let i = 1;
     _db.selectAllPhases().then(function (querySnapshot) {
         querySnapshot.forEach(function(doc){
             if(h<doc.data().EndeLetztePhase.split(".")[2]){
@@ -302,7 +309,9 @@ function einfügen (name, vorname, hs, sem, jg, id){
             }
         });
         for(let j = 2019; j<=h; j++){
-            while(i<53){
+            //Überprüfen, wie viele Wochen das Jahr hat
+            let k = berechneWoche(("31.12."+j));
+            while(i<=k){
                 td = document.createElement("td");
                 td.innerHTML = " " ;
                 td.id = "k"+j+i+id;
