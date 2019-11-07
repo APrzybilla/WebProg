@@ -296,27 +296,38 @@ function einfügen (name, vorname, hs, sem, jg, id){
     neueTr = null;
     neueTr = document.getElementById("Tabellenbody").insertRow(0);
     let td = document.createElement("td");
+
     //aktuelles Datum holen
     let d = new Date();
     //aktuelle Kalenderwoche in i speichern
     let i = berechneWoche(d.getDate() + "." + (d.getMonth() +1) + "."  + d.getFullYear());
-    
+    //Hilfsvariable, in der später das höchste Jahr stehen soll
     let h = 0;
+    //Alle Phasen durchlaufen und auf das End-Jahr überprüfen. Das höchste wird in h gespeichert
     _db.selectAllPhases().then(function (querySnapshot) {
         querySnapshot.forEach(function(doc){
             if(h<doc.data().EndeLetztePhase.split(".")[2]){
                 h = doc.data().EndeLetztePhase.split(".")[2];
             }
         });
-        for(let j = 2019; j<=h; j++){
+
+        //Alle Jahre, ab dem heutigen bis h, werden hintereinander hinzugefügt
+        for(let j = d.getFullYear(); j<=h; j++){
             //Überprüfen, wie viele Wochen das Jahr hat
             let k = berechneWoche(("31.12."+j));
+            //Erzeugen der Kalenderwochen für den Studenten
             while(i<=k){
+                //für jede Kalenderwoche wird ein neues td hinzugefügt
                 td = document.createElement("td");
+                //Die Kalenderwochen enthalten einen String aus Leerzeichen, um leichter formatieren zu können
                 td.innerHTML = " " ;
+                //Jede Zelle bekommt eine ID, bestehend aus "k", dem Jahr, der Woche und der ID des Studenten
+                //Die Kalenderwoche 2 aus 2019 sieht bei dem Studenten mit der id 3 so aus: k201923
                 td.id = "k"+j+i+id;
-                
+                //Die Zelle wird der Zeile hinzugefügt
                 neueTr.appendChild(td);
+
+                //i wird erhöht, damit am Ende des Jahres abgebrochen wird und das nächste Jahr beginnt
                 i++;
             }
             i = 1;
