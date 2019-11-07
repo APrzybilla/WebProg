@@ -70,6 +70,7 @@
     font-weight: normal;
     border: none;
     box-shadow: 0 0 0.5em dodgerblue;
+    border-radius: 0.25em;
 }
 /*Standard für Inputs festlegen */
 /*Input mit label auf einer Ebene*/
