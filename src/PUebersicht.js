@@ -38,6 +38,8 @@ class Phasenuebersicht{
     }
 }
 
+// Functions die im onload ausgeführt werden
+
 // Erstellt die Tabelle für die unterschiedlichen Phasen
 function klapptabelle_erstellung(){
     // Eltern festlegen
@@ -219,6 +221,7 @@ function klapptabelle_erstellung(){
 }
 
 // Functions die nur bei Bedarf ausgeführt werden
+
 // Auf- und zuklappen der Inhalte der Tabelle
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
