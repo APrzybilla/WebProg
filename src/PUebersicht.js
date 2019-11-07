@@ -38,184 +38,7 @@ class Phasenuebersicht{
     }
 }
 
-let neuerStudiengang = () =>{
-    //Phasen in die Datenbank speichern
-    let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
-    console.log(document.getElementById("EingabeStudiengang").value);
-
-    try{
-        _db.savePhase(
-            {
-            "Theorie1": document.getElementById("Theorie1").innerHTML,
-            "Theorie2": document.getElementById("Theorie2").innerHTML,
-            "Theorie3": document.getElementById("Theorie3").innerHTML,
-            "Theorie4": document.getElementById("Theorie4").innerHTML,
-            "Theorie5": document.getElementById("Theorie5").innerHTML,
-            "Theorie6": document.getElementById("Theorie6").innerHTML,
-            "Praxis1": document.getElementById("Praxis1").innerHTML,
-            "Praxis2": document.getElementById("Praxis2").innerHTML,
-            "Praxis3": document.getElementById("Praxis3").innerHTML,
-            "Praxis4": document.getElementById("Praxis4").innerHTML,
-            "Praxis5": document.getElementById("Praxis5").innerHTML,
-            "Praxis6": document.getElementById("Praxis6").innerHTML,
-            "EndeLetztePhase": document.getElementById("PraxisEnde6").innerHTML,
-            "id": id
-            }
-        );
-        //Phasentabelle löschen und wieder unsichtbar machen
-        deleteTable("Phasentabelle");
-        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
-        buttonPhase.classList.remove("visible");
-        buttonPhase.classList.add("hidden");
-    }catch(error){
-        alert("Fehlerhafte Eingabe");
-        console.log(error);
-    };
-
-    //Tabelle löschen und neu erstellen
-    resetAll();
-}
-
-//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
-function deleteTable(id){
-    while(document.getElementById(id).rows.length>1){
-        document.getElementById(id).deleteRow(1);
-    }
-}
-
-//Tabelle löschen und neu erstellen
-function resetAll(){
-    let parent = document.getElementById("phasen_tabelle");
-    while(parent.firstChild){
-        parent.removeChild(parent.firstChild);
-    }
-    klapptabelle_erstellung();
-}
-
-//Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
-
-let neuePhase = () =>{       
-    let hilfeTheorie = 1;
-    let hilfePraxis = 1;
-    //sichtbar machen der Tabelle//
-    let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
-    buttonPhase.classList.remove("hidden");
-    buttonPhase.classList.add("visible");
-
-    //Einfügen von neue Zeile an erster Stelle in der Tabelle//
-    let neueTr = document.getElementById("Phasentabelle").insertRow(1);
-        
-    //erzeugen der Tabellenspalten// 
-    let tdPhase = document.createElement("td");
-    let tdVon = document.createElement("td");
-    let tdBis = document.createElement("td");
-    let tdStart = document.createElement("td");
-    let tdEnd = document.createElement("td");
-    let tdLoe = document.createElement("td");
-
-    //Button löschen erstellen//
-    let loe = document.createElement("input");
-    loe.type = "button";
-    loe.classList.add("Buttons");
-    loe.value = "Löschen";
-
-    //befüllen der Spalten//
-    tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
-    tdVon.innerHTML = datumsausgabe(document.getElementById("Startdatum").value);
-    tdBis.innerHTML = datumsausgabe(document.getElementById("Enddatum").value);
-    tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
-    tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
-    tdLoe.appendChild(loe);
-    
-    //ids vergeben, soll am Ende Theorie1, Theorie2, ... und auch mit Praxis heißen
-    //überprüfen, ob es eine Theorie- oder Praxisphase ist
-    if(tdPhase.innerHTML=="Theorie"){
-        //überprüfen, welche Zahl noch frei ist
-        while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
-            hilfeTheorie++;
-        }
-        if(hilfeTheorie>6){
-            alert("Es wurden bereits genug Theoriephasen eingegeben");
-            return;
-        } else {
-            tdVon.id = tdPhase.innerHTML + hilfeTheorie;
-            tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
-        }
-    } else if(tdPhase.innerHTML=="Praxis"){
-        console.log(document.getElementById(tdPhase.innerHTML + hilfePraxis));
-        while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
-            hilfePraxis++;
-        }
-        if(hilfePraxis>6){
-            alert("Es wurden bereits genug Praxisphasen eingegeben");
-            return;
-        } else {
-            tdVon.id = tdPhase.innerHTML + hilfePraxis;
-            tdBis.id = tdPhase.innerHTML + "Ende" + hilfePraxis;
-        }
-        
-    }
-    console.log("id: " + tdVon.id);
-    
-
-    //hinzufügen der Spalten //
-    neueTr.appendChild(tdPhase);
-    neueTr.appendChild(tdVon);
-    neueTr.appendChild(tdBis);
-    neueTr.appendChild(tdStart);
-    neueTr.appendChild(tdEnd);
-    neueTr.appendChild(tdLoe);
-
-    //Hinzufügen von EventListener der Buttons
-    loe.addEventListener("click", loeschen);
-}
-
-//EventListener von löschen-Button
-let loeschen = (event) =>{
-    // Das aufrufende Element wird in el gespeichert
-    let el = event.target;
-    while(el.nodeName !== "TR"){
-        el = el.parentElement;
-    }
-    el = el.rowIndex;
-
-    // Zeile löschen
-    document.getElementById("Phasentabelle").deleteRow(el);
-}
-
-//Formatieren des Datums in 01.01.2019
-let datumsausgabe = (date) =>{
-    date = new Date(date);
-    let tag = String(date.getDate());
-    let month = String(date.getMonth());
-    if(month.length==1){
-        month = "0"+month;
-    }
-    if(tag.length==1){
-        tag = "0"+tag;
-    }
-    
-    console.log(tag);
-    
-    return tag + "." + month + "." + date.getFullYear();
-}
-
-//Kalenderwoche berechnen
-let berechneWoche =(date) =>{
-    date = new Date(date);
-    let j = date.getFullYear();
-    let m = date.getMonth()+1;
-    let t = date.getDate();
-    let datum = new Date(j, m, t);
-
-    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
-    let yearOfThursday = currentThursday.getFullYear();
-    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
-
-    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-
-    return weekNumber;
-}
+// Functions die im onload ausgeführt werden
 
 // Erstellt die Tabelle für die unterschiedlichen Phasen
 function klapptabelle_erstellung(){
@@ -397,6 +220,8 @@ function klapptabelle_erstellung(){
     });
 }
 
+// Functions die nur bei Bedarf ausgeführt werden
+
 // Auf- und zuklappen der Inhalte der Tabelle
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
@@ -430,6 +255,164 @@ function klapptabelle(event){
     }
 }
 
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+    date = new Date(date);
+    let j = date.getFullYear();
+    let m = date.getMonth()+1;
+    let t = date.getDate();
+    let datum = new Date(j, m, t);
+
+    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
+}
+
+//Formatieren des Datums in 01.01.2019
+let datumsausgabe = (date) =>{
+    date = new Date(date);
+    let tag = String(date.getDate());
+    let month = String(date.getMonth());
+    if(month.length==1){
+        month = "0"+month;
+    }
+    if(tag.length==1){
+        tag = "0"+tag;
+    }
+    
+    console.log(tag);
+    
+    return tag + "." + month + "." + date.getFullYear();
+}
+
+//Neuer Studiengang wird erstellt
+let neuerStudiengang = () =>{
+    //Phasen in die Datenbank speichern
+    let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
+    console.log(document.getElementById("EingabeStudiengang").value);
+
+    try{
+        _db.savePhase(
+            {
+            "Theorie1": document.getElementById("Theorie1").innerHTML,
+            "Theorie2": document.getElementById("Theorie2").innerHTML,
+            "Theorie3": document.getElementById("Theorie3").innerHTML,
+            "Theorie4": document.getElementById("Theorie4").innerHTML,
+            "Theorie5": document.getElementById("Theorie5").innerHTML,
+            "Theorie6": document.getElementById("Theorie6").innerHTML,
+            "Praxis1": document.getElementById("Praxis1").innerHTML,
+            "Praxis2": document.getElementById("Praxis2").innerHTML,
+            "Praxis3": document.getElementById("Praxis3").innerHTML,
+            "Praxis4": document.getElementById("Praxis4").innerHTML,
+            "Praxis5": document.getElementById("Praxis5").innerHTML,
+            "Praxis6": document.getElementById("Praxis6").innerHTML,
+            "EndeLetztePhase": document.getElementById("PraxisEnde6").innerHTML,
+            "id": id
+            }
+        );
+        //Phasentabelle löschen und wieder unsichtbar machen
+        deleteTable("Phasentabelle");
+        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+        buttonPhase.classList.remove("visible");
+        buttonPhase.classList.add("hidden");
+    }catch(error){
+        alert("Fehlerhafte Eingabe");
+        console.log(error);
+    };
+
+    //Tabelle löschen und neu erstellen
+    resetAll();
+}
+
+//Erstellt eine neue Phase
+let neuePhase = () =>{       
+    //Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
+    let hilfeTheorie = 1;
+    let hilfePraxis = 1;
+    //sichtbar machen der Tabelle//
+    let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+    buttonPhase.classList.remove("hidden");
+    buttonPhase.classList.add("visible");
+
+    //Einfügen von neue Zeile an erster Stelle in der Tabelle//
+    let neueTr = document.getElementById("Phasentabelle").insertRow(1);
+        
+    //erzeugen der Tabellenspalten// 
+    let tdPhase = document.createElement("td");
+    let tdVon = document.createElement("td");
+    let tdBis = document.createElement("td");
+    let tdStart = document.createElement("td");
+    let tdEnd = document.createElement("td");
+    let tdLoe = document.createElement("td");
+
+    //Button löschen erstellen//
+    let loe = document.createElement("input");
+    loe.type = "button";
+    loe.classList.add("Buttons");
+    loe.value = "Löschen";
+
+    //befüllen der Spalten//
+    tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
+    tdVon.innerHTML = datumsausgabe(document.getElementById("Startdatum").value);
+    tdBis.innerHTML = datumsausgabe(document.getElementById("Enddatum").value);
+    tdStart.innerHTML = berechneWoche(document.getElementById("Startdatum").value);        
+    tdEnd.innerHTML = berechneWoche(document.getElementById("Enddatum").value);
+    tdLoe.appendChild(loe);
+    
+    //ids vergeben, soll am Ende Theorie1, Theorie2, ... und auch mit Praxis heißen
+    //überprüfen, ob es eine Theorie- oder Praxisphase ist
+    if(tdPhase.innerHTML=="Theorie"){
+        //überprüfen, welche Zahl noch frei ist
+        while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
+            hilfeTheorie++;
+        }
+        if(hilfeTheorie>6){
+            alert("Es wurden bereits genug Theoriephasen eingegeben");
+            return;
+        } else {
+            tdVon.id = tdPhase.innerHTML + hilfeTheorie;
+            tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
+        }
+    } else if(tdPhase.innerHTML=="Praxis"){
+        console.log(document.getElementById(tdPhase.innerHTML + hilfePraxis));
+        while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
+            hilfePraxis++;
+        }
+        if(hilfePraxis>6){
+            alert("Es wurden bereits genug Praxisphasen eingegeben");
+            return;
+        } else {
+            tdVon.id = tdPhase.innerHTML + hilfePraxis;
+            tdBis.id = tdPhase.innerHTML + "Ende" + hilfePraxis;
+        }
+        
+    }
+    console.log("id: " + tdVon.id);
+    
+
+    //hinzufügen der Spalten //
+    neueTr.appendChild(tdPhase);
+    neueTr.appendChild(tdVon);
+    neueTr.appendChild(tdBis);
+    neueTr.appendChild(tdStart);
+    neueTr.appendChild(tdEnd);
+    neueTr.appendChild(tdLoe);
+
+    //Hinzufügen von EventListener der Buttons
+    loe.addEventListener("click", loeschen);
+}
+
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
+    }
+}
+
 // Phase löschen
 function deletePhase(event){
     // löscht die ersten 6 chars der id --> Beispiel-id: buttonWirtschaftsinformatik2018
@@ -440,6 +423,28 @@ function deletePhase(event){
 
     //Tabelle löschen und neu erstellen
     resetAll();
+}
+
+//EventListener von löschen-Button
+let loeschen = (event) =>{
+    // Das aufrufende Element wird in el gespeichert
+    let el = event.target;
+    while(el.nodeName !== "TR"){
+        el = el.parentElement;
+    }
+    el = el.rowIndex;
+
+    // Zeile löschen
+    document.getElementById("Phasentabelle").deleteRow(el);
+}
+
+//Tabelle löschen und neu erstellen
+function resetAll(){
+    let parent = document.getElementById("phasen_tabelle");
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
+    }
+    klapptabelle_erstellung();
 }
 
 export default Phasenuebersicht;

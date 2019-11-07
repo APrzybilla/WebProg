@@ -61,11 +61,6 @@ class DB {
         }
     }
 
-    //Datenbank neu laden
-    update(){
-        this._db = firebase.firestore();
-    }
-
     //Aufrufen aller vorhandenen Studenten
     selectAllStudents(){
         return this._db.collection("students").get();
@@ -119,7 +114,7 @@ class DB {
     }
 
     //löschen mehrerer Studenten anhand der Mitarbeiter-Id
-     deleteStudentsById(ids){
+    deleteStudentsById(ids){
         let batch = this._db.batch();
 
         ids.forEach(id => {
@@ -146,20 +141,20 @@ class DB {
     "Praxis6": "Startdatum",
     "EndeLetztePhase": "Enddatum",
     "id": "StudiengangJahrgang"*/
+    selectAllPhases(){
+        return this._db.collection("phasen").get();
+    }
+    
+    selectPhaseById(id){
+        return this._phasen.doc(id).get();
+    }
+
     savePhase(phase){
         this._phasen.doc(phase.id).set(phase);
     }
 
-    selectAllPhases(){
-        return this._db.collection("phasen").get();
-    }
-
     deletePhaseById(id){
         return this._phasen.doc(id).delete();
-    }
-
-    selectPhaseById(id){
-        return this._phasen.doc(id).get();
     }
 }
 
