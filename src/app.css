@@ -86,6 +86,7 @@
 #app input[type="checkbox"]+label{
     color: #f64c72;
     border: 2px solid #f63c72;
+    border-radius: 0.25em;
     background: #474eba;
     cursor: pointer;
 }
