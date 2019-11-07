@@ -1,5 +1,5 @@
 {
-  "name": "dhbw-wwi-webprog-myexampleapp",
+  "name": "WebProg",
   "version": "0.1.0",
   "description": "Eine Beispielanwendung für die Vorlesung Webentwicklung",
   "main": "index.js",
@@ -11,19 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sassflo/dhbw-wwi-webprog-myexampleapp.git"
+    "url": "git+https://github.com/APrzybilla/WebProg"
   },
   "keywords": [
-    "Vorlesung",
-    "DHBW",
-    "Beispiel"
   ],
-  "author": "Florian Saß",
+  "author": "Adrian Przybilla",
   "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/sassflo/dhbw-wwi-webprog-myexampleapp/issues"
+    "url": "https://github.com/APrzybilla/WebProg/issues"
   },
-  "homepage": "https://github.com/sassflo/dhbw-wwi-webprog-myexampleapp#readme",
+  "homepage": "https://github.com/APrzybilla/WebProg#readme",
   "devDependencies": {
     "firebase": "^6.6.1",
     "navigo": "^7.1.2",
