@@ -104,11 +104,10 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + " <a class='fas fa-trash muell'></a> ";
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + "\t" + "<a class='fas fa-trash muell'></a> ";
                 li.appendChild(button);
 
                 //EventListener von Löschen Icon zum Löschen des Jahrgangs
-                console.log(document.getElementsByClassName("muell"));
                 for(let i = 0; i<document.getElementsByClassName("muell").length; i++){
                     document.getElementsByClassName("muell")[i].addEventListener("click", deletePhase);
                 }
@@ -416,13 +415,18 @@ function deleteTable(id){
 // Phase löschen
 function deletePhase(event){
     // löscht die ersten 6 chars der id --> Beispiel-id: buttonWirtschaftsinformatik2018
-    let id = event.target.parentElement.id.substring(6);
-    _db.deletePhaseById(id);
-    // Popup-altert als bestätigung
-    window.alert("Die Phase wurde gelöscht.");
+    let bool = window.confirm("Soll die Phase wirklich gelöscht werden?");
+    if(bool){
+        let id = event.target.parentElement.id.substring(6);
+        _db.deletePhaseById(id);
+        // Popup-alert als Bestätigung
+        window.alert("Die Phase wurde gelöscht.");
 
-    //Tabelle löschen und neu erstellen
-    resetAll();
+        //Tabelle löschen und neu erstellen
+        resetAll();
+    } else {
+        return;
+    }
 }
 
 //EventListener von löschen-Button
