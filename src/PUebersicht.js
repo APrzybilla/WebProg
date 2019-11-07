@@ -217,8 +217,9 @@ let berechneWoche =(date) =>{
     return weekNumber;
 }
 
+// Erstellt die Tabelle für die unterschiedlichen Phasen
 function klapptabelle_erstellung(){
-    // eltern festlegen
+    // Eltern festlegen
     let eltern = document.getElementById("phasen_tabelle");
     let buttoninhalt, button, ul, li, table, tr, td1, td2, img;
 
@@ -242,7 +243,7 @@ function klapptabelle_erstellung(){
                 li = document.createElement("li");
                 ul.appendChild(li);
 
-                // li für button
+                // Li für button
                 button = document.createElement("button");
                 button.type = "button";
                 button.id = "button"+buttoninhalt; // Beispielinhalt: buttonWirtschaftsinformatik
@@ -288,7 +289,6 @@ function klapptabelle_erstellung(){
                 for(let i = 0; i<document.getElementsByClassName("muell").length; i++){
                     document.getElementsByClassName("muell")[i].addEventListener("click", deletePhase);
                 }
-                //img.addEventListener("click", deletePhase());
                 
                 //li für Button
                 li = document.createElement("li");
@@ -303,16 +303,16 @@ function klapptabelle_erstellung(){
             }
         });
     });
+    // Inhalte werden unter den Jahrgängen eingefügt
     phasen.then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             for(let u=0;u<12;u++){
+                // Erstellt Zeile und zwei tds für die Inhalte
                 tr = document.createElement("tr");
-                tr.classList.add("inhalt");
                 td1 = document.createElement("td");
-                td1.classList.add("inhalt");
                 td2 = document.createElement("td");
-                td2.classList.add("inhalt");
 
+                // Ein switch-case für jede Phase
                 switch (u){
                     case 0: 
                         tr.id = "tr" + doc.data().id + "Theorie1";
@@ -387,6 +387,8 @@ function klapptabelle_erstellung(){
                         td2.innerHTML = doc.data().Praxis6;
                         break;
                 }
+
+                // Inhalte werden dem passenden parent hinzugefügt
                 document.getElementById("table"+doc.data().id).appendChild(tr);
                 tr.appendChild(td1);
                 tr.appendChild(td2);
@@ -395,6 +397,7 @@ function klapptabelle_erstellung(){
     });
 }
 
+// Auf- und zuklappen der Inhalte der Tabelle
 function klapptabelle(event){
     // Variablen mit eltern und child werden deklariert
     let eltern;
@@ -417,8 +420,6 @@ function klapptabelle(event){
         }
     }
     else{
-        
-        console.log(kinder);
         // class ändern, damit der Pfeil in eine andere Richtung zeigt
         kinder[0].querySelector("span").className = "";
         kinder[0].querySelector("span").setAttribute("class", "fas fa-angle-right");
@@ -429,9 +430,12 @@ function klapptabelle(event){
     }
 }
 
+// Phase löschen
 function deletePhase(event){
+    // löscht die ersten 6 chars der id --> Beispiel-id: buttonWirtschaftsinformatik2018
     let id = event.target.parentElement.id.substring(6);
     _db.deletePhaseById(id);
+    // Popup-altert als bestätigung
     window.alert("Die Phase wurde gelöscht.");
 
     //Tabelle löschen und neu erstellen
