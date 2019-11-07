@@ -65,7 +65,7 @@ function anzeigen(){
 
 //Anzeigen des Grundgerüsts der Tabelle
 function tabelleUebersichtErzeugen(){
-    let trStudent = document.getElementById("Tabellenhead").insertRow(0);
+    let tr = document.getElementById("Tabellenhead").insertRow(0);
     let th = document.createElement("th");
     th.colSpan=4;
     th.innerHTML = "Studenten";
@@ -115,11 +115,11 @@ function tabelleUebersichtErzeugen(){
                 i++;
             }
             
-            
-            i = 1;
+            tr.appendChild(th);
+            i++;
         }
-        
-    });    
+        i = 1;
+    }
 }
     
 
@@ -290,29 +290,23 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
 
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle//
-    neueTr = null;
-    neueTr = document.getElementById("Tabellenbody").insertRow(0);
-    let td = document.createElement("td");
-    let h = 0;
-    let i = 1;
-    _db.selectAllPhases().then(function (querySnapshot) {
-        querySnapshot.forEach(function(doc){
-            if(h<doc.data().EndeLetztePhase.split(".")[2]){
-                h = doc.data().EndeLetztePhase.split(".")[2];
-            }
-        });
-        for(let j = 2019; j<=h; j++){
-            while(i<53){
-                td = document.createElement("td");
-                td.innerHTML = " " ;
-                td.id = "k"+j+i+id;
-                
-                neueTr.appendChild(td);
-                i++;
-            }
-            i = 1;
-        }
-    });
+    neueTr = document.getElementById("Tabellenbody").insertRow(2);
+        
+    for(let i = 1; i<53; i++){
+        
+        //erzeugen der Tabellenspalten// 
+        let tdKW = document.createElement("td");
+
+        //Leere Benennung, damit die Spaltengröße leichter einheitlich zu machen ist
+        tdKW.innerHTML = " ";
+
+        //Hinzufügen von Klasse "KWs"//
+        tdKW.classList.add("KWs");
+        tdKW.id = "KW" + i + id;
+
+        //hinzufügen der Spalten //
+        neueTr.appendChild(tdKW);
+    }
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
