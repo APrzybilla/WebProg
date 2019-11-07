@@ -1,42 +1,21 @@
 /*Handy*/
-
+/*Hilfsklassen*/
 /*sichtbar machen*/
 .visible{
     visibility: visible;
 }
-
 /*unsichtbar machen*/
 .hidden{
     display: none;
 }
 
+/*Header-Bereich*/
 #app header{
     color: white;
     padding: 0;
+    padding-bottom: 7vw;
 }
-
-#app main{
-    padding-top: 3vw;
-    margin: 1vw;
-}
-
-#app nav{
-    padding-top: 1vw;
-    padding-bottom: 1vw;
-    font-size: 1.2em;
-    text-align: end;
-    padding-right: 5vw;
-    vertical-align: middle;
-}
-#app #nav{
-    background-color: #5662c9;
-    border-radius: 0.5vw;
-    position: fixed;
-    padding: 0.5vw;
-    right: 15vw;
-    z-index: 1;
-}
-
+/*Überschrift*/
 #app header span{
     font-size: 2em;
     float:left;
@@ -48,7 +27,29 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+/*Navigationsleiste*/
+#app #nav{
+    font-size: 1.2em;
+    background-color: #5662c9;
+    border-radius: 0.5vw;
+    position: fixed;
+    padding: 0.5vw;
+    right: 1vw;
+    z-index: 1;
+    width: 33vw;
+}
+/*Verändert die Schrift vom Navigationssystem, abhängig von der aktuellen Seite*/
+#app .bold{
+    font-weight: 900;
+    color: #f64c72;
+}
 
+/*Main-Bereich*/
+#app main{
+    padding-top: 3vw;
+    margin: 1vw;
+}
+/*Anker*/
 #app a{
     text-decoration: none;
     color: white;
@@ -56,28 +57,8 @@
     text-decoration: none;
     cursor: pointer;
 }
-
-#app .piktogramm{
-    height: 0.8em;
-}
-
-#app .klapptabelle_button{
-    background-color: white;
-    color: black;
-    width: auto !important;
-    font-weight: normal;
-    border: none;
-    box-shadow: 0 0 0.5em dodgerblue;
-}
-
-#app .bold{
-    font-weight: 900;
-    color: #f64c72;
-}
-
-/*Standard für Buttons festlegen */
+/*Standard für Buttons festlegen*/
 #app button{
-    color: white;
     background-image: url("../images/button_hintergrund.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -85,9 +66,22 @@
     width: auto;
     vertical-align: middle;
     cursor: pointer;
+    color: black;
+    font-weight: normal;
+    border: none;
+    box-shadow: 0 0 0.5em dodgerblue;
 }
-
 /*Standard für Inputs festlegen */
+/*Input mit label auf einer Ebene*/
+#app input:checked + label{
+    color: white;
+    border-color: white;
+    box-shadow: none;
+}
+/*Input als Checkbox mit label auf einer Ebene*/
+#app input[type="checkbox"]:hover+label:hover{
+    box-shadow: 0 0 8px dodgerblue;
+}
 #app input[type="checkbox"]+label{
     color: #f64c72;
     border: 2px solid #f63c72;
@@ -95,27 +89,20 @@
     cursor: pointer;
 }
 
-#app input:checked + label{
-    color: white;
-    border-color: white;
-    box-shadow: none;
-}
-
-#app input[type="checkbox"]:hover+label:hover{
-    box-shadow: 0 0 8px dodgerblue;
-}
-
 /*Tablets*/
 @media(min-width:700px){
+    /*Header-Bereich*/
     #app header{
         display: inline;
+        padding-bottom: 0;
     }
-
-    #app nav{
-        background: none;
-        padding-right: 14vw;
+    /*Navigationsleiste*/
+    #app #nav{
+        right: 3vw;
+        width: auto;
     }
-
+    
+    /*Standard für Buttons festlegen*/
     #app button{
         padding-left: 1em;
         padding-right: 1em;
@@ -124,4 +111,8 @@
 
 /*Laptop*/
 @media(min-width:1200px){
+    /*Navigationsleiste*/
+    #app #nav{
+        right: 10vw;
+    }
 }
