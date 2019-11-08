@@ -127,28 +127,76 @@ function tabelleUebersichtErzeugen(){
     
 
 function zusammenführenStudenten(){
-
     _db.selectAllStudents().then(function (querySnapshot) {
-
         querySnapshot.forEach(function(stud){
-            //let zeile = document.getElementById(stud.data().id).parentElement.rowIndex;
-            //let zusammengefuegt = stud.data().Studiengang + stud.data().Jahrgang;
-
+            console.log(stud.data().id);
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
-                try{ // beispiel-id: k201912 -> k + Jahrgang + KW + id
-                    let t = berechneWoche(phas.data().Theorie1);
-                    let p = berechneWoche(phas.data().Praxis1);
-                    let h = p;
-
-                    if(p<t){
-                        h = t + p;
-                    }
-                    console.log(t + " " + p);
-                    for(let i = t; i<h; i++){
-                        document.getElementById("k" + stud.data().Jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
-                    }
+                console.log(phas.data().id);
+                // beispiel-id: k201912 -> k + Jahrgang + KW + id
+                let t1, t2, p, h1, h2, jahrgang, i;
+                    /*switch(i){
+                        case 0:
+                            t = berechneWoche(phas.data().Theorie1);
+                            h = p = berechneWoche(phas.data().Praxis1)-1;
+                            break;
+                        case 1:
+                            t = berechneWoche(phas.data().Theorie2);
+                            h = p = berechneWoche(phas.data().Praxis2)-1;
+                            break;
+                        case 2:
+                            t = berechneWoche(phas.data().Theorie3);
+                            h = p = berechneWoche(phas.data().Praxis3)-1;
+                            break;
+                        case 3:
+                            t = berechneWoche(phas.data().Theorie4);
+                            h = p = berechneWoche(phas.data().Praxis4)-1;
+                            break;
+                        case 4:
+                            t = berechneWoche(phas.data().Theorie5);
+                            h = p = berechneWoche(phas.data().Praxis5)-1;
+                            break;
+                        case 5:
+                            t = berechneWoche(phas.data().Theorie6);
+                            h = p = berechneWoche(phas.data().Praxis6)-1;
+                            break;
+                    }*/
+                t1 = berechneWoche(phas.data().Theorie1);
+                h1 = p = berechneWoche(phas.data().Praxis1)-1;
+                h2 = t2 = berechneWoche(phas.data().Theorie2);
+                jahrgang = stud.data().Jahrgang;
+                
+                if(p<t1){
+                    h1 = t1 + p;
                 }
-                catch(exception){}
+                i = t1;
+                /*for(let j = t1; j<h1; i++){
+                    if(j>=53){
+                        i = 1;
+                        jahrgang++;
+                    }
+                    try{
+                        console.log("k" + jahrgang + i + stud.data().id);
+                        document.getElementById("k" + jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
+                    }
+                    catch(exception){}
+                    i++;
+                }*/
+                if(t2<p){
+                    h2 = p + t2;
+                }
+                i = p;
+                console.log()
+                /*for(let j = p; j<h2;j++){
+                    if(j>=53){
+                        i = 1;
+                        jahrgang++;
+                    }
+                    try{
+                        document.getElementById("k" + jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
+                    }
+                    catch(exception){}
+                    i++;
+                }*/
             });
         });    
     });
