@@ -90,12 +90,12 @@ button:hover{
     color: blue !important;
 }
 /*Legende unter der Tabelle*/
-#theorieSpan{
-    background-color: #85cdca; 
+#theorie{
+    background-color: #85cdca !important; 
     color: black; 
     padding: 0.1vw;
 }
-#praxisSpan{
+#praxis{
     background-color: #e8a87c; 
     color: black; 
     padding: 0.1vw;
