@@ -129,38 +129,134 @@ function tabelleUebersichtErzeugen(){
 function zusammenführenStudenten(){
     _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function(stud){
-            console.log(stud.data().id);
+            console.log("Student: " + stud.data().id);
+            console.log("Phase: " + stud.data().Studiengang + stud.data().Jahrgang);
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
-                console.log(phas.data().id);
                 // beispiel-id: k201912 -> k + Jahrgang + KW + id
-                let t1, t2, p, h1, h2, jahrgang, i;
-                    /*switch(i){
+                let t, p, jahrgang, i, h;
+                for(i = 0; i<6; i++){
+                    switch(i){
                         case 0:
+                            console.log("case0");
                             t = berechneWoche(phas.data().Theorie1);
-                            h = p = berechneWoche(phas.data().Praxis1)-1;
+                            p = berechneWoche(phas.data().Praxis1)-1;
+                            jahrgang = phas.data().Theorie1.split(".")[2];
                             break;
                         case 1:
+                            console.log("case1");
                             t = berechneWoche(phas.data().Theorie2);
-                            h = p = berechneWoche(phas.data().Praxis2)-1;
+                            p = berechneWoche(phas.data().Praxis2)-1;
+                            jahrgang = phas.data().Theorie2.split(".")[2];
                             break;
                         case 2:
+                            console.log("case2");
                             t = berechneWoche(phas.data().Theorie3);
-                            h = p = berechneWoche(phas.data().Praxis3)-1;
+                            p = berechneWoche(phas.data().Praxis3)-1;
+                            jahrgang = phas.data().Theorie3.split(".")[2];
                             break;
                         case 3:
+                            console.log("case3");
                             t = berechneWoche(phas.data().Theorie4);
-                            h = p = berechneWoche(phas.data().Praxis4)-1;
+                            p = berechneWoche(phas.data().Praxis4)-1;
+                            jahrgang = phas.data().Theorie4.split(".")[2];
                             break;
                         case 4:
+                            console.log("case4");
                             t = berechneWoche(phas.data().Theorie5);
-                            h = p = berechneWoche(phas.data().Praxis5)-1;
+                            p = berechneWoche(phas.data().Praxis5)-1;
+                            jahrgang = phas.data().Theorie5.split(".")[2];
                             break;
                         case 5:
+                            console.log("case5");
                             t = berechneWoche(phas.data().Theorie6);
-                            h = p = berechneWoche(phas.data().Praxis6)-1;
+                            p = berechneWoche(phas.data().Praxis6)-1;
+                            jahrgang = phas.data().Theorie6.split(".")[2];
                             break;
-                    }*/
-                t1 = berechneWoche(phas.data().Theorie1);
+                    }
+            
+                    try{
+                        if(t>p){
+                            h = 1;
+                            console.log("t>p");
+                            while(t<=53){
+                                document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
+                                    t++;
+                            }
+                            jahrgang++;
+                            while(h<p){
+                                document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("theorie");
+                                h++;
+                            }
+                        } else {
+                            console.log("t<p");
+                            while(t<p){
+                                console.log("while");
+                                console.log("id: " + "k"+ jahrgang + t + stud.data().id)
+                                document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
+                                t++;
+                            }
+                        }
+                    } catch(exception){
+                        console.log("nicht vorhanden");
+                    }
+                }
+                for(i = 0; i<6; i++){
+                    switch(i){
+                        case 0:
+                            t = berechneWoche(phas.data().Praxis1);
+                            p = berechneWoche(phas.data().Theorie2)-1;
+                            jahrgang = phas.data().Praxis1.split(".")[2];
+                            break;
+                        case 1:
+                            t = berechneWoche(phas.data().Praxis2);
+                            p = berechneWoche(phas.data().Theorie3)-1;
+                            jahrgang = phas.data().Praxis2.split(".")[2];
+                            break;
+                        case 2:
+                            t = berechneWoche(phas.data().Praxis3);
+                            p = berechneWoche(phas.data().Theorie4)-1;
+                            jahrgang = phas.data().Praxis3.split(".")[2];
+                            break;
+                        case 3:
+                            t = berechneWoche(phas.data().Praxis4);
+                            p = berechneWoche(phas.data().Theorie5)-1;
+                            jahrgang = phas.data().Praxis4.split(".")[2];
+                            break;
+                        case 4:
+                            t = berechneWoche(phas.data().Praxis5);
+                            p = berechneWoche(phas.data().Theorie6)-1;
+                            jahrgang = phas.data().Praxis5.split(".")[2];
+                            break;
+                        case 5:
+                            t = berechneWoche(phas.data().Praxis6);
+                            p = berechneWoche(phas.data().EndeLetztePhase);
+                            jahrgang = phas.data().Praxis6.split(".")[2];
+                            break;
+                    }
+            
+                    try{
+                        if(p>t){
+                            h = 1;
+                            while(p<=53){
+                                document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
+                                    p++;
+                            }
+                            jahrgang++;
+                            while(h<t){
+                                document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("praxis");
+                                h++;
+                            }
+                        } else {
+                            while(p<t){
+                                document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
+                                p++;
+                            }
+                        }
+                    } catch(exception){
+                        console.log("nicht vorhanden");
+                    }
+                }
+                /*t1 = berechneWoche(phas.data().Theorie1);
                 h1 = p = berechneWoche(phas.data().Praxis1)-1;
                 h2 = t2 = berechneWoche(phas.data().Theorie2);
                 jahrgang = stud.data().Jahrgang;
@@ -181,7 +277,7 @@ function zusammenführenStudenten(){
                     catch(exception){}
                     i++;
                 }*/
-                if(t2<p){
+                /*if(t2<p){
                     h2 = p + t2;
                 }
                 i = p;
