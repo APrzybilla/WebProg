@@ -44,7 +44,7 @@
     letter-spacing: 1px;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid rgb(45, 59,162);
     outline: none;
 	background: transparent;
 }
@@ -55,7 +55,7 @@
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: blue;
+    color: rgb(45, 59,162);
     pointer-events: none;
     transition: .5s;
 }
@@ -64,7 +64,7 @@
 .studierendenProfil td input:valid ~ label{
     top: -18px;
     left: 0;
-    color: blue;
+    color: rgb(45, 59,162);
     font-size: 12px;
 }
 /*Mülleimer, zum löschen des Studenten*/
