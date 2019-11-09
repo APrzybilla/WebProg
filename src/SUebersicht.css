@@ -5,6 +5,10 @@
 }
 
 /*Textfelder vom Filter zum Durchsuchen der Studenten*/
+.headera:hover{
+    box-shadow: 0 0 0.5em dodgerblue;
+}
+
 .textfeld_filter{
     font-size: 3vw;
     width: 20vw;
@@ -37,13 +41,6 @@
     padding: 1vw;
 }
 
-
-/*app.css hervorheben beim überfahren vom Button*/
-button:hover{
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px dodgerblue;
-}
-
 /*Tabelle, in der alle Studenten stehen*/
 #tabelleUebersicht{
     border-collapse: collapse;
@@ -69,7 +66,6 @@ button:hover{
 }
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
-    /*background-color: #99738E;*/
     background-color: rgba(244, 91, 78, 0.97);
     color: white;
     font-weight: bold;
@@ -88,7 +84,7 @@ button:hover{
     color: darkblue !important;
 }
 #tabelleUebersicht a:hover{
-    color: blue !important;
+    color: rgb(134, 160, 242) !important;
 }
 /*Legende unter der Tabelle*/
 .theorie{
@@ -106,10 +102,6 @@ button:hover{
     border: 1px solid white;
     padding: 0.1em;
     margin: 0.1em;
-}
-
-.legende {
-    display: flex;
 }
 
 
