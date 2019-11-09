@@ -26,6 +26,8 @@
     background-image:linear-gradient(90deg,#f64c72, #fcb956);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 /*Navigationsleiste*/
 #app #nav{
@@ -53,7 +55,7 @@
 #app a{
     text-decoration: none;
     color: white;
-    padding-left: 1em;
+    margin: 0.3em;
     text-decoration: none;
     cursor: pointer;
 }
@@ -69,8 +71,11 @@
     color: white;
     font-weight: normal;
     border: none;
-    box-shadow: 0 0 0.5em dodgerblue;
     border-radius: 0.25em;
+}
+
+#app button:hover{
+    box-shadow: 0 0 0.5em dodgerblue;
 }
 /*Standard für Inputs festlegen */
 #app input[type="checkbox"]+label{
