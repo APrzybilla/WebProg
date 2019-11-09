@@ -23,6 +23,10 @@
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
+.textfeld_filter::placeholder{
+    color: grey;
+}
+
 /*Checkboxen, zum Filtern von DHBW oder THM*/
 .checkbox-group{
     display: inline-block;
