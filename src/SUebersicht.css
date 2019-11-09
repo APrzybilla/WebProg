@@ -70,8 +70,7 @@ button:hover{
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
     /*background-color: #99738E;*/
-    /*background-color: rgba(244, 91, 78, 0.97);*/
-  background-image: url(../images/button_hintergrund.png);
+    background-color: rgba(244, 91, 78, 0.97);
     color: white;
     font-weight: bold;
 }
