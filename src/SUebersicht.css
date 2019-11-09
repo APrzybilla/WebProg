@@ -5,10 +5,6 @@
 }
 
 /*Textfelder vom Filter zum Durchsuchen der Studenten*/
-.headera:hover{
-    box-shadow: 0 0 0.5em dodgerblue;
-}
-
 .textfeld_filter{
     font-size: 3vw;
     width: 20vw;
