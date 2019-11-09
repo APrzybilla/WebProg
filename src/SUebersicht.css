@@ -69,7 +69,9 @@ button:hover{
 }
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
-    background-color: #99738E;
+    /*background-color: #99738E;*/
+    /*background-color: rgba(244, 91, 78, 0.97);*/
+  background-image: url(../images/button_hintergrund.png);
     color: white;
     font-weight: bold;
 }
@@ -91,14 +93,24 @@ button:hover{
 }
 /*Legende unter der Tabelle*/
 .theorie{
-    background-color: #85cdca !important; 
-    color: black; 
-    padding: 0.1vw;
+    /*background-color: #85cdca !important; */
+    background-color: rgb(45, 59,162) !important;
+    color: white; 
+    border: 1px solid white;
+    padding: 0.1em;
+    margin: 0.1em;
 }
 .praxis{
-    background-color: #e8a87c; 
-    color: black; 
-    padding: 0.1vw;
+    /*background-color: #e8a87c;*/
+    background-color: rgb(134, 160, 242); 
+    color: white; 
+    border: 1px solid white;
+    padding: 0.1em;
+    margin: 0.1em;
+}
+
+.legende {
+    display: flex;
 }
 
 
