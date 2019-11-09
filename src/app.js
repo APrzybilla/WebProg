@@ -111,6 +111,8 @@ class App {
         // Navigo an die Links in der View binden
         this._router.updatePageLinks();
     }
+
+    
 }
 
 export default App;
