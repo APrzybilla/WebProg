@@ -30,8 +30,12 @@ input[type="radio"]{
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
-.textfeld_phase::placeholder{
-    color: grey;
+#EingabeStudiengang{
+    width: 13vw;
+}
+
+#EingabeJahrgang{
+    width: 6vw;
 }
 
 /*DropDown Theorie oder Praxis*/
