@@ -128,8 +128,6 @@ function tabelleUebersichtErzeugen(){
 function zusammenführenStudenten(){
     _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function(stud){
-            console.log("Student: " + stud.data().id);
-            console.log("Phase: " + stud.data().Studiengang + stud.data().Jahrgang);
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
                 // beispiel-id: k201912 -> k + Jahrgang + KW + id
                 let t, p, jahrgang, i, h;
@@ -349,6 +347,7 @@ function suchen (){
 
     //Grundgerüst erzeugen
     tabelleUebersichtErzeugen();
+    zusammenführenStudenten();
 
     //Auslesen der Filtertextfelder und in Kleinbuchstaben verwandeln
     let nachanme = document.getElementById("filter_nachname").value.toLowerCase();
