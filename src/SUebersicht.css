@@ -1,8 +1,4 @@
 /*Handy*/
-/*unsichtbar machen bestimmter Teile der Tabelle. Dient dazu, dass die Handy-Version leichter ist*/
-.handyUnsichtbar{
-    visibility: collapse;
-}
 
 /*Textfelder vom Filter zum Durchsuchen der Studenten*/
 .textfeld_filter{
@@ -55,10 +51,16 @@
     width: 75vw;
     overflow-x: scroll;
 }
+/*Scrollbar, um die Studenten zu scrollen*/
+#tabelleUebersicht thead {
+    width: 17vw;
+    overflow-x: scroll;
+}
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
     color: darkblue;
     background-color: rgb(231, 242, 255);
+    height: 2.5em;
 }
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
@@ -70,7 +72,6 @@
 #tabelleUebersicht td{
     border-right: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
-    height: 2.4em;
     vertical-align: middle;
     width: 5vw;
     table-layout: fixed;
@@ -139,11 +140,6 @@
 
 /*Laptop*/
 @media(min-width:1200px){
-    /*Tabellenspalten wieder sichtbar machen*/
-    .handyUnsichtbar{
-        visibility: visible;
-    }
-
     /*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
     .textfeld_filter{
         font-size: 1vw;
@@ -163,8 +159,10 @@
     #tabelleUebersicht{
         min-width: 1195px;
     }
+    /*Scrollbar entfernen und Breite anpassen*/
     #tabelleUebersicht thead{
         width: 20vw;
+        overflow: hidden;
     }
     #tabelleUebersicht tbody {
         width: 76vw;
