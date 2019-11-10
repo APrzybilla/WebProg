@@ -14,6 +14,7 @@
     color: white;
     padding: 0;
     padding-bottom: 7vw;
+    position: fixed;
 }
 /*Überschrift*/
 #app header span{
@@ -23,7 +24,8 @@
     padding-top: 0.2em;
     vertical-align: middle;
     /*setzt Hintergrund als Fontcolor mit Übergang*/
-    background-image:linear-gradient(90deg,#f64c72, #fcb956);
+    /*background-image:linear-gradient(90deg,#f64c72, #ffab84);*/
+    background-image:linear-gradient(90deg,rgb(45, 59,162), rgb(134, 160, 242));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
@@ -32,7 +34,7 @@
 /*Navigationsleiste*/
 #app #nav{
     font-size: 1.2em;
-    background-color: #5662c9;
+    background-color: #6078bf;
     border-radius: 0.5vw;
     position: fixed;
     padding: 0.5vw;
@@ -43,7 +45,7 @@
 /*Verändert die Schrift vom Navigationssystem, abhängig von der aktuellen Seite*/
 #app .bold{
     font-weight: 900;
-    color: #f64c72;
+    color: rgb(45, 59,162);
 }
 
 /*Main-Bereich*/
@@ -61,10 +63,10 @@
 }
 /*Standard für Buttons festlegen*/
 #app button{
-    background-image: url("../images/button_hintergrund.png");
+    background-color: #6078bf;
     background-size: cover;
     background-repeat: no-repeat;
-    border: none;
+    border: 1px solid #6078bf;
     width: auto;
     vertical-align: middle;
     cursor: pointer;
@@ -72,10 +74,15 @@
     font-weight: normal;
     border: none;
     border-radius: 0.25em;
+    margin-left: 2vw;
 }
 
 #app button:hover{
-    box-shadow: 0 0 0.5em dodgerblue;
+    box-shadow: 0 0 0.5em #6078bf;
+}
+
+#app button:active{
+    background: rgb(45, 59,162);
 }
 
 /*Standard für Radio-Buttons festlegen */
@@ -88,10 +95,10 @@
     padding: 1vw;
 }
 #app input[type="radio"]+label{
-    color: white;
-    border: 2px solid white;
+    color: grey;
+    border: 1px solid #6078bf;
     border-radius: 0.25em;
-    background: #474eba;
+    background: white;
     cursor: pointer;
     box-shadow: none;
 }
@@ -101,28 +108,28 @@
 }
 /*Wenn der Radio-Button checked ist, dann soll sich das Feldverfärben*/
 #app input[type="radio"]:checked + label{
-    color: #f64c72;
-    border-color: #f63c72;
+    color: white;
+    background: #6078bf;
 }
 /*Input als Radio-Button mit label auf einer Ebene*/
 #app input[type="radio"]:hover+label:hover{
-    box-shadow: 0 0 8px dodgerblue;
+    box-shadow: 0 0 8px #6078bf;
 }
 
 /*Standard für Checkboxen festlegen */
 .checkbox-group{
     display: inline-block;
-    margin: 1vw; 
+    margin: 0vw; 
     vertical-align: middle;
 }
 .checkbox-group label{
     padding: 1vw;
 }
 #app input[type="checkbox"]+label{
-    color: white;
-    border: 2px solid white;
+    color: grey;
+    border: 1px solid #6078bf;
     border-radius: 0.25em;
-    background: #474eba;
+    background: white;
     cursor: pointer;
     box-shadow: none;
 }
@@ -132,12 +139,12 @@
 }
 /*Wenn die Checkbox checked ist, dann soll sich das Feld Weiß gefärbt werden*/
 #app input[type="checkbox"]:checked + label{
-    color: #f64c72;
-    border-color: #f63c72;
+    color: white;
+    background: #6078bf;
 }
 /*Input als Checkbox mit label auf einer Ebene*/
 #app input[type="checkbox"]:hover+label:hover{
-    box-shadow: 0 0 8px dodgerblue;
+    box-shadow: 0 0 8px #6078bf;
 }
 
 
