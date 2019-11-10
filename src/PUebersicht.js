@@ -258,7 +258,7 @@ function klapptabelle(event){
 let berechneWoche =(date) =>{
     date = new Date(date);
     let j = date.getFullYear();
-    let m = date.getMonth()+1;
+    let m = date.getMonth();
     let t = date.getDate();
     let datum = new Date(j, m, t);
 
@@ -377,7 +377,6 @@ let neuePhase = () =>{
             tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
         }
     } else if(tdPhase.innerHTML=="Praxis"){
-        console.log(document.getElementById(tdPhase.innerHTML + hilfePraxis));
         while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
             hilfePraxis++;
         }
