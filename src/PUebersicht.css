@@ -14,7 +14,7 @@ input[type="radio"]{
 
 /*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
 .textfeld_phase{
-    width: 33vw;
+    width: 35vw;
     border: 1px solid #aaa;
     border-radius: 5px;
     outline: none;
@@ -31,11 +31,11 @@ input[type="radio"]{
 }
 
 #EingabeStudiengang{
-    width: 13vw;
+    width: 23vw;
 }
 
 #EingabeJahrgang{
-    width: 6vw;
+    width: 23vw;
 }
 
 /*DropDown Theorie oder Praxis*/
@@ -100,6 +100,12 @@ li {
         padding: 8px;
         margin-right: 2vw;
     }
+    #EingabeStudiengang{
+        width: 20vw;
+    }
+    #EingabeJahrgang{
+        width: 20vw;
+    }
     
     /*DropDown Theorie oder Praxis*/
     select{
@@ -132,6 +138,12 @@ li {
     .textfeld_phase{
         width: 10vw;
         margin-right: 10px;
+    }
+    #EingabeStudiengang{
+        width: 10vw;
+    }
+    #EingabeJahrgang{
+        width: 10vw;
     }
 
     /*DropDown Theorie oder Praxis*/

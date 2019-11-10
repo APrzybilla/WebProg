@@ -55,7 +55,7 @@ function idfiltern (){
 
 //Profil wird mit Hilfe einer ID befüllt, die übergeben wird
 function kurzprofilBefuellenMitId(id){
-    let students = _db.selectAllStudents().then(function (querySnapshot) {
+    _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
             if(doc.data().id == id){
                 document.querySelector("#profil_nachname").parentElement.children[0].value = doc.data().Name;

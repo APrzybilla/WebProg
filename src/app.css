@@ -78,7 +78,46 @@
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
-/*Standard für Inputs festlegen */
+/*Standard für Radio-Buttons festlegen */
+.radio-group{
+    display: inline-block;
+    margin: 1vw; 
+    vertical-align: middle;
+}
+.radio-group label{
+    padding: 1vw;
+}
+#app input[type="radio"]+label{
+    color: white;
+    border: 2px solid white;
+    border-radius: 0.25em;
+    background: #474eba;
+    cursor: pointer;
+    box-shadow: none;
+}
+/*Unsichtbar machen des Radio-Buttons selber, sodass nur das Label zu sehen ist*/
+.radio-group input[type="radio"]{
+    display: none;
+}
+/*Wenn der Radio-Button checked ist, dann soll sich das Feldverfärben*/
+#app input[type="radio"]:checked + label{
+    color: #f64c72;
+    border-color: #f63c72;
+}
+/*Input als Radio-Button mit label auf einer Ebene*/
+#app input[type="radio"]:hover+label:hover{
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+/*Standard für Checkboxen festlegen */
+.checkbox-group{
+    display: inline-block;
+    margin: 1vw; 
+    vertical-align: middle;
+}
+.checkbox-group label{
+    padding: 1vw;
+}
 #app input[type="checkbox"]+label{
     color: white;
     border: 2px solid white;
@@ -86,6 +125,10 @@
     background: #474eba;
     cursor: pointer;
     box-shadow: none;
+}
+/*Unsichtbar machen der Checkbox selber, sodass nur das Label zu sehen ist*/
+.checkbox-group input[type="checkbox"]{
+    display: none;
 }
 /*Wenn die Checkbox checked ist, dann soll sich das Feld Weiß gefärbt werden*/
 #app input[type="checkbox"]:checked + label{
@@ -96,6 +139,7 @@
 #app input[type="checkbox"]:hover+label:hover{
     box-shadow: 0 0 8px dodgerblue;
 }
+
 
 /*Tablets*/
 @media(min-width:700px){
@@ -118,6 +162,14 @@
         float: none;
         font-size: 20px;
     }
+
+    .checkbox-group label{
+        padding: 5px;
+    }
+
+    .radio-group label{
+        padding: 5px;
+    }
 }
 
 /*Laptop*/
@@ -133,9 +185,11 @@
         padding: 8px;
     }
 
-    .sticky {
-        position: fixed;
-        top: 0;
-        width: 100%
-      }
+    .checkbox-group label{
+        padding: 8px;
+    }
+
+    .radio-group label{
+        padding: 8px;
+    }
 }

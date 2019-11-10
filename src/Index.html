@@ -82,7 +82,7 @@
                     <br>
 
                     <!--Studiengänge mit Vorschlägen-->
-                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" required="" class="textfeld_phase">
+                    <input type="text" placeholder="Studiengang" id="EingabeStudiengang" list="Studiengang" class="textfeld_phase" required="">
                         <datalist id="Studiengang">
                             <option value="Wirtschaftsinformatik"></option>
                             <option value="BWL"></option>
@@ -95,27 +95,19 @@
                     </input>
 
                     <!--Jahrgang mit Vorschlägen-->
-                    <input type="text" placeholder="Jahrgang" id="EingabeJahrgang" list="Jahrgang" required="" class="textfeld_phase">
-                    <datalist id="Jahrgang">
-                        <option value="2019"></option>
-                        <option value="2020"></option>
-                        <option value="2021"></option>
-                        <option value="2022"></option>
-                        <option value="2023"></option>
-                        <option value="2024"></option>
-                        <option value="2025"></option>
-                        <option value="2026"></option>
-                        <option value="2027"></option>
-                        <option value="2028"></option>
-                        <option value="2029"></option>
-                        <option value="2030"></option>
-                    </datalist>
+                    <input type="number" placeholder="Jahrgang" id="EingabeJahrgang" min="2018" class="textfeld_phase" required="" >
 
                     <!--Auswahl der Hochschule-->
-                    <input type="radio" id="DH" name="Uni">
-                    <label for="DH" class="label">DHBW</label>
-                    <input type="radio" id="THM" name="Uni">
-                    <label for="THM" class="label">THM</label>
+                    <div class="radio-group">
+                        <span class="filter_auswahl">
+                            <input type="radio" id="radio_phase_dhbw" name="hochschule" value="hochschule-phase-dhbw">
+                            <label for="radio_phase_dhbw" id="label_radio_phase_dhbw">DHBW</label>
+                        </span>
+                        <span class="filter_auswahl">
+                            <input type="radio" id="radio_phase_thm" name="hochschule" value="hochschule-phase-thm">
+                            <label for="radio_phase_thm" id="label_radio_phase_thm">THM</label>
+                        </span>
+                    </div>
                     <br>
                     <br>
                     <br>
@@ -179,31 +171,31 @@
                             <tr>
                                 <!--Profil-Nachname-->
                                 <td>
-                                    <input type="text" id="profil_nachname" required=""/>
+                                    <input type="text" id="profil_nachname"/>
                                     <label>Nachname</label>
                                 </td>
                                 <!--Profil-Vorname-->
                                 <td>
-                                    <input type="text" id="profil_vorname" required="" />
+                                    <input type="text" id="profil_vorname" />
                                     <label>Vorname</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Jahrgang-->
                                 <td>
-                                    <input type="number" id="profil_jahrgang" min = "2018" required="" />
+                                    <input type="number" id="profil_jahrgang" min = "2018"/>
                                     <label>Jahrgang</label>
                                 </td>
                                 <!--Profil-Semester-->
                                 <td>
-                                    <input type="number" id="profil_semester" max = "6" required=""/>
+                                    <input type="number" id="profil_semester" min = "0" max = "6" />
                                     <label>Semester</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Hochschule-->
                                 <td>
-                                    <input type="text" id="profil_hochschule" list="Hochschule" required="">
+                                    <input type="text" id="profil_hochschule" list="Hochschule">
                                         <datalist id="Hochschule">
                                             <option value="DHBW"></option>
                                             <option value="THM"></option>
@@ -212,7 +204,7 @@
                                 </td>
                                 <!--Profil-Studiengang-->
                                 <td>
-                                    <input type="text" id="profil_studiengang" list="Studiengang" required="">
+                                    <input type="text" id="profil_studiengang" list="Studiengang" >
                                         <datalist id="Studiengang">
                                             <option value="Wirtschaftsinformatik"></option>
                                             <option value="BWL"></option>
@@ -229,19 +221,19 @@
                             <tr>
                                 <!--Profil-Geburtstag-->
                                 <td>
-                                    <input type="text" id="profil_geburtstag" required=""/>
+                                    <input type="text" id="profil_geburtstag"/>
                                     <label>Geburtstag</label>
                                 </td>
                                 <!--Profil-Mitarbeiter-ID-->
                                 <td>
-                                    <input type="text" id="profil_mitarbeiter_id" required="" maxlength="6"/>
+                                    <input type="text" id="profil_mitarbeiter_id" minlength="6" maxlength="6"/>
                                     <label>Mitarbeiter-ID</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Notizen-->
                                 <td colspan="2">
-                                    <input type="text" id="profil_notizen" required=""/>
+                                    <input type="text" id="profil_notizen" />
                                     <label>Notizen</label>
                                 </td>
                             </tr>

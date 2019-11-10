@@ -19,20 +19,6 @@
     box-shadow: 0 0 0.5em dodgerblue;
 }
 
-/*Checkboxen, zum Filtern von DHBW oder THM*/
-.checkbox-group{
-    display: inline-block;
-    margin: 1vw; 
-    vertical-align: middle;
-}
-/*Unsichtbar machen der Checkbox selber, sodass nur das Label zu sehen ist*/
-.checkbox-group input[type="checkbox"]{
-    display: none;
-}
-.checkbox-group label{
-    padding: 1vw;
-}
-
 /*Tabelle, in der alle Studenten stehen*/
 #tabelleUebersicht{
     border-collapse: collapse;
@@ -110,11 +96,7 @@
         width: 12vw;
         padding: 5px;
         margin-bottom: 0vw;
-    }
-
-    .checkbox-group label{
-        padding: 5px;
-    }
+    } 
     
     /*Tabelle, in der alle Studenten stehen*/
     #tabelleUebersicht{
@@ -135,10 +117,6 @@
     .textfeld_filter{
         font-size: 1vw;
         width: 15vw;
-        padding: 8px;
-    }
-
-    .checkbox-group label{
         padding: 8px;
     }
     
