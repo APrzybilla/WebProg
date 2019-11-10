@@ -15,7 +15,7 @@ input[type="radio"]{
 /*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
 .textfeld_phase{
     width: 35vw;
-    border: 1px solid #aaa;
+    border: 1px solid #6078bf;
     border-radius: 5px;
     outline: none;
     padding: 1vw;
@@ -25,9 +25,13 @@ input[type="radio"]{
     color: darkblue;
     vertical-align: middle;
 }
-.textfeld_phase:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 0.5em dodgerblue;
+.textfeld_filter:focus{
+    border-color: #6078bf;
+    box-shadow: 0 0 0.5em #6078bf;
+}
+
+.textfeld_filter::placeholder{
+    color: grey;
 }
 
 #EingabeStudiengang{
