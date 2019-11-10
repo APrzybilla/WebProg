@@ -27,6 +27,9 @@ class StartPage{
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
 
+        //Grundgerüst erzeugen
+        tabelleUebersichtErzeugen();
+
         //Aufrufen der Tabelle mit allen Studenten
         anzeigen();
 
@@ -43,8 +46,6 @@ class StartPage{
 
 //Alle Studenten in der Tabelle anzeigen
 function anzeigen(){
-    //Grundgerüst erzeugen 
-    tabelleUebersichtErzeugen();
     //Alle Studenten rückwärts aufrufen
     let students = _db.selectAllStudentsByOrderBackwards("Name").then(function (querySnapshot) {
         querySnapshot.forEach(function (doc){
@@ -84,11 +85,14 @@ function tabelleUebersichtErzeugen(){
                 h = doc.data().EndeLetztePhase.split(".")[2];
             }
         });
+        console.log(h);
 
         //neue Tabellenzeile erstellen, in der die Jahre stehen sollen
         let trJahr = document.getElementById("Tabellenbody").insertRow(0);
         //neue Tabellenzeile erstellen, in der die KWs stehen sollen
         let trKW = document.getElementById("Tabellenbody").insertRow(1);
+
+        console.log(trJahr.rowIndex);
         
         for(let j = d.getFullYear(); j<=h; j++){
             //Überprüfen, wie viele Wochen das Jahr hat
@@ -294,43 +298,6 @@ function zusammenführenStudenten(){
                         console.log("nicht vorhanden");
                     }
                 }
-                /*t1 = berechneWoche(phas.data().Theorie1);
-                h1 = p = berechneWoche(phas.data().Praxis1)-1;
-                h2 = t2 = berechneWoche(phas.data().Theorie2);
-                jahrgang = stud.data().Jahrgang;
-                
-                if(p<t1){
-                    h1 = t1 + p;
-                }
-                i = t1;
-                /*for(let j = t1; j<h1; i++){
-                    if(j>=53){
-                        i = 1;
-                        jahrgang++;
-                    }
-                    try{
-                        console.log("k" + jahrgang + i + stud.data().id);
-                        document.getElementById("k" + jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
-                    }
-                    catch(exception){}
-                    i++;
-                }*/
-                /*if(t2<p){
-                    h2 = p + t2;
-                }
-                i = p;
-                console.log()
-                /*for(let j = p; j<h2;j++){
-                    if(j>=53){
-                        i = 1;
-                        jahrgang++;
-                    }
-                    try{
-                        document.getElementById("k" + jahrgang + i + stud.data().id).style.backgroundColor = "#85cdca";
-                    }
-                    catch(exception){}
-                    i++;
-                }*/
             });
         });    
     });
@@ -345,18 +312,14 @@ function suchen (){
     deleteTable("Tabellenhead");
     deleteTable("Tabellenbody");
 
-    //Grundgerüst erzeugen
-    tabelleUebersichtErzeugen();
-    zusammenführenStudenten();
-
     //Auslesen der Filtertextfelder und in Kleinbuchstaben verwandeln
-    let nachanme = document.getElementById("filter_nachname").value.toLowerCase();
+    let nachname = document.getElementById("filter_nachname").value.toLowerCase();
     let vn = document.getElementById("filter_vorname").value.toLowerCase();
     let sem = document.getElementById("filter_semester").value.toLowerCase();
     let jg = document.getElementById("filter_jahrgang").value.toLowerCase();
 
     //Überprüfen, ob ein Filter aktiviert ist. Wenn nicht wird die komplette Tabelle angezeigt
-    if(nachanme=="" && vn=="" && sem=="" && jg=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
+    if(nachname=="" && vn=="" && sem=="" && jg=="" && !document.getElementById("checkbox_thm").checked && !document.getElementById("checkbox_dhbw").checked){
         anzeigen();
     } else {
         //Aufrufen aller Studenten rückwärts
@@ -369,11 +332,11 @@ function suchen (){
                 let flag = false;
 
                 //Überprüfen, ob etwas in den Feldern steht
-                if(nachanme!==""){
+                if(nachname!==""){
                     //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                     //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
-                    if(doc.data().Name.toLowerCase().indexOf(nachanme)>=0){
+                    if(doc.data().Name.toLowerCase().indexOf(nachname)>=0){
                         flag = true;
                     }
                 }
@@ -500,12 +463,13 @@ function einfügen (name, vorname, hs, sem, jg, id){
             i = 1;
         }
     });
+    zusammenführenStudenten();
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
 function deleteTable(id){
-    while(document.getElementById(id).rows.length>1){
-        document.getElementById(id).deleteRow(1);
+    while(document.getElementById(id).rows.length>3){
+        document.getElementById(id).deleteRow(3);
     }
 }
 
