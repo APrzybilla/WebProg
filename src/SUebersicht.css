@@ -115,15 +115,6 @@
     .checkbox-group label{
         padding: 5px;
     }
-
-    /*app.css*/
-    button{
-        width: 10%;
-        padding: 5px;
-        box-sizing: border-box;
-        font-size: 20px;
-        float: none;
-    }
     
     /*Tabelle, in der alle Studenten stehen*/
     #tabelleUebersicht{
@@ -148,10 +139,6 @@
     }
 
     .checkbox-group label{
-        padding: 8px;
-    }
-
-    button{
         padding: 8px;
     }
     

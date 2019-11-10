@@ -113,8 +113,10 @@
     
     /*Standard für Buttons festlegen*/
     #app button{
-        padding-left: 1em;
-        padding-right: 1em;
+        padding: 5px;
+        box-sizing: border-box;
+        float: none;
+        font-size: 20px;
     }
 }
 
@@ -124,6 +126,11 @@
     #app #nav{
         right: 10vw;
         margin: 0;
+    }
+    
+    /*Standard für Buttons festlegen*/
+    #app button{
+        padding: 8px;
     }
 
     .sticky {
