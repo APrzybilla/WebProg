@@ -106,7 +106,7 @@
 .radio-group input[type="radio"]{
     display: none;
 }
-/*Wenn der Radio-Button checked ist, dann soll sich das Feldverfärben*/
+/*Wenn der Radio-Button checked ist, dann soll sich das Feld verfärben*/
 #app input[type="radio"]:checked + label{
     color: white;
     background: #6078bf;
@@ -137,7 +137,7 @@
 .checkbox-group input[type="checkbox"]{
     display: none;
 }
-/*Wenn die Checkbox checked ist, dann soll sich das Feld Weiß gefärbt werden*/
+/*Wenn die Checkbox checked ist, dann soll sich das Feld gefärbt werden*/
 #app input[type="checkbox"]:checked + label{
     color: white;
     background: #6078bf;
