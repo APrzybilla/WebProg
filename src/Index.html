@@ -171,31 +171,31 @@
                             <tr>
                                 <!--Profil-Nachname-->
                                 <td>
-                                    <input type="text" id="profil_nachname"/>
+                                    <input type="text" id="profil_nachname" required=""/>
                                     <label>Nachname</label>
                                 </td>
                                 <!--Profil-Vorname-->
                                 <td>
-                                    <input type="text" id="profil_vorname" />
+                                    <input type="text" id="profil_vorname" required=""/>
                                     <label>Vorname</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Jahrgang-->
                                 <td>
-                                    <input type="number" id="profil_jahrgang" min = "2018"/>
+                                    <input type="number" id="profil_jahrgang" min = "2018" required=""/>
                                     <label>Jahrgang</label>
                                 </td>
                                 <!--Profil-Semester-->
                                 <td>
-                                    <input type="number" id="profil_semester" min = "0" max = "6" />
+                                    <input type="number" id="profil_semester" min = "0" max = "6" required=""/>
                                     <label>Semester</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Hochschule-->
                                 <td>
-                                    <input type="text" id="profil_hochschule" list="Hochschule">
+                                    <input type="text" id="profil_hochschule" list="Hochschule" required="">
                                         <datalist id="Hochschule">
                                             <option value="DHBW"></option>
                                             <option value="THM"></option>
@@ -204,7 +204,7 @@
                                 </td>
                                 <!--Profil-Studiengang-->
                                 <td>
-                                    <input type="text" id="profil_studiengang" list="Studiengang" >
+                                    <input type="text" id="profil_studiengang" list="Studiengang" required="">
                                         <datalist id="Studiengang">
                                             <option value="Wirtschaftsinformatik"></option>
                                             <option value="BWL"></option>
@@ -221,19 +221,19 @@
                             <tr>
                                 <!--Profil-Geburtstag-->
                                 <td>
-                                    <input type="text" id="profil_geburtstag"/>
+                                    <input type="text" id="profil_geburtstag" required=""/>
                                     <label>Geburtstag</label>
                                 </td>
                                 <!--Profil-Mitarbeiter-ID-->
                                 <td>
-                                    <input type="text" id="profil_mitarbeiter_id" minlength="6" maxlength="6"/>
+                                    <input type="text" id="profil_mitarbeiter_id" minlength="6" maxlength="6" required=""/>
                                     <label>Mitarbeiter-ID</label>
                                 </td>
                             </tr>
                             <tr>
                                 <!--Profil-Notizen-->
                                 <td colspan="2">
-                                    <input type="text" id="profil_notizen" />
+                                    <input type="text" id="profil_notizen" required=""/>
                                     <label>Notizen</label>
                                 </td>
                             </tr>
