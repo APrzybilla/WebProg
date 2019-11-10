@@ -4,19 +4,23 @@
 .textfeld_filter{
     font-size: 3vw;
     width: 20vw;
-    border: 1px solid #aaa;
     border-radius: 5px;
     padding: 1vw;
     box-sizing: border-box;
     transition: .3s;
     margin-right: 10px;
-    color: darkblue;
+    color: #6078bf;
     vertical-align: middle;
     margin-bottom: 2vw;
+    border: 1px solid #6078bf;
 }
 .textfeld_filter:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 0.5em dodgerblue;
+    border-color: #6078bf;
+    box-shadow: 0 0 0.5em #6078bf;
+}
+
+.textfeld_filter::placeholder{
+    color: grey;
 }
 
 /*Tabelle, in der alle Studenten stehen*/
@@ -45,12 +49,12 @@
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
     color: darkblue;
-    background-color: rgb(231, 242, 255);
+    background-color: white;
     height: 2.5em;
 }
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
-    background-color: rgba(244, 91, 78, 0.97);
+    background-color: #6078bf;
     color: white;
     font-weight: bold;
 }
