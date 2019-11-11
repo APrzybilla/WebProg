@@ -16,11 +16,12 @@
     height: 4em;
     padding: 1vw;
     position: fixed;
-    background: #cfd4e6;
-    background-color: red;
+    background: #bcc3da;
     background-size: 100%;
     z-index: 100;
     top: 0;
+    box-shadow: 0 15px 25px rgba(96, 120, 191, .25);
+    
 }
 /*Überschrift*/
 #app header span{
