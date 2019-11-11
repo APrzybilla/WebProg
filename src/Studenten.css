@@ -10,6 +10,10 @@
     border-radius: 0.25em;
 }
 
+#studenten_tabelle a{
+    color: #7f8eb9;
+}
+
 /*Rechte Seite*/
 /*div, in dem das Profil der Studenten bearbeitet/ angelegt werden kann*/
 .container{
