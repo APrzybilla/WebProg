@@ -9,22 +9,18 @@
     display: none;
 }
 
-#app main{
-    margin-top: 2vw;
-}
-
 /*Header-Bereich*/
 #app header{
     color: white;
     width: 100%;
-    padding-top: 0vw;
-    padding-bottom: 7vw;
+    height: 4em;
+    padding: 1vw;
     position: fixed;
     background: #cfd4e6;
     background-color: red;
     background-size: 100%;
     z-index: 100;
-    margin-top: 0.1vw;
+    top: 0;
 }
 /*Überschrift*/
 #app header span{
