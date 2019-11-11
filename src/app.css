@@ -14,12 +14,13 @@
     color: white;
     width: 100%;
     height: 4em;
-    padding: 1vw;
+    padding: 3vw;
     position: fixed;
     background: #cfd4e6;
     background-size: 100%;
     z-index: 100;
     top: 0;
+    left:0;
 }
 /*Überschrift*/
 #app header span{
@@ -157,8 +158,8 @@
 @media(min-width:700px){
     /*Header-Bereich*/
     #app header{
-        display: inline;
-        padding-bottom: 0;
+        height: 3em;
+        padding: 1vw;
     }
     /*Navigationsleiste*/
     #app #nav{
@@ -186,6 +187,10 @@
 
 /*Laptop*/
 @media(min-width:1200px){
+    #app #header{
+        padding: 1vw;
+        margin: 0;
+    }
     /*Navigationsleiste*/
     #app #nav{
         right: 10vw;
