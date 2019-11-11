@@ -22,7 +22,7 @@ input[type="radio"]{
     box-sizing: border-box;
     transition: .3s;
     margin-right: 1vw;
-    color: darkblue;
+    color: #6078bf;
     vertical-align: middle;
 }
 .textfeld_filter:focus{
