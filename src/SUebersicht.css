@@ -94,7 +94,7 @@
 
 /*Tablets*/
 @media(min-width:700px){
-    /*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
+    /*Textfelder vom Filter zum Durchsuchen der Studenten*/
     .textfeld_filter{
         font-size: 2vw;
         width: 12vw;
@@ -117,7 +117,7 @@
 
 /*Laptop*/
 @media(min-width:1200px){
-    /*app.css? Für allgemein Textfeld? Textfelder vom Filter zum Durchsuchen der Studenten*/
+    /*Textfelder vom Filter zum Durchsuchen der Studenten*/
     .textfeld_filter{
         font-size: 1vw;
         width: 15vw;
