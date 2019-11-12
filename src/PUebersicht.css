@@ -60,6 +60,12 @@ select{
 /*Tabelle, in der zunächst die hinzugefügten Phasen aufgelistet werden*/
 #Phasentabelle th{
     font-weight: normal;
+    width: 6vw;
+    text-align: center;
+}
+#Phasentabelle td{
+    width: 6vw;
+    text-align: center;
 }
 
 /*rechter, bzw. unterer Teil. Auflistung aller eingespeicherten Studiengänge*/
@@ -110,6 +116,12 @@ li {
     #EingabeJahrgang{
         width: 20vw;
     }
+    #Phasentabelle th{
+        width: 10vw;
+    }
+    #Phasentabelle td{
+        width: 10vw;
+    }
     
     /*DropDown Theorie oder Praxis*/
     select{
@@ -149,10 +161,17 @@ li {
     #EingabeJahrgang{
         width: 10vw;
     }
+    /*Festlegen der Tabelle der Phasen*/
+    #Phasentabelle th{
+        width: 6vw;
+    }
+    #Phasentabelle td{
+        width: 6vw;
+    }
 
     /*DropDown Theorie oder Praxis*/
     select{
-        width: 5vw;
+        width: 6vw;
         margin-right: 10px;
     }
 }
