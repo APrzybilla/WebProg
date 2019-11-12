@@ -313,6 +313,7 @@ let neuerStudiengang = () =>{
             "id": id
             }
         );
+        alert("Jahrgang wurde erfolgreich gespeichert");
         //Phasentabelle löschen und wieder unsichtbar machen
         deleteTable("Phasentabelle");
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
@@ -417,8 +418,9 @@ function deleteTable(id){
 
 // Phase löschen
 function deletePhase(event){
+    let bool = window.confirm("Soll der Studiengang " + event.target.parentElement.id.substring(6, event.target.parentElement.id.length-4) + " " + event.target.parentElement.id.substring(event.target.parentElement.id.length-4, event.target.parentElement.id.length) + " wirklich gelöscht werden?");
+    
     // löscht die ersten 6 chars der id --> Beispiel-id: buttonWirtschaftsinformatik2018
-    let bool = window.confirm("Soll die Phase wirklich gelöscht werden?");
     if(bool){
         let id = event.target.parentElement.id.substring(6);
         _db.deletePhaseById(id);
