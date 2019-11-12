@@ -223,8 +223,10 @@ function resetAll(){
 
 //EventListener des Löschen-Bildes. Dient dazu, den aktuell ausgewählten Student zu löschen
 function deleteStudent(){
-    window.alert(document.querySelector("#profil_vorname").parentElement.children[0].value + " " + document.querySelector("#profil_nachname").parentElement.children[0].value + " wurde gelöscht.");
-    
+    let bestätigung = window.confirm("Soll " + document.querySelector("#profil_vorname").parentElement.children[0].value + " " + document.querySelector("#profil_nachname").parentElement.children[0].value + " gelöscht werden?");
+    if(!bestätigung){
+        return;
+    }
     // ruft Methode aus database.js auf
     _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value);
     
