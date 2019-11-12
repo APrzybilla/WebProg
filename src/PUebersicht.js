@@ -158,7 +158,7 @@ function klapptabelle_erstellung(){
                         tr.id = "tr" + doc.data().id + "Praxis2";
                         td2.id = "td" + doc.data().id + "Praxis2";
                         td1.innerHTML = "Praxis 2:";
-                        td2.innerHTML = doc.data().Praxis1;
+                        td2.innerHTML = doc.data().Praxis2;
                         break;
                     case 4:
                         tr.id = "tr" + doc.data().id + "Theorie3";
@@ -349,10 +349,8 @@ let neuePhase = () =>{
     let tdLoe = document.createElement("td");
 
     //Button löschen erstellen//
-    let loe = document.createElement("input");
-    loe.type = "button";
-    loe.classList.add("Buttons");
-    loe.value = "Löschen";
+    let loe = document.createElement("a");
+    loe.innerHTML = "<span class='fas fa-trash muell'></span>";
 
     //befüllen der Spalten//
     tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
