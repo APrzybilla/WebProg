@@ -27,6 +27,12 @@ class StartPage{
         //EventListener von Suchen-Button
         document.getElementById("button_filter").addEventListener("click", suchen);
 
+        //EventListener für Filter-Felder
+        document.getElementById("filter_nachname").addEventListener("keyup", keyType);
+        document.getElementById("filter_vorname").addEventListener("keyup", keyType);
+        document.getElementById("filter_semester").addEventListener("keyup", keyType);
+        document.getElementById("filter_jahrgang").addEventListener("keyup", keyType);
+
         //Grundgerüst erzeugen
         tabelleUebersichtErzeugen();
 
@@ -337,8 +343,15 @@ function zusammenführenStudenten(){
 
 // Functions die nur bei Bedarf ausgeführt werden
 
+//Überprüfen, ob Enter gedrückt wurde
+function keyType(){
+    if(event.keyCode==13){
+        suchen();
+    }
+}
+
 //Suchen von Studenten. Wird aktiviert, wenn der Suchen-Button geklickt wurde
-function suchen (){
+function suchen (){    
     //Tabelle leeren
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
     deleteTable("Tabellenhead");
@@ -500,8 +513,8 @@ function einfügen (name, vorname, hs, sem, jg, id){
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
 function deleteTable(id){
-    while(document.getElementById(id).rows.length>3){
-        document.getElementById(id).deleteRow(3);
+    while(document.getElementById(id).rows.length>2){
+        document.getElementById(id).deleteRow(2);
     }
 }
 
