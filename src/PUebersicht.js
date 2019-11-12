@@ -349,6 +349,12 @@ let neuePhase = () =>{
     let tdEnd = document.createElement("td");
     let tdLoe = document.createElement("td");
 
+    //Von und Bis überprüfen
+    if(document.getElementById("Startdatum").value>document.getElementById("Enddatum").value){
+        alert("Das Ende der Phase liegt vor dem Beginn.")
+        return;
+    }
+
     //Button löschen erstellen//
     let loe = document.createElement("a");
     loe.innerHTML = "<span class='fas fa-trash muell'></span>";
