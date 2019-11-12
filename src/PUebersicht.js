@@ -365,7 +365,6 @@ let neuePhase = () =>{
     if(tdPhase.innerHTML=="Theorie"){
         //überprüfen, welche Zahl noch frei ist
         while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
-            console.log(document.getElementById("Startdatum").value);
             if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfeTheorie)){
                 document.getElementById(tdPhase.innerHTML + hilfeTheorie).id = "Theorie" + ++hilfeTheorie;
             }
@@ -380,7 +379,10 @@ let neuePhase = () =>{
         }
     } else if(tdPhase.innerHTML=="Praxis"){
         while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
-            hilfePraxis++;
+            if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfePraxis)){
+                document.getElementById(tdPhase.innerHTML + hilfePraxis).id = "Praxis" + ++hilfePraxis;
+            }
+            hilfeTheorie++;
         }
         if(hilfePraxis>6){
             alert("Es wurden bereits genug Praxisphasen eingegeben");
