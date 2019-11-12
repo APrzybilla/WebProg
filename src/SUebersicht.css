@@ -136,4 +136,8 @@
     #tabelleUebersicht tbody {
         width: 76vw;
     }
+    .legende{
+        text-align: center;
+        font-size: 1.3vw;
+    }
 }
