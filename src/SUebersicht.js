@@ -374,7 +374,11 @@ function suchen (){
                 //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
 
                 //Flag, der anzeigt, ob ein Filter auf den Studenten zutrifft
-                let flag = false;
+                let nachnameflag = false;
+                let vornameflag = false;
+                let semesterflag = false;
+                let jahrgangflag = false;
+                let hochschulflag = false;
 
                 //Überprüfen, ob etwas in den Feldern steht
                 if(nachname!==""){
@@ -382,42 +386,54 @@ function suchen (){
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                     //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
                     if(doc.data().Name.toLowerCase().indexOf(nachname)>=0){
-                        flag = true;
+                        nachnameflag = true;
                     }
+                } else {
+                    nachnameflag = true;
                 }
 
                 if(vn!==""){
                     if(doc.data().Vorname.toLowerCase().indexOf(vn)>=0){
-                        flag = true;
+                        vornameflag = true;
                     }
+                } else{
+                    vornameflag = true;
                 }
 
                 if(sem!==""){
                     if(doc.data().Semester.toLowerCase().indexOf(sem)>=0){
-                        flag = true;
+                        semesterflag = true;
                     }
+                } else{
+                    semesterflag = true;
                 }
 
                 if(jg!==""){
                     if(doc.data().Jahrgang.toLowerCase().indexOf(jg)>=0){
-                        flag = true;
+                        jahrgangflag = true;
                     }
+                } else{
+                    jahrgangflag = true;
                 }
 
                 //Überprüfen der Checkboxen DHBW und THM
                 if(document.getElementById("checkbox_dhbw").checked){
                     if(doc.data().Hochschule.toLowerCase()=="dhbw"){
-                        flag = true;
+                        hochschulflag = true;
                     }
                 }
                 if(document.getElementById("checkbox_thm").checked){
                     if(doc.data().Hochschule.toLowerCase()=="thm"){
-                        flag = true;
+                        hochschulflag = true;
                     }
                 }
 
+                if(!document.getElementById("checkbox_dhbw").checked && !document.getElementById("checkbox_thm").checked){
+                    hochschulflag = true;
+                }
+
                 //Wenn mindestens eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
-                if(flag){
+                if(nachnameflag && vornameflag && semesterflag && jahrgangflag && hochschulflag){
                     //Speichern der Daten in Variablen
                     let name = doc.data().Name;
                     let vorname = doc.data().Vorname;
