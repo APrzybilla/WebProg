@@ -365,6 +365,10 @@ let neuePhase = () =>{
     if(tdPhase.innerHTML=="Theorie"){
         //überprüfen, welche Zahl noch frei ist
         while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
+            console.log(document.getElementById("Startdatum").value);
+            if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfeTheorie)){
+                document.getElementById(tdPhase.innerHTML + hilfeTheorie).id = "Theorie" + ++hilfeTheorie;
+            }
             hilfeTheorie++;
         }
         if(hilfeTheorie>6){
