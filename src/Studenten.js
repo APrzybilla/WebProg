@@ -186,28 +186,34 @@ function studentSpeichern(){
     //Fehlerbehandlung vom Datum
     let datum = document.getElementById("profil_geburtstag").value.split(".");
 
+    console.log(datum);
     if(datum.length!=3){
-        alert("Kein gültiges Datum. Bitte den Geburtstag richtig angeben");
-        return;
+        if(datum[0]!=""){
+            alert("Kein gültiges Datum. Bitte den Geburtstag richtig angeben");
+            return;
+        }
     }
+    try{
+        datum[0] = parseInt(datum[0], 10);
+        datum[1] = parseInt(datum[1], 10)-1;
+        
+        if (datum[2].length == 2) {
+            datum[2] = '20' + datum[2];
+        }
+        
+        let kontrolldatum = new Date(datum[2], datum[1], datum[0]);
+        if (kontrolldatum.getDate() != datum[0] && kontrolldatum.getMonth() != datum[1] && kontrolldatum.getFullYear() != datum[2]){
+            alert("Kein gültiges Datum. Bitte den Geburtstag richtig angeben");
+            return;
+        }
 
-    datum[0] = parseInt(datum[0], 10);
-    datum[1] = parseInt(datum[1], 10)-1;
+        if(kontrolldatum<new Date(1930, 31, 12)){
+            alert("Höheres Datum angeben. Das Datum ist zu klein");
+        }
+    } catch(exception){
+        console.log("Datum ist leer");
+    }
     
-    if (datum[2].length == 2) {
-        datum[2] = '20' + datum[2];
-    }
-    
-    let kontrolldatum = new Date(datum[2], datum[1], datum[0]);
-    if (kontrolldatum.getDate() != datum[0] && kontrolldatum.getMonth() != datum[1] && kontrolldatum.getFullYear() != datum[2]){
-        alert("Kein gültiges Datum. Bitte den Geburtstag richtig angeben");
-        return;
-    }
-
-    if(kontrolldatum<new Date(1930, 31, 12)){
-        alert("Höheres Datum angeben. Das Datum ist zu klein");
-    }
-
     _db.saveStudent(
         {
             "Name" : document.getElementById("profil_nachname").value,
