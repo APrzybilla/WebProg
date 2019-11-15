@@ -49,25 +49,16 @@ class App {
     showMainPage(){
         let view = new StartPage(this);
         this._switchVisibleView(view);
-        document.querySelector("nav").children[0].classList.add("bold");
-        document.querySelector("nav").children[1].classList.remove("bold");
-        document.querySelector("nav").children[2].classList.remove("bold");
     }
 
     showPhasenPage(){
         let view = new Phasenuebersicht(this);
         this._switchVisibleView(view);
-        document.querySelector("nav").children[0].classList.remove("bold");
-        document.querySelector("nav").children[1].classList.add("bold");
-        document.querySelector("nav").children[2].classList.remove("bold");
     }
 
     showStudentenPage(){
         let view = new Studenten(this);
         this._switchVisibleView(view);
-        document.querySelector("nav").children[0].classList.remove("bold");
-        document.querySelector("nav").children[1].classList.remove("bold");
-        document.querySelector("nav").children[2].classList.add("bold");
     }
 
     _switchVisibleView(view) {

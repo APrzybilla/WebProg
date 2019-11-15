@@ -31,6 +31,11 @@ class Phasenuebersicht{
         
         //EventListener von Button "Jahrgang Hinzufügen"
         document.getElementById("JahrgangHinzufuegen").addEventListener("click", neuerStudiengang);
+
+        //Nav anpassen
+        document.querySelector("nav").children[0].classList.remove("bold");
+        document.querySelector("nav").children[1].classList.add("bold");
+        document.querySelector("nav").children[2].classList.remove("bold");
     }
 
     onLeave(goon){

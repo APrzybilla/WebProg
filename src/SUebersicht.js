@@ -41,6 +41,11 @@ class StartPage{
 
         //Füllt die Tabelle mit den Phasen; setTimeout damit die Seite erst lädt und dann die Function ausgeführt wird
         setTimeout(zusammenführenStudenten, 500);
+
+        //Nav anpassen
+        document.querySelector("nav").children[0].classList.add("bold");
+        document.querySelector("nav").children[1].classList.remove("bold");
+        document.querySelector("nav").children[2].classList.remove("bold");
     }
 
     onLeave(goon){

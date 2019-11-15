@@ -30,6 +30,11 @@ class Studenten{
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
         //Überprüfung, ob die eine ID eines Studenten hat
         idfiltern();
+
+        //Nav anpassen
+        document.querySelector("nav").children[0].classList.remove("bold");
+        document.querySelector("nav").children[1].classList.remove("bold");
+        document.querySelector("nav").children[2].classList.add("bold");
     }
 
     onLeave(goon){
