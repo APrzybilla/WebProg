@@ -1,13 +1,13 @@
 "use strict";
-//JS File for the Main Window
+//JS Datei für das Hauptfenster
 
 import stylesheet from "./index.css";
 import App from "./app.js";
 import DB from "./database.js";
 
-//When DOM ready
+//Wenn DOM ist bereit
 window.addEventListener("load", ()=>{
-    //start Application
+    //starte Anwendung
     let app = new App();
     app.start();
 });
