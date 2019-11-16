@@ -288,8 +288,6 @@ let datumsausgabe = (date) =>{
         tag = "0"+tag;
     }
     
-    console.log(tag);
-    
     return tag + "." + month + "." + date.getFullYear();
 }
 
@@ -297,7 +295,6 @@ let datumsausgabe = (date) =>{
 let neuerStudiengang = () =>{
     //Phasen in die Datenbank speichern
     let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
-    console.log(document.getElementById("EingabeStudiengang").value);
 
     try{
         _db.savePhase(
@@ -331,6 +328,11 @@ let neuerStudiengang = () =>{
 
     //Tabelle löschen und neu erstellen
     resetAll();
+
+    //Snackbar einzeigen
+    var x = document.getElementById("SnackbarJahrgangHinzufuegen");
+    x.classList.add("snackbarZeigen");
+    setTimeout(function(){ x.classList.remove("snackbarZeigen"); }, 3000);
 }
 
 //Erstellt eine neue Phase
@@ -405,8 +407,6 @@ let neuePhase = () =>{
         }
         
     }
-    console.log("id: " + tdVon.id);
-    
 
     //hinzufügen der Spalten //
     neueTr.appendChild(tdPhase);

@@ -191,7 +191,6 @@ function studentSpeichern(){
     //Fehlerbehandlung vom Datum
     let datum = document.getElementById("profil_geburtstag").value.split(".");
 
-    console.log(datum);
     if(datum.length!=3){
         if(datum[0]!=""){
             alert("Kein gültiges Datum. Bitte den Geburtstag richtig angeben");
@@ -235,6 +234,11 @@ function studentSpeichern(){
 
     //Tabelle löschen und neu erstellen
     resetAll();
+    
+    //Snackbar einzeigen
+    var x = document.getElementById("SnackbarSpeichern");
+    x.classList.add("snackbarZeigen");
+    setTimeout(function(){ x.classList.remove("snackbarZeigen"); }, 3000);
 }
 
 //Dient dazu, die Auflistung der Studenten neu zu laden, um Veränderungen direkt anzuzeigen
