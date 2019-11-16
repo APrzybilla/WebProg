@@ -33,7 +33,8 @@ Folgende Entwicklungswerkzeuge kommen zum Einsatz:
  * [git:](https://git-scm.com/") Versionsverwaltung zur gemeinsamen Arbeit am Quellcode
  * [npm:](https://nodejs.org/") Paketverwaltung zum automatischen Download abhängiger Bibliotheken
  * [Parcel:](https://parceljs.org/") Web Application Bundler und Entwicklungsserver
- * [Firebase:](https://firebase.google.com/) Stellt Programmierschnittstellen für verschiedenen Plattformen bereit
+ * [Firebase:](https://firebase.google.com/) Stellt Programmierschnittstellen für verschiedenen Plattformen bereit. In diesem Fall dient 
+ sie als Datenspeicherung
 
 Zusätzlich werden folgende Bibliotheken genutzt:
 
