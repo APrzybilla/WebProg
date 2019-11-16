@@ -16,11 +16,11 @@
     height: 4em;
     padding: 3vw;
     position: fixed;
-    background: #bcc3da;
+    background: #b5bcd6;
     background-size: 100%;
     z-index: 100;
     top: 0;
-    box-shadow: 0 15px 25px rgba(96, 120, 191, .25);
+    box-shadow: 0 15px 25px rgba(96, 120, 191, .4);
     left:0;
 }
 /*Überschrift*/

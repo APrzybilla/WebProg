@@ -38,25 +38,26 @@
 }
 /*Scrollbar, um die Kalenderwochen zu scrollen*/
 #tabelleUebersicht tbody {
-    width: 75vw;
+    width: 71vw;
     overflow-x: scroll;
 }
 /*Scrollbar, um die Studenten zu scrollen*/
 #tabelleUebersicht thead {
-    width: 17vw;
+    width: 20vw;
     overflow-x: scroll;
 }
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
     color: darkblue;
     background-color: white;
-    height: 2.5em;
+    height: 2.8em;
 }
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
     background-color: #6078bf;
     color: white;
     font-weight: bold;
+    min-width: 5vw;
 }
 #tabelleUebersicht th,
 #tabelleUebersicht td{
@@ -135,6 +136,13 @@
     to {bottom: 0; opacity: 0;}
 } 
 
+/*Legende*/
+.legende{
+    text-align: center;
+    font-size: 3vw;
+}
+
+
 /*Tablets*/
 @media(min-width:700px){
     /*Textfelder vom Filter zum Durchsuchen der Studenten*/
@@ -150,10 +158,16 @@
         min-width: 700px;
     }
     #tabelleUebersicht thead{
-        width: 11vw;
+        width: 13vw;
     }    
     #tabelleUebersicht tbody {
-        width: 84vw;
+        width: 82vw;
+    }
+    #tabelleUebersicht tr{
+        height: 2.7em;
+    }
+    .legende{
+        font-size: 2vw;
     }
 
 }
@@ -179,8 +193,14 @@
     #tabelleUebersicht tbody {
         width: 76vw;
     }
+    #tabelleUebersicht tr{
+        height: 2.5em;
+    }
+    /*Oberste Zeile der Tabelle*/
+    #tabelleUebersicht th{
+        min-width: auto;
+    }
     .legende{
-        text-align: center;
         font-size: 1.3vw;
     }
 }
