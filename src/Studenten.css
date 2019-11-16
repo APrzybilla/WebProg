@@ -86,6 +86,50 @@
     right: 5em;
 }
 
+/* Snackbar: Text, der beim speichern kommt */
+#SnackbarSpeichern {
+    visibility: hidden;
+    min-width: auto;
+    margin-left: -125px; /*Muss so groß sein, damit das Feld mittig ist*/
+    background-color: #bcc3dab7;
+    color: rgb(45, 59,162);
+    text-align: center;
+    border-radius: 0.5em;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    position: fixed;
+    z-index: 1; /*Damit es im Vordergrund steht*/
+    left: 50%;
+    bottom: 2vw;
+}
+
+#SnackbarSpeichern.snackbarZeigen {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
 
 /*Tablets*/
 @media(min-width:700px){
