@@ -10,8 +10,8 @@ schnell erkannt und Praxisphasen effizienter und rechtzeitig geplant werden. Ebe
 nach einem erwünschten Ergebnis. 
 Für jeden Studierenden lässt sich ein individuelles Kurzprofil anlegen. Ebenfalls können Jahrgänge eingepflegt werden
 mit Hilfe der Daten der verschiedenen Phasenwechsel. Durch eine Schnittstelle zwischen den Jahrgängen und den dazugehörigen
-Studierenden, können diese in einer umfassenden Studierendenübersicht visualisiert werden. Alle gespeicherten Datem lassen sich 
-im nachhinein bearbeiten, löschen und erneut abspeichern. Dies kann entweder über ein PanelMenu auf der jeweiligen Seite oder durch 
+Studierenden, können diese in einer umfassenden Studierendenübersicht visualisiert werden. Alle gespeicherten Daten lassen sich 
+im Nachhinein bearbeiten, löschen und erneut abspeichern. Dies kann entweder über ein PanelMenu auf der jeweiligen Seite oder durch 
 den angezeigten Namen oder Jahrgang auf der Studierendenübersichtstabelle aufgerufen werden. 
 
 Die Studentenübersicht ist eine Browser App, die ohne einen Server im Hintergrund komplett im Browser läuft. Es handelt sich dabei um 
