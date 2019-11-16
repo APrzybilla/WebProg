@@ -9,9 +9,9 @@ ihrer Studierenden zu bekommen. Durch farbliche Hervorhebung in einem dynamische
 schnell erkannt und Praxisphasen effizienter und rechtzeitig geplant werden. Ebenfalls ermöglicht ein Filter eine effiziente Suche
 nach einem erwünschten Ergebnis. 
 Für jeden Studierenden lässt sich ein individuelles Kurzprofil anlegen. Ebenfalls können Jahrgänge eingepflegt werden
-mit Hilfe von Daten der verschiedenen Phasenwechsel. Alle eingegebenen Daten lassen sich im nachhinein bearbeiten und erneut 
-abspeichern. Durch eine Schnittstelle zwischen den Jahrgängen und den dazugehörigen
-Studierenden, können diese in einer umfassenden Studierendenübersicht visualisiert werden.
+mit Hilfe der Daten der verschiedenen Phasenwechsel. Durch eine Schnittstelle zwischen den Jahrgängen und den dazugehörigen
+Studierenden, können diese in einer umfassenden Studierendenübersicht visualisiert werden. Alle eingegebenen Daten lassen sich im 
+nachhinein bearbeiten und erneut abspeichern.
 
 Die Studentenübersicht ist eine Browser App, die ohne einen Server im Hintergrund komplett im Browser läuft. Es handelt sich dabei um 
 eine so genannte Single Page App, da die App nur einmal durch Aufrufen der HTML-Datei gestartet und dann bis zum Verlassen der App nicht 
@@ -38,7 +38,6 @@ Folgende Entwicklungswerkzeuge kommen zum Einsatz:
 Zusätzlich werden folgende Bibliotheken genutzt:
 
  * [Navigo:](https://github.com/krasimir/navigo) Single Page Router zur Vereinfachung der Navigation innerhalb der App
- (* [PouchDB:](https://pouchdb.com/") Clientseitige NoSQL-Datenbank zum Speichern der Songtexte)
 
 
 Copyright
