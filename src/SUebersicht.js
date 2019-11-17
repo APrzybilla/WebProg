@@ -463,7 +463,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
     tdS.classList.add("handyUnsichtbar");
     tdJG.classList.add("handyUnsichtbar");
 
-    let ank = '<a href = "/Studentenuebersicht/Studierende/' + id + '" navigo>';
+    let ank = '<a href = "/Studierendenuebersicht/Studierende/' + id + '" navigo>';
 
     //befüllen der Spalten//
     tdName.innerHTML = ank + vorname + " " + name + '</a>';

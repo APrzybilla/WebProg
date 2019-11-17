@@ -11,7 +11,7 @@ import StartPage from "./SUebersicht.js";
 
 class App {
     constructor(){
-        this._title = "Studentenübersicht";
+        this._title = "Studierendenübersicht";
         this._currentView = null;
 
         this._router = new Navigo();

@@ -457,14 +457,20 @@ function deletePhase(event){
 }
 
 function changePhase(event){
+    //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
     let eltern = event.target.parentElement.parentElement.parentElement;
+    //kinder enthält als Liste die tr's der Tabelle -> kinder[0] gibt Theorie1: xx.xx.xxxx aus, Kinder[1] gibt Praxis1.... aus
     let kinder = eltern.children[1].firstChild.children;
-    
+
+    //setzt den Text des Button "Jahrgang hinzufügen" auf "Jahrgang ändern"
     document.getElementById("JahrgangHinzufuegen").innerHTML = "Jahrgang ändern";
+    //setzt die Texte für den Studiengang und Jahrgang
     document.getElementById("EingabeStudiengang").value = eltern.parentElement.id.match(/[a-zA-Z]+/g)[0].substring(2);
     document.getElementById("EingabeJahrgang").value = eltern.parentElement.id.match(/\d+/g);
     
+    //Zählervariable -> wird nur bei jedem 2. Schleifendurchlauf erhöht
     let u = 1;
+    //Schleife läuft 1 mal je Zeile der Tabelle durch
     for(let i = 0; i<kinder.length;i++){
         //sichtbar machen der Tabelle//
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
@@ -485,19 +491,35 @@ function changePhase(event){
         //Button löschen erstellen//
         let loe = document.createElement("a");
         loe.setAttribute("class", "fas fa-trash muell");
+
         //befüllen der Spalten//
         tdPhase.innerHTML = kinder[i].id.match(/[a-zA-Z]+/g)[1];
         tdVon.innerHTML = kinder[i].children[1].innerHTML;
-        tdStart.innerHTML = berechneWoche(kinder[i].children[1].innerHTML);
+        //Datum-String in ein richtiges Datum umwandeln
+        let date = kinder[i].children[1].innerHTML.split(".");
+        date = new Date(date[2], date[1], date[0]);
+        //KW mit Datum berechnen
+        tdStart.innerHTML = berechneWoche(date);
+        //wenn i+1 (also nur beim letzten Durchlauf) nicht findbar ist, dann soll der catch ausgeführt werden
         try{
             tdBis.innerHTML = kinder[i+1].children[1].innerHTML;
-            tdEnd.innerHTML = berechneWoche(kinder[i+1].children[1].innerHTML);
+            //Datum-String in ein richtiges Datum umwandeln
+            date = kinder[i+1].children[1].innerHTML.split(".");
+            date = new Date(date[2], date[1], date[0]);
+            //KW mit Datum berechnen
+            tdEnd.innerHTML = berechneWoche(date);
         }
         catch(exception){
+            //enhält id einer Phase -> beispiel: BWL2018
             let id = eltern.parentElement.id.substring(2);
             _db.selectPhaseById(id).then(function (doc) {
+                //setzt letzte "Bis" der letzten Phase
                 tdBis.innerHTML = doc.data().EndeLetztePhase;
-                tdEnd.innerHTML = berechneWoche(doc.data().EndeLetztePhase);
+                //Datum-String in ein richtiges Datum umwandeln
+                date = doc.data().EndeLetztePhase.split(".");
+                date = new Date(date[2], date[1], date[0]);
+                //KW mit Datum berechnen
+                tdEnd.innerHTML = berechneWoche(date);
             });
         }
         tdLoe.appendChild(loe);
@@ -516,6 +538,7 @@ function changePhase(event){
         //Hinzufügen von EventListener der Buttons
         loe.addEventListener("click", loeschen);
 
+        //wird bei jedem 2. Schleifendurchlauf erhöht
         if(i%2 == 1){
             u++;
         }
