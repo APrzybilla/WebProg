@@ -337,14 +337,9 @@ function PhasenDarstellen(id){
     });
 }
 
+
 // Functions die nur bei Bedarf ausgeführt werden
 
-//Überprüfen, ob Enter gedrückt wurde
-function keyType(){
-    if(event.keyCode==13){
-        suchen();
-    }
-}
 
 //Suchen von Studenten. Wird aktiviert, wenn der Suchen-Button geklickt wurde
 function suchen (){    
@@ -523,6 +518,16 @@ function einfügen (name, vorname, hs, sem, jg, id){
     PhasenDarstellen(id);
 }
 
+
+//Hilfsfunktionen, die beim Ausführen der Aktionen immer wieder gebraucht werden
+
+//Überprüfen, ob Enter gedrückt wurde
+function keyType(){
+    if(event.keyCode==13){
+        suchen();
+    }
+}
+
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
 function deleteTable(id){
     while(document.getElementById(id).rows.length>2){
@@ -545,5 +550,6 @@ let berechneWoche =(date) =>{
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
     return weekNumber;
 }
+
 
 export default StartPage;

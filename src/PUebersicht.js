@@ -225,6 +225,7 @@ function klapptabelle_erstellung(){
     });
 }
 
+
 // Functions die nur bei Bedarf ausgeführt werden
 
 // Auf- und zuklappen der Inhalte der Tabelle
@@ -260,40 +261,10 @@ function klapptabelle(event){
     }
 }
 
-//Kalenderwoche berechnen
-let berechneWoche =(date) =>{
-    date = new Date(date);
-    let j = date.getFullYear();
-    let m = date.getMonth();
-    let t = date.getDate();
-    let datum = new Date(j, m, t);
-
-    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
-    let yearOfThursday = currentThursday.getFullYear();
-    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
-
-    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-
-    return weekNumber;
-}
-
-//Formatieren des Datums in 01.01.2019
-let datumsausgabe = (date) =>{
-    date = new Date(date);
-    let tag = String(date.getDate());
-    let month = String(date.getMonth()+1);
-    if(month.length==1){
-        month = "0"+month;
-    }
-    if(tag.length==1){
-        tag = "0"+tag;
-    }
-    
-    return tag + "." + month + "." + date.getFullYear();
-}
 
 //Neuer Studiengang wird erstellt
 let neuerStudiengang = () =>{
+    //Buttonbeschriftung ändern, falls gerade ein Jahrgang geändert wurde
     if(document.getElementById("JahrgangHinzufuegen").innerHTML != "Jahrgang hinzufügen"){
         document.getElementById("JahrgangHinzufuegen").innerHTML = "Jahrgang hinzufügen";
     }
@@ -431,12 +402,6 @@ let neuePhase = () =>{
     loe.addEventListener("click", loeschen);
 }
 
-//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
-function deleteTable(id){
-    while(document.getElementById(id).rows.length>1){
-        document.getElementById(id).deleteRow(1);
-    }
-}
 
 // Phase löschen
 function deletePhase(event){
@@ -559,6 +524,9 @@ let loeschen = (event) =>{
     document.getElementById("Phasentabelle").deleteRow(el);
 }
 
+
+//Hilfsfunktionen, die beim Ausführen der Aktionen immer wieder gebraucht werden
+
 //Tabelle löschen und neu erstellen
 function resetAll(){
     let parent = document.getElementById("phasen_tabelle");
@@ -566,6 +534,41 @@ function resetAll(){
         parent.removeChild(parent.firstChild);
     }
     klapptabelle_erstellung();
+}
+
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
+    }
+}
+
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+
+    let currentThursday = new Date(date.getTime() + (date.getDay()-((date.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(date.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
+}
+
+//Formatieren des Datums in 01.01.2019
+let datumsausgabe = (date) =>{
+    //Tag und Monat als String speichern
+    let tag = String(date.getDate());
+    let month = String(date.getMonth()+1);
+    //Monat und Tag anpassen, dass sie immer zweistellig sind
+    if(month.length==1){
+        month = "0"+month;
+    }
+    if(tag.length==1){
+        tag = "0"+tag;
+    }
+    
+    return tag + "." + month + "." + date.getFullYear();
 }
 
 export default Phasenuebersicht;

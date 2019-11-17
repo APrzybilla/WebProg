@@ -245,6 +245,23 @@ function studentSpeichern(){
     setTimeout(function(){ x.classList.remove("snackbarZeigen"); }, 3000);
 }
 
+
+//EventListener des Löschen-Bildes. Dient dazu, den aktuell ausgewählten Student zu löschen
+function deleteStudent(){
+    let bestätigung = window.confirm("Soll " + document.querySelector("#profil_vorname").parentElement.children[0].value + " " + document.querySelector("#profil_nachname").parentElement.children[0].value + " gelöscht werden?");
+    if(!bestätigung){
+        return;
+    }
+    // ruft Methode aus database.js auf
+    _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value);
+    
+    //Tabelle löschen und neu erstellen
+    resetAll();
+}
+
+
+//Hilfsfunktionen, die beim Ausführen der Aktionen immer wieder gebraucht werden
+
 //Dient dazu, die Auflistung der Studenten neu zu laden, um Veränderungen direkt anzuzeigen
 function resetAll(){
     //Auflistung löschen und neu erstellen
@@ -263,19 +280,6 @@ function resetAll(){
     document.getElementById("profil_geburtstag").value=null;
     document.getElementById("profil_mitarbeiter_id").value=null;
     document.getElementById("profil_notizen").value=null;
-}
-
-//EventListener des Löschen-Bildes. Dient dazu, den aktuell ausgewählten Student zu löschen
-function deleteStudent(){
-    let bestätigung = window.confirm("Soll " + document.querySelector("#profil_vorname").parentElement.children[0].value + " " + document.querySelector("#profil_nachname").parentElement.children[0].value + " gelöscht werden?");
-    if(!bestätigung){
-        return;
-    }
-    // ruft Methode aus database.js auf
-    _db.deleteStudentById(document.querySelector("#profil_mitarbeiter_id").parentElement.children[0].value);
-    
-    //Tabelle löschen und neu erstellen
-    resetAll();
 }
 
 export default Studenten;
