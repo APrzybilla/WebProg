@@ -27,7 +27,6 @@
 #app header span{
     font-size: 2em;
     float:left;
-    padding-left: 1vw;
     padding-top: 0.2em;
     vertical-align: middle;
     /*setzt Hintergrund als Fontcolor mit Übergang*/
@@ -35,7 +34,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 /*Navigationsleiste*/
 #app #nav{
@@ -46,7 +44,7 @@
     padding: 0.5vw;
     right: 1vw;
     z-index: 1;
-    width: 33vw;
+    width: 29vw;
 }
 /*Verändert die Schrift vom Navigationssystem, abhängig von der aktuellen Seite*/
 #app .bold{
@@ -160,6 +158,10 @@
     #app header{
         height: 3em;
         padding: 1vw;
+    }
+    #app header span{
+        padding-left: 1vw;
+        letter-spacing: 1px;
     }
     /*Navigationsleiste*/
     #app #nav{
