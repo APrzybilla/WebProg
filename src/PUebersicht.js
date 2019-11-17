@@ -457,6 +457,7 @@ function deletePhase(event){
 }
 
 function changePhase(event){
+    deleteTable("Phasentabelle");
     //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
     let eltern = event.target.parentElement.parentElement.parentElement;
     //kinder enthält als Liste die tr's der Tabelle -> kinder[0] gibt Theorie1: xx.xx.xxxx aus, Kinder[1] gibt Praxis1.... aus
