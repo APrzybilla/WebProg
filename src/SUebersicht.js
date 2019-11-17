@@ -134,208 +134,207 @@ function tabelleUebersichtErzeugen(){
 function PhasenDarstellen(id){
     //Alle Studenten durchlaufen
     _db.selectStudentById(id).then(function(stud){
-            //Phase des Studenten aufrufen
-            //Id der Phase setzt sich aus Studiengang und Jahrgang zusammen. Bsp: Wirtschaftsinformatik2019
-            _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
-                let t, p, jahrgang, i, h;
-                //Jede Theoriephase durchlaufen
-                //dabei wird t auf den Beginn der Phase gesetzt, p auf das Ende der Phase 
-                //und der Jahrgang auf das Jahr, in der die Phase beginnt
-                for(i = 0; i<6; i++){
-                    switch(i){
-                        case 0:
-                            try{
-                                t = berechneWoche(phas.data().Theorie1);
-                                p = berechneWoche(phas.data().Praxis1)-1;
-                                jahrgang = phas.data().Theorie1.split(".")[2];
-                                break;
-                            }catch (exception){
+        //Phase des Studenten aufrufen
+        //Id der Phase setzt sich aus Studiengang und Jahrgang zusammen. Bsp: Wirtschaftsinformatik2019
+        _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
+            let t, p, jahrgang, i, h;
+            //Jede Theoriephase durchlaufen
+            //dabei wird t auf den Beginn der Phase gesetzt, p auf das Ende der Phase 
+            //und der Jahrgang auf das Jahr, in der die Phase beginnt
+            for(i = 0; i<6; i++){
+                switch(i){
+                    case 0:
+                        try{
+                            t = berechneWoche(phas.data().Theorie1);
+                            p = berechneWoche(phas.data().Praxis1)-1;
+                            jahrgang = phas.data().Theorie1.split(".")[2];
+                            break;
+                        }catch (exception){
 
-                            }
-                        case 1:
-                            try{
-                                t = berechneWoche(phas.data().Theorie2);
-                                p = berechneWoche(phas.data().Praxis2)-1;
-                                jahrgang = phas.data().Theorie2.split(".")[2];
-                                break;
-                            } catch (exception){
-
-                            }
-                        case 2:
-                            try{
-                                t = berechneWoche(phas.data().Theorie3);
-                                p = berechneWoche(phas.data().Praxis3)-1;
-                                jahrgang = phas.data().Theorie3.split(".")[2];
-                                break;
-                            } catch(exception){
-
-                            }
-                        case 3:
-                            try{
-                                t = berechneWoche(phas.data().Theorie4);
-                                p = berechneWoche(phas.data().Praxis4)-1;
-                                jahrgang = phas.data().Theorie4.split(".")[2];
-                                break;
-                            } catch(exception){
-
-                            }
-                        case 4:
-                            try{
-                                t = berechneWoche(phas.data().Theorie5);
-                                p = berechneWoche(phas.data().Praxis5)-1;
-                                jahrgang = phas.data().Theorie5.split(".")[2];
-                                break;
-                            } catch(exception){
-
-                            }
-                        case 5:
-                            try{
-                                t = berechneWoche(phas.data().Theorie6);
-                                p = berechneWoche(phas.data().Praxis6)-1;
-                                jahrgang = phas.data().Theorie6.split(".")[2];
-                                break;
-                            } catch (exception){
-
-                            }
-                    }
-                    try{
-                        //es wird überprüft, ob t im aktuellen Jahr beginnt
-                        let d = new Date();
-                        if(jahrgang == d.getFullYear()){
-                            //es wird überprüft, ob die Kalenderwoche in der Vergangenheit liegt
-                            //wenn ja, wird die aktuelle Kalenderwoche als Startpunkt gesetzt
-                            if(t < berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear())){
-                                t = berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear());
-                            }
                         }
-                        //Wenn p größer als t ist, bedeutet es, dass ein Jahreswechsel dazwischen liegt
-                        if(t>=p){
-                            //h wird als Hilfsvariable auf 1 gesetzt
-                            h = 1;
-                            //alle KWs im Jahr, indem die Phase beginnt, werden durchlaufen und bekommen die Klasse "theorie"
-                            while(t<=53){
-                                document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
-                                    t++;
-                            }
-                            //jahrgang wird erhöht, um im nächsten Jahr fortzusetzen
-                            jahrgang++;
-                            //Den KWs im nächsten Jahr werden von 1 bis p die Klasse "theorie" hinzugefügt
-                            while(h<=p){
-                                document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("theorie");
-                                h++;
-                            }
-                        } else {
-                            //Alle KWs von t bis p werden hinzugefügt
-                            while(t<=p){
-                                document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
-                                t++;
-                            }
+                    case 1:
+                        try{
+                            t = berechneWoche(phas.data().Theorie2);
+                            p = berechneWoche(phas.data().Praxis2)-1;
+                            jahrgang = phas.data().Theorie2.split(".")[2];
+                            break;
+                        } catch (exception){
+
                         }
-                    } catch(exception){
-                        console.log("Fehler in Theorie");
-                    }
+                    case 2:
+                        try{
+                            t = berechneWoche(phas.data().Theorie3);
+                            p = berechneWoche(phas.data().Praxis3)-1;
+                            jahrgang = phas.data().Theorie3.split(".")[2];
+                            break;
+                        } catch(exception){
+
+                        }
+                    case 3:
+                        try{
+                            t = berechneWoche(phas.data().Theorie4);
+                            p = berechneWoche(phas.data().Praxis4)-1;
+                            jahrgang = phas.data().Theorie4.split(".")[2];
+                            break;
+                        } catch(exception){
+
+                        }
+                    case 4:
+                        try{
+                            t = berechneWoche(phas.data().Theorie5);
+                            p = berechneWoche(phas.data().Praxis5)-1;
+                            jahrgang = phas.data().Theorie5.split(".")[2];
+                            break;
+                        } catch(exception){
+
+                        }
+                    case 5:
+                        try{
+                            t = berechneWoche(phas.data().Theorie6);
+                            p = berechneWoche(phas.data().Praxis6)-1;
+                            jahrgang = phas.data().Theorie6.split(".")[2];
+                            break;
+                        } catch (exception){
+
+                        }
                 }
-                //Jede Praxisphase durchlaufen
-                //dabei wird p auf den Beginn der Phase gesetzt, t auf das Ende der Phase 
-                //und der Jahrgang auf das Jahr, in der die Phase beginnt
-                for(i = 0; i<6; i++){
-                    switch(i){
-                        case 0:
-                            try{
-                                p = berechneWoche(phas.data().Praxis1);
-                                t = berechneWoche(phas.data().Theorie2)-1;
-                                jahrgang = phas.data().Praxis1.split(".")[2];
-                                break;
-                            } catch(exception){
+                try{
+                    //es wird überprüft, ob t im aktuellen Jahr beginnt
+                    let d = new Date();
+                    if(jahrgang == d.getFullYear()){
+                        //es wird überprüft, ob die Kalenderwoche in der Vergangenheit liegt
+                        //wenn ja, wird die aktuelle Kalenderwoche als Startpunkt gesetzt
+                        if(t < berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear())){
+                            t = berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear());
+                        }
+                    }
+                    //Wenn p größer als t ist, bedeutet es, dass ein Jahreswechsel dazwischen liegt
+                    if(t>=p){
+                        //h wird als Hilfsvariable auf 1 gesetzt
+                        h = 1;
+                        //alle KWs im Jahr, indem die Phase beginnt, werden durchlaufen und bekommen die Klasse "theorie"
+                        while(t<=53){
+                            document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
+                            t++;
+                        }
+                        //jahrgang wird erhöht, um im nächsten Jahr fortzusetzen
+                        jahrgang++;
+                        //Den KWs im nächsten Jahr werden von 1 bis p die Klasse "theorie" hinzugefügt
+                        while(h<=p){
+                            document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("theorie");
+                            h++;
+                        }
+                    } else {
+                        //Alle KWs von t bis p werden hinzugefügt
+                        while(t<=p){
+                            document.getElementById("k" + jahrgang + t + stud.data().id).classList.add("theorie");
+                            t++;
+                        }
+                    }
+                } catch(exception){
+                    console.log("Fehler in Theorie");
+                }
+            }
+            //Jede Praxisphase durchlaufen
+            //dabei wird p auf den Beginn der Phase gesetzt, t auf das Ende der Phase 
+            //und der Jahrgang auf das Jahr, in der die Phase beginnt
+            for(i = 0; i<6; i++){
+                switch(i){
+                    case 0:
+                        try{
+                            p = berechneWoche(phas.data().Praxis1);
+                            t = berechneWoche(phas.data().Theorie2)-1;
+                            jahrgang = phas.data().Praxis1.split(".")[2];
+                            break;
+                        } catch(exception){
 
-                            }
+                        }    
+                    case 1:
+                        try{
+                            p = berechneWoche(phas.data().Praxis2);
+                            t = berechneWoche(phas.data().Theorie3)-1;
+                            jahrgang = phas.data().Praxis2.split(".")[2];
+                            break;
+                        } catch (exception){
+                                
+                        }
+                    case 2:
+                        try{
+                            p = berechneWoche(phas.data().Praxis3);
+                            t = berechneWoche(phas.data().Theorie4)-1;
+                            jahrgang = phas.data().Praxis3.split(".")[2];
+                            break;
+                        } catch (exception){
+
+                        }
+                    case 3:
+                        try{
+                            p = berechneWoche(phas.data().Praxis4);
+                            t = berechneWoche(phas.data().Theorie5)-1;
+                            jahrgang = phas.data().Praxis4.split(".")[2];
+                            break;
+                        } catch (exception){
+
+                        }
+                    case 4:
+                        try{
+                            p = berechneWoche(phas.data().Praxis5);
+                            t = berechneWoche(phas.data().Theorie6)-1;
+                            jahrgang = phas.data().Praxis5.split(".")[2];
+                            break;
+                        } catch (exception){
+
+                        }
+                    case 5:
+                        try{
+                            p = berechneWoche(phas.data().Praxis6);
+                            t = berechneWoche(phas.data().EndeLetztePhase);
+                            jahrgang = phas.data().Praxis6.split(".")[2];
+                            break;
+                        } catch (exception){
                             
-                        case 1:
-                            try{
-                                p = berechneWoche(phas.data().Praxis2);
-                                t = berechneWoche(phas.data().Theorie3)-1;
-                                jahrgang = phas.data().Praxis2.split(".")[2];
-                                break;
-                            } catch (exception){
-                                
-                            }
-                        case 2:
-                            try{
-                                p = berechneWoche(phas.data().Praxis3);
-                                t = berechneWoche(phas.data().Theorie4)-1;
-                                jahrgang = phas.data().Praxis3.split(".")[2];
-                                break;
-                            } catch (exception){
-
-                            }
-                        case 3:
-                            try{
-                                p = berechneWoche(phas.data().Praxis4);
-                                t = berechneWoche(phas.data().Theorie5)-1;
-                                jahrgang = phas.data().Praxis4.split(".")[2];
-                                break;
-                            } catch (exception){
-
-                            }
-                        case 4:
-                            try{
-                                p = berechneWoche(phas.data().Praxis5);
-                                t = berechneWoche(phas.data().Theorie6)-1;
-                                jahrgang = phas.data().Praxis5.split(".")[2];
-                                break;
-                            } catch (exception){
-
-                            }
-                        case 5:
-                            try{
-                                p = berechneWoche(phas.data().Praxis6);
-                                t = berechneWoche(phas.data().EndeLetztePhase);
-                                jahrgang = phas.data().Praxis6.split(".")[2];
-                                break;
-                            } catch (exception){
-                                
-                            }
-                    }
-            
-                    try{
-                        //es wird überprüft, ob t im aktuellen Jahr beginnt
-                        let d = new Date();
-                        if(jahrgang == d.getFullYear()){
-                            //es wird überprüft, ob die Kalenderwoche in der Vergangenheit liegt
-                            //wenn ja, wird die aktuelle Kalenderwoche als Startpunkt gesetzt
-                            if(p < berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear())){
-                                p = berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear());
-                            }
                         }
-                        //Wenn p größer als t ist, bedeutet es, dass ein Jahreswechsel dazwischen liegt
-                        if(p>=t){
-                            //h wird als Hilfsvariable auf 1 gesetzt
-                            h = 1;
-                            //alle KWs im Jahr, indem die Phase beginnt, werden durchlaufen und bekommen die Klasse "praxis"
-                            while(p<=53){
-                                document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
-                                    p++;
-                            }
-                            //jahrgang wird erhöht, um im nächsten Jahr fortzusetzen
-                            jahrgang++;
-                            //Den KWs im nächsten Jahr werden von 1 bis t die Klasse "praxis" hinzugefügt
-                            while(h<=t){
-                                document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("praxis");
-                                h++;
-                            }
-                        } else {
-                            //Alle KWs von t bis p werden hinzugefügt
-                            while(p<=t){
-                                document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
-                                p++;
-                            }
-                        }
-                    } catch(exception){
-                        console.log("Fehler in Praxis");
-                    }
                 }
-            });
+            
+                try{
+                    //es wird überprüft, ob t im aktuellen Jahr beginnt
+                    let d = new Date();
+                    if(jahrgang == d.getFullYear()){
+                        //es wird überprüft, ob die Kalenderwoche in der Vergangenheit liegt
+                        //wenn ja, wird die aktuelle Kalenderwoche als Startpunkt gesetzt
+                        if(p < berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear())){
+                            p = berechneWoche(d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear());
+                        }
+                    }
+                    //Wenn p größer als t ist, bedeutet es, dass ein Jahreswechsel dazwischen liegt
+                    if(p>=t){
+                        //h wird als Hilfsvariable auf 1 gesetzt
+                        h = 1;
+                        //alle KWs im Jahr, indem die Phase beginnt, werden durchlaufen und bekommen die Klasse "praxis"
+                        while(p<=53){
+                            document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
+                                p++;
+                        }
+                        //jahrgang wird erhöht, um im nächsten Jahr fortzusetzen
+                        jahrgang++;
+                        //Den KWs im nächsten Jahr werden von 1 bis t die Klasse "praxis" hinzugefügt
+                        while(h<=t){
+                            document.getElementById("k" + jahrgang + h + stud.data().id).classList.add("praxis");
+                            h++;
+                        }
+                    } else {
+                        //Alle KWs von t bis p werden hinzugefügt
+                        while(p<=t){
+                            document.getElementById("k" + jahrgang + p + stud.data().id).classList.add("praxis");
+                            p++;
+                        }
+                    }
+                } catch(exception){
+                    console.log("Fehler in Praxis");
+                }
+            }
         });
+    });
 }
 
 // Functions die nur bei Bedarf ausgeführt werden
@@ -464,7 +463,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
     tdS.classList.add("handyUnsichtbar");
     tdJG.classList.add("handyUnsichtbar");
 
-    let ank = '<a href = "/Studentenuebersicht/Studenten/' + id + '" navigo>';
+    let ank = '<a href = "/Studentenuebersicht/Studierende/' + id + '" navigo>';
 
     //befüllen der Spalten//
     tdName.innerHTML = ank + vorname + " " + name + '</a>';
