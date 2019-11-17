@@ -76,7 +76,7 @@ function tabelleUebersichtErzeugen(){
     let trStudent = document.getElementById("Tabellenhead").insertRow(0);
     let th = document.createElement("th");
     th.colSpan=4;
-    th.innerHTML = "Studenten";
+    th.innerHTML = "Studierende";
     trStudent.appendChild(th);
     
     //aktuelles Datum holen
