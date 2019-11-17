@@ -31,6 +31,9 @@ class Phasenuebersicht{
         
         //EventListener von Button "Jahrgang Hinzufügen"
         document.getElementById("JahrgangHinzufuegen").addEventListener("click", neuerStudiengang);
+        
+        //Überprüfung, ob die eine ID einer Phase hat
+        setTimeout(idfiltern, 1000);
 
         //Nav anpassen
         document.querySelector("nav").children[0].classList.remove("bold");
@@ -44,6 +47,14 @@ class Phasenuebersicht{
 }
 
 // Functions die im onload ausgeführt werden
+
+// Studenten laden, falls die Seite über einen Link in der Studentenübersicht (Home) aufgerufen wird 
+function idfiltern (){
+    //Aktuelle URL holen
+    let url = " " + window.location;
+    //URL zurechtscheiden, dass nur der Teil nach dem letzten "/" übrig bleibt und als Parameter übergeben
+    changePhase("a" + url.substring(url.lastIndexOf("/")+1, url.length));
+}
 
 // Erstellt die Tabelle für die unterschiedlichen Phasen
 function klapptabelle_erstellung(){
@@ -456,9 +467,24 @@ function deletePhase(event){
     }
 }
 
+function warten(){
+    console.log("1");
+}
+
 function changePhase(event){
-    //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
-    let eltern = event.target.parentElement.parentElement.parentElement;
+    //wenn event ein String ist, dann wird changePhase von der Methode idfiltern() aufgerufen und ansonsten von dem eventListener
+    let eltern;
+    if(typeof event === typeof ""){
+        //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
+        //event.substring(1) schneidet den ersten Buchstaben weg, da dieser nur für die id gedacht ist
+        eltern = document.getElementById(event).parentElement.parentElement.parentElement;    
+        console.log(eltern);
+    }
+    else{
+        //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
+        eltern = event.target.parentElement.parentElement.parentElement;
+        console.log(eltern);
+    }
     //kinder enthält als Liste die tr's der Tabelle -> kinder[0] gibt Theorie1: xx.xx.xxxx aus, Kinder[1] gibt Praxis1.... aus
     let kinder = eltern.children[1].firstChild.children;
 

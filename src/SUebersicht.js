@@ -470,7 +470,11 @@ function einfügen (name, vorname, hs, sem, jg, id){
     tdName.id = id;
     tdHS.innerHTML = hs;
     tdS.innerHTML = sem;
-    tdJG.innerHTML  = jg;
+    _db.selectStudentById(id).then(function(doc){
+        console.log(id);
+        ank = '<a href = "/Studentenuebersicht/Phasen/' + doc.data().Studiengang + doc.data().Jahrgang + '" navigo>';
+        tdJG.innerHTML  = ank + jg + "</a>";
+    });    
 
     //hinzufügen der Spalten//
     neueTr.appendChild(tdName);
