@@ -39,9 +39,6 @@ class StartPage{
         //Aufrufen der Tabelle mit allen Studenten
         anzeigen();
 
-        //Füllt die Tabelle mit den Phasen; setTimeout damit die Seite erst lädt und dann die Function ausgeführt wird
-        setTimeout(zusammenführenStudenten, 500);
-
         //Nav anpassen
         document.querySelector("nav").children[0].classList.add("bold");
         document.querySelector("nav").children[1].classList.remove("bold");
@@ -79,7 +76,7 @@ function tabelleUebersichtErzeugen(){
     let trStudent = document.getElementById("Tabellenhead").insertRow(0);
     let th = document.createElement("th");
     th.colSpan=4;
-    th.innerHTML = "Studenten";
+    th.innerHTML = "Studierende";
     trStudent.appendChild(th);
     
     //aktuelles Datum holen
@@ -127,20 +124,16 @@ function tabelleUebersichtErzeugen(){
                 trKW.appendChild(th);
                 //i wird um eins erhöht, dass alle Wochen hinzugefügt werden.
                 i++;
-            }
-            
-            
+            }            
             i = 1;
         }
-        
     });    
 }
     
 
-function zusammenführenStudenten(){
+function PhasenDarstellen(id){
     //Alle Studenten durchlaufen
-    _db.selectAllStudents().then(function (querySnapshot) {
-        querySnapshot.forEach(function(stud){
+    _db.selectStudentById(id).then(function(stud){
             //Phase des Studenten aufrufen
             //Id der Phase setzt sich aus Studiengang und Jahrgang zusammen. Bsp: Wirtschaftsinformatik2019
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
@@ -342,8 +335,7 @@ function zusammenführenStudenten(){
                     }
                 }
             });
-        });    
-    });
+        });
 }
 
 // Functions die nur bei Bedarf ausgeführt werden
@@ -529,7 +521,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
             i = 1;
         }
     });
-    zusammenführenStudenten();
+    PhasenDarstellen(id);
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert

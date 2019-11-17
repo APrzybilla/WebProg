@@ -21,10 +21,10 @@
 	margin-top: 2vw;
 	display:block;
 	height: auto;
-	background-color: rgb(231, 242, 255);
+	background-color: #b5bcd6;
 	border-radius:5px;
 	overflow: hidden;
-	box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+	box-shadow: 0 15px 25px rgba(96, 120, 191, 1);
     padding: 2vw;
     margin: 3vw;
     margin-bottom: 0;
@@ -44,7 +44,7 @@
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: black;
+    color: darkblue;
     letter-spacing: 1px;
     margin-bottom: 30px;
     border: none;
@@ -84,6 +84,50 @@
     position: absolute; 
     bottom: 5em;
     right: 5em;
+}
+
+/* Snackbar: Text, der beim speichern kommt */
+#SnackbarSpeichern {
+    visibility: hidden;
+    min-width: auto;
+    margin-left: -125px; /*Muss so groß sein, damit das Feld mittig ist*/
+    background-color: #bcc3dab7;
+    color: rgb(45, 59,162);
+    text-align: center;
+    border-radius: 0.5em;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    position: fixed;
+    z-index: 1; /*Damit es im Vordergrund steht*/
+    left: 50%;
+    bottom: 2vw;
+}
+
+#SnackbarSpeichern.snackbarZeigen {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 

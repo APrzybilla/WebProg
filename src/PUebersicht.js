@@ -382,11 +382,14 @@ let neuePhase = () =>{
     //überprüfen, ob es eine Theorie- oder Praxisphase ist
     if(tdPhase.innerHTML=="Theorie"){
         //überprüfen, welche Zahl noch frei ist
-        while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!==null){
-            if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfeTheorie)){
+        while(document.getElementById(tdPhase.innerHTML + hilfeTheorie)!=null){
+            let h = document.getElementById(tdPhase.innerHTML + hilfeTheorie).innerHTML.split(".");
+            let h1 = document.getElementById("Startdatum").value.split("-");
+            if(new Date(h1[0], (h1[1]-1), h1[2])<new Date(h[0], (h[1]-1), h[2])){
                 document.getElementById(tdPhase.innerHTML + hilfeTheorie).id = "Theorie" + ++hilfeTheorie;
+            } else {
+                hilfeTheorie++;
             }
-            hilfeTheorie++;
         }
         if(hilfeTheorie>6){
             alert("Es wurden bereits genug Theoriephasen eingegeben");
@@ -396,11 +399,17 @@ let neuePhase = () =>{
             tdBis.id = tdPhase.innerHTML + "Ende" + hilfeTheorie;
         }
     } else if(tdPhase.innerHTML=="Praxis"){
-        while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!==null){
-            if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfePraxis)){
+        while(document.getElementById(tdPhase.innerHTML + hilfePraxis)!=null){
+            let h = document.getElementById(tdPhase.innerHTML + hilfePraxis).innerHTML.split(".");
+            let h1 = document.getElementById("Startdatum").value.split("-");
+            if(new Date(h1[0], (h1[1]-1), h1[2])<new Date(h[0], (h[1]-1), h[2])){
                 document.getElementById(tdPhase.innerHTML + hilfePraxis).id = "Praxis" + ++hilfePraxis;
+                console.log(document.getElementById(tdPhase.innerHTML + hilfePraxis).id);
+            }else{
+                hilfePraxis++;
             }
             hilfePraxis++;
+            
         }
         if(hilfePraxis>6){
             alert("Es wurden bereits genug Praxisphasen eingegeben");

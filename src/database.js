@@ -78,9 +78,9 @@ class DB {
     //Gibt einen Student anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
     selectStudentById(id){
-        return this._students.doc(id).get();
+        return this._db.collection("students").doc(id).get();
     }
-
+    
     /*Speichern eines Studenten
     Der Aufbau sollte wie folgt aussehen:
     "Name" : "Nachname",

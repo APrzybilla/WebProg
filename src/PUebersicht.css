@@ -1,6 +1,15 @@
 /*Handy*/
 /*rechter, bzw. oberer Teil. Formular, um neue Jahrgänge anzulegen*/
 /*Radio-Buttons DHBW und THM*/
+
+#EingabeStudiengang{
+    width: 30vw;
+}
+
+#EingabeJahrgang{
+    width: 30vw;
+}
+
 input[type="radio"]{
     display: inline-block;
     vertical-align: middle;
@@ -32,14 +41,6 @@ input[type="radio"]{
 
 .textfeld_filter::placeholder{
     color: grey;
-}
-
-#EingabeStudiengang{
-    width: 23vw;
-}
-
-#EingabeJahrgang{
-    width: 23vw;
 }
 
 /*DropDown Theorie oder Praxis*/
@@ -151,13 +152,13 @@ li {
     .textfeld_phase{
         width: 20vw;
         padding: 8px;
-        margin-right: 2vw;
+        margin-right: 1vw;
     }
     #EingabeStudiengang{
-        width: 20vw;
+        width: 25vw;
     }
     #EingabeJahrgang{
-        width: 20vw;
+        width: 13vw;
     }
     #Phasentabelle th{
         width: 10vw;
@@ -194,14 +195,17 @@ li {
     }
 
     /*Eingabe-Felder zum Festlegen der Datum, Studiengang und Jahr*/
-    .textfeld_phase{
-        width: 10vw;
-        margin-right: 10px;
+    .EingabeStudiengang{
+        margin-right: 10vw;
     }
     #EingabeStudiengang{
         width: 10vw;
     }
     #EingabeJahrgang{
+        width: 10vw;
+        margin-right: 0vw;
+    }
+    .textfeld_phase{
         width: 10vw;
     }
     /*Festlegen der Tabelle der Phasen*/
