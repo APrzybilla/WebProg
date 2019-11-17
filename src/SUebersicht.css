@@ -86,9 +86,9 @@
 #tabelleUebersicht a:hover{
     color: rgb(134, 160, 242) !important;
 }
-/*Legende unter der Tabelle*/
+
+/*farbliche Kennzeichnung der Phasen*/
 .theorie{
-    /*background-color: #85cdca !important; */
     background-color: rgb(45, 59,162) !important;
     color: white; 
     border: 1px solid white;
@@ -96,14 +96,22 @@
     margin: 0.1em;
 }
 .praxis{
-    /*background-color: #e8a87c;*/
     background-color: rgb(134, 160, 242); 
     color: white; 
     border: 1px solid white;
     padding: 0.1em;
     margin: 0.1em;
 }
-/*Legende*/
+/*Beide Phasen sind in der Woche vertreten*/
+.praxis  + .theorie{
+    background-image: repeating-linear-gradient(135deg, rgb(45, 59,162) 0%, rgb(45, 59,162) 4%, rgb(134, 160, 242) 4%, rgb(134, 160, 242) 8%, rgb(45, 59,162) 8%); 
+    color: white; 
+    border: 1px solid white;
+    padding: 0.1em;
+    margin: 0.1em;
+}
+
+/*Legende unter der Tabelle*/
 .legende{
     text-align: center;
     font-size: 3vw;
