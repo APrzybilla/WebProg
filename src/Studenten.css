@@ -156,6 +156,7 @@
         width: 85vw;
         height:auto;
     }
+
     .studierendenProfil td{ 
         width: 33vw;
     }
@@ -211,6 +212,7 @@
         width: 50vw;
         height:auto;
     }
+    
     .studierendenProfil td{ 
         width: 20vw;
     }
@@ -228,7 +230,7 @@
         right: 7vw;
         font-size: 2vw;
     }
-    
+
     /*Radierer um die Felder wieder leer zu machen*/
     #felderLeeren{ 
         bottom: 4vw;
