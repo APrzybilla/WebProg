@@ -25,9 +25,10 @@ class Studenten{
     onLoad(){
         // Tabellen werden erstellt
         klapptabelle_erstellung();
-        // Den Images des Kurzprofils werden EventListener hinzugefügt
+        // Den Icons des Kurzprofils werden EventListener hinzugefügt
         document.querySelector("#aSpeichern").addEventListener("click", studentSpeichern);
         document.querySelector("#aDelete64").addEventListener("click", deleteStudent);
+        document.querySelector("#felderLeeren").addEventListener("click", resetAll);
         //Überprüfung, ob die eine ID eines Studenten hat
         idfiltern();
 
