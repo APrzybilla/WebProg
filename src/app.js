@@ -21,11 +21,11 @@ class App {
         this._db.createDemoData();
 
         this._router.on({
-            "/":            () => this.showMainPage(),
-            "/Home":        () => this.showMainPage(),
-            "/Phasen":      () => this.showPhasenPage(),
-            "/Studenten":   () => this.showStudentenPage(),
-            "/Studenten/*": () => this.showStudentenPage()
+            "/":                () => this.showMainPage(),
+            "/Home":            () => this.showMainPage(),
+            "/Phasen":          () => this.showPhasenPage(),
+            "/Studierende":     () => this.showStudentenPage(),
+            "/Studierende/*":   () => this.showStudentenPage()
         });
 
         this._router.hooks({
