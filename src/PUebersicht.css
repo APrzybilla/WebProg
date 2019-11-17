@@ -199,11 +199,14 @@ li {
         margin-right: 10vw;
     }
     #EingabeStudiengang{
-        width: 13vw;
+        width: 10vw;
     }
     #EingabeJahrgang{
-        width: 7vw;
+        width: 10vw;
         margin-right: 0vw;
+    }
+    .textfeld_phase{
+        width: 10vw;
     }
     /*Festlegen der Tabelle der Phasen*/
     #Phasentabelle th{
