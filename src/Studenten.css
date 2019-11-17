@@ -72,18 +72,20 @@
     font-size: 12px;
 }
 /*Mülleimer, zum löschen des Studenten*/
-#delete64{
-    width: 7vw;
+#aDelete64{
     position: absolute; 
-    bottom: 5em;
-    right: 2em;
+    bottom: 4vw;
+    right: 2vw;
+    font-size: 2.5vw;
+    color: black !important;
 }
 /*Speichernzeichen, zum (über-)speichern des Studenten*/
-#speichern{
-    width: 7vw !important;
+#aSpeichern{
     position: absolute; 
-    bottom: 5em;
-    right: 5em;
+    bottom: 4vw;
+    right: 6vw;
+    font-size: 2.5vw;
+    color: black !important;
 }
 
 /* Snackbar: Text, der beim speichern kommt */
