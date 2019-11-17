@@ -408,7 +408,6 @@ let neuePhase = () =>{
             }else{
                 hilfePraxis++;
             }
-            hilfePraxis++;
             
         }
         if(hilfePraxis>6){
