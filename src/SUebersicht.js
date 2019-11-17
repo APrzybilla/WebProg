@@ -131,10 +131,9 @@ function tabelleUebersichtErzeugen(){
 }
     
 
-function PhasenDarstellen(){
+function PhasenDarstellen(id){
     //Alle Studenten durchlaufen
-    _db.selectAllStudents().then(function (querySnapshot) {
-        querySnapshot.forEach(function(stud){
+    _db.selectStudentById(id).then(function(stud){
             //Phase des Studenten aufrufen
             //Id der Phase setzt sich aus Studiengang und Jahrgang zusammen. Bsp: Wirtschaftsinformatik2019
             _db.selectPhaseById(stud.data().Studiengang + stud.data().Jahrgang).then(function(phas){
@@ -336,8 +335,7 @@ function PhasenDarstellen(){
                     }
                 }
             });
-        });    
-    });
+        });
 }
 
 // Functions die nur bei Bedarf ausgeführt werden
@@ -523,7 +521,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
             i = 1;
         }
     });
-    PhasenDarstellen();
+    PhasenDarstellen(id);
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
