@@ -39,9 +39,6 @@ class StartPage{
         //Aufrufen der Tabelle mit allen Studenten
         anzeigen();
 
-        //Füllt die Tabelle mit den Phasen; setTimeout damit die Seite erst lädt und dann die Function ausgeführt wird
-        setTimeout(zusammenführenStudenten, 500);
-
         //Nav anpassen
         document.querySelector("nav").children[0].classList.add("bold");
         document.querySelector("nav").children[1].classList.remove("bold");
@@ -127,17 +124,14 @@ function tabelleUebersichtErzeugen(){
                 trKW.appendChild(th);
                 //i wird um eins erhöht, dass alle Wochen hinzugefügt werden.
                 i++;
-            }
-            
-            
+            }            
             i = 1;
         }
-        
     });    
 }
     
 
-function zusammenführenStudenten(){
+function PhasenDarstellen(){
     //Alle Studenten durchlaufen
     _db.selectAllStudents().then(function (querySnapshot) {
         querySnapshot.forEach(function(stud){
@@ -529,7 +523,7 @@ function einfügen (name, vorname, hs, sem, jg, id){
             i = 1;
         }
     });
-    zusammenführenStudenten();
+    PhasenDarstellen();
 }
 
 //die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
