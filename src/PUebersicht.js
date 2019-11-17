@@ -295,6 +295,10 @@ let neuerStudiengang = () =>{
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
         buttonPhase.classList.remove("visible");
         buttonPhase.classList.add("hidden");
+
+        //Felder wieder leeren
+        document.getElementById("EingabeStudiengang").value = "";
+        document.getElementById("EingabeJahrgang").value = "";
     }catch(error){
         alert("Fehlerhafte Eingabe");
         console.log(error);
