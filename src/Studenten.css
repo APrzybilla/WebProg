@@ -21,10 +21,10 @@
 	margin-top: 2vw;
 	display:block;
 	height: auto;
-	background-color: rgb(231, 242, 255);
+	background-color: #b5bcd6;
 	border-radius:5px;
 	overflow: hidden;
-	box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+	box-shadow: 0 15px 25px rgba(96, 120, 191, 1);
     padding: 2vw;
     margin: 3vw;
     margin-bottom: 0;
@@ -44,7 +44,7 @@
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: black;
+    color: darkblue;
     letter-spacing: 1px;
     margin-bottom: 30px;
     border: none;
@@ -72,18 +72,20 @@
     font-size: 12px;
 }
 /*Mülleimer, zum löschen des Studenten*/
-#delete64{
-    width: 7vw;
+#aDelete64{
     position: absolute; 
-    bottom: 5em;
-    right: 2em;
+    bottom: 4vw;
+    right: 2vw;
+    font-size: 2.5vw;
+    color: black !important;
 }
 /*Speichernzeichen, zum (über-)speichern des Studenten*/
-#speichern{
-    width: 7vw !important;
+#aSpeichern{
     position: absolute; 
-    bottom: 5em;
-    right: 5em;
+    bottom: 4vw;
+    right: 6vw;
+    font-size: 2.5vw;
+    color: black !important;
 }
 
 /* Snackbar: Text, der beim speichern kommt */
