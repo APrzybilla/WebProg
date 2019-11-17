@@ -109,11 +109,12 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + "\t" + "<a class='fas fa-trash muell'></a> ";
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + "\t" + "<a class='fas fa-pen aendern'></a>" + "<a class='fas fa-trash muell'></a> ";
                 li.appendChild(button);
 
                 //EventListener von Löschen Icon zum Löschen des Jahrgangs
                 for(let i = 0; i<document.getElementsByClassName("muell").length; i++){
+                    document.getElementsByClassName("aendern")[i].addEventListener("click", changePhase);
                     document.getElementsByClassName("muell")[i].addEventListener("click", deletePhase);
                 }
                 
@@ -293,6 +294,9 @@ let datumsausgabe = (date) =>{
 
 //Neuer Studiengang wird erstellt
 let neuerStudiengang = () =>{
+    if(document.getElementById("JahrgangHinzufuegen").innerHTML != "Jahrgang hinzufügen"){
+        document.getElementById("JahrgangHinzufuegen").innerHTML = "Jahrgang hinzufügen";
+    }
     //Phasen in die Datenbank speichern
     let id = document.getElementById("EingabeStudiengang").value + document.getElementById("EingabeJahrgang").value;
 
@@ -336,7 +340,7 @@ let neuerStudiengang = () =>{
 }
 
 //Erstellt eine neue Phase
-let neuePhase = () =>{       
+let neuePhase = () =>{
     //Hilfsvariable, die das Vergeben von ids erleichtert. Wird zurückgesetzt, sobald der Jahrgang hinzugefügt wurde
     let hilfeTheorie = 1;
     let hilfePraxis = 1;
@@ -396,7 +400,7 @@ let neuePhase = () =>{
             if(document.getElementById("Startdatum").value<document.getElementById(tdPhase.innerHTML + hilfePraxis)){
                 document.getElementById(tdPhase.innerHTML + hilfePraxis).id = "Praxis" + ++hilfePraxis;
             }
-            hilfeTheorie++;
+            hilfePraxis++;
         }
         if(hilfePraxis>6){
             alert("Es wurden bereits genug Praxisphasen eingegeben");
@@ -442,6 +446,68 @@ function deletePhase(event){
         resetAll();
     } else {
         return;
+    }
+}
+
+function changePhase(event){
+    let eltern = event.target.parentElement.parentElement.parentElement;
+    let kinder = eltern.children[1].firstChild.children;
+    
+    document.getElementById("JahrgangHinzufuegen").innerHTML = "Jahrgang ändern";
+    document.getElementById("EingabeStudiengang").value = eltern.parentElement.id.match(/[a-zA-Z]+/g)[0].substring(2);
+    document.getElementById("EingabeJahrgang").value = eltern.parentElement.id.match(/\d+/g);
+    
+    let u = 1;
+    for(let i = 0; i<kinder.length;i++){
+        //sichtbar machen der Tabelle//
+        let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
+        buttonPhase.classList.remove("hidden");
+        buttonPhase.classList.add("visible");
+
+        //Einfügen von neue Zeile an erster Stelle in der Tabelle//
+        let neueTr = document.getElementById("Phasentabelle").insertRow(1);
+            
+        //erzeugen der Tabellenspalten// 
+        let tdPhase = document.createElement("td");
+        let tdVon = document.createElement("td");
+        let tdBis = document.createElement("td");
+        let tdStart = document.createElement("td");
+        let tdEnd = document.createElement("td");
+        let tdLoe = document.createElement("td");
+
+        //Button löschen erstellen//
+        let loe = document.createElement("a");
+        loe.innerHTML = "<span class='fas fa-trash muell'></span>";
+        //befüllen der Spalten//
+        tdPhase.innerHTML = kinder[i].id.match(/[a-zA-Z]+/g)[1];
+        tdVon.innerHTML = kinder[i].children[1].innerHTML;
+        tdStart.innerHTML = berechneWoche(kinder[i].children[1].innerHTML);
+        try{
+            tdBis.innerHTML = kinder[i+1].children[1].innerHTML;
+            tdEnd.innerHTML = berechneWoche(kinder[i+1].children[1].innerHTML);
+        }
+        catch(exception){
+            tdBis.innerHTML = "";
+        }
+        tdLoe.appendChild(loe);
+
+        tdVon.id = tdPhase.innerHTML + u;
+        tdBis.id = tdPhase.innerHTML + "Ende" + u;
+
+        //hinzufügen der Spalten //
+        neueTr.appendChild(tdPhase);
+        neueTr.appendChild(tdVon);
+        neueTr.appendChild(tdBis);
+        neueTr.appendChild(tdStart);
+        neueTr.appendChild(tdEnd);
+        neueTr.appendChild(tdLoe);
+
+        //Hinzufügen von EventListener der Buttons
+        loe.addEventListener("click", loeschen);
+
+        if(i%2 == 0){
+            u++;
+        }
     }
 }
 
