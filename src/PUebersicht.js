@@ -109,7 +109,7 @@ function klapptabelle_erstellung(){
                 button.id = "button"+buttoninhalt;
                 button.classList.add("klapptabelle_button");
                 button.addEventListener('click', klapptabelle);
-                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + "\t" + "<a class='fas fa-pen aendern'></a>" + "<a class='fas fa-trash muell'></a> ";
+                button.innerHTML = "<span class='fas fa-angle-right'></span> " + buttoninhalt.slice(-4) + "\t" + "<a id='" + "a" + buttoninhalt + "' class='fas fa-pen aendern'></a>" + "<a class='fas fa-trash muell'></a> ";
                 li.appendChild(button);
 
                 //EventListener von Löschen Icon zum Löschen des Jahrgangs
@@ -365,11 +365,11 @@ let neuePhase = () =>{
         return;
     }
 
-    //Button löschen erstellen//
+    //Button löschen erstellen
     let loe = document.createElement("a");
-    loe.innerHTML = "<span class='fas fa-trash muell'></span>";
+    loe.setAttribute("class", "fas fa-trash muell");
 
-    //befüllen der Spalten//
+    //befüllen der Spalten
     tdPhase.innerHTML = document.getElementById("DropDownPhase").value;
     tdVon.innerHTML = datumsausgabe(document.getElementById("Startdatum").value);
     tdBis.innerHTML = datumsausgabe(document.getElementById("Enddatum").value);
@@ -484,7 +484,7 @@ function changePhase(event){
 
         //Button löschen erstellen//
         let loe = document.createElement("a");
-        loe.innerHTML = "<span class='fas fa-trash muell'></span>";
+        loe.setAttribute("class", "fas fa-trash muell");
         //befüllen der Spalten//
         tdPhase.innerHTML = kinder[i].id.match(/[a-zA-Z]+/g)[1];
         tdVon.innerHTML = kinder[i].children[1].innerHTML;
@@ -494,7 +494,11 @@ function changePhase(event){
             tdEnd.innerHTML = berechneWoche(kinder[i+1].children[1].innerHTML);
         }
         catch(exception){
-            tdBis.innerHTML = "";
+            let id = eltern.parentElement.id.substring(2);
+            _db.selectPhaseById(id).then(function (doc) {
+                tdBis.innerHTML = doc.data().EndeLetztePhase;
+                tdEnd.innerHTML = berechneWoche(doc.data().EndeLetztePhase);
+            });
         }
         tdLoe.appendChild(loe);
 
@@ -512,7 +516,7 @@ function changePhase(event){
         //Hinzufügen von EventListener der Buttons
         loe.addEventListener("click", loeschen);
 
-        if(i%2 == 0){
+        if(i%2 == 1){
             u++;
         }
     }
