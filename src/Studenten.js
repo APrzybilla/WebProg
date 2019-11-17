@@ -217,6 +217,9 @@ function studentSpeichern(){
     } catch(exception){
         console.log("Datum ist leer");
     }
+    if(document.getElementById("profil_mitarbeiter_id").value==""){
+        alert("Bitte eine Mitarbeiter-ID eingeben. Ohne kann nicht gespeichert werden.");
+    }
     
     _db.saveStudent(
         {
