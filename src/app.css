@@ -4,6 +4,7 @@
 .visible{
     visibility: visible;
 }
+
 /*unsichtbar machen*/
 .hidden{
     display: none;
@@ -23,6 +24,7 @@
     box-shadow: 0 15px 25px rgba(96, 120, 191, .4);
     left:0;
 }
+
 /*Überschrift*/
 #app header span{
     font-size: 2em;
@@ -35,6 +37,7 @@
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
+
 /*Navigationsleiste*/
 #app #nav{
     font-size: 1.2em;
@@ -46,6 +49,7 @@
     z-index: 1;
     width: 29vw;
 }
+
 /*Verändert die Schrift vom Navigationssystem, abhängig von der aktuellen Seite*/
 #app .bold{
     font-weight: 900;
@@ -57,6 +61,7 @@
     padding-top: 3vw;
     margin: 1vw;
 }
+
 /*Anker*/
 #app a{
     text-decoration: none;
@@ -65,6 +70,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /*Standard für Buttons festlegen*/
 #app button{
     background-color: #6078bf;
@@ -81,10 +87,12 @@
     margin-left: 2vw;
 }
 
+/*Farbe änder sich beim drüber fahren*/
 #app button:hover{
     box-shadow: 0 0 0.5em #6078bf;
 }
 
+/*Farbe änderd sich, wenn der Button gedrückt wird*/
 #app button:active{
     background: rgb(45, 59,162);
 }
@@ -95,9 +103,11 @@
     margin: 1vw; 
     vertical-align: middle;
 }
+
 .radio-group label{
     padding: 1vw;
 }
+
 #app input[type="radio"]+label{
     color: grey;
     border: 1px solid #6078bf;
@@ -106,15 +116,18 @@
     cursor: pointer;
     box-shadow: none;
 }
+
 /*Unsichtbar machen des Radio-Buttons selber, sodass nur das Label zu sehen ist*/
 .radio-group input[type="radio"]{
     display: none;
 }
+
 /*Wenn der Radio-Button checked ist, dann soll sich das Feld verfärben*/
 #app input[type="radio"]:checked + label{
     color: white;
     background: #6078bf;
 }
+
 /*Input als Radio-Button mit label auf einer Ebene*/
 #app input[type="radio"]:hover+label:hover{
     box-shadow: 0 0 8px #6078bf;
@@ -126,9 +139,11 @@
     margin: 0vw; 
     vertical-align: middle;
 }
+
 .checkbox-group label{
     padding: 1vw;
 }
+
 #app input[type="checkbox"]+label{
     color: grey;
     border: 1px solid #6078bf;
@@ -137,15 +152,18 @@
     cursor: pointer;
     box-shadow: none;
 }
+
 /*Unsichtbar machen der Checkbox selber, sodass nur das Label zu sehen ist*/
 .checkbox-group input[type="checkbox"]{
     display: none;
 }
+
 /*Wenn die Checkbox checked ist, dann soll sich das Feld gefärbt werden*/
 #app input[type="checkbox"]:checked + label{
     color: white;
     background: #6078bf;
 }
+
 /*Input als Checkbox mit label auf einer Ebene*/
 #app input[type="checkbox"]:hover+label:hover{
     box-shadow: 0 0 8px #6078bf;
@@ -159,10 +177,12 @@
         height: 3em;
         padding: 1vw;
     }
+
     #app header span{
         padding-left: 1vw;
         letter-spacing: 1px;
     }
+
     /*Navigationsleiste*/
     #app #nav{
         right: 3vw;
@@ -193,6 +213,7 @@
         padding: 1vw;
         margin: 0;
     }
+    
     /*Navigationsleiste*/
     #app #nav{
         right: 10vw;

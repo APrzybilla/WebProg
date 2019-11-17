@@ -236,6 +236,7 @@ function klapptabelle_erstellung(){
     });
 }
 
+
 // Functions die nur bei Bedarf ausgeführt werden
 
 // Auf- und zuklappen der Inhalte der Tabelle
@@ -271,40 +272,10 @@ function klapptabelle(event){
     }
 }
 
-//Kalenderwoche berechnen
-let berechneWoche =(date) =>{
-    date = new Date(date);
-    let j = date.getFullYear();
-    let m = date.getMonth();
-    let t = date.getDate();
-    let datum = new Date(j, m, t);
-
-    let currentThursday = new Date(datum.getTime() + (date.getDay()-((datum.getDay()+6%7))/86400000));
-    let yearOfThursday = currentThursday.getFullYear();
-    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(datum.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
-
-    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-
-    return weekNumber;
-}
-
-//Formatieren des Datums in 01.01.2019
-let datumsausgabe = (date) =>{
-    date = new Date(date);
-    let tag = String(date.getDate());
-    let month = String(date.getMonth()+1);
-    if(month.length==1){
-        month = "0"+month;
-    }
-    if(tag.length==1){
-        tag = "0"+tag;
-    }
-    
-    return tag + "." + month + "." + date.getFullYear();
-}
 
 //Neuer Studiengang wird erstellt
 let neuerStudiengang = () =>{
+    //Buttonbeschriftung ändern, falls gerade ein Jahrgang geändert wurde
     if(document.getElementById("JahrgangHinzufuegen").innerHTML != "Jahrgang hinzufügen"){
         document.getElementById("JahrgangHinzufuegen").innerHTML = "Jahrgang hinzufügen";
     }
@@ -442,12 +413,6 @@ let neuePhase = () =>{
     loe.addEventListener("click", loeschen);
 }
 
-//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
-function deleteTable(id){
-    while(document.getElementById(id).rows.length>1){
-        document.getElementById(id).deleteRow(1);
-    }
-}
 
 // Phase löschen
 function deletePhase(event){
@@ -472,18 +437,19 @@ function warten(){
 }
 
 function changePhase(event){
+    //Tabelle leeren
+    deleteTable("Phasentabelle");
+    
     //wenn event ein String ist, dann wird changePhase von der Methode idfiltern() aufgerufen und ansonsten von dem eventListener
     let eltern;
     if(typeof event === typeof ""){
         //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
         //event.substring(1) schneidet den ersten Buchstaben weg, da dieser nur für die id gedacht ist
-        eltern = document.getElementById(event).parentElement.parentElement.parentElement;    
-        console.log(eltern);
+        eltern = document.getElementById(event).parentElement.parentElement.parentElement;
     }
     else{
         //eltern ist die ul, in der ein li der Button ist und ein li, das die tabelle mit den Inhalten beinhaltet
         eltern = event.target.parentElement.parentElement.parentElement;
-        console.log(eltern);
     }
     //kinder enthält als Liste die tr's der Tabelle -> kinder[0] gibt Theorie1: xx.xx.xxxx aus, Kinder[1] gibt Praxis1.... aus
     let kinder = eltern.children[1].firstChild.children;
@@ -494,7 +460,7 @@ function changePhase(event){
     document.getElementById("EingabeStudiengang").value = eltern.parentElement.id.match(/[a-zA-Z]+/g)[0].substring(2);
     document.getElementById("EingabeJahrgang").value = eltern.parentElement.id.match(/\d+/g);
     
-    //Zählervariable für die -> wird nur bei jedem 2. Schleifendurchlauf erhöht
+    //Zählervariable -> wird nur bei jedem 2. Schleifendurchlauf erhöht
     let u = 1;
     //Schleife läuft 1 mal je Zeile der Tabelle durch
     for(let i = 0; i<kinder.length;i++){
@@ -517,14 +483,23 @@ function changePhase(event){
         //Button löschen erstellen//
         let loe = document.createElement("a");
         loe.setAttribute("class", "fas fa-trash muell");
+
         //befüllen der Spalten//
         tdPhase.innerHTML = kinder[i].id.match(/[a-zA-Z]+/g)[1];
         tdVon.innerHTML = kinder[i].children[1].innerHTML;
-        tdStart.innerHTML = berechneWoche(kinder[i].children[1].innerHTML);
+        //Datum-String in ein richtiges Datum umwandeln
+        let date = kinder[i].children[1].innerHTML.split(".");
+        date = new Date(date[2], date[1], date[0]);
+        //KW mit Datum berechnen
+        tdStart.innerHTML = berechneWoche(date);
         //wenn i+1 (also nur beim letzten Durchlauf) nicht findbar ist, dann soll der catch ausgeführt werden
         try{
             tdBis.innerHTML = kinder[i+1].children[1].innerHTML;
-            tdEnd.innerHTML = berechneWoche(kinder[i+1].children[1].innerHTML);
+            //Datum-String in ein richtiges Datum umwandeln
+            date = kinder[i+1].children[1].innerHTML.split(".");
+            date = new Date(date[2], date[1], date[0]);
+            //KW mit Datum berechnen
+            tdEnd.innerHTML = berechneWoche(date);
         }
         catch(exception){
             //enhält id einer Phase -> beispiel: BWL2018
@@ -532,7 +507,11 @@ function changePhase(event){
             _db.selectPhaseById(id).then(function (doc) {
                 //setzt letzte "Bis" der letzten Phase
                 tdBis.innerHTML = doc.data().EndeLetztePhase;
-                tdEnd.innerHTML = berechneWoche(doc.data().EndeLetztePhase);
+                //Datum-String in ein richtiges Datum umwandeln
+                date = doc.data().EndeLetztePhase.split(".");
+                date = new Date(date[2], date[1], date[0]);
+                //KW mit Datum berechnen
+                tdEnd.innerHTML = berechneWoche(date);
             });
         }
         tdLoe.appendChild(loe);
@@ -571,6 +550,9 @@ let loeschen = (event) =>{
     document.getElementById("Phasentabelle").deleteRow(el);
 }
 
+
+//Hilfsfunktionen, die beim Ausführen der Aktionen immer wieder gebraucht werden
+
 //Tabelle löschen und neu erstellen
 function resetAll(){
     let parent = document.getElementById("phasen_tabelle");
@@ -578,6 +560,41 @@ function resetAll(){
         parent.removeChild(parent.firstChild);
     }
     klapptabelle_erstellung();
+}
+
+//die Tabelle der übergebenen id wird bis auf die Kopfzeile geleert
+function deleteTable(id){
+    while(document.getElementById(id).rows.length>1){
+        document.getElementById(id).deleteRow(1);
+    }
+}
+
+//Kalenderwoche berechnen
+let berechneWoche =(date) =>{
+
+    let currentThursday = new Date(date.getTime() + (date.getDay()-((date.getDay()+6%7))/86400000));
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(date.getDay()-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) / 86400000);
+
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+
+    return weekNumber;
+}
+
+//Formatieren des Datums in 01.01.2019
+let datumsausgabe = (date) =>{
+    //Tag und Monat als String speichern
+    let tag = String(date.getDate());
+    let month = String(date.getMonth()+1);
+    //Monat und Tag anpassen, dass sie immer zweistellig sind
+    if(month.length==1){
+        month = "0"+month;
+    }
+    if(tag.length==1){
+        tag = "0"+tag;
+    }
+    
+    return tag + "." + month + "." + date.getFullYear();
 }
 
 export default Phasenuebersicht;

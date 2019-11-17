@@ -14,22 +14,25 @@
     margin-bottom: 2vw;
     border: 1px solid #6078bf;
 }
+
+/*Farbe ändert sich, wenn man auf das Textfeld klickt*/
 .textfeld_filter:focus{
     border-color: #6078bf;
     box-shadow: 0 0 0.5em #6078bf;
 }
 
+/*Platzhalterfarbe eingestellt*/
 .textfeld_filter::placeholder{
     color: grey;
 }
 
-/*Placeholder färben in Mozilla Firefox 4 bis 18 */
+/*Platzhalter färben in Mozilla Firefox 4 bis 18 */
 .textfeld_filter:-moz-placeholder {
     color:    grey;
     opacity:  1;
 }
 
-/*Placeholder färben in Mozilla Firefox 19+*/
+/*Platzhalter färben in Mozilla Firefox 19+*/
 .textfeld_filter::-moz-placeholder { 
     color:    grey;
     opacity:  1;
@@ -43,27 +46,32 @@
     overflow: hidden;
     text-align: center;
 }
+
 #tabelleUebersicht thead, #tabelleUebersicht tbody{
     display:inline-block;
     width: 17vw;
     height: auto;
 }
+
 /*Scrollbar, um die Kalenderwochen zu scrollen*/
 #tabelleUebersicht tbody {
     width: 71vw;
     overflow-x: scroll;
 }
+
 /*Scrollbar, um die Studenten zu scrollen*/
 #tabelleUebersicht thead {
     width: 20vw;
     overflow-x: scroll;
 }
+
 #tabelleUebersicht tr{
     border-bottom: 1px solid #dddddd;
     color: darkblue;
     background-color: white;
     height: 2.8em;
 }
+
 /*Oberste Zeile der Tabelle*/
 #tabelleUebersicht th{
     background-color: #6078bf;
@@ -71,6 +79,7 @@
     font-weight: bold;
     min-width: 5vw;
 }
+
 #tabelleUebersicht th,
 #tabelleUebersicht td{
     border-right: 1px solid #dddddd;
@@ -79,10 +88,12 @@
     width: 5vw;
     table-layout: fixed;
 }
+
 /*Links in der Tabelle (Die Namen der Studenten)*/
 #tabelleUebersicht a{
     color: darkblue !important;
 }
+
 #tabelleUebersicht a:hover{
     color: rgb(134, 160, 242) !important;
 }
@@ -95,6 +106,7 @@
     padding: 0.1em;
     margin: 0.1em;
 }
+
 .praxis{
     background-color: rgb(134, 160, 242); 
     color: white; 
@@ -102,6 +114,7 @@
     padding: 0.1em;
     margin: 0.1em;
 }
+
 /*Beide Phasen sind in der Woche vertreten*/
 .praxis  + .theorie{
     background-image: repeating-linear-gradient(135deg, rgb(45, 59,162) 0%, rgb(45, 59,162) 4%, rgb(134, 160, 242) 4%, rgb(134, 160, 242) 8%, rgb(45, 59,162) 8%); 
@@ -132,15 +145,19 @@
     #tabelleUebersicht{
         min-width: 700px;
     }
+
     #tabelleUebersicht thead{
         width: 13vw;
-    }    
+    }
+
     #tabelleUebersicht tbody {
         width: 82vw;
     }
+
     #tabelleUebersicht tr{
         height: 2.7em;
     }
+
     .legende{
         font-size: 2vw;
     }
@@ -160,21 +177,26 @@
     #tabelleUebersicht{
         min-width: 1195px;
     }
+
     /*Scrollbar entfernen und Breite anpassen*/
     #tabelleUebersicht thead{
         width: 20vw;
         overflow: hidden;
     }
+
     #tabelleUebersicht tbody {
         width: 76vw;
     }
+
     #tabelleUebersicht tr{
         height: 2.5em;
     }
+
     /*Oberste Zeile der Tabelle*/
     #tabelleUebersicht th{
         min-width: auto;
     }
+    
     .legende{
         font-size: 1.3vw;
     }

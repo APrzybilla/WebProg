@@ -26,6 +26,7 @@ class DB {
         let students =  this.selectAllStudents();
 
         //Festlegen von einigen Demodaten, wenn noch keine vorhanden sind
+        //Diese können später wieder gelöscht werden, falls erforderlich
         if(students.length < 1){
             this.saveStudents([{
                 "Name" : "Sütterlin",
@@ -66,11 +67,12 @@ class DB {
         return this._db.collection("students").get();
     }
 
-    //Aufrufen aller Studenten, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc)
+    //Aufrufen aller Studenten, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc) (Von A bis Z)
     selectAllStudentsByOrder(order){
         return this._db.collection("students").orderBy(order).get();
     }
 
+    //Aufrufen aller Studenten, rückwärts nach übergebenem Kriterium sortiert (Von Z bis A)
     selectAllStudentsByOrderBackwards(order){
         return this._db.collection("students").orderBy(order, "desc").get();
     }
