@@ -29,16 +29,19 @@
     margin: 3vw;
     margin-bottom: 0;
 }
+
 /*Tabelle innerhalb des divs für das Profil*/
 .studierendenProfil{
 	border-collapse: separate;
 	border-spacing: 0.5vw;
 }
+
 .studierendenProfil td{ 
 	position: relative;
 	width: 30vw;
 	
 }
+
 /*Inputs, in die die Daten der Studenten eingetragen werden sollen*/
 .studierendenProfil td input{
     width: 100%;
@@ -52,6 +55,7 @@
     outline: none;
 	background: transparent;
 }
+
 /*Label, dient zur Beschriftung der Inputs*/
 .studierendenProfil td label{
     position: absolute;
@@ -63,6 +67,7 @@
     pointer-events: none;
     transition: .5s;
 }
+
 /*Hochgehen von label, wenn der input aktiviert ist*/
 .studierendenProfil td input:focus ~ label,
 .studierendenProfil td input:valid ~ label{
@@ -71,6 +76,7 @@
     color: rgb(45, 59,162);
     font-size: 12px;
 }
+
 /*Mülleimer, zum löschen des Studenten*/
 #aDelete64{
     position: absolute; 
@@ -79,6 +85,7 @@
     font-size: 7vw;
     color: black !important;
 }
+
 /*Speichernzeichen, zum (über-)speichern des Studenten*/
 #aSpeichern{
     position: absolute; 
@@ -88,6 +95,7 @@
     color: black !important;
 }
 
+/*Radierer um die Felder wieder leer zu machen*/
 #felderLeeren{
     position: absolute; 
     bottom: 1vw;
@@ -158,6 +166,7 @@
         right: 7vw;
         font-size: 4vw;
     }
+
     /*Speichernzeichen, zum (über-)speichern des Studenten*/
     #aSpeichern{
         bottom: 4vw;
@@ -165,6 +174,7 @@
         font-size: 4vw;
     }
 
+    /*Radierer um die Felder wieder leer zu machen*/
     #felderLeeren{ 
         bottom: 4vw;
         right: 2vw;
@@ -187,6 +197,7 @@
         padding: 10px;
         margin-left: 20px;
     }
+
     .right{
         width: 58vw;
         right: 10px;
@@ -203,18 +214,22 @@
     .studierendenProfil td{ 
         width: 20vw;
     }
+
     /*Mülleimer, zum löschen des Studenten*/
     #aDelete64{
         bottom: 4vw;
         right: 4vw;
         font-size: 2vw;
     }
+
     /*Speichernzeichen, zum (über-)speichern des Studenten*/
     #aSpeichern{
         bottom: 4vw;
         right: 7vw;
         font-size: 2vw;
     }
+    
+    /*Radierer um die Felder wieder leer zu machen*/
     #felderLeeren{ 
         bottom: 4vw;
         right: 1vw;
