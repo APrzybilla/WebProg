@@ -24,6 +24,7 @@ class App {
             "/":                () => this.showMainPage(),
             "/Home":            () => this.showMainPage(),
             "/Phasen":          () => this.showPhasenPage(),
+            "/Phasen/*":        () => this.showPhasenPage(),
             "/Studierende":     () => this.showStudentenPage(),
             "/Studierende/*":   () => this.showStudentenPage()
         });
