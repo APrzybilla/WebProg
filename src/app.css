@@ -31,7 +31,6 @@
     padding-top: 0.2em;
     vertical-align: middle;
     /*setzt Hintergrund als Fontcolor mit Übergang*/
-    /*background-image:linear-gradient(90deg,#f64c72, #ffab84);*/
     background-image: linear-gradient(90deg,rgb(45, 59,162), rgb(134, 160, 242));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
