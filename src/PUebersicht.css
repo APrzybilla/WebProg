@@ -34,13 +34,14 @@ input[type="radio"]{
     color: #6078bf;
     vertical-align: middle;
 }
-.textfeld_filter:focus{
+.textfeld_phase:focus{
     border-color: #6078bf;
     box-shadow: 0 0 0.5em #6078bf;
 }
 
-.textfeld_filter::placeholder{
+.textfeld_phase::placeholder{
     color: grey;
+    opacity:  1;
 }
 
 /*DropDown Theorie oder Praxis*/

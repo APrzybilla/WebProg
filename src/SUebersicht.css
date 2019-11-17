@@ -23,6 +23,18 @@
     color: grey;
 }
 
+/*Placeholder färben in Mozilla Firefox 4 bis 18 */
+.textfeld_filter:-moz-placeholder {
+    color:    grey;
+    opacity:  1;
+}
+
+/*Placeholder färben in Mozilla Firefox 19+*/
+.textfeld_filter::-moz-placeholder { 
+    color:    grey;
+    opacity:  1;
+}
+
 /*Tabelle, in der alle Studenten stehen*/
 #tabelleUebersicht{
     border-collapse: collapse;
