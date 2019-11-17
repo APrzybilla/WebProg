@@ -319,7 +319,6 @@ let neuerStudiengang = () =>{
             "id": id
             }
         );
-        alert("Jahrgang wurde erfolgreich gespeichert");
         //Phasentabelle löschen und wieder unsichtbar machen
         deleteTable("Phasentabelle");
         let buttonPhase = document.getElementById("Phasentabelle").querySelector("tr");
